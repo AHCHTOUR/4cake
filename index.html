@@ -904,7 +904,7 @@
 
     // 3) Envoyer la demande vers le Google Sheet partagé (journal cumulatif, aucune ligne écrasée)
     // Remplacez GOOGLE_SHEET_WEBHOOK par l'URL de votre déploiement Apps Script (voir google-sheets-webhook.gs fourni séparément)
-    const GOOGLE_SHEET_WEBHOOK = 'REMPLACER_PAR_VOTRE_URL_APPS_SCRIPT';
+    const GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwbH2uhMQ34SNtz_WR7Lejdh464gmharcXAPoTd4JQb9g5brNleOU_URHtBz8FhmwzALA/exec';
     if(GOOGLE_SHEET_WEBHOOK && GOOGLE_SHEET_WEBHOOK.indexOf('https://') === 0){
       const productsSummary = pdfLines.map(l => `${l.name} x${l.qty}`).join(' | ');
       fetch(GOOGLE_SHEET_WEBHOOK, {
