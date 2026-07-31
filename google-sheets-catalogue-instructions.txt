@@ -1,0 +1,94 @@
+INSTALLATION — CATALOGUE 4CAKE PILOTÉ PAR GOOGLE SHEETS
+=========================================================
+
+CE QUE ÇA CHANGE POUR VOUS :
+Une fois configuré, vous modifiez prix / quantités minimales / ruptures de
+stock directement dans un Google Sheet, comme un tableur normal — plus
+jamais besoin de toucher au code ou à GitHub pour ça.
+
+
+ÉTAPE 1 — Créer votre Google Sheet
+-----------------------------------
+1. Allez sur https://sheets.google.com
+2. Fichier → Importer → Importer un fichier
+3. Choisissez le fichier "4cake-catalogue-google-sheet.csv" fourni
+4. À l'import, sélectionnez "Remplacer la feuille de calcul"
+5. Vous voilà avec vos 15 produits actuels, prêts à être modifiés
+
+
+ÉTAPE 2 — Publier la feuille sur le web (en CSV)
+--------------------------------------------------
+1. Menu Fichier → Partager → Publier sur le web
+2. Dans le premier menu déroulant, choisissez votre feuille (ex: "Feuille 1")
+3. Dans le second menu déroulant, choisissez "Valeurs séparées par des
+   virgules (.csv)" — PAS "Page web"
+4. Cliquez "Publier", confirmez
+5. Copiez le lien généré (il ressemble à :
+   https://docs.google.com/spreadsheets/d/e/2PACX-XXXXXXXX/pub?output=csv)
+
+
+ÉTAPE 3 — Brancher ce lien sur le site
+-----------------------------------------
+Dans le fichier index.html, cherchez cette ligne (vers la fin, dans la
+balise <script>) :
+
+    const GOOGLE_SHEET_CSV_URL = 'REMPLACER_PAR_VOTRE_URL_CSV_GOOGLE_SHEET';
+
+Remplacez la partie entre guillemets par le lien copié à l'étape 2, par
+exemple :
+
+    const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-XXXXXXXX/pub?output=csv';
+
+Envoyez-moi ce lien et je fais la modification pour vous si vous préférez.
+
+
+COMMENT MODIFIER LE CATALOGUE AU QUOTIDIEN
+=============================================
+Ouvrez votre Google Sheet, modifiez une cellule, c'est tout :
+
+- Changer un prix        → colonne "price" (juste le nombre, ex: 195)
+- Changer la quantité min → colonnes "moq" (français) et "moq_ar" (arabe)
+- Marquer une rupture     → colonne "available" : mettez FALSE
+- Remettre en stock       → colonne "available" : remettez TRUE
+
+Le site relit la feuille à chaque chargement de page. Un changement est
+visible en général en 1 à 5 minutes (délai de mise en cache de Google).
+
+
+COLONNES DU FICHIER — NE PAS RENOMMER NI SUPPRIMER
+=====================================================
+id        : identifiant unique du produit (ne pas dupliquer, ne pas changer
+            l'ordre des id existants pour ne pas casser le panier des clients
+            qui auraient le site ouvert au moment du changement)
+cat       : catégorie (pate / feuilletine / topping / chocolat / decors)
+name      : nom du produit en français
+name_ar   : nom du produit en arabe
+desc      : description en français
+desc_ar   : description en arabe
+price     : prix (nombre uniquement, sans "MAD")
+unit      : unité en français (ex: "/ kg")
+unit_ar   : unité en arabe
+moq       : quantité minimale en français
+moq_ar    : quantité minimale en arabe
+icon      : icône catégorie à utiliser (pate / feuilletine / topping /
+            chocolat / decors) — ne pas modifier sauf nouvelle catégorie
+img       : nom du fichier photo (ex: "topping_caramel.jpg") — laisser vide
+            si pas de photo, le site affichera "Photo à venir"
+available : TRUE = en stock, FALSE = rupture de stock
+
+
+AJOUTER UN NOUVEAU PRODUIT
+=============================
+Ajoutez une nouvelle ligne dans le Google Sheet avec un nouvel "id" (le
+prochain numéro disponible, ex: 16), remplissez les colonnes, publiez —
+c'est automatique, pas de limite au nombre de produits.
+
+
+SÉCURITÉ DE SECOURS
+======================
+Si jamais la feuille Google Sheets est temporairement indisponible (mauvaise
+configuration, coupure), le site n'affiche pas une page cassée : il retombe
+automatiquement sur une copie de secours intégrée dans le code (les 15
+produits actuels). Vos clients voient toujours un catalogue fonctionnel,
+même si la feuille pose problème — mais bien sûr sans vos toutes dernières
+modifications tant que la feuille n'est pas de nouveau accessible.
