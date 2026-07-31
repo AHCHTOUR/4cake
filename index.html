@@ -1709,18 +1709,30 @@
     ];
     const pick = ANIMATIONS[Math.floor(Math.random() * ANIMATIONS.length)];
 
-    video.setAttribute('poster', `assets/${pick}_poster.jpg`);
+    video.setAttribute('poster', `${pick}_poster.jpg`);
     video.innerHTML = `
-      <source src="assets/${pick}.webm" type="video/webm">
-      <source src="assets/${pick}.mp4" type="video/mp4">
+      <source src="${pick}.webm" type="video/webm">
+      <source src="${pick}.mp4" type="video/mp4">
     `;
     video.load();
 
-    // Filet de sécurité : si la vidéo échoue à charger, on revient au logo statique
-    video.addEventListener('error', () => {
+    // Filet de sécurité renforcé : si la vidéo échoue OU met trop de temps à démarrer
+    // (fichiers manquants, chemin cassé, connexion lente...), on revient au logo statique
+    // plutôt que de laisser un cadre noir vide indéfiniment.
+    let switchedToFallback = false;
+    function fallbackToStatic(){
+      if(switchedToFallback) return;
+      switchedToFallback = true;
       video.style.display = 'none';
       fallback.style.display = 'block';
-    });
+    }
+    video.addEventListener('error', fallbackToStatic);
+    video.addEventListener('stalled', fallbackToStatic);
+    setTimeout(() => {
+      if(video.readyState < 3){ // moins de "HAVE_FUTURE_DATA" après le délai : ça n'a pas démarré
+        fallbackToStatic();
+      }
+    }, 4000);
   })();
 
   // ---------- Enregistrement du service worker (PWA installable) ----------
