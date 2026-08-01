@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Pro — Académie For Your Cake</title>
+<meta name="description" content="Les fondamentaux du métier en micro-capsules : le geste, le chiffre clé, l'erreur à éviter.">
+<link rel="icon" href="../../LOGO_MARQUE.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#232C31; --panel:#2E3A40; --panel-2:#3D4B52; --line:#44535A;
+    --ink:#EDEFEF; --grey:#A9B4B8; --accent:#F2C94C; --warn:#E0764F;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Poppins',sans-serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  header{position:sticky; top:0; z-index:20; background:rgba(35,44,49,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .top-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px; font-size:0.9rem;}
+  .brand img{height:28px;}
+  .brand b{font-family:'Anton',sans-serif;}
+  .brand .tag{font-family:'IBM Plex Mono',monospace; font-size:0.66rem; background:rgba(242,201,76,0.15); color:var(--accent); padding:3px 8px; border-radius:5px; margin-inline-start:4px;}
+  .nav-actions{display:flex; align-items:center; gap:10px; font-size:0.82rem;}
+  .nav-actions a{padding:8px 14px; border-radius:100px; border:1px solid var(--line);}
+  .nav-actions a:hover{background:var(--panel-2);}
+  .nav-actions .public-link{background:var(--accent); color:var(--bg); border:none; font-weight:700; display:flex; align-items:center; gap:6px;}
+
+  .hero{padding:44px 0 26px;}
+  .kicker{font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin-bottom:12px;}
+  h1{font-family:'Anton',sans-serif; font-size:clamp(1.7rem,4vw,2.4rem); text-transform:uppercase; margin:0 0 10px;}
+  .hero p{color:var(--grey); max-width:520px; line-height:1.55; font-size:0.94rem; margin:0;}
+
+  /* ---------- Grille des modules ---------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; padding:8px 0 70px;}
+  .mcard{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px;
+    cursor:pointer; transition:transform 0.18s ease, border-color 0.18s ease;
+    display:flex; flex-direction:column; gap:12px; min-height:150px;
+  }
+  .mcard:hover{transform:translateY(-3px); border-color:var(--accent);}
+  .mcard-top{display:flex; align-items:center; justify-content:space-between;}
+  .mcard-num{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent);}
+  .mcard-dots{display:flex; gap:4px;}
+  .mcard-dots span{width:14px; height:3px; border-radius:2px; background:rgba(242,201,76,0.3);}
+  .mcard h3{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.02rem; margin:0;}
+  .mcard p{font-size:0.82rem; color:var(--grey); margin:0; line-height:1.45;}
+  .mcard-play{margin-top:auto; display:flex; align-items:center; gap:7px; font-size:0.78rem; font-weight:700; color:var(--accent);}
+  .mcard-play svg{width:13px; height:13px;}
+
+  /* ---------- Visionneuse capsules (story) ---------- */
+  .story-overlay{position:fixed; inset:0; background:rgba(10,13,15,0.92); z-index:100; display:none; align-items:center; justify-content:center;}
+  .story-overlay.open{display:flex;}
+  .story-frame{
+    position:relative; width:min(94vw,380px); height:min(84vh,720px);
+    background:linear-gradient(160deg,var(--panel-2),var(--panel)); border-radius:22px; overflow:hidden;
+    display:flex; flex-direction:column; box-shadow:0 30px 70px rgba(0,0,0,0.5);
+  }
+  .story-bars{display:flex; gap:5px; padding:12px 14px 0;}
+  .story-bar{flex:1; height:3px; background:rgba(255,255,255,0.18); border-radius:3px; overflow:hidden;}
+  .story-bar i{display:block; height:100%; width:0%; background:var(--accent);}
+  .story-bar.done i{width:100%;}
+  .story-top{display:flex; align-items:center; justify-content:space-between; padding:10px 16px 0;}
+  .story-mod-title{font-size:0.78rem; font-weight:700; color:var(--grey);}
+  .story-close{width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center;}
+  .story-close svg{width:14px; height:14px;}
+  .story-tapzones{position:absolute; inset:0; top:52px; display:flex; z-index:2;}
+  .story-tapzones div{flex:1;}
+  .story-body{flex-grow:1; display:flex; align-items:center; justify-content:center; padding:26px 26px 30px; text-align:center; position:relative;}
+  .capsule{display:none; flex-direction:column; align-items:center; gap:14px; animation:capsuleIn 0.35s ease;}
+  .capsule.active{display:flex;}
+  @keyframes capsuleIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .cap-label{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);}
+  .cap-label.warn{color:var(--warn);}
+  .cap-icon{width:56px; height:56px;}
+  .cap-title{font-family:'Anton',sans-serif; font-size:1.5rem; text-transform:uppercase; line-height:1.15;}
+  .cap-hook{color:var(--grey); font-size:0.9rem; line-height:1.5; max-width:280px;}
+  .cap-text{font-size:1.2rem; line-height:1.5; font-weight:500; max-width:290px;}
+  .cap-number{font-family:'Anton',sans-serif; font-size:2.6rem; color:var(--accent); line-height:1;}
+  .cap-number-label{font-size:0.85rem; color:var(--grey);}
+  .cap-warn{font-size:1.1rem; line-height:1.5; color:#FFD9C7; max-width:280px;}
+
+  .story-nav{display:flex; gap:10px; padding:0 20px 20px;}
+  .story-btn{flex:1; padding:12px; border-radius:100px; font-weight:700; font-size:0.85rem; text-align:center;}
+  .story-btn.prev{background:rgba(255,255,255,0.08); color:var(--ink);}
+  .story-btn.next{background:var(--accent); color:var(--bg);}
+  .story-btn[disabled]{opacity:0.3; pointer-events:none;}
+
+  @media (max-width:480px){ .story-frame{border-radius:0; width:100vw; height:100vh;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container top-row">
+    <div class="brand">
+      <img src="../../LOGO_MARQUE.png" alt="For Your Cake">
+      <b>Académie</b><span class="tag">PRO</span>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html">← Portail</a>
+      <a class="public-link" href="../public/index.html">
+        <svg viewBox="0 0 64 64" width="16" height="16">
+          <path d="M18 20c0-6 5-10 11-10s11 3.6 12.3 9c3.2.4 5.7 3 5.7 6.3 0 3.5-2.9 6.2-6.5 6.2H19c-3.4 0-6-2.6-6-5.9 0-3 2.2-5.4 5-5.8Z" fill="#FFFFFF" stroke="#C9BBAF" stroke-width="1.4"/>
+          <circle cx="32" cy="35" r="13.5" fill="#FBDDC3"/>
+          <circle cx="26.5" cy="35.8" r="1.4" fill="#3E2A1E"/><circle cx="37.5" cy="35.8" r="1.4" fill="#3E2A1E"/>
+          <path d="M28.5 42c1.6 1.6 5.4 1.6 7 0" fill="none" stroke="#A85F27" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M13 62c0-9.5 8.5-15 19-15s19 5.5 19 15Z" fill="#FFFFFF"/>
+          <rect x="18" y="55" width="28" height="5.4" rx="2.7" fill="#C97A3D"/>
+        </svg>
+        Recettes
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="kicker">6 modules · 4 capsules chacun</span>
+    <h1>Les bases, en 30 secondes par module</h1>
+    <p>Le geste, le chiffre clé, l'erreur à éviter. Pas de pavé à lire — tapez pour avancer.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="story-overlay" id="storyOverlay">
+  <div class="story-frame">
+    <div class="story-bars" id="storyBars"></div>
+    <div class="story-top">
+      <span class="story-mod-title" id="storyModTitle"></span>
+      <button class="story-close" onclick="closeStory()" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="story-body" id="storyBody">
+      <div class="story-tapzones"><div onclick="prevCap()"></div><div onclick="nextCap()"></div></div>
+    </div>
+    <div class="story-nav">
+      <button class="story-btn prev" id="btnPrev" onclick="prevCap()">←</button>
+      <button class="story-btn next" id="btnNext" onclick="nextCap()">Suivant</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ICONS = {
+  pate: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><circle cx="12" cy="13" r="8"/><path d="M12 5V3M9 5l-1-2M15 5l1-2"/></svg>`,
+  creme: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><path d="M6 9a6 6 0 0 1 12 0c0 5-2 9-6 12-4-3-6-7-6-12Z"/></svg>`,
+  choco: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l4-4h10l4 4M8 11v6M12 11v6M16 11v6"/></svg>`,
+  meringue: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><path d="M8 20c-1-6 0-9 4-14 4 5 5 8 4 14Z"/></svg>`,
+  four: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="14" r="4"/><path d="M6 7h.01M9 7h.01"/></svg>`,
+  glacage: `<svg viewBox="0 0 24 24" fill="none" stroke="#F2C94C" stroke-width="1.6"><path d="M4 12c2-4 5 2 8-2s6 2 8-2M4 16c2-4 5 2 8-2s6 2 8-2"/></svg>`
+};
+
+const MODULES = [
+{id:'pates', icon:'pate', title:'Pâtes de base', hook:"Sabler avant de mouiller.",
+  capsules:[
+    {type:'title', title:'Pâtes de base', hook:"Le geste qui change tout : l'ordre des ingrédients."},
+    {type:'text', label:'Le geste', text:"Beurre froid + farine du bout des doigts, texture sableuse. Le liquide arrive en dernier, mélangé au minimum."},
+    {type:'number', value:'30 min', label:'Repos au froid minimum avant abaisse'},
+    {type:'warn', text:"Pétrir après avoir ajouté l'œuf → la pâte se rétracte à la cuisson."}
+  ]},
+{id:'cremes', icon:'creme', title:'Crèmes', hook:"L'amidon change la règle du jeu.",
+  capsules:[
+    {type:'title', title:'Crèmes', hook:"Anglaise ou pâtissière : une seule différence, l'amidon."},
+    {type:'text', label:'Le geste', text:"Anglaise : cuire à la nappe, jamais bouillir. Pâtissière : porter à ébullition franche 1 à 2 minutes."},
+    {type:'number', value:'82–84°C', label:'Cuisson à la nappe (anglaise)'},
+    {type:'warn', text:"Anglaise cuite trop chaud → l'œuf tranche, grains irrécupérables."}
+  ]},
+{id:'temperage', icon:'choco', title:'Tempérage chocolat', hook:"3 températures pour un chocolat brillant.",
+  capsules:[
+    {type:'title', title:'Tempérage', hook:"Le geste qui donne le claquant et le brillant."},
+    {type:'text', label:'Le geste', text:"Fondre complètement → refroidir en ensemençant → réchauffer légèrement avant utilisation."},
+    {type:'number', value:'45→27→31°C', label:'Courbe classique, chocolat noir'},
+    {type:'warn', text:"Une goutte d'eau dans le chocolat → il graine, texture irréversible."}
+  ]},
+{id:'meringues', icon:'meringue', title:'Meringues', hook:"Le moment du sucre change tout.",
+  capsules:[
+    {type:'title', title:'Meringues', hook:"Française, suisse, italienne : la stabilité se joue au sucre."},
+    {type:'text', label:'Le geste', text:"Française : sucre ajouté en 3 fois. Italienne : sirop chaud versé sur blancs déjà montés."},
+    {type:'number', value:'118–121°C', label:'Cuisson du sirop, meringue italienne'},
+    {type:'warn', text:"Sucre ajouté trop vite → mousse instable, qui retombe."}
+  ]},
+{id:'cuissons', icon:'four', title:'Cuissons', hook:"Le four affiché n'est jamais le vrai four.",
+  capsules:[
+    {type:'title', title:'Cuissons', hook:"Les repères se vérifient, ils ne se devinent pas."},
+    {type:'text', label:'Le geste', text:"Sonde à cœur sur les grosses pièces. Cuisson à blanc : toujours avec des poids."},
+    {type:'number', value:'92–94°C', label:'À cœur, pour un cake bien cuit'},
+    {type:'warn', text:"Ouvrir le four dans les 15 premières minutes → tout retombe."}
+  ]},
+{id:'montage', icon:'glacage', title:'Montage & finition', hook:"Le glaçage se joue en un seul geste.",
+  capsules:[
+    {type:'title', title:'Montage & finition', hook:"La dernière étape, la plus visible, ne pardonne pas."},
+    {type:'text', label:'Le geste', text:"Gâteau bien congelé + glaçage tiède versé en une fois = prise nette et brillante."},
+    {type:'number', value:'30–35°C', label:'Température d\'application du glaçage miroir'},
+    {type:'warn', text:"Glaçage trop chaud → coule trop, devient transparent."}
+  ]}
+];
+
+const grid = document.getElementById('grid');
+grid.innerHTML = MODULES.map((m,i) => `
+  <div class="mcard" onclick="openStory('${m.id}')">
+    <div class="mcard-top">
+      <span class="mcard-num mono">0${i+1}</span>
+      <div class="mcard-dots">${m.capsules.map(()=>'<span></span>').join('')}</div>
+    </div>
+    ${ICONS[m.icon]}
+    <h3>${m.title}</h3>
+    <p>${m.hook}</p>
+    <div class="mcard-play">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>
+      Voir la capsule
+    </div>
+  </div>
+`).join('');
+
+let curModule = null, curCap = 0, timer = null;
+const CAP_DURATION = 4200;
+
+function openStory(id){
+  curModule = MODULES.find(m => m.id === id);
+  curCap = 0;
+  document.getElementById('storyModTitle').textContent = curModule.title;
+  document.getElementById('storyBars').innerHTML = curModule.capsules.map(() => `<div class="story-bar"><i></i></div>`).join('');
+  const body = document.getElementById('storyBody');
+  body.querySelectorAll('.capsule').forEach(c => c.remove());
+  curModule.capsules.forEach((c, idx) => body.insertAdjacentHTML('beforeend', capsuleHTML(c, idx)));
+  document.getElementById('storyOverlay').classList.add('open');
+  renderCap(true);
+}
+function capsuleHTML(c, idx){
+  if(c.type === 'title') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-title">${c.title}</div><div class="cap-hook">${c.hook}</div></div>`;
+  if(c.type === 'text') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label">${c.label}</div><div class="cap-text">${c.text}</div></div>`;
+  if(c.type === 'number') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label">Chiffre clé</div><div class="cap-number">${c.value}</div><div class="cap-number-label">${c.label}</div></div>`;
+  if(c.type === 'warn') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label warn">À éviter</div><div class="cap-warn">${c.text}</div></div>`;
+  return '';
+}
+function renderCap(){
+  const caps = document.querySelectorAll('.capsule');
+  const bars = document.querySelectorAll('.story-bar');
+  caps.forEach((c,i) => c.classList.toggle('active', i === curCap));
+  bars.forEach((b,i) => {
+    b.classList.toggle('done', i < curCap);
+    const bar = b.querySelector('i');
+    if(i < curCap){ bar.style.transition='none'; bar.style.width='100%'; }
+    else if(i === curCap){ bar.style.transition='none'; bar.style.width='0%'; requestAnimationFrame(()=>{ bar.style.transition=`width ${CAP_DURATION}ms linear`; bar.style.width='100%'; }); }
+    else { bar.style.transition='none'; bar.style.width='0%'; }
+  });
+  document.getElementById('btnPrev').disabled = curCap === 0;
+  document.getElementById('btnNext').textContent = curCap === curModule.capsules.length - 1 ? 'Terminé ✓' : 'Suivant';
+  clearTimeout(timer);
+  timer = setTimeout(() => { if(curCap < curModule.capsules.length - 1) nextCap(); }, CAP_DURATION);
+}
+function nextCap(){
+  if(curCap < curModule.capsules.length - 1){ curCap++; renderCap(); }
+  else { closeStory(); }
+}
+function prevCap(){
+  if(curCap > 0){ curCap--; renderCap(); }
+}
+function closeStory(){
+  clearTimeout(timer);
+  document.getElementById('storyOverlay').classList.remove('open');
+}
+document.getElementById('storyOverlay').addEventListener('click', (e) => {
+  if(e.target.id === 'storyOverlay') closeStory();
+});
+</script>
+
+</body>
+</html>
