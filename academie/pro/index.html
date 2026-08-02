@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Pro — 4Cake Académie</title>
+<meta name="description" content="Le guide complet du pâtissier professionnel : techniques, préparations, recettes et pâtisserie marocaine.">
+<link rel="icon" href="../../LOGO_MARQUE.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#24211E; --panel:#332C26; --panel-2:#453B32; --line:#5A4C3E;
+    --ink:#F3EAE0; --grey:#B9A692; --accent:#C1673D; --warn:#D2483A;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Poppins',sans-serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3{font-family:'Anton',sans-serif; text-transform:uppercase; margin:0;}
+
+  header{position:sticky; top:0; z-index:20; background:rgba(35,44,49,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .top-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px; font-size:0.9rem;}
+  .brand img{height:28px;}
+  .brand b{font-family:'Anton',sans-serif;}
+  .brand .tag{font-family:'IBM Plex Mono',monospace; font-size:0.62rem; background:rgba(193,103,61,0.18); color:var(--accent); padding:3px 8px; border-radius:5px; margin-inline-start:4px;}
+  .nav-actions{display:flex; align-items:center; gap:10px; font-size:0.8rem;}
+  .nav-actions a{padding:8px 14px; border-radius:100px; border:1px solid var(--line);}
+  .nav-actions a:hover{background:var(--panel-2);}
+  .nav-actions .public-link{background:var(--accent); color:var(--bg); border:none; font-weight:700;}
+
+  .hero{padding:36px 0 20px;}
+  .kicker{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; display:block;}
+  h1{font-size:clamp(1.5rem,3.6vw,2.1rem); margin-bottom:8px;}
+  .hero p{color:var(--grey); font-size:0.9rem; max-width:600px; margin:0;}
+
+  /* ---------- 5 piliers ---------- */
+  .pillars{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; padding:20px 0 30px;}
+  @media (max-width:900px){ .pillars{grid-template-columns:repeat(2,1fr);} }
+  .pillar{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; cursor:pointer; transition:transform 0.18s ease, border-color 0.18s ease; position:relative;}
+  .pillar:hover{transform:translateY(-3px); border-color:var(--accent);}
+  .pillar.active{border-color:var(--accent); background:var(--panel-2);}
+  .pillar h3{font-size:0.86rem; margin-bottom:5px; text-transform:none; font-family:'Poppins',sans-serif; font-weight:700;}
+  .pillar p{margin:0; font-size:0.74rem; color:var(--grey); line-height:1.4;}
+  .pillar .badge{position:absolute; top:10px; right:10px; font-size:0.58rem; font-family:'IBM Plex Mono',monospace; background:var(--line); color:var(--grey); padding:2px 7px; border-radius:100px;}
+  .pillar.active .badge{background:var(--accent); color:var(--bg); font-weight:700;}
+  .pillar-panel{display:none; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:30px; text-align:center; color:var(--grey); font-size:0.9rem; margin-bottom:40px;}
+  .pillar-panel.open{display:block;}
+
+  /* ---------- Sous-nav (tabs) ---------- */
+  .subnav{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 30px; border-bottom:1px solid var(--line); padding-bottom:16px;}
+  .subnav button{background:var(--panel); border:1px solid var(--line); color:var(--grey); padding:9px 16px; border-radius:100px; font-size:0.8rem; cursor:pointer; font-family:'Poppins',sans-serif;}
+  .subnav button.active{background:var(--accent); color:var(--bg); font-weight:700; border-color:var(--accent);}
+  .subpanel{display:none;}
+  .subpanel.open{display:block;}
+
+  .section-head{margin-bottom:18px;}
+  .section-head span{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--accent); text-transform:uppercase;}
+  .section-head h2{font-size:1.2rem; margin:6px 0;}
+  .section-head p{color:var(--grey); font-size:0.86rem; margin:0; max-width:600px;}
+
+  /* ---------- Grille de cartes génériques ---------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-bottom:40px;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; cursor:pointer; transition:border-color 0.15s ease, transform 0.15s ease;}
+  .card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .card.disabled{cursor:default; opacity:0.55;}
+  .card.disabled:hover{transform:none; border-color:var(--line);}
+  .card h4{font-size:0.86rem; margin:0 0 6px; font-weight:700;}
+  .card span.tag{font-size:0.64rem; font-family:'IBM Plex Mono',monospace; background:var(--panel-2); color:var(--grey); padding:2px 8px; border-radius:100px;}
+  .card span.tag.ready{background:var(--accent); color:var(--bg); font-weight:700;}
+
+  .fam-block{margin-bottom:28px;}
+  .fam-title{font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--grey); margin-bottom:10px; font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- Capsule story ---------- */
+  .story-overlay{position:fixed; inset:0; background:rgba(10,13,15,0.92); z-index:100; display:none; align-items:center; justify-content:center;}
+  .story-overlay.open{display:flex;}
+  .story-frame{position:relative; width:min(94vw,380px); height:min(84vh,640px); background:linear-gradient(160deg,var(--panel-2),var(--panel)); border-radius:22px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 70px rgba(0,0,0,0.5);}
+  .story-bars{display:flex; gap:5px; padding:12px 14px 0;}
+  .story-bar{flex:1; height:3px; background:rgba(255,255,255,0.18); border-radius:3px; overflow:hidden;}
+  .story-bar i{display:block; height:100%; width:0%; background:var(--accent);}
+  .story-bar.done i{width:100%;}
+  .story-top{display:flex; align-items:center; justify-content:space-between; padding:10px 16px 0;}
+  .story-mod-title{font-size:0.76rem; font-weight:700; color:var(--grey);}
+  .story-close{width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,0.08); border:none; color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .story-tapzones{position:absolute; inset:0; top:52px; display:flex; z-index:2;}
+  .story-tapzones div{flex:1;}
+  .story-body{flex-grow:1; display:flex; align-items:center; justify-content:center; padding:24px; text-align:center; position:relative;}
+  .capsule{display:none; flex-direction:column; align-items:center; gap:12px;}
+  .capsule.active{display:flex;}
+  .cap-label{font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);}
+  .cap-title{font-family:'Anton',sans-serif; font-size:1.3rem; text-transform:uppercase; line-height:1.2;}
+  .cap-hook{color:var(--grey); font-size:0.86rem; line-height:1.5; max-width:280px;}
+  .cap-text{font-size:1.05rem; line-height:1.5; font-weight:500; max-width:280px;}
+  .cap-number{font-family:'Anton',sans-serif; font-size:2.2rem; color:var(--accent); line-height:1;}
+  .cap-number-label{font-size:0.8rem; color:var(--grey);}
+  .cap-warn{font-size:0.98rem; line-height:1.5; color:#FFD9C7; max-width:270px;}
+
+  /* ---------- Fiche détaillée ---------- */
+  .fiche-overlay{position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100; display:none; align-items:flex-start; justify-content:center; overflow-y:auto; padding:40px 16px;}
+  .fiche-overlay.open{display:flex;}
+  .fiche-card{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:28px; max-width:800px; width:100%; animation:fadeIn 0.25s ease;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .fiche-top{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:16px;}
+  .fiche-top h3{font-size:1.25rem; text-transform:none; font-family:'Poppins',sans-serif; font-weight:800;}
+  .fiche-top p{color:var(--grey); font-size:0.86rem; max-width:500px; margin:6px 0 0;}
+  .fiche-close-btn{background:none; border:1px solid var(--line); color:var(--grey); border-radius:100px; padding:6px 14px; font-size:0.76rem; cursor:pointer; height:fit-content;}
+  .fiche-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:680px){ .fiche-grid{grid-template-columns:1fr;} }
+  .fiche-card table{width:100%; border-collapse:collapse; font-size:0.82rem; margin-bottom:14px;}
+  .fiche-card th{text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; color:var(--accent); padding-bottom:6px; border-bottom:1px solid var(--line);}
+  .fiche-card td{padding:5px 0; border-bottom:1px dashed var(--line);}
+  .fiche-card td.qty{text-align:right; color:var(--grey);}
+  .fiche-card ol{margin:0; padding-left:18px; font-size:0.84rem; line-height:1.6;}
+  .fiche-card ol li{margin-bottom:8px;}
+  .fiche-meta{display:flex; gap:14px; margin-top:12px; font-size:0.74rem; color:var(--grey); flex-wrap:wrap;}
+  .fiche-meta b{color:var(--accent);}
+  .fiche-todo{background:var(--panel-2); border:1px dashed var(--line); border-radius:10px; padding:14px; font-size:0.82rem; color:var(--grey); text-align:center;}
+
+  /* ---------- Tags marocains ---------- */
+  .tags{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 20px;}
+  .tag-btn{background:var(--panel); border:1px solid var(--line); color:var(--grey); padding:7px 14px; border-radius:100px; font-size:0.76rem; cursor:pointer;}
+  .tag-btn.active{background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:700;}
+  .maroc-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px;}
+  .maroc-card h4{font-size:0.86rem; margin:0 0 8px;}
+  .maroc-chip{display:inline-block; font-size:0.62rem; background:var(--panel-2); color:var(--grey); padding:2px 7px; border-radius:100px; margin:0 3px 3px 0;}
+  .maroc-card.hidden{display:none;}
+
+  footer{padding:30px 0; text-align:center; font-size:0.78rem; color:var(--grey);}
+  html[dir="rtl"] body{font-family:'Cairo','Poppins',sans-serif;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container top-row">
+    <div class="brand">
+      <img src="../../LOGO_MARQUE.png" alt="4Cake">
+      <b>Académie</b><span class="tag">PRO</span>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html">&larr; Portail</a>
+      <a class="public-link" href="../public/index.html">Recettes</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="kicker">4Cake Académie Pro</span>
+    <h1>Le guide complet du pâtissier</h1>
+    <p>291 fiches organisées en 5 piliers. Certaines sont déjà prêtes (données vérifiées dans le livre de référence), d'autres sont navigables mais marquées « à venir » — on les complète au fur et à mesure.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="pillars">
+    <div class="pillar" data-pillar="metier"><span class="badge">bientôt</span><h3>Le métier</h3><p>Histoire, HACCP marocain, procédés</p></div>
+    <div class="pillar" data-pillar="materiel"><span class="badge">bientôt</span><h3>Matériel</h3><p>Labo, équipement, ergonomie</p></div>
+    <div class="pillar" data-pillar="ingredients"><span class="badge">bientôt</span><h3>Ingrédients</h3><p>22 familles, propriétés</p></div>
+    <div class="pillar active" data-pillar="techniques"><span class="badge">actif</span><h3>Techniques & recettes</h3><p>291 fiches, dont pâtisserie marocaine</p></div>
+    <div class="pillar" data-pillar="vocabulaire"><span class="badge">bientôt</span><h3>Vocabulaire</h3><p>Glossaire A à Z</p></div>
+  </div>
+
+  <div class="pillar-panel" id="panel-metier">Ce pilier (histoire, HACCP marocain — ONSSA / loi 28-07, procédés, mesures) arrive bientôt.</div>
+  <div class="pillar-panel" id="panel-materiel">Ce pilier (matériel, agencement du laboratoire, ergonomie) arrive bientôt.</div>
+  <div class="pillar-panel" id="panel-ingredients">Ce pilier (22 familles d'ingrédients et leurs propriétés fonctionnelles) arrive bientôt.</div>
+  <div class="pillar-panel" id="panel-vocabulaire">Le glossaire professionnel arrive bientôt.</div>
+
+  <div class="pillar-panel open" id="panel-techniques">
+    <div style="text-align:left;">
+      <div class="subnav">
+        <button class="active" data-tab="techdb">Techniques de base (41)</button>
+        <button data-tab="prepa">Préparations de base (55)</button>
+        <button data-tab="recettes">Recettes (111)</button>
+        <button data-tab="maroc">Pâtisserie marocaine (75)</button>
+      </div>
+
+      <div class="subpanel open" id="tab-techdb">
+        <div class="section-head">
+          <span>Techniques de base</span>
+          <h2>Le geste, sans recette</h2>
+          <p>41 gestes fondamentaux. Cliquez une carte pour ouvrir la capsule (le geste, le repère chiffré si applicable, l'erreur à éviter).</p>
+        </div>
+        <div class="grid" id="gridTechniques"></div>
+      </div>
+
+      <div class="subpanel" id="tab-prepa">
+        <div class="section-head">
+          <span>Préparations de base</span>
+          <h2>Pâtes, crèmes, meringues, glaçages</h2>
+          <p>55 préparations avec ratios précis. « Pâte à choux » est entièrement documentée ; les autres arrivent au fur et à mesure.</p>
+        </div>
+        <div class="grid" id="gridPrepa"></div>
+      </div>
+
+      <div class="subpanel" id="tab-recettes">
+        <div class="section-head">
+          <span>Fiches techniques de fabrication</span>
+          <h2>111 recettes complètes</h2>
+          <p>La famille « Pâte à choux » (9 recettes) est entièrement documentée avec ratios et étapes réelles du livre. Les autres familles sont listées et arrivent progressivement.</p>
+        </div>
+        <div id="gridRecettes"></div>
+      </div>
+
+      <div class="subpanel" id="tab-maroc">
+        <div class="section-head">
+          <span>Pâtisserie marocaine</span>
+          <h2>Catalogue filtrable</h2>
+          <p>75 pièces, en tags plutôt qu'en rangement strict (beaucoup appartiennent à plusieurs catégories). Ratios à documenter progressivement.</p>
+        </div>
+        <div class="tags" id="tagFilters">
+          <button class="tag-btn active" data-tag="tous">Tous</button>
+          <button class="tag-btn" data-tag="miel">🍯 Miel</button>
+          <button class="tag-btn" data-tag="amandes">🌰 Amandes</button>
+          <button class="tag-btn" data-tag="ghriba">🍪 Ghribas</button>
+          <button class="tag-btn" data-tag="sesame">🌾 Sésame</button>
+          <button class="tag-btn" data-tag="coco">🥥 Coco</button>
+          <button class="tag-btn" data-tag="moderne">🍫 Modernes</button>
+          <button class="tag-btn" data-tag="biscuit">🍪 Biscuits</button>
+          <button class="tag-btn" data-tag="fetes">🥮 Fêtes</button>
+          <button class="tag-btn" data-tag="dattes">🌴 Dattes</button>
+          <button class="tag-btn" data-tag="fruits">🍊 Fruits</button>
+        </div>
+        <div class="grid" id="gridMaroc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Capsule story overlay -->
+<div class="story-overlay" id="storyOverlay">
+  <div class="story-frame">
+    <div class="story-bars" id="storyBars"></div>
+    <div class="story-top">
+      <span class="story-mod-title" id="storyTitle"></span>
+      <button class="story-close" onclick="closeStory()">&#10005;</button>
+    </div>
+    <div class="story-body" id="storyBody">
+      <div class="story-tapzones"><div onclick="prevCap()"></div><div onclick="nextCap()"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Fiche détaillée overlay -->
+<div class="fiche-overlay" id="ficheOverlay" onclick="if(event.target===this) closeFiche()">
+  <div class="fiche-card" id="ficheCard"></div>
+</div>
+
+<footer><div class="container">4Cake Académie Pro — contenu en construction progressive, ratios vérifiés dans « La Pâtisserie de Référence » (Truchelut &amp; Zeiher, Éditions BPI)</div></footer>
+
+<script>
+const TECHNIQUES = [{title:'Abaisser une pâte au laminoir',hook:'Régler l\'épaisseur, fariner légèrement, passer la pâte de droite à gauche dans le laminoir.',repere:null,warn:null},{title:'Fabriquer un chablon',hook:'Découper un gabarit en papier pour calibrer tuiles et cigarettes, lisser à la spatule.',repere:null,warn:null},{title:'Beurrer un cercle à tarte',hook:'Beurre pommade au pinceau sur les parois ; utiliser des cercles bien froids pour une bonne adhérence.',repere:null,warn:null},{title:'Beurrer un moule à savarin',hook:'Beurre pommade ou fondu, sans oublier la cheminée centrale ; garder au froid avant de garnir.',repere:null,warn:null},{title:'Chemiser un moule à génoise',hook:'Beurrer puis fariner, retirer l\'excédent en retournant le moule sur le plan de travail.',repere:null,warn:null},{title:'Chemiser un cercle à entremets',hook:'Bande de génoise légèrement punchée, plaquée contre les parois ; un Rhodoïd facilite le démoulage.',repere:null,warn:null},{title:'Foncer un cercle à tarte',hook:'Prévoir une abaisse 2 à 3 cm plus large que le cercle, pincer au pouce et à l\'index ou à la pince à tarte.',repere:null,warn:null},{title:'Chiqueter une pâte',hook:'Petites entailles obliques et régulières au dos du couteau sur les bords d\'un feuilletage.',repere:null,warn:null},{title:'Clarifier un œuf',hook:'Faire passer le jaune de coquille en coquille pour le séparer du blanc, dans un récipient dédié.',repere:null,warn:null},{title:'Confectionner de la dorure',hook:'Œuf battu avec un peu de lait ; toujours dorer 2 fois pour une belle coloration à la cuisson.',repere:null,warn:null},{title:'Confectionner un cornet',hook:'Triangle de papier sulfurisé roulé sur la main ; l\'extrémité doit être pointue, sans ouverture.',repere:null,warn:null},{title:'Écrire avec un cornet',hook:'Remplir de glace royale ou crème au beurre, appuyer et écrire d\'un geste continu, laisser sécher.',repere:null,warn:null},{title:'Dessiner un motif avec un cornet',hook:'Glace royale dans le cornet ; s\'entraîner sur une ardoise avant de se lancer sur l\'entremets.',repere:null,warn:null},{title:'Confectionner un décor en pastillage',hook:'Abaisser au sucre glace, détailler les formes, assembler à la glace royale.',repere:null,warn:null},{title:'Garnir une poche à douille',hook:'Retourner la poche sur 1/3 de sa hauteur, faire descendre l\'appareil au fond en essuyant sur la main.',repere:null,warn:null},{title:'Coucher des choux et des éclairs',hook:'Poche à douille unie ou cannelée, marquer à la fourchette pour homogénéiser la cuisson.',repere:null,warn:null},{title:'Mettre au point du fondant',hook:'Chauffer sans dépasser 38°C, détendre à l\'eau ou au sirop pour garder toute sa brillance.',repere:'38°C max',warn:'Température à ne jamais dépasser, sous peine de perdre la brillance'},{title:'Glacer un éclair',hook:'Fondant à 38°C max, faire couler en bande fine, éliminer le surplus avec le bord de l\'index.',repere:null,warn:null},{title:'Glacer une religieuse',hook:'Tremper les choux dans le fondant à 38°C max, laisser figer sur grille avant de décorer.',repere:null,warn:null},{title:'Blanchir des jaunes d\'œufs',hook:'Fouetter énergiquement jaunes et sucre jusqu\'à un mélange mousseux et blanchi — base des crèmes.',repere:null,warn:null},{title:'Découper un papier cuisson pour cuire à blanc',hook:'Découper un cercle 2 à 3 cm plus large que le moule, pour protéger le fond en cuisson à blanc.',repere:null,warn:null},{title:'Cuire un fond de tarte à blanc',hook:'Papier cuisson + haricots ou pois secs par-dessus, pour garder des bords bien droits à la cuisson.',repere:null,warn:'Utiliser des cercles perforés optimise la cuisson'},{title:'Confectionner un rond de papier sulfurisé',hook:'Plier la feuille en quatre puis en pointe, couper à la taille exacte du récipient à couvrir.',repere:null,warn:null},{title:'Confectionner une cassolette',hook:'Feuilletage détaillé et doré deux fois, avec 10 min de repos au froid entre les deux dorures.',repere:null,warn:null},{title:'Fendre une gousse de vanille',hook:'Couper à plat, gratter les grains au couteau, les utiliser rapidement pour préserver l\'arôme.',repere:null,warn:null},{title:'Mettre au point un nappage blond',hook:'Détendre à l\'eau ou au sirop, chauffer en remuant, napper au pinceau alors qu\'il est encore tiède.',repere:null,warn:null},{title:'Ramollir de la gélatine',hook:'Tremper dans l\'eau bien froide, puis essorer une fois qu\'elle est bien ramollie.',repere:null,warn:null},{title:'Coucher une génoise en bande',hook:'À la poche à douille, cuisson rapide, couvrir d\'un papier légèrement humide dès la sortie du four.',repere:null,warn:null},{title:'Confectionner un sirop à puncher',hook:'Sucre et eau portés à ébullition, arôme ajouté ; appliquer tiède ou froid au pinceau propre.',repere:null,warn:null},{title:'Puncher un biscuit ou une génoise',hook:'Imbiber délicatement au pinceau, sans excès, avant de chemiser le moule.',repere:null,warn:'Trop imbiber avant chemisage fragilise le montage'},{title:'Confectionner un sirop à tremper',hook:'Eau et sucre à ébullition avec vanille ; se conserve entre 0 et 3°C.',repere:null,warn:null},{title:'Tremper un baba ou un savarin',hook:'Sirop tiède, tremper des pièces cuites de la veille jusqu\'à ce qu\'elles soient bien imbibées.',repere:null,warn:null},{title:'Tamiser',hook:'Passer un ingrédient à travers un tamis bien sec, pour le rendre plus fluide.',repere:null,warn:'Ne jamais utiliser le même tamis pour le sucré et le salé'},{title:'Découper un biscuit en étages',hook:'Couteau-scie, 2 à 3 tranches régulières selon la hauteur.',repere:null,warn:'Ne pas détailler un biscuit trop frais'},{title:'Monter un entremets',hook:'Alterner 3 couches de biscuit et d\'appareil dans un cercle inox, en punchant généreusement chaque disque.',repere:null,warn:null},{title:'Tailler une julienne d\'orange',hook:'Zeste sans le ziste, bâtonnets réguliers, blanchis 2 à 3 fois puis confits au sirop.',repere:null,warn:null},{title:'Peler à vif un agrume',hook:'Couteau à lame souple entre la chair et le ziste, en gardant la forme de l\'agrume.',repere:null,warn:null},{title:'Détailler des segments d\'agrumes',hook:'Peler à vif, puis couper entre membrane et suprême ; presser le reste pour récupérer le jus.',repere:null,warn:null},{title:'Coucher une meringue ronde',hook:'Poche à douille en spirale du centre vers l\'extérieur, séchage au four entre 80 et 95°C.',repere:'80-95°C',warn:'Température de séchage au four ou à l\'étuve'},{title:'Tabler du chocolat (méthode classique)',hook:'Fondre à 45°C, descendre à 27°C sur le marbre, remonter à 31°C pour la brillance idéale.',repere:'45→27→31°C',warn:'Température idéale pour garder la brillance'},{title:'Réaliser un décor en chocolat',hook:'Chocolat tablé à 31°C, garnir les moules en 2 couches, démouler après la prise complète.',repere:null,warn:null}];
+const PREPARATIONS = ['Pâte ou appareil à génoise','Biscuit au chocolat','Biscuit aux amandes','Biscuit Joconde','Pâte brisée traditionnelle','Pâte brisée au batteur','Pâte sucrée','Pâte sablée','Pâte sablée amande','Pâte à cigarettes','Pâtes émiettées, sucrées et aromatisées','Pâte feuilletée traditionnelle','Pâte feuilletée rapide (ou record)','Pâte feuilletée inversée','Pâte à brioche','Pâte à savarin','Pâte à choux','Pâte à crêpes','Pâte à cake','Pâte à frire','Appareil à soufflé','Pâte à tuiles aux amandes','Meringue française','Meringue suisse','Meringue italienne','Biscuit dacquoise','Crème anglaise traditionnelle','Crème anglaise cuite sous-vide','Crème anglaise sous-vide au bain-marie','Crème anglaise au wok','Crème pâtissière traditionnelle','Crème pâtissière à base de poudre à crème','Crème frangipane','Crème mousseline','Autres dérivés de la crème pâtissière','Crème prise sucrée','Crème au beurre','Crème Chantilly','Crème d\'amandes','Crème citron','Crémeux','Crèmes bavaroises','Mousses aux fruits','Mousses au chocolat','Ganache chocolat départ à chaud','Ganache chocolat départ à froid','Sauces et coulis','Gelées et confits','Pastillage','Glace royale','Glaçage miroir','Glaçage brillant chocolat','Autres glaçages','Flocages','Nougatine'];
+const FICHES_FAM = {'Pâte à biscuit':['Génoise sauce anglaise','Bûche moulée','Bûche traditionnelle','Forêt noire','Triangle aux deux chocolats','Moka au café','Biscuits cuillère','Biscuit de Savoie','Biscuit de Savoie aux amandes','Biscuit quatre-quarts','Pain de Gênes','Opéra','Entremets caramel, rhum raisin','Entremets marrons, mascarpone et cassis','Biscuit Sacher','Fraisier'],'Pâte à choux':['Choux à la crème','Éclairs au café','Religieuses café-chocolat','Saint-Honoré à la chantilly','Croquembouche','Paris-Brest','Beignets nature','Beignets à la lyonnaise ou bugnes','Petits fours frais'],'Pâte à crêpes':['Crêpes','Crêpes normandes','Far breton'],'Pâte à frire':['Beignets aux pommes','Beignets de fleurs d\'acacia'],'Meringue':['Meringue chantilly','Pavlova','Dacquoise au café','Dacquoise à la ganache'],'Pâte poussée':['Cake aux fruits confits','Quatre-quarts aux amandes','Madeleines','Pain d\'épices'],'Pâte sèche':['Tarte au citron','Tarte au fromage blanc','Tarte aux fruits rouges','Tarte aux pommes sur compote','Tarte aux pommes à l\'alsacienne','Tarte aux poires bourdaloue','Tarte poire chocolat','Tarte Tatin','Tartelettes au chocolat','Tartelettes au citron meringuées','Flan pâtissier','Flan Montmorency','Tarte Linzer aux framboises','Petits fours sucrés','Autres petits fours sucrés'],'Pâte levée':['Savarin','Croissant','Pain au chocolat','Escargot','Kugelhopf','Brioche feuilletée'],'Pâte feuilletée':['Mille-feuille','Mille-feuille aux fruits rouges','Pithiviers','Bande de tarte feuilletée aux fruits','Chausson aux pommes','Palmier','Jalousie compote d\'abricots'],'Crème':['Crème brûlée','Crème caramel','Crème viennoise','Pot de crème vanille-café-chocolat','Œufs à la neige','Riz au lait','Riz impératrice','Gratin de fraises au champagne'],'Petits fours':['Cigarettes russes','Macarons au chocolat','Tuiles aux amandes','Cannelés bordelais','Financiers','Meringues et rochers coco','Sablés vanille','Petits fours : tuiles diverses'],'Soufflés':['Soufflé liqueur','Soufflé au chocolat'],'Glaces et sorbets':['Sorbets framboise, myrtille et orange','Glace vanille et chocolat','Glace aux abricots','Nougat glacé','Meringue glacée chantilly','Omelette norvégienne','Oranges givrées','Vacherin glacé à la vanille','Poire Belle-Hélène','Sorbet aux fraises','Sorbet citron-coco minute à l\'azote'],'Mousse':['Bavarois rubanné','Charlotte aux fraises','Mousse au chocolat noir'],'Préparations salées':['Quiche comtoise','Allumettes au fromage','Gougères au fromage','Mousse de melon à l\'italienne','Petits choux au saumon fumé','Saucisson brioché','Soufflé au fromage'],'Confiseries':['Orangettes au chocolat','Chocolats intérieurs liqueur/alcool','Fruits déguisés au sucre cuit','Nougat de Montélimar','Guimauve','Truffes à la vanille']};
+const MAROC = [{name:'Kaab El Ghzal',tags:['miel','amandes','fetes']},{name:'Kaab El Ghzal M\'Fenned',tags:['miel','fetes']},{name:'Griwech',tags:['miel','sesame','fetes']},{name:'Briouate au miel',tags:['miel']},{name:'M\'hancha',tags:['miel','amandes','fetes']},{name:'Rghayef au miel',tags:['miel']},{name:'Fekkas au miel',tags:['miel']},{name:'Briouates aux amandes',tags:['amandes']},{name:'M\'hancha aux amandes',tags:['amandes']},{name:'Ghriba aux amandes',tags:['amandes','ghriba']},{name:'Makrout aux amandes',tags:['amandes','dattes']},{name:'Feqqas aux amandes',tags:['amandes']},{name:'Mlouza',tags:['amandes']},{name:'Jawhara',tags:['amandes','fetes']},{name:'M\'khabez',tags:['amandes','fetes']},{name:'Gâteau aux amandes marocain',tags:['amandes']},{name:'Tcharek',tags:['amandes']},{name:'Ghriba Bahla',tags:['ghriba']},{name:'Ghriba à la noix de coco',tags:['ghriba','coco']},{name:'Ghriba au sésame',tags:['ghriba','sesame']},{name:'Ghriba au beurre',tags:['ghriba']},{name:'Ghriba aux noix',tags:['ghriba']},{name:'Ghriba au chocolat',tags:['ghriba','moderne']},{name:'Sellou',tags:['sesame','fetes']},{name:'Chebakia',tags:['miel','sesame','fetes']},{name:'Fekkas au sésame',tags:['sesame']},{name:'Croquets au sésame',tags:['sesame']},{name:'Richbond',tags:['coco']},{name:'Gâteaux Prestige',tags:['coco','moderne']},{name:'Boules coco',tags:['coco']},{name:'Ghriba coco',tags:['coco','ghriba']},{name:'Mchouek coco',tags:['coco']},{name:'Rochers coco',tags:['coco']},{name:'Prestige chocolat',tags:['moderne']},{name:'Prestige café',tags:['moderne']},{name:'Prestige pistache',tags:['moderne']},{name:'Prestige noisette',tags:['moderne']},{name:'Opéra marocain',tags:['moderne']},{name:'Carré chocolat',tags:['moderne']},{name:'Délice amande',tags:['moderne','amandes']},{name:'Finger chocolat',tags:['moderne']},{name:'Mini entremets',tags:['moderne']},{name:'Mini tartelettes',tags:['moderne','fruits']},{name:'Fekkas',tags:['biscuit']},{name:'Croquets',tags:['biscuit']},{name:'Harcha sucrée',tags:['biscuit']},{name:'Beghrir sucré',tags:['biscuit']},{name:'Baghrir farci',tags:['biscuit']},{name:'Msemen sucré',tags:['biscuit']},{name:'Meloui sucré',tags:['biscuit']},{name:'Makrout',tags:['dattes','fetes']},{name:'Maamoul',tags:['dattes']},{name:'Gâteaux aux dattes',tags:['dattes','fetes']},{name:'Briouates aux dattes',tags:['dattes']},{name:'Tartelettes aux fruits',tags:['fruits']},{name:'Gâteaux aux oranges',tags:['fruits']},{name:'Gâteaux aux figues',tags:['fruits']},{name:'Gâteaux aux abricots',tags:['fruits']},{name:'Gâteaux aux raisins secs',tags:['fruits']},{name:'Cornets aux amandes',tags:['amandes','moderne']},{name:'Cigares aux amandes',tags:['amandes','moderne']},{name:'Éventails',tags:['moderne']},{name:'Losanges aux amandes',tags:['amandes','moderne']},{name:'Diamants',tags:['moderne']},{name:'Carrés prestige',tags:['moderne']},{name:'Fingers',tags:['moderne']},{name:'Mini éclairs',tags:['moderne']},{name:'Mini choux',tags:['moderne']},{name:'Barquettes',tags:['moderne','fruits']},{name:'Cigares chocolat',tags:['moderne']},{name:'Gâteaux marbrés',tags:['moderne']},{name:'Délices pistache',tags:['moderne']},{name:'Délices noisette',tags:['moderne']},{name:'Gâteaux au café',tags:['moderne']},{name:'Gâteaux au chocolat',tags:['moderne']}];
+const CHOUX_PREP = {title:'Pâte à choux',ratios:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']],prep:'45 min',cook:'25 à 35 min',steps:['Verser l\'eau dans la casserole avec le sel et le beurre en petites parcelles.','Porter à ébullition en maîtrisant l\'évaporation.','Ajouter la farine hors du feu, en une seule fois, mélanger vigoureusement pour former un empois.','Dessécher la pâte en la remettant sur le feu, puis incorporer les œufs un à un.']};
+const CHOUX_RECIPES = [{id:'choux-creme',name:'Choux à la crème',desc:'Petits choux garnis de crème pâtissière parfumée à la vanille.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel fin','PM']]},{label:'Crème pâtissière',rows:[['Lait','0,50 l'],['Jaune d\'œuf','0,060 kg'],['Sucre semoule','0,125 kg'],['Farine','0,050 kg'],['Vanille','1/2 gousse']]},{label:'Finition',rows:[['Fondant','0,100 kg']]}],meta:{prepa:'2h',cuisson:'160-180°C · 35-40 min',pour:'1 à 20 pièces'},steps:['Confectionner la pâte à choux (voir fiche technique).','Coucher à la poche, dorer au pinceau, marquer à la fourchette.','Cuire entre 160°C et 180°C, 35 à 40 minutes.','Réaliser la crème pâtissière classique, laisser refroidir.','Garnir les choux froids, puis glacer au fondant.']},{id:'eclairs-cafe',name:'Éclairs au café',desc:'Pâte à choux garnie de crème pâtissière au café, glacée au fondant café.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']]},{label:'Crème pâtissière',rows:[['Lait','0,50 l'],['Jaune d\'œuf','0,060 kg'],['Sucre semoule','0,125 kg'],['Farine','0,050 kg'],['Vanille','1/2 gousse'],['Café (extrait)','PM']]},{label:'Fondant',rows:[['Fondant','0,200 kg'],['Café (extrait)','PM'],['Eau','PM']]}],meta:{prepa:'2h',cuisson:'160-180°C · 35-40 min',pour:'1 à 20 pièces'},steps:['Confectionner la pâte à choux.','Coucher les éclairs à la poche, dorer, marquer à la fourchette.','Cuire entre 160°C et 180°C, 35 à 40 minutes.','Parfumer la crème pâtissière au café.','Couper et inciser les éclairs en biais, garnir de crème.','Détendre le fondant à l\'eau, chauffer à 37-38°C maximum, parfumer au café et glacer.']},{id:'religieuses',name:'Religieuses café-chocolat',desc:'Un gros chou surmonté d\'un petit, garnis de crème pâtissière café ou chocolat, glacés au fondant.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']]},{label:'Dorure',rows:[['Œuf entier','0,050 kg']]},{label:'Crème pâtissière (poudre à crème)',rows:[['Lait','1,00 l'],['Sucre semoule','0,250 kg'],['Vanille','1 gousse'],['Café (extrait)','0,04 l'],['Cacao','0,080 kg']]},{label:'Crème au beurre',rows:[['Jaune d\'œuf','0,120 kg'],['Sucre','0,250 kg'],['Eau','0,085 l'],['Beurre','0,300 kg']]}],meta:{prepa:'—',cuisson:'210°C · 25 min',pour:'1 à 20 pièces'},steps:['Confectionner la pâte à choux.','Dresser 16 gros choux et 16 petits choux, dorer, rayer.','Cuire au four à 210°C environ 25 minutes.','Parfumer la crème pâtissière au café ou au chocolat selon le choux.','Réaliser la crème au beurre pour la décoration.','Garnir, glacer au fondant, superposer petit chou sur gros chou, décorer à la crème au beurre.']},{id:'sainthonore',name:'Saint-Honoré à la chantilly',desc:'Choux à la crème dressés sur une base de pâte feuilletée, garnie de crème Chantilly.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']]},{label:'Pâte feuilletée',rows:[['Farine','0,200 kg'],['Eau','0,10 l'],['Sel fin','0,003 kg'],['Beurre de tourage','0,150 kg'],['Rognures de feuilletage','0,500 kg']]},{label:'Crème pâtissière (poudre à crème)',rows:[['Lait','0,50 l'],['Jaune d\'œuf (facultatif)','0,080 kg'],['Sucre semoule','0,125 kg'],['Vanille','1/2 gousse']]}],meta:{prepa:'—',cuisson:'180°C/210°C · 25 min',pour:'3 pièces'},steps:['Réaliser la pâte à choux et la pâte feuilletée.','Abaisse ronde de 3mm, piquée, posée sur plaque humide.','Dresser une couronne de pâte à choux en retrait du bord, spirale au centre ; cuire à 180°C environ 25 min.','Dresser les petits choux à part, dorer, rayer, cuire à 210°C environ 25 min.','Confectionner la crème pâtissière, laisser refroidir.','Monter avec la crème Chantilly montée.']},{id:'croquembouche',name:'Croquembouche',desc:'Pièce montée de petits choux garnis de crème pâtissière et de décors en sucre.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']]},{label:'Dorure',rows:[['Œuf','0,050 kg']]},{label:'Crème pâtissière (poudre à crème)',rows:[['Lait','1,00 l'],['Sucre semoule','0,250 kg'],['Jaune (facultatif)','0,080 kg'],['Vanille','1 gousse']]},{label:'Sucre cuit',rows:[['Sucre semoule','0,950 kg'],['Eau','0,300 kg'],['Glucose','0,150 kg']]}],meta:{prepa:'—',cuisson:'four chaud + sucre cuit 152°C',pour:'72 pièces'},steps:['Confectionner la pâte à choux.','Dresser des choux taille noix, dorer, rayer, cuire à four chaud, bien sécher et refroidir.','Réaliser la crème pâtissière, laisser refroidir.','Garnir les choux par-dessous (douille unie n°6).','Glacer au sucre cuit à 152°C (arrêter la cuisson dans l\'eau froide).','Monter le cône : choux trempés dans un caramel à 160°C, disposés en couronnes autour d\'un cône huilé.']},{id:'parisbrest',name:'Paris-Brest',desc:'Pâtisserie en forme de roue de vélo, en pâte à choux, garnie de crème mousseline au praliné et surmontée d\'amandes effilées.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Amandes effilées','0,040 kg']]},{label:'Crème au beurre praliné',rows:[['Jaune d\'œuf','0,120 kg'],['Sucre','0,250 kg'],['Eau','0,085 l'],['Beurre','0,300 kg'],['Pâte praliné noisette','0,180 kg']]},{label:'Crème pâtissière (poudre à crème)',rows:[['Lait','0,50 l'],['Sucre','0,125 kg'],['Poudre à crème','0,045 kg'],['Vanille','1/2 gousse']]},{label:'Crème mousseline légère',rows:[['Crème au beurre praliné','0,300 kg'],['Crème pâtissière','0,225 kg']]}],meta:{prepa:'2h30',cuisson:'190°C · 30 min',pour:'12 pièces de 8cm'},steps:['Confectionner la pâte à choux, contrôler la consistance.','Coucher 3 couronnes de pâte l\'une contre l\'autre, dorer, saupoudrer d\'amandes effilées.','Cuire à four chaud (190°C) 30 minutes environ, laisser refroidir sur grille.','Réaliser la crème pâtissière et la crème au beurre praliné, les mélanger à même température, émulsionner.','Couper aux 2/3 de la hauteur, garnir à la poche cannelée, saupoudrer de sucre glace.']},{id:'beignets-nature',name:'Beignets nature',desc:'Beignets de pâte à choux frite, soufflés et sucrés, aussi appelés pets de nonne.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel','PM']]},{label:'Cuisson',rows:[['Huile de friture','PM']]},{label:'Finition',rows:[['Sucre semoule','0,150 kg'],['Sucre glace','0,050 kg']]}],meta:{prepa:'1h',cuisson:'friture 170°C · quelques min',pour:'1 à 20 pièces'},steps:['Confectionner la pâte à choux, la parfumer à la vanille.','Prélever des noix de pâte à la cuillère, les déposer dans la friture chaude (170°C).','Laisser cuire sans y toucher — les beignets remontent et se retournent seuls.','Égoutter sur papier absorbant.','Rouler dans le sucre semoule, saupoudrer de sucre glace, dresser en pyramide.']},{id:'bugnes',name:'Beignets à la lyonnaise (bugnes)',desc:'Beignets typiques de la région lyonnaise, traditionnellement consommés à Mardi gras.',tables:[{label:'Pâte à bugnes',rows:[['Farine','0,500 kg'],['Levure chimique','0,010 kg'],['Sel fin','0,010 kg'],['Sucre semoule','0,100 kg'],['Œuf entier','0,150 kg'],['Beurre','0,150 kg'],['Rhum','0,005 l'],['Eau de fleur d\'oranger','0,005 l']]}],meta:{prepa:'1h30',cuisson:'friture 2 min + 2 min',pour:'1 portion (base)'},steps:['Tamiser la farine en fontaine ; dissoudre sel et sucre au centre avec l\'arôme choisi.','Ajouter le beurre pommade puis les œufs, incorporer progressivement la farine.','Fraiser 1 à 2 fois, bouler sans trop travailler, fariner, filmer et reposer au frais 2h.','Abaisser à 2,5mm, piquer, détailler en rectangles ou losanges, façonner.','Cuire en friture.']},{id:'petits-fours-choux',name:'Petits fours frais (pâte à choux)',desc:'Deux versions miniatures : choux à la crème et choux glacés au sucre.',tables:[{label:'Pâte à choux',rows:[['Beurre','0,080 kg'],['Œuf entier','0,250 kg'],['Eau','0,25 l'],['Farine','0,130 kg'],['Sel fin','PM']]},{label:'Dorure',rows:[['Jaune d\'œuf','0,020 kg']]},{label:'Crème pâtissière',rows:[['Lait','1,00 l'],['Jaune d\'œuf','0,160 kg'],['Sucre semoule','0,250 kg'],['Poudre à crème','0,080 kg']]},{label:'Finition (2 versions)',rows:[['Sucre glace (version crème)','0,030 kg'],['Sucre cuit 155°C (version glacée)','0,030 kg + glucose']]}],meta:{prepa:'2h30',cuisson:'180°C · 25 min',pour:'72 pièces'},steps:['Confectionner la pâte à choux, dresser en mini choux taille œuf de pigeon.','Dorer, rayer, cuire à 180°C environ 25 minutes.','Garnir de crème pâtissière classique.','Version 1 : saupoudrer de sucre glace.','Version 2 : glacer au sucre cuit à 155°C.']}];
+
+
+// ---------- Pillars ----------
+document.querySelectorAll('.pillar').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('.pillar').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.pillar-panel').forEach(x => x.classList.remove('open'));
+    p.classList.add('active');
+    document.getElementById('panel-' + p.dataset.pillar).classList.add('open');
+  });
+});
+
+// ---------- Subnav tabs ----------
+document.querySelectorAll('.subnav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.subnav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.subpanel').forEach(p => p.classList.remove('open'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('open');
+  });
+});
+
+// ---------- Render Techniques grid ----------
+const gridTech = document.getElementById('gridTechniques');
+gridTech.innerHTML = TECHNIQUES.map((t,i) => `
+  <div class="card" onclick="openTechStory(${i})">
+    <h4>${t.title}</h4>
+    <span class="tag ready">prêt</span>
+  </div>
+`).join('');
+
+let curTechCaps = [], curCap = 0, timer = null;
+const DUR = 4200;
+function openTechStory(i){
+  const t = TECHNIQUES[i];
+  const caps = [{type:'title', title:t.title, hook:t.hook}];
+  if(t.repere) caps.push({type:'number', value:t.repere, label:'Repère'});
+  if(t.warn) caps.push({type:'warn', text:t.warn});
+  curTechCaps = caps;
+  curCap = 0;
+  document.getElementById('storyTitle').textContent = 'Technique de base';
+  document.getElementById('storyBars').innerHTML = caps.map(()=>`<div class="story-bar"><i></i></div>`).join('');
+  const body = document.getElementById('storyBody');
+  body.querySelectorAll('.capsule').forEach(c=>c.remove());
+  caps.forEach(c => body.insertAdjacentHTML('beforeend', capHTML(c)));
+  document.getElementById('storyOverlay').classList.add('open');
+  renderCap();
+}
+function capHTML(c){
+  if(c.type==='title') return `<div class="capsule"><div class="cap-title">${c.title}</div><div class="cap-hook">${c.hook}</div></div>`;
+  if(c.type==='number') return `<div class="capsule"><div class="cap-label">${c.label}</div><div class="cap-number">${c.value}</div></div>`;
+  if(c.type==='warn') return `<div class="capsule"><div class="cap-label" style="color:var(--warn)">À éviter</div><div class="cap-warn">${c.text}</div></div>`;
+}
+function renderCap(){
+  const caps = document.querySelectorAll('.capsule');
+  const bars = document.querySelectorAll('.story-bar');
+  caps.forEach((c,i)=>c.classList.toggle('active', i===curCap));
+  bars.forEach((b,i)=>{
+    b.classList.toggle('done', i<curCap);
+    const bar = b.querySelector('i');
+    if(i<curCap){ bar.style.transition='none'; bar.style.width='100%'; }
+    else if(i===curCap){ bar.style.transition='none'; bar.style.width='0%'; requestAnimationFrame(()=>{ bar.style.transition=`width ${DUR}ms linear`; bar.style.width='100%'; }); }
+    else { bar.style.transition='none'; bar.style.width='0%'; }
+  });
+  clearTimeout(timer);
+  timer = setTimeout(()=>{ if(curCap<curTechCaps.length-1) nextCap(); }, DUR);
+}
+function nextCap(){ if(curCap<curTechCaps.length-1){ curCap++; renderCap(); } else { closeStory(); } }
+function prevCap(){ if(curCap>0){ curCap--; renderCap(); } }
+function closeStory(){ clearTimeout(timer); document.getElementById('storyOverlay').classList.remove('open'); }
+
+// ---------- Render Préparations grid ----------
+const gridPrepa = document.getElementById('gridPrepa');
+gridPrepa.innerHTML = PREPARATIONS.map(name => {
+  const ready = name === 'Pâte à choux';
+  return `<div class="card ${ready?'':'disabled'}" ${ready?`onclick="openPrepFiche()"`:''}>
+    <h4>${name}</h4>
+    <span class="tag ${ready?'ready':''}">${ready?'prêt':'à venir'}</span>
+  </div>`;
+}).join('');
+
+function openPrepFiche(){
+  const p = CHOUX_PREP;
+  const rowsHtml = p.ratios.map(r => `<tr><td>${r[0]}</td><td class="qty">${r[1]}</td></tr>`).join('');
+  const stepsHtml = p.steps.map(s => `<li>${s}</li>`).join('');
+  document.getElementById('ficheCard').innerHTML = `
+    <div class="fiche-top">
+      <div><h3>${p.title}</h3><p>Préparation de base — la pâte qui gonfle bien, point de départ de toute la famille des choux.</p></div>
+      <button class="fiche-close-btn" onclick="closeFiche()">Fermer &#10005;</button>
+    </div>
+    <div class="fiche-grid">
+      <div><table><tr><th>Ingrédient</th><th class="qty">Quantité</th></tr>${rowsHtml}</table>
+        <div class="fiche-meta"><span><b>Prépa :</b> ${p.prep}</span><span><b>Cuisson :</b> ${p.cook}</span></div>
+      </div>
+      <div><ol>${stepsHtml}</ol></div>
+    </div>`;
+  document.getElementById('ficheOverlay').classList.add('open');
+}
+function closeFiche(){ document.getElementById('ficheOverlay').classList.remove('open'); }
+
+// ---------- Render Recettes (fiches de fabrication) by family ----------
+const gridRecettes = document.getElementById('gridRecettes');
+let recettesHtml = '';
+for(const fam in FICHES_FAM){
+  recettesHtml += `<div class="fam-block"><div class="fam-title">${fam} (${FICHES_FAM[fam].length})</div><div class="grid" style="margin-bottom:0;">`;
+  FICHES_FAM[fam].forEach(name => {
+    const choux = CHOUX_RECIPES.find(r => r.name === name);
+    const ready = !!choux;
+    recettesHtml += `<div class="card ${ready?'':'disabled'}" ${ready?`onclick="openChouxFiche('${choux.id}')"`:''}>
+      <h4>${name}</h4><span class="tag ${ready?'ready':''}">${ready?'prêt':'à venir'}</span>
+    </div>`;
+  });
+  recettesHtml += `</div></div>`;
+}
+gridRecettes.innerHTML = recettesHtml;
+
+function openChouxFiche(id){
+  const r = CHOUX_RECIPES.find(x => x.id === id);
+  if(!r) return;
+  let tablesHtml = '';
+  r.tables.forEach(t => {
+    tablesHtml += `<table><tr><th>${t.label}</th><th class="qty">Qté</th></tr>${t.rows.map(row=>`<tr><td>${row[0]}</td><td class="qty">${row[1]}</td></tr>`).join('')}</table>`;
+  });
+  const stepsHtml = r.steps.map(s => `<li>${s}</li>`).join('');
+  document.getElementById('ficheCard').innerHTML = `
+    <div class="fiche-top">
+      <div><h3>${r.name}</h3><p>${r.desc}</p></div>
+      <button class="fiche-close-btn" onclick="closeFiche()">Fermer &#10005;</button>
+    </div>
+    <div class="fiche-grid">
+      <div>${tablesHtml}
+        <div class="fiche-meta"><span><b>Prépa :</b> ${r.meta.prepa}</span><span><b>Cuisson :</b> ${r.meta.cuisson}</span><span><b>Pour :</b> ${r.meta.pour}</span></div>
+      </div>
+      <div><ol>${stepsHtml}</ol></div>
+    </div>`;
+  document.getElementById('ficheOverlay').classList.add('open');
+}
+
+// ---------- Pâtisserie marocaine ----------
+const gridMaroc = document.getElementById('gridMaroc');
+function renderMaroc(filterTag){
+  gridMaroc.innerHTML = MAROC.map(m => {
+    const hidden = filterTag !== 'tous' && !m.tags.includes(filterTag);
+    return `<div class="card maroc-card ${hidden?'hidden':''}">
+      <h4>${m.name}</h4>
+      ${m.tags.map(t=>`<span class="maroc-chip">${t}</span>`).join('')}
+      <div style="margin-top:8px;"><span class="tag">à compléter</span></div>
+    </div>`;
+  }).join('');
+}
+renderMaroc('tous');
+document.getElementById('tagFilters').addEventListener('click', e => {
+  if(e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderMaroc(e.target.dataset.tag);
+});
+</script>
+
+</body>
+</html>
