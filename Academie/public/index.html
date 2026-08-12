@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9M8LJXZ');</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recettes — 4Cake Académie</title>
+<meta name="description" content="Des recettes de chef expliquées en micro-capsules, sans jargon, pas à pas.">
+<link rel="icon" href="../../LOGO_MARQUE.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=Kaushan+Script&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --creme:#FBF3E4; --marine:#4A3626; --marine-2:#6B5240; --marine-soft:#F3E4C7;
+    --rouge:#C1573A; --rouge-dark:#9C4530; --butter:#E3A857; --grey:#8F7D68; --sauge:#6B7A54;
+    --shadow:0 10px 26px rgba(62,42,30,0.10);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--creme); color:var(--marine); font-family:'Poppins',sans-serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  header{position:sticky; top:0; z-index:20; background:rgba(255,248,239,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(62,42,30,0.08);}
+  .top-row{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:10px; font-size:0.9rem;}
+  .brand img{height:28px;}
+  .brand b{font-family:'Anton',sans-serif;}
+  .brand .tag{font-size:0.66rem; background:rgba(201,122,61,0.14); color:var(--rouge-dark); padding:3px 8px; border-radius:5px; margin-inline-start:4px; font-weight:700;}
+  .nav-actions{display:flex; align-items:center; gap:10px; font-size:0.82rem;}
+  .nav-actions a{padding:8px 14px; border-radius:100px; border:1px solid var(--marine);}
+  .nav-actions a:hover{background:var(--marine); color:#fff;}
+  .nav-actions .pro-link{background:var(--marine); color:#fff; border:none; font-weight:700; display:flex; align-items:center; gap:6px;}
+
+  .lang-toggle{display:flex; align-items:center; background:var(--marine-soft); border-radius:100px; padding:3px; gap:2px;}
+  .lang-btn{padding:7px 12px; border-radius:100px; font-weight:700; font-size:0.76rem; color:var(--marine-2); transition:all 0.18s ease;}
+  .lang-btn.active{background:var(--marine); color:#fff;}
+
+  .hero{padding:44px 0 26px; text-align:center;}
+  .kicker{display:inline-block; font-size:0.8rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--rouge-dark); margin-bottom:12px;}
+  h1{font-family:'Anton',sans-serif; font-size:clamp(1.7rem,4vw,2.4rem); text-transform:uppercase; margin:0 0 10px;}
+  h1 .script{display:block; font-family:'Kaushan Script',cursive; text-transform:none; font-size:0.6em; color:var(--rouge); margin-top:3px;}
+  .hero p{max-width:520px; margin:0 auto; color:var(--marine-2); line-height:1.55; font-size:0.94rem;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; padding:8px 0 70px;}
+  .rcard{background:#fff; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); cursor:pointer; transition:transform 0.18s ease; border:1px solid rgba(62,42,30,0.06);}
+  .rcard:hover{transform:translateY(-3px);}
+  .rcard-visual{height:110px; display:flex; align-items:center; justify-content:center;}
+  .rcard-visual svg{width:46px; height:46px;}
+  .rcard-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:8px;}
+  .rcard-title{font-weight:700; font-size:0.98rem;}
+  .rcard-meta{font-size:0.74rem; color:var(--grey); display:flex; gap:8px;}
+  .rcard-meta span{background:var(--marine-soft); padding:4px 9px; border-radius:100px;}
+  .rcard-play{font-size:0.82rem; font-weight:700; color:var(--rouge-dark); display:flex; align-items:center; gap:6px; margin-top:2px;}
+  .rcard-play svg{width:12px; height:12px;}
+
+  /* ---------- Visionneuse capsules ---------- */
+  .story-overlay{position:fixed; inset:0; background:rgba(62,42,30,0.6); z-index:100; display:none; align-items:center; justify-content:center;}
+  .story-overlay.open{display:flex;}
+  .story-frame{
+    position:relative; width:min(94vw,380px); height:min(86vh,720px);
+    background:var(--creme); border-radius:22px; overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:0 30px 70px rgba(62,42,30,0.35);
+  }
+  .story-bars{display:flex; gap:5px; padding:12px 14px 0;}
+  .story-bar{flex:1; height:3px; background:rgba(62,42,30,0.14); border-radius:3px; overflow:hidden;}
+  .story-bar i{display:block; height:100%; width:0%; background:var(--rouge);}
+  .story-bar.done i{width:100%;}
+  .story-top{display:flex; align-items:center; justify-content:space-between; padding:10px 16px 0;}
+  .story-mod-title{font-size:0.78rem; font-weight:700; color:var(--marine-2);}
+  .story-close{width:30px; height:30px; border-radius:50%; background:var(--marine-soft); display:flex; align-items:center; justify-content:center;}
+  .story-close svg{width:14px; height:14px;}
+  .story-tapzones{position:absolute; inset:0; top:52px; display:flex; z-index:2;}
+  .story-tapzones div{flex:1;}
+  .story-body{flex-grow:1; display:flex; align-items:center; justify-content:center; padding:22px 26px 26px; text-align:center; position:relative;}
+  .capsule{display:none; flex-direction:column; align-items:center; gap:12px; animation:capsuleIn 0.35s ease;}
+  .capsule.active{display:flex;}
+  @keyframes capsuleIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .cap-label{font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--rouge-dark);}
+  .cap-label.tip{color:var(--sauge);}
+  .cap-label.swap{color:var(--rouge-dark);}
+  .cap-title{font-family:'Anton',sans-serif; font-size:1.35rem; text-transform:uppercase; line-height:1.15;}
+  .cap-hook{color:var(--marine-2); font-size:0.88rem; line-height:1.5; max-width:280px;}
+  .cap-num-badge{width:32px; height:32px; border-radius:50%; background:var(--rouge); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Anton',sans-serif; font-size:0.9rem;}
+  .cap-text{font-size:1.12rem; line-height:1.5; font-weight:500; max-width:290px; color:var(--marine);}
+  .cap-tipbox{background:var(--marine-soft); border-radius:12px; padding:12px 14px; font-size:0.85rem; color:var(--marine-2); max-width:280px; line-height:1.5;}
+  .cap-swapbox{background:#FBEFE0; border:1px dashed var(--rouge); border-radius:12px; padding:12px 14px; font-size:0.85rem; color:var(--marine-2); max-width:280px; line-height:1.5;}
+  .cap-number{font-family:'Anton',sans-serif; font-size:2.3rem; color:var(--rouge-dark); line-height:1;}
+  .cap-number-label{font-size:0.82rem; color:var(--marine-2);}
+  .ing-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; max-width:280px; width:100%;}
+  .ing-list li{display:flex; justify-content:space-between; font-size:0.86rem; padding-bottom:7px; border-bottom:1px dashed rgba(62,42,30,0.14);}
+  .ing-list b{color:var(--rouge-dark);}
+
+  .story-nav{display:flex; gap:10px; padding:0 20px 20px;}
+  .story-btn{flex:1; padding:12px; border-radius:100px; font-weight:700; font-size:0.85rem; text-align:center;}
+  .story-btn.prev{background:var(--marine-soft); color:var(--marine);}
+  .story-btn.next{background:var(--rouge); color:#fff;}
+  .story-btn[disabled]{opacity:0.3; pointer-events:none;}
+
+  .section-tabs{display:flex; gap:8px; margin:0 0 14px; overflow-x:auto;}
+  .section-tab{padding:9px 16px; border-radius:100px; background:var(--marine-soft); color:var(--marine-2); font-weight:700; font-size:0.82rem; white-space:nowrap;}
+  .section-tab.active{background:var(--marine); color:#fff;}
+  .niveau-tabs{display:flex; gap:8px; margin:0 0 20px;}
+  .niveau-tab{padding:8px 14px; border-radius:100px; background:transparent; border:1.5px solid var(--rouge); color:var(--rouge-dark); font-weight:700; font-size:0.78rem;}
+  .niveau-tab.active{background:var(--rouge); color:#fff;}
+  .materiel-block{padding:6px 2px 30px;}
+  .materiel-title{font-family:'Anton',sans-serif; font-size:1.4rem; text-transform:uppercase; margin-bottom:6px;}
+  .materiel-intro{color:var(--marine-2); font-size:0.9rem; margin-bottom:20px; max-width:520px;}
+  .materiel-label{font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:var(--rouge-dark); margin:22px 0 10px;}
+  .materiel-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .materiel-list li{background:var(--marine-soft); border-radius:12px; padding:12px 16px;}
+  .materiel-list b{display:block; font-size:0.92rem; margin-bottom:3px;}
+  .materiel-list span{font-size:0.82rem; color:var(--marine-2); line-height:1.4;}
+  .materiel-outro{margin-top:24px; font-size:0.86rem; color:var(--marine-2);}
+  @media (max-width:480px){ .section-tabs{margin:0 -18px 14px; padding:0 18px;} }
+
+  footer{padding:26px 0; text-align:center; font-size:0.78rem; color:var(--marine-2);}
+  @media (max-width:480px){ .story-frame{border-radius:0; width:100vw; height:100vh;} }
+
+  /* ---------- RTL adjustments ---------- */
+  html[dir="rtl"] body{font-family:'Cairo', 'Poppins', sans-serif;}
+  html[dir="rtl"] h1, html[dir="rtl"] .cap-title{font-family:'Cairo', 'Anton', sans-serif; text-transform:none;}
+  html[dir="rtl"] .kicker, html[dir="rtl"] .cap-label{font-family:'Cairo', sans-serif;}
+  html[dir="rtl"] .nav-actions a svg{transform:scaleX(-1);}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<header>
+  <div class="container top-row">
+    <div class="brand">
+      <img src="../../LOGO_MARQUE.png" alt="4Cake">
+      <b data-i18n="brand_title">Académie</b><span class="tag" data-i18n="brand_tag">RECETTES</span>
+    </div>
+    <div class="nav-actions">
+      <a href="../../index.html"><span data-i18n="nav_vitrine">Site vitrine</span></a>
+      <a class="pro-link" href="../pro/index.html">
+        <svg viewBox="0 0 64 64" width="16" height="16">
+          <g fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 33c-4.5 0-8-3.6-8-7.8 0-3.7 2.7-6.8 6.3-7.6.4-4.4 4.3-7.8 9-7.8 2.1 0 4 .7 5.5 1.9C31.3 9.6 33 8.8 35 8.8c4.4 0 8 3.4 8.3 7.7 3.9.5 6.9 3.7 6.9 7.6 0 4.2-3.6 7.9-8 7.9"/>
+            <path d="M17 33v8.5h30V33"/>
+            <path d="M14.5 41.5h35v6.4c0 1.2-1 2.1-2.2 2.1H16.7c-1.2 0-2.2-.9-2.2-2.1v-6.4Z"/>
+          </g>
+        </svg>
+        <span data-i18n="nav_pro">Espace Pro</span>
+      </a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="lang-fr" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" id="lang-ar" onclick="setLang('ar')">AR</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="kicker" data-i18n="hero_kicker">Recettes en micro-capsules</span>
+    <h1 data-i18n="hero_h1">Des classiques de chef<span class="script" data-i18n="hero_h1_script">une étape à la fois</span></h1>
+    <p data-i18n="hero_p">Peu de texte, un geste par écran. Tapez pour avancer, comme une story.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="section-tabs" id="sectionTabs">
+    <button class="section-tab active" onclick="switchSection('recettes')" data-section="recettes"></button>
+    <button class="section-tab" onclick="switchSection('bases')" data-section="bases"></button>
+    <button class="section-tab" onclick="switchSection('materiel')" data-section="materiel"></button>
+  </div>
+  <div class="niveau-tabs" id="niveauTabs">
+    <button class="niveau-tab active" onclick="switchNiveau(1)" data-niveau="1"></button>
+    <button class="niveau-tab" onclick="switchNiveau(2)" data-niveau="2"></button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="materiel-block" id="materielBlock" style="display:none;"></div>
+</div>
+
+<div class="story-overlay" id="storyOverlay">
+  <div class="story-frame">
+    <div class="story-bars" id="storyBars"></div>
+    <div class="story-top">
+      <span class="story-mod-title" id="storyModTitle"></span>
+      <button class="story-close" onclick="closeStory()" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="story-body" id="storyBody">
+      <div class="story-tapzones"><div onclick="prevCap()"></div><div onclick="nextCap()"></div></div>
+    </div>
+    <div class="story-nav">
+      <button class="story-btn prev" id="btnPrev" onclick="prevCap()">←</button>
+      <button class="story-btn next" id="btnNext" onclick="nextCap()">Suivant</button>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container" data-i18n="footer_text">4Cake Académie — contenu pédagogique original.</div></footer>
+
+<script>
+const ICONS = {
+  chocolat:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 7l4-4h10l4 4M8 11v6M12 11v6M16 11v6"/></svg>`,
+  citron:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M12 3c2 2 3 5.5 3 9s-1 7-3 9"/></svg>`,
+  eclair:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="2" y="9" width="20" height="7" rx="3.5"/></svg>`,
+  financier:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="3" y="8" width="18" height="9" rx="3"/></svg>`,
+  tatin:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 9c1-1.5 2-2 4-2s3 .5 4 2M8 15c1 1.5 2 2 4 2s3-.5 4-2"/></svg>`,
+  layer:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M4 18V9l8-4 8 4v9M4 18l8 4 8-4M4 13l8 4 8-4"/></svg>`,
+  ghriba:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="7"/><path d="M9 10c.5-1 1.5-1 2-.3M13 10c.5-1 1.5-1 2-.3M9 15c1.2.8 3.8.8 5 0"/></svg>`,
+  baghrir:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9" r="0.6" fill="#C1573A" stroke="none"/><circle cx="14" cy="8.5" r="0.6" fill="#C1573A" stroke="none"/><circle cx="16" cy="12.5" r="0.6" fill="#C1573A" stroke="none"/><circle cx="10.5" cy="13.5" r="0.6" fill="#C1573A" stroke="none"/><circle cx="8" cy="15" r="0.6" fill="#C1573A" stroke="none"/><circle cx="13.5" cy="16" r="0.6" fill="#C1573A" stroke="none"/></svg>`,
+  cookie:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9.5" r="1" fill="#C1573A" stroke="none"/><circle cx="14.5" cy="9" r="1" fill="#C1573A" stroke="none"/><circle cx="15" cy="14" r="1" fill="#C1573A" stroke="none"/><circle cx="9.5" cy="14.5" r="1" fill="#C1573A" stroke="none"/></svg>`,
+  mousse:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M6 10a6 6 0 0 1 12 0v1H6z"/><rect x="7" y="11" width="10" height="9" rx="1.5"/></svg>`,
+  crumble:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M4 20V13a8 8 0 0 1 16 0v7"/><circle cx="8" cy="9" r="0.8" fill="#C1573A" stroke="none"/><circle cx="12" cy="7" r="0.8" fill="#C1573A" stroke="none"/><circle cx="16" cy="9.5" r="0.8" fill="#C1573A" stroke="none"/><circle cx="10" cy="11" r="0.8" fill="#C1573A" stroke="none"/><circle cx="14.5" cy="12" r="0.8" fill="#C1573A" stroke="none"/></svg>`,
+  parisbrest:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg>`,
+  cheesecake:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M4 19h16M5 19V9l7-5 7 5v10"/><path d="M5 9h14"/></svg>`,
+  cakemarbre:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M6 8c1.5 2 1 4 3 5s2.5-1.5 4 0 1 3 3 3M3 12h18"/></svg>`,
+  tartefine:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 5v14M6.5 7.5l11 9M6.5 16.5l11-9"/></svg>`,
+  four:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6" y="12" width="12" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="#C1573A" stroke="none"/><circle cx="11" cy="7" r="1" fill="#C1573A" stroke="none"/></svg>`,
+  blancs:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M12 3v11M8 7l4-4 4 4"/><ellipse cx="12" cy="18" rx="7" ry="3.5"/></svg>`,
+  beurre:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><rect x="3" y="9" width="18" height="10" rx="2"/><path d="M3 9l3-5h12l3 5"/></svg>`,
+  bainmarie:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M4 14h16M4 14a8 4 0 0 0 16 0"/><circle cx="12" cy="8" r="4"/></svg>`,
+  testcouteau:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><circle cx="12" cy="13" r="8"/><path d="M12 3l3 6-3 2-3-2z"/></svg>`,
+  nappe:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M5 4v10a4 4 0 0 0 8 0V4M17 4v16"/></svg>`,
+  chantilly:`<svg viewBox="0 0 24 24" fill="none" stroke="#C1573A" stroke-width="1.6"><path d="M8 20c-2-4-1-9 4-13 5 4 6 9 4 13z"/><path d="M8 20h8"/></svg>`
+};
+
+const UI = {
+  fr: {
+    brand_title: "Académie", brand_tag: "RECETTES",
+    nav_portal: "← Portail", nav_pro: "Espace Pro", nav_vitrine: "Site vitrine",
+    hero_kicker: "Recettes en micro-capsules",
+    hero_h1: "Des classiques de chef", hero_h1_script: "une étape à la fois",
+    hero_p: "Peu de texte, un geste par écran. Tapez pour avancer, comme une story.",
+    footer_text: "4Cake Académie — contenu pédagogique original.",
+    voir_capsule: "Voir la capsule",
+    ingredients: "Ingrédients",
+    repere: "Repère",
+    astuce: "Astuce",
+    equivalent: "Équivalent maison",
+    btn_suivant: "Suivant",
+    btn_termine: "Terminé ✓",
+    tab_recettes: "Recettes", tab_bases: "Les bases", tab_materiel: "Matériel du débutant",
+    niveau1: "Niveau 1 · Premiers pas", niveau2: "Niveau 2 · Pour aller plus loin"
+  },
+  ar: {
+    brand_title: "الأكاديمية", brand_tag: "الوصفات",
+    nav_portal: "← البوابة", nav_pro: "الفضاء المهني", nav_vitrine: "الموقع الرئيسي",
+    hero_kicker: "وصفات في كبسولات مصغّرة",
+    hero_h1: "كلاسيكيات الشيف", hero_h1_script: "خطوة واحدة في كل مرة",
+    hero_p: "نص قليل، حركة واحدة في كل شاشة. انقر للمتابعة، كأنها قصة.",
+    footer_text: "أكاديمية 4Cake — محتوى تعليمي أصلي.",
+    voir_capsule: "مشاهدة الكبسولة",
+    ingredients: "المكونات",
+    repere: "معلم",
+    astuce: "نصيحة",
+    equivalent: "بديل منزلي",
+    btn_suivant: "التالي",
+    btn_termine: "انتهى ✓",
+    tab_recettes: "الوصفات", tab_bases: "الأساسيات", tab_materiel: "عتاد المبتدئ",
+    niveau1: "المستوى 1 · الخطوات الأولى", niveau2: "المستوى 2 · للمضي أبعد"
+  }
+};
+
+const RECIPES = [
+{id:'fondant', icon:'chocolat', niveau:1,
+  fr:{title:'Fondant cœur coulant', time:'30 min', level:'Facile',
+    ingredients:[['Chocolat noir','200 g'],['Beurre','150 g'],['Œufs','4'],['Sucre','120 g'],['Farine','60 g']],
+    capsules:[
+      {type:'title', title:'Fondant cœur coulant', hook:"Croûte fine, cœur qui coule à la cuillère."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Beurrez très généreusement les moules, jusqu'en haut des bords."},
+      {type:'step', n:2, text:"Fondez chocolat + beurre ensemble, doucement."},
+      {type:'step', n:3, text:"Fouettez œufs + sucre 2-3 min, jusqu'à blanchir."},
+      {type:'step', n:4, text:"Mélangez chocolat tiède + œufs, puis la farine — juste assez pour l'incorporer."},
+      {type:'number', value:'200°C · 9-11 min', label:'Bords pris, centre encore tremblant'},
+      {type:'tip', text:"Sortez 1 minute trop tôt plutôt que trop tard : le cœur finit de cuire hors du four."}
+    ]},
+  ar:{title:'فوندان بقلب سائل', time:'30 دقيقة', level:'سهل',
+    ingredients:[['شوكولاطة داكنة','200 غ'],['زبدة','150 غ'],['بيض','4'],['سكر','120 غ'],['دقيق','60 غ']],
+    capsules:[
+      {type:'title', title:'فوندان بقلب سائل', hook:"قشرة رقيقة، وقلب يسيل مع الملعقة."},
+      {type:'ing'},
+      {type:'step', n:1, text:"ادهنوا القوالب بسخاء، حتى أعلى الحواف."},
+      {type:'step', n:2, text:"أذيبوا الشوكولاطة والزبدة معًا، على نار هادئة."},
+      {type:'step', n:3, text:"اخفقوا البيض والسكر لمدة 2-3 دقائق، حتى يصبح فاتحًا."},
+      {type:'step', n:4, text:"امزجوا الشوكولاطة الفاترة مع البيض، ثم الدقيق — فقط بما يكفي لدمجه."},
+      {type:'number', value:'200°م · 9-11 دقيقة', label:'الحواف متماسكة، المركز لا يزال يهتز'},
+      {type:'tip', text:"أخرجوه دقيقة قبل الأوان أفضل من دقيقة بعده: القلب يكمل طهيه خارج الفرن."}
+    ]}},
+{id:'citron', icon:'citron', niveau:2,
+  fr:{title:'Tarte citron meringuée', time:'1h + repos', level:'Intermédiaire',
+    ingredients:[['Pâte sablée','1 fond'],['Jus de citron','150 ml'],['Œufs','3'],['Sucre','150 g'],['Beurre','100 g'],['Blancs (meringue)','3']],
+    capsules:[
+      {type:'title', title:'Tarte citron meringuée', hook:"Croustillant, acidulé, léger — le trio gagnant."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Cuisson à blanc du fond : 15 min à 180°C, avec des poids."},
+      {type:'swap', text:"Pas de billes de cuisson ? Des haricots secs ou du riz cru font le même travail."},
+      {type:'step', n:2, text:"Crème citron : œufs + sucre + jus, épaissir à feu doux sans bouillir."},
+      {type:'step', n:3, text:"Hors du feu, incorporez le beurre en dés, morceau par morceau."},
+      {type:'step', n:4, text:"Montez les blancs en neige, sucre ajouté en 3 fois."},
+      {type:'number', value:'2h', label:'Froid minimum avant de dresser la meringue'},
+      {type:'tip', text:"Pas de chalumeau ? Grill du four, porte entrouverte, en surveillant en continu."}
+    ]},
+  ar:{title:'تارت الليمون بالمرينغ', time:'ساعة + راحة', level:'متوسط',
+    ingredients:[['عجينة سابلي','قاعدة واحدة'],['عصير ليمون','150 مل'],['بيض','3'],['سكر','150 غ'],['زبدة','100 غ'],['بياض (مرينغ)','3']],
+    capsules:[
+      {type:'title', title:'تارت الليمون بالمرينغ', hook:"مقرمش، حامض، وخفيف — الثلاثي الرابح."},
+      {type:'ing'},
+      {type:'step', n:1, text:"طهي القاعدة على فارغ: 15 دقيقة على 180°م، مع أثقال."},
+      {type:'swap', text:"لا توجد كريات طهي؟ الفول الجاف أو الأرز النيء يؤديان نفس المهمة."},
+      {type:'step', n:2, text:"كريمة الليمون: بيض + سكر + عصير، تُغلّظ على نار هادئة دون أن تغلي."},
+      {type:'step', n:3, text:"بعيدًا عن النار، أضيفوا الزبدة مكعبات، قطعة تلو الأخرى."},
+      {type:'step', n:4, text:"اخفقوا البياض حتى يتماسك، مع إضافة السكر على 3 مرات."},
+      {type:'number', value:'ساعتان', label:'برودة كحد أدنى قبل وضع المرينغ'},
+      {type:'tip', text:"لا يوجد شعلة لحام؟ شواية الفرن، الباب موارب، مع مراقبة مستمرة."}
+    ]}},
+{id:'eclairs', icon:'eclair', niveau:2,
+  fr:{title:'Éclairs café', time:'1h30', level:'Intermédiaire',
+    ingredients:[['Lait + eau','125 ml + 125 ml'],['Beurre','110 g'],['Farine','140 g'],['Œufs','4 env.'],['Café soluble','2 c.à.s']],
+    capsules:[
+      {type:'title', title:'Éclairs café', hook:"La pâte qui gonfle bien, un glaçage qui claque."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Portez lait, eau, beurre à ébullition, versez la farine en une fois."},
+      {type:'step', n:2, text:"Desséchez 1-2 min sur le feu : la pâte doit se détacher des parois."},
+      {type:'step', n:3, text:"Incorporez les œufs un par un, jusqu'à un ruban lisse et brillant."},
+      {type:'step', n:4, text:"Dressez, enfournez — sans jamais ouvrir la porte avant 20 minutes."},
+      {type:'number', value:'180-200°C', label:'20 min sans ouvrir le four'},
+      {type:'step', n:5, text:"Garnissez de crème pâtissière café, glacez, laissez figer."}
+    ]},
+  ar:{title:'إكلير القهوة', time:'ساعة و30 دقيقة', level:'متوسط',
+    ingredients:[['حليب + ماء','125 مل + 125 مل'],['زبدة','110 غ'],['دقيق','140 غ'],['بيض','4 تقريبًا'],['قهوة سريعة الذوبان','ملعقتا طعام']],
+    capsules:[
+      {type:'title', title:'إكلير القهوة', hook:"عجينة تنتفخ جيدًا، وتزيين يلمع."},
+      {type:'ing'},
+      {type:'step', n:1, text:"أغلوا الحليب والماء والزبدة، ثم أضيفوا الدقيق دفعة واحدة."},
+      {type:'step', n:2, text:"جففوا العجينة 1-2 دقيقة على النار: يجب أن تنفصل عن جدران القدر."},
+      {type:'step', n:3, text:"أضيفوا البيض واحدة تلو الأخرى، حتى تحصلوا على قوام أملس ولامع."},
+      {type:'step', n:4, text:"شكّلوها، أدخلوها الفرن — دون فتح الباب أبدًا قبل 20 دقيقة."},
+      {type:'number', value:'180-200°م', label:'20 دقيقة دون فتح الفرن'},
+      {type:'step', n:5, text:"احشوها بكريمة الباتيسيير بنكهة القهوة، زيّنوها، واتركوها تتماسك."}
+    ]}},
+{id:'financiers', icon:'financier', niveau:1,
+  fr:{title:'Financiers amande', time:'35 min', level:'Facile',
+    ingredients:[['Beurre','150 g'],["Blancs d'œufs",'5'],['Sucre glace','150 g'],['Poudre d\'amande','80 g'],['Farine','60 g']],
+    capsules:[
+      {type:'title', title:'Financiers amande', hook:"Le petit gâteau moelleux au beurre noisette."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Faites un beurre noisette : couleur ambrée, odeur de fruit sec grillé."},
+      {type:'tip', text:"Retirez du feu un peu avant la couleur parfaite — il continue de cuire dans la casserole chaude."},
+      {type:'step', n:2, text:"Mélangez sucre glace, poudre d'amande, farine, puis les blancs."},
+      {type:'step', n:3, text:"Versez le beurre chaud en filet, mélangez bien."},
+      {type:'number', value:'20 min mini', label:'Repos au froid — donne le moelleux caractéristique'},
+      {type:'step', n:4, text:"Cuisson 200°C, 12-15 minutes, bords bien dorés."}
+    ]},
+  ar:{title:'فينونسييه باللوز', time:'35 دقيقة', level:'سهل',
+    ingredients:[['زبدة','150 غ'],['بياض بيض','5'],['سكر بودرة','150 غ'],['لوز مطحون','80 غ'],['دقيق','60 غ']],
+    capsules:[
+      {type:'title', title:'فينونسييه باللوز', hook:"الكعكة الصغيرة الطرية بزبدة البندق."},
+      {type:'ing'},
+      {type:'step', n:1, text:"حضّروا زبدة البندق: لون كهرماني، ورائحة الفواكه الجافة المحمّصة."},
+      {type:'tip', text:"ارفعوها عن النار قبل اللون المثالي بقليل — تستمر في الطهي داخل القدر الساخن."},
+      {type:'step', n:2, text:"امزجوا السكر البودرة، اللوز المطحون، الدقيق، ثم البياض."},
+      {type:'step', n:3, text:"اسكبوا الزبدة الساخنة في خيط رفيع، وامزجوا جيدًا."},
+      {type:'number', value:'20 دقيقة كحد أدنى', label:'راحة في البرد — تمنح الطراوة المميزة'},
+      {type:'step', n:4, text:"الطهي على 200°م، لمدة 12-15 دقيقة، حتى تصبح الحواف ذهبية."}
+    ]}},
+{id:'tatin', icon:'tatin', niveau:2,
+  fr:{title:'Tarte Tatin', time:'1h15', level:'Intermédiaire',
+    ingredients:[['Pommes fermes','8 à 10'],['Sucre','150 g'],['Beurre','80 g'],['Pâte feuilletée','1 rouleau']],
+    capsules:[
+      {type:'title', title:'Tarte Tatin', hook:"La seule tarte qui se fait à l'envers."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Caramel à sec : sucre fondu sans y toucher, inclinez le moule si besoin."},
+      {type:'tip', text:"Ne remuez jamais un caramel à sec à la cuillère — ça le fait cristalliser."},
+      {type:'step', n:2, text:"Beurre en dés hors du feu, puis les pommes serrées, tassées."},
+      {type:'step', n:3, text:"Pâte par-dessus, bords rentrés à l'intérieur du moule."},
+      {type:'number', value:'200°C · 25-30 min', label:'Pâte bien dorée et gonflée'},
+      {type:'step', n:4, text:"Démoulez aussitôt en retournant — attention, le caramel est brûlant."}
+    ]},
+  ar:{title:'تارت تاتان', time:'ساعة و15 دقيقة', level:'متوسط',
+    ingredients:[['تفاح صلب','8 إلى 10'],['سكر','150 غ'],['زبدة','80 غ'],['عجينة ورقية','لفافة واحدة']],
+    capsules:[
+      {type:'title', title:'تارت تاتان', hook:"التارت الوحيدة التي تُحضَّر بالمقلوب."},
+      {type:'ing'},
+      {type:'step', n:1, text:"كراميل جاف: سكر يذوب دون لمسه، أميلوا القالب عند الحاجة."},
+      {type:'tip', text:"لا تحركوا الكراميل الجاف بالملعقة أبدًا — سيتبلور."},
+      {type:'step', n:2, text:"زبدة مكعبات بعيدًا عن النار، ثم التفاح مضغوطًا ومرصوصًا."},
+      {type:'step', n:3, text:"العجينة فوق ذلك، مع طي الحواف داخل القالب."},
+      {type:'number', value:'200°م · 25-30 دقيقة', label:'العجينة ذهبية ومنتفخة جيدًا'},
+      {type:'step', n:4, text:"أخرجوها من القالب فورًا بقلبها — احذروا، الكراميل ساخن جدًا."}
+    ]}},
+{id:'layercake', icon:'layer', niveau:2,
+  fr:{title:'Layer cake vanille-framboise', time:'2h', level:'Intermédiaire',
+    ingredients:[['Œufs','6'],['Sucre','200 g'],['Farine','200 g'],['Beurre pommade','250 g'],['Sucre glace','300 g'],['Confiture framboise','150 g']],
+    capsules:[
+      {type:'title', title:'Layer cake vanille-framboise', hook:"Le gâteau à étages qui impressionne à l'anniversaire."},
+      {type:'ing'},
+      {type:'step', n:1, text:"Fouettez œufs + sucre jusqu'à tripler de volume et former un ruban."},
+      {type:'step', n:2, text:"Incorporez la farine délicatement, en soulevant la masse."},
+      {type:'number', value:'180°C · 20-25 min', label:'2-3 disques de génoise'},
+      {type:'step', n:3, text:"Crème au beurre : fouettez le beurre seul, puis le sucre glace, puis la vanille."},
+      {type:'step', n:4, text:"Montez en alternant génoise, crème, confiture — gardez de la crème pour la fin."},
+      {type:'tip', text:"Une fine couche de crème + 20 min au frais avant la couche finale : elle sera bien plus nette."}
+    ]},
+  ar:{title:'ليير كيك فانيليا-توت العليق', time:'ساعتان', level:'متوسط',
+    ingredients:[['بيض','6'],['سكر','200 غ'],['دقيق','200 غ'],['زبدة طرية','250 غ'],['سكر بودرة','300 غ'],['مربى التوت','150 غ']],
+    capsules:[
+      {type:'title', title:'ليير كيك فانيليا-توت العليق', hook:"كيك الطبقات الذي يبهر في أعياد الميلاد."},
+      {type:'ing'},
+      {type:'step', n:1, text:"اخفقوا البيض والسكر حتى يتضاعف الحجم ثلاث مرات ويتشكل شريط."},
+      {type:'step', n:2, text:"أضيفوا الدقيق برفق، برفع الخليط من الأسفل للأعلى."},
+      {type:'number', value:'180°م · 20-25 دقيقة', label:'2-3 أقراص من الجينواز'},
+      {type:'step', n:3, text:"كريمة الزبدة: اخفقوا الزبدة وحدها، ثم السكر البودرة، ثم الفانيليا."},
+      {type:'step', n:4, text:"ركّبوا بالتناوب بين الجينواز والكريمة والمربى — احتفظوا ببعض الكريمة للنهاية."},
+      {type:'tip', text:"طبقة رقيقة من الكريمة + 20 دقيقة في البرودة قبل الطبقة الأخيرة: ستكون أكثر نظافة بكثير."}
+    ]}},
+{id:'ghriba', icon:'ghriba', niveau:1,
+  fr:{title:'Ghriba amandes', time:'40 min', level:'Facile',
+    ingredients:[['Poudre d\'amandes','500 g'],['Sucre','150 g'],['Beurre fondu','150 g'],['Œuf','1'],['Levure chimique','1/2 sachet'],['Cannelle','1 c.à.c'],['Sucre glace (enrobage)','50 g']],
+    capsules:[
+      {type:'title', title:'Ghriba amandes', hook:'Le biscuit marocain qui craquelle tout seul en refroidissant.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Mélangez la poudre d\'amandes, le sucre, la levure et la cannelle.'},
+      {type:'step', n:2, text:'Ajoutez l\'œuf et le beurre fondu, mélangez jusqu\'à une pâte homogène.'},
+      {type:'step', n:3, text:'Formez des boules, roulez-les généreusement dans le sucre glace.'},
+      {type:'number', value:'170-180°C · 10-12 min', label:'Cœur encore tendre — la craquelure apparaît en refroidissant'},
+      {type:'tip', text:'Ne les laissez pas trop cuire : elles doivent rester pâles, pas dorées.'}
+    ]},
+  ar:{title:'غريبة باللوز', time:'40 دقيقة', level:'سهل',
+    ingredients:[['لوز مطحون','500 غ'],['سكر','150 غ'],['زبدة مذابة','150 غ'],['بيضة','1'],['خميرة كيميائية','نصف كيس'],['قرفة','ملعقة صغيرة'],['سكر ناعم (للتغليف)','50 غ']],
+    capsules:[
+      {type:'title', title:'غريبة باللوز', hook:'البسكويت المغربي الذي يتشقق من تلقاء نفسه عند التبريد.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'اخلطوا اللوز المطحون والسكر والخميرة والقرفة.'},
+      {type:'step', n:2, text:'أضيفوا البيضة والزبدة المذابة، اخلطوا حتى تحصلوا على عجينة متجانسة.'},
+      {type:'step', n:3, text:'شكّلوا كرات، ودحرجوها بسخاء في السكر الناعم.'},
+      {type:'number', value:'170-180°م · 10-12 دقيقة', label:'القلب لا يزال طريًا — يظهر التشقق عند التبريد'},
+      {type:'tip', text:'لا تتركوها تُطهى كثيرًا: يجب أن تبقى فاتحة اللون، وليست ذهبية.'}
+    ]}},
+{id:'baghrir', icon:'baghrir', niveau:1,
+  fr:{title:'Baghrir (crêpes aux mille trous)', time:'40 min', level:'Facile',
+    ingredients:[['Semoule fine','250 g'],['Farine','120 g'],['Eau tiède','450 ml'],['Levure boulangère','7 g'],['Levure chimique','1 sachet'],['Sel','1/2 c.à.c'],['Sucre','1 c.à.s']],
+    capsules:[
+      {type:'title', title:'Baghrir', hook:'La crêpe marocaine qui se couvre de petits trous, sans jamais la retourner.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Mélangez semoule, farine, sel, sucre. Ajoutez l\'eau tiède et la levure boulangère diluée.'},
+      {type:'step', n:2, text:'Mixez 3-4 minutes jusqu\'à ce que des bulles se forment, puis ajoutez la levure chimique.'},
+      {type:'step', n:3, text:'Couvrez, laissez reposer 25-30 minutes — la pâte doit devenir fluide et aérée.'},
+      {type:'number', value:'Poêle chaude, non graissée', label:'Un seul côté — ne retournez jamais la crêpe'},
+      {type:'tip', text:'Elle est cuite quand toute la surface est couverte de petits trous et qu\'elle ne colle plus.'}
+    ]},
+  ar:{title:'البغرير (فطائر الألف ثقب)', time:'40 دقيقة', level:'سهل',
+    ingredients:[['سميد ناعم','250 غ'],['دقيق','120 غ'],['ماء فاتر','450 مل'],['خميرة الخباز','7 غ'],['خميرة كيميائية','كيس واحد'],['ملح','نصف ملعقة صغيرة'],['سكر','ملعقة كبيرة']],
+    capsules:[
+      {type:'title', title:'البغرير', hook:'الفطيرة المغربية التي تمتلئ بثقوب صغيرة، دون قلبها أبدًا.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'اخلطوا السميد والدقيق والملح والسكر. أضيفوا الماء الفاتر وخميرة الخباز المذابة.'},
+      {type:'step', n:2, text:'اخفقوا 3-4 دقائق حتى تتشكل فقاعات، ثم أضيفوا الخميرة الكيميائية.'},
+      {type:'step', n:3, text:'غطّوا، اتركوا العجينة ترتاح 25-30 دقيقة — يجب أن تصبح سائلة ومهواة.'},
+      {type:'number', value:'مقلاة ساخنة، غير مزيّتة', label:'جهة واحدة فقط — لا تقلبوا الفطيرة أبدًا'},
+      {type:'tip', text:'تكون جاهزة عندما يغطي السطح بالكامل ثقوب صغيرة ولا تعود تلتصق.'}
+    ]}},
+{id:'cookies', icon:'cookie', niveau:1,
+  fr:{title:'Cookies chocolat', time:'30 min', level:'Facile',
+    ingredients:[['Beurre mou','125 g'],['Cassonade','100 g'],['Sucre','50 g'],['Œuf','1'],['Farine','190 g'],['Bicarbonate','1/2 c.à.c'],['Pépites de chocolat','150 g']],
+    capsules:[
+      {type:'title', title:'Cookies chocolat', hook:'Bords craquants, centre encore moelleux.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Fouettez le beurre mou avec la cassonade et le sucre jusqu\'à consistance crémeuse.'},
+      {type:'step', n:2, text:'Ajoutez l\'œuf, mélangez, puis incorporez la farine et le bicarbonate.'},
+      {type:'step', n:3, text:'Ajoutez les pépites de chocolat, formez des boules espacées sur la plaque.'},
+      {type:'number', value:'180°C · 10-12 min', label:'Bords dorés, centre encore pâle'},
+      {type:'tip', text:'Sortez-les dès que les bords colorent — ils finissent de cuire en refroidissant sur la plaque.'}
+    ]},
+  ar:{title:'كوكيز الشوكولاتة', time:'30 دقيقة', level:'سهل',
+    ingredients:[['زبدة طرية','125 غ'],['سكر بني','100 غ'],['سكر','50 غ'],['بيضة','1'],['دقيق','190 غ'],['بيكربونات الصوديوم','نصف ملعقة صغيرة'],['رقائق شوكولاتة','150 غ']],
+    capsules:[
+      {type:'title', title:'كوكيز الشوكولاتة', hook:'حواف مقرمشة، ومركز لا يزال طريًا.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'اخفقوا الزبدة الطرية مع السكر البني والسكر حتى يصبح القوام كريميًا.'},
+      {type:'step', n:2, text:'أضيفوا البيضة، اخلطوا، ثم أضيفوا الدقيق والبيكربونات.'},
+      {type:'step', n:3, text:'أضيفوا رقائق الشوكولاتة، شكّلوا كرات متباعدة على الصينية.'},
+      {type:'number', value:'180°م · 10-12 دقيقة', label:'الحواف ذهبية، والمركز لا يزال فاتحًا'},
+      {type:'tip', text:'أخرجوها بمجرد أن تتلوّن الحواف — تكمل طهيها وهي تبرد على الصينية.'}
+    ]}},
+{id:'mousse', icon:'mousse', niveau:1,
+  fr:{title:'Mousse au chocolat', time:'30 min + repos', level:'Facile',
+    ingredients:[['Chocolat noir','250 g'],['Crème liquide entière','250 ml'],['Blancs d\'œufs','6'],['Sucre','50 g']],
+    capsules:[
+      {type:'title', title:'Mousse au chocolat', hook:'Aucune cuisson — juste trois textures à assembler avec délicatesse.'},
+      {type:'step', n:1, text:'Faites fondre le chocolat au bain-marie, à feu très doux.'},
+      {type:'step', n:2, text:'Montez la crème liquide bien froide en chantilly souple.'},
+      {type:'step', n:3, text:'Montez les blancs en neige, en ajoutant le sucre à la fin pour les serrer.'},
+      {type:'step', n:4, text:'Mélangez le chocolat tiède avec la crème fouettée, puis incorporez les blancs délicatement.'},
+      {type:'number', value:'2h minimum au frais', label:'Elle se raffermit en refroidissant'},
+      {type:'tip', text:'Incorporez les blancs à la spatule, en soulevant la masse — jamais en tournant, ça les casse.'}
+    ]},
+  ar:{title:'موس الشوكولاتة', time:'30 دقيقة + راحة', level:'سهل',
+    ingredients:[['شوكولاتة داكنة','250 غ'],['كريمة سائلة كاملة الدسم','250 مل'],['بياض بيض','6'],['سكر','50 غ']],
+    capsules:[
+      {type:'title', title:'موس الشوكولاتة', hook:'دون طهي — فقط ثلاث قوامات يجب دمجها برفق.'},
+      {type:'step', n:1, text:'أذيبوا الشوكولاتة في حمام مائي، على نار هادئة جدًا.'},
+      {type:'step', n:2, text:'اخفقوا الكريمة السائلة الباردة جدًا حتى تصبح شانتيي طرية.'},
+      {type:'step', n:3, text:'اخفقوا البياض حتى يتماسك، مع إضافة السكر في النهاية لتثبيته.'},
+      {type:'step', n:4, text:'امزجوا الشوكولاتة الفاترة مع الكريمة المخفوقة، ثم أضيفوا البياض برفق.'},
+      {type:'number', value:'ساعتان على الأقل في البرودة', label:'تتماسك أكثر مع التبريد'},
+      {type:'tip', text:'أضيفوا البياض بالسباتولا، برفعه من الأسفل للأعلى — أبدًا بالتحريك الدائري، فهذا يكسره.'}
+    ]}},
+{id:'crumble', icon:'crumble', niveau:1,
+  fr:{title:'Crumble pommes', time:'50 min', level:'Facile',
+    ingredients:[['Pommes','800 g'],['Sucre (fruits)','30 g'],['Farine','100 g'],['Beurre froid','80 g'],['Cassonade (pâte)','80 g']],
+    capsules:[
+      {type:'title', title:'Crumble pommes', hook:'Le dessert qui pardonne tout — impossible à rater.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Épluchez et coupez les pommes en dés, mélangez avec le sucre, versez dans le plat.'},
+      {type:'step', n:2, text:'Du bout des doigts, sablez la farine, le beurre froid en dés et la cassonade — sans chercher à lisser.'},
+      {type:'step', n:3, text:'Répartissez la pâte sableuse en grumeaux irréguliers sur les pommes.'},
+      {type:'number', value:'180°C · 30-35 min', label:'Le dessus doit être bien doré'},
+      {type:'tip', text:'Beurre froid, doigts froids : c\'est ce qui donne les gros grumeaux croustillants au lieu d\'une pâte lisse.'}
+    ]},
+  ar:{title:'كرامبل التفاح', time:'50 دقيقة', level:'سهل',
+    ingredients:[['تفاح','800 غ'],['سكر (للفاكهة)','30 غ'],['دقيق','100 غ'],['زبدة باردة','80 غ'],['سكر بني (للعجين)','80 غ']],
+    capsules:[
+      {type:'title', title:'كرامبل التفاح', hook:'الحلوى التي تغفر كل الأخطاء — يستحيل إفسادها.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'قشّروا التفاح وقطّعوه مكعبات، امزجوه مع السكر، اسكبوه في الطبق.'},
+      {type:'step', n:2, text:'بأطراف الأصابع، افركوا الدقيق والزبدة الباردة المقطعة والسكر البني — دون محاولة تنعيمها.'},
+      {type:'step', n:3, text:'وزّعوا العجين الفتاتي بشكل كتل غير منتظمة فوق التفاح.'},
+      {type:'number', value:'180°م · 30-35 دقيقة', label:'يجب أن يصبح السطح ذهبيًا جيدًا'},
+      {type:'tip', text:'زبدة باردة وأصابع باردة: هذا ما يمنح الكتل الكبيرة المقرمشة بدل عجينة ناعمة.'}
+    ]}},
+{id:'tartefine', icon:'tartefine', niveau:2,
+  fr:{title:'Tarte fine aux pommes', time:'40 min', level:'Intermédiaire',
+    ingredients:[['Pâte feuilletée pur beurre','1 rouleau'],['Pommes','4'],['Cassonade','2 c.à.s'],['Beurre fondu','20 g'],['Confiture d\'abricot','2 c.à.s']],
+    capsules:[
+      {type:'title', title:'Tarte fine aux pommes', hook:'Peu d\'ingrédients, tout est dans la découpe et le dressage.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Étalez la pâte, piquez-la entièrement à la fourchette pour qu\'elle ne gonfle pas.'},
+      {type:'step', n:2, text:'Coupez les pommes en tranches très fines, régulières.'},
+      {type:'step', n:3, text:'Disposez-les en rosace serrée, en cercles qui se chevauchent légèrement.'},
+      {type:'swap', text:'Pas de mandoline ? Un couteau bien aiguisé et de la patience font le même travail.'},
+      {type:'step', n:4, text:'Saupoudrez de cassonade, badigeonnez de beurre fondu.'},
+      {type:'number', value:'200°C · 20-25 min', label:'Bords bien dorés et croustillants'},
+      {type:'tip', text:'Un peu de confiture d\'abricot tiédie, badigeonnée en sortie de four, donne un joli brillant de pâtisserie.'}
+    ]},
+  ar:{title:'تارت التفاح الرقيقة', time:'40 دقيقة', level:'متوسط',
+    ingredients:[['عجينة ورقية بالزبدة الخالصة','لفافة واحدة'],['تفاح','4'],['سكر بني','ملعقتا طعام'],['زبدة مذابة','20 غ'],['مربى المشمش','ملعقتا طعام']],
+    capsules:[
+      {type:'title', title:'تارت التفاح الرقيقة', hook:'مكونات قليلة، كل شيء في طريقة التقطيع والترتيب.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'افردوا العجينة، ثقّبوها بالكامل بالشوكة حتى لا تنتفخ.'},
+      {type:'step', n:2, text:'قطّعوا التفاح شرائح رقيقة جدًا ومنتظمة.'},
+      {type:'step', n:3, text:'رتّبوها على شكل وردة متراصة، في دوائر تتداخل قليلًا.'},
+      {type:'swap', text:'لا توجد مبشرة شرائح؟ سكين حاد جدًا وقليل من الصبر يؤديان نفس المهمة.'},
+      {type:'step', n:4, text:'رشّوا بالسكر البني، ادهنوا بالزبدة المذابة.'},
+      {type:'number', value:'200°م · 20-25 دقيقة', label:'حواف ذهبية ومقرمشة جيدًا'},
+      {type:'tip', text:'القليل من مربى المشمش الفاتر، مدهون عند الخروج من الفرن، يمنح لمعانًا جميلًا كالحلويات الاحترافية.'}
+    ]}},
+{id:'parisbrest', icon:'parisbrest', niveau:2,
+  fr:{title:'Paris-Brest', time:'2h', level:'Intermédiaire',
+    ingredients:[['Eau','250 ml'],['Beurre','80 g'],['Farine','130 g'],['Œufs','4'],['Amandes effilées','40 g'],['Lait (crème)','500 ml'],['Sucre (crème)','100 g'],['Jaunes d\'œufs','4'],['Maïzena','40 g'],['Pâte de praliné','150 g'],['Beurre mou (crème)','50 g']],
+    capsules:[
+      {type:'title', title:'Paris-Brest', hook:'La pâte à choux qui gonfle toute seule, en forme de roue.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Portez eau et beurre à ébullition, versez la farine en une fois, desséchez 1-2 min sur le feu.'},
+      {type:'step', n:2, text:'Incorporez les œufs un à un, jusqu\'à obtenir une pâte lisse qui forme un ruban.'},
+      {type:'step', n:3, text:'Dressez une couronne à la poche, parsemez d\'amandes effilées.'},
+      {type:'number', value:'190°C · 30 min', label:'Sans jamais ouvrir la porte du four'},
+      {type:'step', n:4, text:'Crème pâtissière classique, puis incorporez le praliné hors du feu, et le beurre mou pour la légèreté.'},
+      {type:'swap', text:'Pas de pâte de praliné maison ? Une bonne pâte à tartiner praliné du commerce fonctionne très bien.'},
+      {type:'step', n:5, text:'Coupez la couronne en deux, garnissez généreusement à la poche, saupoudrez de sucre glace.'}
+    ]},
+  ar:{title:'باري-بريست', time:'ساعتان', level:'متوسط',
+    ingredients:[['ماء','250 مل'],['زبدة','80 غ'],['دقيق','130 غ'],['بيض','4'],['لوز مشرّح','40 غ'],['حليب (للكريمة)','500 مل'],['سكر (للكريمة)','100 غ'],['صفار بيض','4'],['مايزينا','40 غ'],['عجينة البرالين','150 غ'],['زبدة طرية (للكريمة)','50 غ']],
+    capsules:[
+      {type:'title', title:'باري-بريست', hook:'عجينة الشو التي تنتفخ من تلقاء نفسها، على شكل عجلة.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'أغلوا الماء والزبدة، أضيفوا الدقيق دفعة واحدة، جففوا العجينة 1-2 دقيقة على النار.'},
+      {type:'step', n:2, text:'أضيفوا البيض واحدة تلو الأخرى، حتى تحصلوا على عجينة ملساء تشكّل شريطًا.'},
+      {type:'step', n:3, text:'شكّلوا إكليلًا بكيس التزيين، رشّوه باللوز المشرّح.'},
+      {type:'number', value:'190°م · 30 دقيقة', label:'دون فتح باب الفرن أبدًا'},
+      {type:'step', n:4, text:'كريمة الحلويات الكلاسيكية، ثم أضيفوا البرالين بعيدًا عن النار، والزبدة الطرية للخفة.'},
+      {type:'swap', text:'لا توجد عجينة برالين منزلية؟ معجون برالين جاهز من التجارة يعمل بشكل ممتاز.'},
+      {type:'step', n:5, text:'قطّعوا الإكليل إلى نصفين، احشوه بسخاء بكيس التزيين، رشّوا بالسكر الناعم.'}
+    ]}},
+{id:'cheesecake', icon:'cheesecake', niveau:2,
+  fr:{title:'Cheesecake basque', time:'1h + repos', level:'Intermédiaire',
+    ingredients:[['Fromage type Philadelphia','500 g'],['Sucre','200 g'],['Œufs','4'],['Crème liquide entière','200 ml'],['Farine','25 g'],['Sel','1 pincée']],
+    capsules:[
+      {type:'title', title:'Cheesecake basque', hook:'Le seul cheesecake où brûler le dessus, c\'est réussir.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Fouettez le fromage seul pour bien le lisser, puis ajoutez le sucre.'},
+      {type:'step', n:2, text:'Ajoutez les œufs un par un, en mélangeant entre chaque.'},
+      {type:'step', n:3, text:'Ajoutez la crème, puis la farine tamisée et le sel.'},
+      {type:'swap', text:'Chemisez le moule avec du papier cuisson froissé qui dépasse largement — l\'effet brut fait partie du charme.'},
+      {type:'number', value:'220-230°C · 45-50 min', label:'Le dessus doit être bien coloré, presque brûlé, le centre encore tremblant'},
+      {type:'tip', text:'Laissez tiédir avant de démouler : le centre se raffermit en refroidissant, c\'est normal qu\'il tremble à la sortie du four.'}
+    ]},
+  ar:{title:'تشيز كيك الباسك', time:'ساعة + راحة', level:'متوسط',
+    ingredients:[['جبنة كريمية (فيلادلفيا)','500 غ'],['سكر','200 غ'],['بيض','4'],['كريمة سائلة كاملة الدسم','200 مل'],['دقيق','25 غ'],['ملح','رشة']],
+    capsules:[
+      {type:'title', title:'تشيز كيك الباسك', hook:'التشيز كيك الوحيد الذي يكون فيه حرق السطح نجاحًا.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'اخفقوا الجبنة وحدها لتنعيمها جيدًا، ثم أضيفوا السكر.'},
+      {type:'step', n:2, text:'أضيفوا البيض واحدة تلو الأخرى، مع الخلط بين كل إضافة.'},
+      {type:'step', n:3, text:'أضيفوا الكريمة، ثم الدقيق المنخول والملح.'},
+      {type:'swap', text:'بطّنوا القالب بورق خبز مجعّد يتجاوز الحواف بوضوح — المظهر الخام جزء من سحره.'},
+      {type:'number', value:'220-230°م · 45-50 دقيقة', label:'يجب أن يصبح السطح ملونًا جيدًا، شبه محروق، والمركز لا يزال يهتز'},
+      {type:'tip', text:'اتركوه يفتر قبل إخراجه من القالب: المركز يتماسك مع التبريد، من الطبيعي أن يهتز عند الخروج من الفرن.'}
+    ]}},
+{id:'tartechoc', icon:'chocolat', niveau:2,
+  fr:{title:'Tarte au chocolat', time:'1h + repos', level:'Intermédiaire',
+    ingredients:[['Farine','200 g'],['Beurre froid','100 g'],['Sucre glace','80 g'],['Œuf','1'],['Chocolat noir (ganache)','200 g'],['Crème liquide (ganache)','200 ml']],
+    capsules:[
+      {type:'title', title:'Tarte au chocolat', hook:'Une pâte sablée toute simple, une ganache sans fioriture.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Sablez la farine et le beurre froid du bout des doigts, ajoutez le sucre glace.'},
+      {type:'step', n:2, text:'Ajoutez l\'œuf, rassemblez rapidement en boule sans trop pétrir. Repos 30 min au froid.'},
+      {type:'step', n:3, text:'Étalez, foncez le moule, piquez le fond.'},
+      {type:'number', value:'180°C · 15-18 min à blanc', label:'Avec des poids de cuisson, jusqu\'à légèrement doré'},
+      {type:'step', n:4, text:'Chauffez la crème, versez-la sur le chocolat haché, mélangez jusqu\'à lisse et brillant.'},
+      {type:'step', n:5, text:'Coulez la ganache sur le fond refroidi, réservez 2h au frais avant de servir.'},
+      {type:'tip', text:'Pas de billes de cuisson ? Des haricots secs ou du riz cru font le même travail.'}
+    ]},
+  ar:{title:'تارت الشوكولاتة', time:'ساعة + راحة', level:'متوسط',
+    ingredients:[['دقيق','200 غ'],['زبدة باردة','100 غ'],['سكر ناعم','80 غ'],['بيضة','1'],['شوكولاتة داكنة (للغاناش)','200 غ'],['كريمة سائلة (للغاناش)','200 مل']],
+    capsules:[
+      {type:'title', title:'تارت الشوكولاتة', hook:'عجينة سابلي بسيطة جدًا، وغاناش دون تعقيد.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'افركوا الدقيق والزبدة الباردة بأطراف الأصابع، أضيفوا السكر الناعم.'},
+      {type:'step', n:2, text:'أضيفوا البيضة، اجمعوا العجين بسرعة دون عجن مفرط. راحة 30 دقيقة في البرودة.'},
+      {type:'step', n:3, text:'افردوا العجين، بطّنوا القالب، ثقّبوا القاعدة.'},
+      {type:'number', value:'180°م · 15-18 دقيقة على فارغ', label:'مع أثقال الطهي، حتى تصبح ذهبية قليلًا'},
+      {type:'step', n:4, text:'سخّنوا الكريمة، اسكبوها فوق الشوكولاتة المفرومة، اخلطوا حتى تصبح ملساء ولامعة.'},
+      {type:'step', n:5, text:'اسكبوا الغاناش فوق القاعدة الباردة، احفظوا في البرودة ساعتين قبل التقديم.'},
+      {type:'tip', text:'لا توجد كريات طهي؟ الفول الجاف أو الأرز النيء يؤديان نفس المهمة.'}
+    ]}},
+{id:'cakemarbre', icon:'cakemarbre', niveau:2,
+  fr:{title:'Cake marbré', time:'1h', level:'Intermédiaire',
+    ingredients:[['Beurre mou','150 g'],['Sucre','150 g'],['Œufs','3'],['Farine','200 g'],['Levure chimique','1 sachet'],['Lait','3 c.à.s'],['Cacao en poudre','20 g']],
+    capsules:[
+      {type:'title', title:'Cake marbré', hook:'Deux pâtes, un seul moule, un joli motif sans effort.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'Fouettez le beurre mou et le sucre jusqu\'à consistance crémeuse.'},
+      {type:'step', n:2, text:'Ajoutez les œufs un par un, puis la farine, la levure et le lait.'},
+      {type:'step', n:3, text:'Divisez la pâte en deux. Dans une moitié, incorporez le cacao dilué dans un peu de lait.'},
+      {type:'step', n:4, text:'Versez les deux pâtes en alternance dans le moule, tracez des S avec la pointe d\'un couteau pour marbrer.'},
+      {type:'number', value:'170°C · 45-50 min', label:'Un couteau planté au centre doit ressortir propre'},
+      {type:'tip', text:'Ne mélangez pas trop en marbrant : quelques passages suffisent, sinon les deux pâtes se confondent.'}
+    ]},
+  ar:{title:'كيك مرمري', time:'ساعة', level:'متوسط',
+    ingredients:[['زبدة طرية','150 غ'],['سكر','150 غ'],['بيض','3'],['دقيق','200 غ'],['خميرة كيميائية','كيس واحد'],['حليب','3 ملاعق كبيرة'],['مسحوق الكاكاو','20 غ']],
+    capsules:[
+      {type:'title', title:'كيك مرمري', hook:'عجينتان، قالب واحد، ونقش جميل دون جهد.'},
+      {type:'ing'},
+      {type:'step', n:1, text:'اخفقوا الزبدة الطرية والسكر حتى يصبح القوام كريميًا.'},
+      {type:'step', n:2, text:'أضيفوا البيض واحدة تلو الأخرى، ثم الدقيق والخميرة والحليب.'},
+      {type:'step', n:3, text:'قسّموا العجين إلى نصفين. في أحد النصفين، أضيفوا الكاكاو المذاب في قليل من الحليب.'},
+      {type:'step', n:4, text:'اسكبوا العجينتين بالتناوب في القالب، ارسموا خطوطًا متعرجة بطرف سكين لعمل المرمرة.'},
+      {type:'number', value:'170°م · 45-50 دقيقة', label:'يجب أن يخرج السكين نظيفًا عند غرسه في المركز'},
+      {type:'tip', text:'لا تخلطوا كثيرًا أثناء عمل المرمرة: بضع حركات تكفي، وإلا اختلطت العجينتان.'}
+    ]}}
+];
+
+
+const BASICS = [
+{id:'base-four', icon:'four',
+  fr:{title:'Pourquoi préchauffer le four', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Pourquoi préchauffer le four', hook:'Le détail qui change tout, avant même d\'ouvrir un bol.'},
+      {type:'step', n:1, text:'Un four froid met du temps à monter en température — pendant ce temps, votre pâte attend et perd son gonflant.'},
+      {type:'step', n:2, text:'Enfourner à la bonne température dès le départ, c\'est ce qui donne une belle poussée immédiate (choux, cakes, tartes).'},
+      {type:'tip', text:'Comptez 10 à 15 minutes de préchauffage avant d\'enfourner — lancez-le avant de commencer la recette, pas après.'}
+    ]},
+  ar:{title:'لماذا نُسخّن الفرن مسبقًا', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'لماذا نُسخّن الفرن مسبقًا', hook:'التفصيل الذي يغيّر كل شيء، حتى قبل فتح أي وعاء.'},
+      {type:'step', n:1, text:'الفرن البارد يستغرق وقتًا ليصل إلى الحرارة المطلوبة — خلال هذا الوقت، تنتظر عجينتكم وتفقد انتفاخها.'},
+      {type:'step', n:2, text:'إدخال العجين على الحرارة الصحيحة منذ البداية هو ما يمنح ارتفاعًا جميلًا وفوريًا (الشو، الكيك، التارت).'},
+      {type:'tip', text:'احسبوا 10 إلى 15 دقيقة للتسخين المسبق قبل الإدخال — شغّلوا الفرن قبل بدء الوصفة، وليس بعدها.'}
+    ]}},
+{id:'base-blancs', icon:'blancs',
+  fr:{title:'Blancs en neige : les 3 étapes', time:'2 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Blancs en neige', hook:'Mousseux, bec d\'oiseau, ferme — savoir reconnaître chaque étape.'},
+      {type:'step', n:1, text:'Mousseux : de grosses bulles, ça mousse mais ça ne tient pas encore — c\'est le début du fouettage.'},
+      {type:'step', n:2, text:'Bec d\'oiseau : en soulevant le fouet, la pointe retombe légèrement — parfait pour une mousse au chocolat.'},
+      {type:'step', n:3, text:'Ferme : la pointe reste bien droite, le bol peut se retourner sans que rien ne bouge — pour une meringue.'},
+      {type:'tip', text:'Un bol et un fouet parfaitement propres, sans une trace de gras : sinon les blancs ne montent jamais bien.'}
+    ]},
+  ar:{title:'بياض البيض المخفوق: 3 مراحل', time:'دقيقتان', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'بياض البيض المخفوق', hook:'رغوي، منقار الطائر، متماسك — كيف تميّزون كل مرحلة.'},
+      {type:'step', n:1, text:'رغوي: فقاعات كبيرة، يصبح رغويًا لكنه لا يتماسك بعد — هذه بداية الخفق.'},
+      {type:'step', n:2, text:'منقار الطائر: عند رفع المضرب، تسقط القمة قليلًا — مثالي لموس الشوكولاتة.'},
+      {type:'step', n:3, text:'متماسك: تبقى القمة منتصبة تمامًا، ويمكن قلب الوعاء دون أن يتحرك شيء — للمرينغ.'},
+      {type:'tip', text:'وعاء ومضرب نظيفان تمامًا، دون أي أثر للدهن: وإلا فلن يتماسك البياض جيدًا أبدًا.'}
+    ]}},
+{id:'base-beurre', icon:'beurre',
+  fr:{title:'Beurre pommade ou fondu ?', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Beurre pommade ou fondu ?', hook:'Deux textures, deux résultats très différents.'},
+      {type:'step', n:1, text:'Pommade : mou comme une crème, mais encore froid au toucher. On l\'obtient en le sortant 30-40 min à l\'avance.'},
+      {type:'step', n:2, text:'Fondu : liquide, chauffé doucement. Il donne des gâteaux plus denses et humides (fondants, financiers).'},
+      {type:'step', n:3, text:'Pommade sert surtout à crémer avec le sucre (cookies, cakes) : ça emprisonne de l\'air, pour un résultat plus léger.'},
+      {type:'tip', text:'Pressé ? Coupez le beurre en petits dés — il ramollit bien plus vite qu\'en un seul bloc.'}
+    ]},
+  ar:{title:'زبدة طرية أم مذابة؟', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'زبدة طرية أم مذابة؟', hook:'قوامان، ونتيجتان مختلفتان جدًا.'},
+      {type:'step', n:1, text:'طرية: لينة كالكريمة، لكنها لا تزال باردة عند اللمس. نحصل عليها بإخراجها 30-40 دقيقة مسبقًا.'},
+      {type:'step', n:2, text:'مذابة: سائلة، تُسخّن برفق. تمنح كعكات أكثر كثافة ورطوبة (الفوندان، الفينونسييه).'},
+      {type:'step', n:3, text:'الزبدة الطرية تُستخدم بالأخص لخفقها مع السكر (الكوكيز، الكيك): تحبس الهواء، لنتيجة أخف.'},
+      {type:'step', n:4, text:'في عجلة من أمركم؟ قطّعوا الزبدة مكعبات صغيرة — تلين أسرع بكثير من قطعة واحدة.'}
+    ]}},
+{id:'base-bainmarie', icon:'bainmarie',
+  fr:{title:'Le bain-marie sans matériel spécial', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Le bain-marie', hook:'Faire fondre en douceur, sans jamais brûler.'},
+      {type:'step', n:1, text:'Posez une casserole d\'eau à frémir, pas à bouillir, sur feu doux.'},
+      {type:'step', n:2, text:'Posez un saladier par-dessus — il ne doit pas toucher l\'eau, juste être chauffé par la vapeur.'},
+      {type:'step', n:3, text:'Le chocolat ou le beurre fond en douceur, sans risque de brûler ou de grumeler.'},
+      {type:'tip', text:'Pas une goutte d\'eau ne doit tomber dans le chocolat : ça le fait immédiatement grainer.'}
+    ]},
+  ar:{title:'الحمام المائي دون أدوات خاصة', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'الحمام المائي', hook:'الإذابة برفق، دون حرق أبدًا.'},
+      {type:'step', n:1, text:'ضعوا قدرًا من الماء على نار هادئة، ليغلي برفق فقط، وليس بشدة.'},
+      {type:'step', n:2, text:'ضعوا وعاءً فوقه — يجب ألا يلامس الماء، بل يتسخن فقط بالبخار.'},
+      {type:'step', n:3, text:'تذوب الشوكولاتة أو الزبدة برفق، دون خطر الحرق أو التكتل.'},
+      {type:'tip', text:'لا يجب أن تسقط ولو قطرة ماء واحدة في الشوكولاتة: ستتكتل فورًا.'}
+    ]}},
+{id:'base-cuisson-blanc', icon:'tartefine',
+  fr:{title:'Cuisson à blanc d\'un fond de tarte', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Cuisson à blanc', hook:'Précuire une pâte, sans garniture, pour qu\'elle reste croustillante.'},
+      {type:'step', n:1, text:'Foncez le moule, piquez le fond entièrement à la fourchette pour éviter qu\'il ne gonfle.'},
+      {type:'step', n:2, text:'Posez une feuille de papier cuisson, puis des poids de cuisson (ou des haricots secs, du riz cru).'},
+      {type:'step', n:3, text:'Enfournez 15 min avec les poids, puis retirez-les et poursuivez quelques minutes à découvert pour bien colorer.'},
+      {type:'tip', text:'C\'est indispensable pour les tartes garnies de crème ou de fruits frais — sans ça, le fond reste détrempé.'}
+    ]},
+  ar:{title:'طهي قاعدة التارت على فارغ', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'الطهي على فارغ', hook:'طهي العجينة مسبقًا، دون حشوة، لتبقى مقرمشة.'},
+      {type:'step', n:1, text:'بطّنوا القالب، ثقّبوا القاعدة بالكامل بالشوكة لتجنب انتفاخها.'},
+      {type:'step', n:2, text:'ضعوا ورق خبز، ثم أثقال الطهي (أو فولًا جافًا، أرزًا نيئًا).'},
+      {type:'step', n:3, text:'أدخلوها الفرن 15 دقيقة مع الأثقال، ثم أزيلوها وواصلوا الطهي بضع دقائق مكشوفة للتلوين الجيد.'},
+      {type:'tip', text:'هذا ضروري للتارت المحشوة بالكريمة أو الفواكه الطازجة — بدونه، تبقى القاعدة رطبة.'}
+    ]}},
+{id:'base-test-couteau', icon:'testcouteau',
+  fr:{title:'Le test du couteau', time:'30 sec', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Le test du couteau', hook:'La méthode la plus fiable pour savoir si un gâteau est cuit.'},
+      {type:'step', n:1, text:'Plantez la pointe d\'un couteau (ou d\'une pique en bois) au centre du gâteau.'},
+      {type:'step', n:2, text:'S\'il ressort propre, sans pâte collée dessus, le gâteau est cuit.'},
+      {type:'step', n:3, text:'S\'il ressort avec de la pâte crue collée, remettez au four 5 minutes et retestez.'},
+      {type:'tip', text:'Pour un fondant au chocolat, quelques traces humides sont normales — c\'est le cœur coulant recherché.'}
+    ]},
+  ar:{title:'اختبار السكين', time:'30 ثانية', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'اختبار السكين', hook:'الطريقة الأكثر موثوقية لمعرفة ما إذا كانت الكعكة نضجت.'},
+      {type:'step', n:1, text:'اغرسوا طرف سكين (أو عود خشبي) في مركز الكعكة.'},
+      {type:'step', n:2, text:'إذا خرج نظيفًا، دون عجين ملتصق به، فالكعكة جاهزة.'},
+      {type:'step', n:3, text:'إذا خرج وعليه عجين نيء، أعيدوها للفرن 5 دقائق وأعيدوا الاختبار.'},
+      {type:'tip', text:'بالنسبة للفوندان بالشوكولاتة، بعض الآثار الرطبة أمر طبيعي — هذا هو القلب السائل المطلوب.'}
+    ]}},
+{id:'base-nappe', icon:'nappe',
+  fr:{title:'La crème anglaise et la cuisson à la nappe', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'Cuisson à la nappe', hook:'Épaissir une crème sans jamais la faire bouillir.'},
+      {type:'step', n:1, text:'Faites chauffer le lait, versez-en un peu sur les jaunes blanchis avec le sucre, puis reversez le tout dans la casserole.'},
+      {type:'step', n:2, text:'Remuez sans arrêt à la spatule, à feu doux, jusqu\'à ce que la crème épaississe légèrement.'},
+      {type:'step', n:3, text:'Elle est prête quand elle nappe le dos de la spatule : passez le doigt, le trait doit rester net.'},
+      {type:'tip', text:'Si ça bout, les jaunes cuisent trop vite et la crème tranche (petits grains). Baissez le feu, pas de raccourci.'}
+    ]},
+  ar:{title:'الكريمة الإنجليزية وطهيها الخفيف', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'الطهي الخفيف', hook:'تكثيف كريمة دون إغلائها أبدًا.'},
+      {type:'step', n:1, text:'سخّنوا الحليب، اسكبوا قليلًا منه على الصفار المخفوق مع السكر، ثم أعيدوا الكل إلى القدر.'},
+      {type:'step', n:2, text:'حرّكوا باستمرار بالسباتولا، على نار هادئة، حتى تتكثف الكريمة قليلًا.'},
+      {type:'step', n:3, text:'تكون جاهزة عندما تغطي ظهر السباتولا: مرّروا إصبعكم، يجب أن يبقى الخط واضحًا.'},
+      {type:'tip', text:'إذا غلت، يُطهى الصفار بسرعة كبيرة وتتكتل الكريمة. خفّفوا النار، لا اختصارات.'}
+    ]}},
+{id:'base-chantilly', icon:'chantilly',
+  fr:{title:'Monter une chantilly qui tient', time:'1 min', level:'Astuce',
+    capsules:[
+      {type:'title', title:'La chantilly qui tient', hook:'Trois conditions, et ça ne rate jamais.'},
+      {type:'step', n:1, text:'Crème liquide entière (30% de matière grasse minimum) — une crème allégée ne montera jamais correctement.'},
+      {type:'step', n:2, text:'Bol, fouet et crème bien froids — mettez-les 10 minutes au congélateur si besoin.'},
+      {type:'step', n:3, text:'Ajoutez le sucre glace en pluie une fois que la crème commence à épaissir, pas avant.'},
+      {type:'tip', text:'Arrêtez de fouetter dès que le fouet laisse des marques nettes — au-delà, la crème tranche et devient grumeleuse.'}
+    ]},
+  ar:{title:'خفق شانتيي متماسكة', time:'دقيقة واحدة', level:'نصيحة',
+    capsules:[
+      {type:'title', title:'الشانتيي المتماسكة', hook:'ثلاثة شروط، ولن تفشل أبدًا.'},
+      {type:'step', n:1, text:'كريمة سائلة كاملة الدسم (30% دهون على الأقل) — الكريمة الخفيفة لن تتماسك أبدًا بشكل صحيح.'},
+      {type:'step', n:2, text:'وعاء ومضرب وكريمة باردة جدًا — ضعوها 10 دقائق في الفريزر عند الحاجة.'},
+      {type:'step', n:3, text:'أضيفوا السكر الناعم تدريجيًا بمجرد أن تبدأ الكريمة بالتكثف، وليس قبل ذلك.'},
+      {type:'tip', text:'توقفوا عن الخفق بمجرد أن يترك المضرب آثارًا واضحة — بعد ذلك، تتكتل الكريمة وتصبح خشنة.'}
+    ]}}
+];
+
+const MATERIEL = {
+  fr:{
+    title:'Le matériel du débutant',
+    intro:'Pas besoin d\'équiper une cuisine professionnelle pour bien commencer. Voici ce qui compte vraiment.',
+    essentiel_label:'L\'essentiel pour commencer',
+    essentiel:[['Un fouet et une spatule','Pour mélanger, fouetter, racler — la base de tout.'],['Un ou deux saladiers','Un grand, un moyen : ça suffit pour commencer.'],['Une balance de cuisine','Bien plus précis qu\'un verre doseur pour la pâtisserie — investissement n°1.'],['Un batteur électrique simple','Pour monter blancs et crèmes sans y passer 20 minutes à la main.'],['Un moule à tarte et un moule à cake','Les deux formes qui reviennent dans la majorité des recettes.'],['Une plaque à pâtisserie','Pour les cookies, financiers, et tout ce qui se pose à plat.'],['Un tamis ou une passoire fine','Pour éviter les grumeaux dans la farine ou le sucre glace.']],
+    optionnel_label:'Pour plus tard, quand l\'envie de progresser arrive',
+    optionnel:[['Une poche à douille','Utile mais pas indispensable au début — une cuillère ou un sac congélation percé dépannent bien.'],['Un thermomètre de cuisson','Pour les caramels et sucres cuits — à ajouter quand vous progressez.'],['Des cercles à pâtisserie','Pour des présentations plus nettes — pas nécessaire pour débuter.'],['Un robot pâtissier','Confortable, mais un batteur électrique simple fait très bien le travail au départ.']],
+    outro:'Envie d\'aller plus loin dans la technique et le vocabulaire du métier ? L\'Espace Pro vous attend.'
+  },
+  ar:{
+    title:'عتاد المبتدئ',
+    intro:'لست بحاجة لتجهيز مطبخ احترافي للبدء بشكل جيد. إليكم ما يهم فعلًا.',
+    essentiel_label:'الأساسي للبدء',
+    essentiel:[['مضرب وسباتولا','للخلط والخفق والكشط — أساس كل شيء.'],['وعاء أو وعاءان','واحد كبير وآخر متوسط: يكفيان للبداية.'],['ميزان مطبخ','أدق بكثير من كوب القياس في الحلويات — أول استثمار.'],['خفاقة كهربائية بسيطة','لخفق البياض والكريمات دون قضاء 20 دقيقة باليد.'],['قالب تارت وقالب كيك','الشكلان الأكثر تكرارًا في معظم الوصفات.'],['صينية حلويات','للكوكيز والفينونسييه وكل ما يوضع بشكل مسطح.'],['منخل أو مصفاة رقيقة','لتجنب التكتلات في الدقيق أو السكر الناعم.']],
+    optionnel_label:'لوقت لاحق، عندما تأتي الرغبة في التقدم',
+    optionnel:[['كيس تزيين','مفيد لكن غير ضروري في البداية — ملعقة أو كيس تجميد مثقوب يفي بالغرض.'],['ميزان حرارة للطهي','للكراميل والسكر المطهو — يُضاف مع التقدم.'],['حلقات حلويات','لتقديم أكثر أناقة — غير ضروري للبدء.'],['عجّانة كهربائية','مريحة، لكن خفاقة كهربائية بسيطة تؤدي المهمة جيدًا في البداية.']],
+    outro:'ترغبون بالتعمق أكثر في التقنية ومصطلحات المهنة؟ الفضاء المهني بانتظاركم.'
+  }
+};
+
+let currentLang = localStorage.getItem('4cake_lang') || 'fr';
+let activeSection = 'recettes';
+let activeNiveau = 1;
+
+function r(recipe){ return recipe[currentLang]; }
+
+function cardHTML(rec){
+  const d = r(rec);
+  return `
+    <div class="rcard" onclick="openStory('${rec.id}')">
+      <div class="rcard-visual" style="background:var(--marine-soft)">${ICONS[rec.icon]}</div>
+      <div class="rcard-body">
+        <div class="rcard-title">${d.title}</div>
+        <div class="rcard-meta"><span>⏱ ${d.time}</span><span>${d.level}</span></div>
+        <div class="rcard-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>
+          ${UI[currentLang].voir_capsule}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const materielBlock = document.getElementById('materielBlock');
+  const niveauTabs = document.getElementById('niveauTabs');
+
+  document.querySelectorAll('.section-tab').forEach(b => b.classList.toggle('active', b.dataset.section === activeSection));
+  document.getElementById('sectionTabs').querySelector('[data-section="recettes"]').textContent = UI[currentLang].tab_recettes;
+  document.getElementById('sectionTabs').querySelector('[data-section="bases"]').textContent = UI[currentLang].tab_bases;
+  document.getElementById('sectionTabs').querySelector('[data-section="materiel"]').textContent = UI[currentLang].tab_materiel;
+  niveauTabs.querySelector('[data-niveau="1"]').textContent = UI[currentLang].niveau1;
+  niveauTabs.querySelector('[data-niveau="2"]').textContent = UI[currentLang].niveau2;
+  document.querySelectorAll('.niveau-tab').forEach(b => b.classList.toggle('active', Number(b.dataset.niveau) === activeNiveau));
+
+  if(activeSection === 'materiel'){
+    grid.style.display = 'none';
+    niveauTabs.style.display = 'none';
+    materielBlock.style.display = 'block';
+    renderMateriel();
+    return;
+  }
+  materielBlock.style.display = 'none';
+  grid.style.display = 'grid';
+
+  if(activeSection === 'bases'){
+    niveauTabs.style.display = 'none';
+    grid.innerHTML = BASICS.map(cardHTML).join('');
+    return;
+  }
+
+  niveauTabs.style.display = 'flex';
+  grid.innerHTML = RECIPES.filter(rec => rec.niveau === activeNiveau).map(cardHTML).join('');
+}
+
+function renderMateriel(){
+  const m = MATERIEL[currentLang];
+  const rowsHTML = rows => rows.map(([a,b]) => `<li><b>${a}</b><span>${b}</span></li>`).join('');
+  document.getElementById('materielBlock').innerHTML = `
+    <div class="materiel-title">${m.title}</div>
+    <div class="materiel-intro">${m.intro}</div>
+    <div class="materiel-label">${m.essentiel_label}</div>
+    <ul class="materiel-list">${rowsHTML(m.essentiel)}</ul>
+    <div class="materiel-label">${m.optionnel_label}</div>
+    <ul class="materiel-list">${rowsHTML(m.optionnel)}</ul>
+    <div class="materiel-outro">${m.outro}</div>
+  `;
+}
+
+function switchSection(section){
+  activeSection = section;
+  renderGrid();
+}
+function switchNiveau(n){
+  activeNiveau = n;
+  renderGrid();
+}
+
+let curRecipe = null, curCap = 0, timer = null;
+const CAP_DURATION = 4500;
+
+function openStory(id){
+  curRecipe = RECIPES.find(rec => rec.id === id) || BASICS.find(rec => rec.id === id);
+  curCap = 0;
+  const d = r(curRecipe);
+  document.getElementById('storyModTitle').textContent = d.title;
+  document.getElementById('storyBars').innerHTML = d.capsules.map(() => `<div class="story-bar"><i></i></div>`).join('');
+  const body = document.getElementById('storyBody');
+  body.querySelectorAll('.capsule').forEach(c => c.remove());
+  d.capsules.forEach((c, idx) => body.insertAdjacentHTML('beforeend', capsuleHTML(c, idx, d)));
+  document.getElementById('storyOverlay').classList.add('open');
+  renderCap();
+}
+function capsuleHTML(c, idx, recipe){
+  const t = UI[currentLang];
+  if(c.type === 'title') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-title">${c.title}</div><div class="cap-hook">${c.hook}</div></div>`;
+  if(c.type === 'ing') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label">${t.ingredients}</div>
+      <ul class="ing-list">${recipe.ingredients.map(([n,q]) => `<li><span>${n}</span><b>${q}</b></li>`).join('')}</ul></div>`;
+  if(c.type === 'step') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-num-badge">${c.n}</div><div class="cap-text">${c.text}</div></div>`;
+  if(c.type === 'number') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label">${t.repere}</div><div class="cap-number">${c.value}</div><div class="cap-number-label">${c.label}</div></div>`;
+  if(c.type === 'tip') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label tip">${t.astuce}</div><div class="cap-tipbox">${c.text}</div></div>`;
+  if(c.type === 'swap') return `<div class="capsule" data-i="${idx}">
+      <div class="cap-label swap">${t.equivalent}</div><div class="cap-swapbox">${c.text}</div></div>`;
+  return '';
+}
+function renderCap(){
+  const caps = document.querySelectorAll('.capsule');
+  const bars = document.querySelectorAll('.story-bar');
+  caps.forEach((c,i) => c.classList.toggle('active', i === curCap));
+  bars.forEach((b,i) => {
+    b.classList.toggle('done', i < curCap);
+    const bar = b.querySelector('i');
+    if(i < curCap){ bar.style.transition='none'; bar.style.width='100%'; }
+    else if(i === curCap){ bar.style.transition='none'; bar.style.width='0%'; requestAnimationFrame(()=>{ bar.style.transition=`width ${CAP_DURATION}ms linear`; bar.style.width='100%'; }); }
+    else { bar.style.transition='none'; bar.style.width='0%'; }
+  });
+  document.getElementById('btnPrev').disabled = curCap === 0;
+  document.getElementById('btnNext').textContent = curCap === r(curRecipe).capsules.length - 1 ? UI[currentLang].btn_termine : UI[currentLang].btn_suivant;
+  clearTimeout(timer);
+  timer = setTimeout(() => { if(curCap < r(curRecipe).capsules.length - 1) nextCap(); }, CAP_DURATION);
+}
+function nextCap(){
+  if(curCap < r(curRecipe).capsules.length - 1){ curCap++; renderCap(); }
+  else { closeStory(); }
+}
+function prevCap(){
+  if(curCap > 0){ curCap--; renderCap(); }
+}
+function closeStory(){
+  clearTimeout(timer);
+  document.getElementById('storyOverlay').classList.remove('open');
+}
+document.getElementById('storyOverlay').addEventListener('click', (e) => {
+  if(e.target.id === 'storyOverlay') closeStory();
+});
+
+function applyStaticTranslations(lang){
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(UI[lang][key] !== undefined){
+      if(el.children.length === 0){
+        el.textContent = UI[lang][key];
+      } else {
+        for(const node of el.childNodes){
+          if(node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0){
+            node.textContent = UI[lang][key];
+            break;
+          }
+        }
+      }
+    }
+  });
+}
+
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('4cake_lang', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+  applyStaticTranslations(lang);
+  renderGrid();
+}
+
+setLang(currentLang);
+</script>
+
+</body>
+</html>
