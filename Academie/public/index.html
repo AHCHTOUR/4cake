@@ -187,6 +187,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .pro-note{grid-column:1/-1; font-size:0.78rem; color:var(--marine-2); text-align:center; margin-top:8px;}
   html[dir="rtl"] .pro-cta svg{transform:scaleX(-1);}
 
+  .pro-transition-overlay{position:fixed; inset:0; background:rgba(58,46,26,0.55); backdrop-filter:blur(2px); z-index:120; display:none; align-items:center; justify-content:center; padding:24px;}
+  .pro-transition-overlay.open{display:flex;}
+  .pro-transition-card{background:#fff; border-radius:20px; max-width:360px; width:100%; padding:28px 26px 24px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.25); animation:ptIn .22s ease;}
+  @keyframes ptIn{from{opacity:0; transform:translateY(10px) scale(.97);} to{opacity:1; transform:none;}}
+  .pt-icon{width:52px; height:52px; border-radius:50%; background:#FBF6E9; border:1.5px solid rgba(212,160,23,0.4); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
+  .pt-icon svg{width:26px; height:26px;}
+  .pro-transition-card h3{font-family:'Anton',sans-serif; font-size:1.15rem; text-transform:uppercase; margin:0 0 10px; color:var(--marine);}
+  .pro-transition-card p{font-size:0.87rem; line-height:1.55; color:var(--marine-2); margin:0 0 22px;}
+  .pt-actions{display:flex; flex-direction:column; gap:9px;}
+  .pt-btn-primary{display:flex; align-items:center; justify-content:center; gap:8px; background:#D4A017; color:#fff; font-weight:700; font-size:0.88rem; padding:13px; border-radius:100px; text-decoration:none;}
+  .pt-btn-primary svg{width:15px; height:15px;}
+  .pt-btn-secondary{background:none; border:none; color:var(--marine-2); font-size:0.83rem; font-weight:600; padding:8px; cursor:pointer;}
+  html[dir="rtl"] .pt-btn-primary svg{transform:scaleX(-1);}
+
   /* ---------- Impression : ne garder que la fiche recette ---------- */
   @media print{
     header, .hero, .marquee, .searchbar, .section-tabs, .niveau-tabs,
@@ -315,6 +329,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="materiel-block" id="materielBlock" style="display:none;"></div>
 </div>
 
+<div class="pro-transition-overlay" id="proTransitionOverlay">
+  <div class="pro-transition-card">
+    <div class="pt-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#D4A017" stroke-width="1.8"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3Z"/><path d="M6.5 9.5V15c0 1.2 2.5 3 5.5 3s5.5-1.8 5.5-3V9.5"/></svg>
+    </div>
+    <h3 id="ptTitle"></h3>
+    <p id="ptText"></p>
+    <div class="pt-actions">
+      <button class="pt-btn-secondary" id="ptCancel" onclick="closeProTransition()"></button>
+      <a class="pt-btn-primary" id="ptContinue" href="#">
+        <span id="ptContinueLabel"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
 <div class="fullview-overlay" id="fullviewOverlay">
   <div class="fullview-panel">
     <div class="fullview-top">
@@ -377,6 +408,10 @@ const UI = {
     pro_cta: "Découvrir l'Académie Pro",
     pro_badge: "PRO",
     pro_note: "Ces recettes sont consultables dans l'Espace Pro.",
+    pt_titre: "Vous passez dans l'Espace Pro",
+    pt_texte: "C'est un espace plus technique, pensé pour les professionnels de la pâtisserie. Vous pouvez continuer, ou rester ici.",
+    pt_annuler: "Rester ici",
+    pt_continuer: "Continuer vers l'Espace Pro",
     methode: "Méthode", retour: "Retour", voir_recette: "Voir la recette",
     partager: "Partager cette recette", lien_copie: "Lien copié ✓",
     shop_titre: "Il vous manque un ingrédient ?",
@@ -409,6 +444,10 @@ const UI = {
     pro_cta: "اكتشفوا الأكاديمية المهنية",
     pro_badge: "مهني",
     pro_note: "هذه الوصفات متاحة في الفضاء المهني.",
+    pt_titre: "أنتم تنتقلون إلى الفضاء المهني",
+    pt_texte: "هذا فضاء أكثر تقنية، مخصص لمحترفي الحلويات. يمكنكم المتابعة، أو البقاء هنا.",
+    pt_annuler: "البقاء هنا",
+    pt_continuer: "المتابعة إلى الفضاء المهني",
     methode: "الطريقة", retour: "رجوع", voir_recette: "عرض الوصفة",
     partager: "شاركوا هذه الوصفة", lien_copie: "تم نسخ الرابط ✓",
     shop_titre: "هل ينقصكم مكوّن؟",
@@ -4362,6 +4401,30 @@ function encartCatalogue(item){
 }
 
 /* Partage : API native du téléphone si disponible (WhatsApp, SMS…), sinon copie du lien */
+/* Transition explicite vers l'Espace Pro : rend visible le changement de niveau,
+   au lieu d'une redirection silencieuse. */
+let _ptSource = null;
+function openProTransition(url, source){
+  _ptSource = source;
+  const t = UI[currentLang];
+  document.getElementById('ptTitle').textContent = t.pt_titre;
+  document.getElementById('ptText').textContent = t.pt_texte;
+  document.getElementById('ptCancel').textContent = t.pt_annuler;
+  document.getElementById('ptContinueLabel').textContent = t.pt_continuer;
+  document.getElementById('ptContinue').setAttribute('href', url);
+  document.getElementById('proTransitionOverlay').classList.add('open');
+  dlPush('vue_transition_pro', { depuis: source, section: activeSection, langue: currentLang });
+}
+function closeProTransition(){
+  document.getElementById('proTransitionOverlay').classList.remove('open');
+}
+document.getElementById('proTransitionOverlay').addEventListener('click', function(e){
+  if(e.target.id === 'proTransitionOverlay') closeProTransition();
+});
+document.getElementById('ptContinue').addEventListener('click', function(){
+  dlPush('clic_espace_pro', { depuis: _ptSource, section: activeSection, langue: currentLang });
+});
+
 function partagerRecette(){
   if(!curRecipe) return;
   const d = r(curRecipe);
@@ -4438,18 +4501,15 @@ function buildMarquee(){
 }
 buildMarquee();
 
-/* Clics sortants : Espace Pro et retour vitrine (délégation globale) */
+/* Clics sortants : Espace Pro (avec transition explicite) et retour vitrine */
 document.addEventListener('click', function(e){
   const a = e.target.closest('a[href]');
   if(!a) return;
   const href = a.getAttribute('href') || '';
   if(href.indexOf('../pro/') === 0 || href.indexOf('/pro/') > -1){
-    dlPush('clic_espace_pro', {
-      depuis: a.classList.contains('pro-cta') ? 'bouton_cta'
-            : a.classList.contains('rcard-pro') ? 'carte_teaser' : 'lien',
-      section: activeSection,
-      langue: currentLang
-    });
+    if(a.id === 'ptContinue') return; // clic de confirmation dans le modal : on laisse naviguer
+    e.preventDefault();
+    openProTransition(href, a.classList.contains('pro-cta') ? 'bouton_cta' : a.classList.contains('rcard-pro') ? 'carte_teaser' : 'lien');
   } else if(href === '../../' || href === '../../index.html' || href.indexOf('4cake.ma') > -1){
     dlPush('retour_vitrine', { langue: currentLang });
   }
