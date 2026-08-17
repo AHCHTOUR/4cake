@@ -342,6 +342,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ---------- Catalogue ---------- */
   #catalogue{padding:96px 0 70px; background:var(--creme);}
+  .prodsearch{position:relative; max-width:460px; margin:0 auto 22px;}
+  .prodsearch input{width:100%; padding:14px 44px; border-radius:100px; border:2px solid var(--marine-soft); background:#fff; font-family:inherit; font-size:0.92rem; color:var(--marine); outline:none; transition:border-color .2s, box-shadow .2s;}
+  .prodsearch input:focus{border-color:var(--rouge); box-shadow:0 0 0 3px rgba(193,87,58,0.10);}
+  .prodsearch input::-webkit-search-cancel-button{display:none;}
+  .prod-icon{position:absolute; inset-inline-start:16px; top:50%; transform:translateY(-50%); width:18px; height:18px; color:var(--marine-2); pointer-events:none;}
+  .prod-clear{position:absolute; inset-inline-end:13px; top:50%; transform:translateY(-50%); width:25px; height:25px; border-radius:50%; background:var(--marine-soft); color:var(--marine-2); border:none; cursor:pointer; display:none; align-items:center; justify-content:center;}
+  .prod-clear svg{width:12px; height:12px;}
+  .prodsearch.filled .prod-clear{display:flex;}
+  .prod-noresult{grid-column:1/-1; text-align:center; padding:40px 20px; color:var(--marine-2);}
+  .prod-noresult strong{display:block; font-size:1.05rem; color:var(--marine); margin-bottom:6px;}
   .cat-tabs{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:42px;}
   .cat-tab{padding:11px 20px; border-radius:100px; font-weight:700; font-size:0.86rem; background:#fff; color:var(--marine); border:2px solid var(--marine-soft); transition:all 0.18s ease;}
   .cat-tab:hover{border-color:var(--rouge);}
@@ -423,6 +433,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   html[dir="rtl"] .tip-bubble::before{left:auto; right:18px;}
   .tip-bubble.open{display:block;}
   .tip-bubble strong{color:var(--rouge-dark);}
+  .tip-recipe{display:inline-flex; align-items:center; gap:7px; margin-top:14px; padding:9px 15px; border-radius:100px; background:#fff; border:1.5px solid var(--rouge); color:var(--rouge-dark); font-size:0.8rem; font-weight:600; text-decoration:none;}
+  .tip-recipe:hover{background:var(--rouge); color:#fff;}
+  .tip-recipe svg{width:14px; height:14px; flex:none;}
+  .tip-recipe b{font-weight:700;}
   .card-footer{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:4px;}
   .price{font-family:'Anton',sans-serif; font-size:1.3rem; color:var(--rouge-dark);}
   .price sub{font-family:'Poppins',sans-serif; font-weight:600; font-size:0.68rem; color:var(--grey); text-transform:none;}
@@ -623,6 +637,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "@id": "https://www.4cake.ma/#store",
+  "name": "4Cake",
+  "description": "Fournisseur B2B d'ingrédients et fournitures de pâtisserie : pâte à sucre, feuilletine, toppings, chocolat, décors et colorants.",
+  "url": "https://www.4cake.ma/",
+  "logo": "https://www.4cake.ma/LOGO_MARQUE.png",
+  "image": "https://www.4cake.ma/og-image.jpg",
+  "email": "contact@4cake.ma",
+  "telephone": "+212661759934",
+  "priceRange": "$$",
+  "currenciesAccepted": "MAD",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zone Industrielle",
+    "addressLocality": "Mohammedia",
+    "addressCountry": "MA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.6623564,
+    "longitude": -7.4097473
+  },
+  "hasMap": "https://www.google.com/maps?q=33.6623564,-7.4097473",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "18:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/4cake_by_slcm/",
+    "https://www.tiktok.com/@4.cake"
+  ],
+  "areaServed": { "@type": "Country", "name": "Maroc" },
+  "knowsLanguage": ["fr","ar"]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -655,6 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#accueil" data-i18n="nav_accueil">Accueil</a>
       <a href="#catalogue" data-i18n="nav_catalogue">Catalogue</a>
       <a href="#pourquoi" data-i18n="nav_grossistes">Grossistes</a>
+      <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       <a href="#devis" class="nav-cta"><span data-i18n="nav_devis">Mon devis</span> <span id="nav-cart-count">(0)</span></a>
       <div class="lang-toggle">
@@ -731,6 +795,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="kicker" data-i18n="cat_kicker">Catalogue grossiste</span>
         <h2 data-i18n="cat_h2">Nos gammes de produits</h2>
         <p data-i18n="cat_p">Tarifs indicatifs professionnels — dégressifs selon quantité. Ajoutez vos références au devis pour recevoir une offre personnalisée.</p>
+      </div>
+
+      <div class="prodsearch">
+        <svg class="prod-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="prodSearch" autocomplete="off" aria-label="Rechercher un produit" oninput="onProdSearch(this.value)">
+        <button class="prod-clear" id="prodClear" onclick="clearProdSearch()" aria-label="Effacer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
       </div>
 
       <div class="cat-tabs" id="cat-tabs">
@@ -975,7 +1047,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#accueil" data-i18n="nav_accueil">Accueil</a>
         <a href="#catalogue" data-i18n="nav_catalogue">Catalogue</a>
         <a href="#pourquoi" data-i18n="nav_grossistes">Grossistes</a>
-        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <a href="conseils.html" data-i18n="nav_conseils">Conseils</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
       </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/4cake_by_slcm/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -1046,7 +1119,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       trust3_h: "Livraison 48h", trust3_p: "Expédition sous 48h sur la majorité des villes",
       trust4_h: "Support dédié", trust4_p: "Un conseiller pour vos commandes récurrentes",
       partner_label: "Distribué par",
+      nav_conseils: "Conseils",
       cat_kicker: "Catalogue grossiste", cat_h2: "Nos gammes de produits",
+      search_placeholder: "Rechercher un produit…",
       cat_p: "Tarifs indicatifs professionnels — dégressifs selon quantité. Ajoutez vos références au devis pour recevoir une offre personnalisée.",
       why_kicker_pre: "Pourquoi", why_h2: "Pensé pour les professionnels",
       why_p: "Que vous soyez pâtissier, boulanger, glacier ou revendeur, nous accompagnons votre activité avec des conditions adaptées.",
@@ -1108,7 +1183,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       trust3_h: "توصيل 48 ساعة", trust3_p: "الشحن خلال 48 ساعة لمعظم المدن",
       trust4_h: "دعم مخصص", trust4_p: "مستشار مخصص لطلباتكم المتكررة",
       partner_label: "التوزيع بواسطة",
+      nav_conseils: "نصائح",
       cat_kicker: "كتالوج الجملة", cat_h2: "تشكيلة منتجاتنا",
+      search_placeholder: "ابحثوا عن منتج…",
       cat_p: "أسعار استرشادية احترافية — تنازلية حسب الكمية. أضيفوا مراجعكم إلى طلب عرض السعر للحصول على عرض مخصص.",
       why_kicker_pre: "لماذا", why_h2: "مصمم للمحترفين",
       why_p: "سواء كنتم من الحلوانيين، الخبازين، صانعي المثلجات أو الموزعين، ندعم نشاطكم بشروط مناسبة.",
@@ -1175,6 +1252,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function setLang(lang){
     if(window.__langReady) dlPush('changement_langue', { langue: lang });
+    const _ps = document.getElementById('prodSearch');
+    if(_ps) _ps.placeholder = TRANSLATIONS[lang].search_placeholder;
     currentLang = lang;
     localStorage.setItem('4cake_lang', lang);
 
@@ -1236,7 +1315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="card-desc">${pDesc}</p>
           ${(p.tip || p.tip_ar) ? `
           <button class="tip-toggle" onclick="toggleTip(${p.id})">💡 <span>${isAr ? 'نصيحة وفكرة وصفة' : "Astuce & idée recette"}</span></button>
-          <div class="tip-bubble" id="tip-${p.id}">${isAr ? (p.tip_ar || p.tip) : (p.tip || p.tip_ar)}</div>
+          <div class="tip-bubble" id="tip-${p.id}">${isAr ? (p.tip_ar || p.tip) : (p.tip || p.tip_ar)}${lienRecette(p)}</div>
           ` : ''}
           <div class="card-footer">
             <span class="price">${p.price}<sub> ${currency} ${pUnit}</sub></span>
@@ -1251,6 +1330,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>`;
   }
 
+
+  /* ============ Passerelle Catalogue → Académie ============
+     Chaque produit renvoie vers la recette qui l'utilise concrètement. */
+  const ACADEMIE_URL = 'Academie/public/index.html';
+  const PRODUIT_RECETTE = {
+    1:  {id:'layercake',           fr:'Layer cake vanille-framboise',       ar:'ليير كيك بالفانيليا والتوت'},
+    2:  {id:'gateauetages',        fr:'Gâteau à étages au chocolat',        ar:'كعكة الطبقات بالشوكولاتة'},
+    3:  {id:'cheesecake',          fr:'Cheesecake basque',                  ar:'تشيز كيك الباسك'},
+    4:  {id:'moussecroustillante', fr:'Mousse croustillante chocolat-noisette', ar:'موس مقرمش بالشوكولاتة والبندق'},
+    5:  {id:'pralinemaison',       fr:'Praliné maison',                     ar:'برالين منزلي'},
+    6:  {id:'buchechocolat',       fr:'Bûche roulée au chocolat',           ar:'جذع الشوكولاتة الملفوف'},
+    7:  {id:'etonmess',            fr:'Eton mess aux fraises',              ar:'إيتون ميس بالفراولة'},
+    8:  {id:'fondantcaramel',      fr:'Fondant chocolat-caramel beurre salé', ar:'فوندان الكراميل بالزبدة المملحة'},
+    9:  {id:'crepeschoco',         fr:'Crêpes au chocolat',                 ar:'فطائر بالشوكولاتة'},
+    10: {id:'tartechoc',           fr:'Tarte au chocolat',                  ar:'تارت الشوكولاتة'},
+    11: {id:'paletchocolatcafe',   fr:'Palet chocolat, crème au café',      ar:'قرص الشوكولاتة مع كريمة القهوة'},
+    12: {id:'moussechocblanc',     fr:'Mousse au chocolat blanc',           ar:'موس الشوكولاتة البيضاء'},
+    13: {id:'macarons',            fr:'Macarons amande',                    ar:'ماكارون باللوز'},
+    14: {id:'merveilleux',         fr:'Merveilleux',                        ar:'مرفييو'},
+    15: {id:'foretnoire',          fr:'Forêt-noire',                        ar:'فوريه نوار'}
+  };
+
+  function lienRecette(p){
+    const rec = PRODUIT_RECETTE[p.id];
+    if(!rec) return '';
+    const isAr = currentLang === 'ar';
+    const url = ACADEMIE_URL + '#recette=' + rec.id;
+    return `<a class="tip-recipe" href="${url}" onclick="dlPush('clic_recette_depuis_produit',{produit:p.name,recette:'${rec.id}'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V6a2 2 0 0 1 2-2h12v15M6 19h12M6 19a2 2 0 0 0 2 2h10"/></svg>
+        ${isAr ? 'الوصفة: ' : 'La recette : '}<b>${isAr ? rec.ar : rec.fr}</b>
+      </a>`;
+  }
+
   function toggleTip(id){
     const _p = PRODUCTS.find(x => x.id == id);
     if(_p) dlPush('view_item', { currency:'MAD', value:Number(_p.price)||0, items:[dlItem(_p,1)] });
@@ -1258,8 +1370,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(bubble) bubble.classList.toggle('open');
   }
 
+  /* ============ Recherche produits (FR + AR) ============ */
+  let prodQuery = '';
+  let currentFilter = 'tous';
+
+  // insensible à la casse, aux accents et à la ponctuation ; gère aussi l'arabe
+  function prodNorm(s){
+    return (s || '').toString()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[\u0640]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ')
+      .trim();
+  }
+
+  // cherche dans les DEUX langues : nom, description et unité
+  function prodMatches(p, q){
+    // le champ « astuce » est inclus : chercher « tempérage », « bûche » ou
+    // « croustillant » remonte les produits concernés
+    const sansHtml = v => (v || '').replace(/<[^>]*>/g, ' ');
+    const champs = [p.name, p.name_ar, p.desc, p.desc_ar, p.unit, sansHtml(p.tip), sansHtml(p.tip_ar)];
+    return champs.some(v => prodNorm(v).indexOf(q) > -1);
+  }
+
+  function onProdSearch(v){
+    prodQuery = v;
+    document.querySelector('.prodsearch').classList.toggle('filled', v.trim().length > 0);
+    renderMenu(currentFilter);
+    clearTimeout(window.__prodTimer);
+    if(v.trim().length >= 3){
+      window.__prodTimer = setTimeout(() => {
+        const q = prodNorm(v);
+        dlPush('recherche', { terme: v.trim().toLowerCase(), resultats: PRODUCTS.filter(p => prodMatches(p, q)).length, langue: currentLang });
+      }, 1200);
+    }
+  }
+  function clearProdSearch(){
+    prodQuery = '';
+    const i = document.getElementById('prodSearch');
+    if(i) i.value = '';
+    document.querySelector('.prodsearch').classList.remove('filled');
+    renderMenu(currentFilter);
+    if(i) i.focus();
+  }
+
   function renderMenu(filter){
-    const items = filter === 'tous' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
+    currentFilter = filter || currentFilter;
+    let items = currentFilter === 'tous' ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentFilter);
+
+    // une recherche active cherche dans TOUT le catalogue, sans tenir compte de la catégorie
+    const q = prodNorm(prodQuery);
+    if(q){
+      items = PRODUCTS.filter(p => prodMatches(p, q));
+      if(!items.length){
+        const isAr = currentLang === 'ar';
+        grid.innerHTML = '<div class="prod-noresult"><strong>' +
+          (isAr ? 'لا توجد نتائج' : 'Aucun produit trouvé') + '</strong>' +
+          (isAr ? 'جرّبوا كلمة أخرى، أو تواصلوا معنا مباشرة.' : 'Essayez un autre mot, ou contactez-nous directement.') +
+          '</div>';
+        return;
+      }
+    }
     grid.innerHTML = items.map(p => cardHTML(p)).join('');
   }
 
@@ -1878,6 +2049,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     else if(href.indexOf('mailto:') === 0) dlPush('contact_email');
   }, true);
 
+    // Pré-filtrage du catalogue depuis un lien externe : index.html?cat=chocolat#catalogue
+    (function(){
+      const cat = new URLSearchParams(location.search).get('cat');
+      if(!cat) return;
+      const btn = document.querySelector('.cat-tab[data-cat="' + cat + '"]');
+      if(!btn) return;
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderMenu(cat);
+      dlPush('arrivee_depuis_academie', { categorie: cat });
+    })();
+
     window.__langReady = true; // à partir d'ici, seules les bascules volontaires sont mesurées
   }
 
@@ -1907,6 +2090,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           if(rows.length < 3){
             throw new Error(`Seulement ${rows.length} ligne(s) valide(s) reçue(s) — la feuille n'est probablement pas accessible publiquement (vérifiez le partage).`);
           }
+          // Filet sur les astuces : si la feuille renvoie une astuce vide ou visiblement
+          // tronquée (cellule mal saisie, contenu coupé), on garde celle du catalogue de secours.
+          rows.forEach(p => {
+            const ref = FALLBACK_PRODUCTS.find(f => String(f.id) === String(p.id));
+            if(!ref) return;
+            if(!p.tip || p.tip.trim().length < 25) p.tip = ref.tip || p.tip;
+            if(!p.tip_ar || p.tip_ar.trim().length < 15) p.tip_ar = ref.tip_ar || p.tip_ar;
+          });
           PRODUCTS = rows;
           renderCatalogue();
         }catch(err){
