@@ -31,7 +31,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:description" content="124 recettes expliquées pas à pas, sans jargon : ingrédients, étapes, repères et astuces. Classiques et pâtisserie marocaine, du débutant au confirmé.">
 <meta name="twitter:image" content="https://www.4cake.ma/og-image.jpg">
 
-<link rel="icon" href="../../LOGO_MARQUE.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../../icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="../../icon-512.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=Kaushan+Script&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -128,6 +130,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .fv-note.swap{background:#FBEFE0; border:1px dashed var(--rouge); color:var(--marine-2);}
   .fv-note.number{background:var(--rouge); color:#fff;}
   .fv-note.number b{display:block; font-family:'Anton',sans-serif; font-size:1.15rem; margin-bottom:2px;}
+  .fv-shop{margin:26px 20px 0; padding:18px 20px; border-radius:16px; background:linear-gradient(135deg,#FBF6E9,#F6EBCF); border:1px solid rgba(212,160,23,0.4);}
+  .fv-shop-txt strong{display:block; font-size:0.95rem; color:#3A2E1A; margin-bottom:5px;}
+  .fv-shop-txt span{display:block; font-size:0.84rem; line-height:1.5; color:var(--marine-2); margin-bottom:14px;}
+  .fv-shop-btn{display:inline-flex; align-items:center; gap:8px; background:#D4A017; color:#fff; font-weight:700; font-size:0.85rem; padding:11px 20px; border-radius:100px;}
+  .fv-shop-btn svg{width:15px; height:15px;}
+  html[dir="rtl"] .fv-shop-btn svg{transform:scaleX(-1);}
+  .fv-share-btn{display:flex; align-items:center; justify-content:center; gap:9px; margin:30px 20px 0; width:calc(100% - 40px); padding:14px; border-radius:100px; background:var(--rouge); color:#fff; font-weight:700; font-size:0.88rem; border:none; cursor:pointer; transition:filter .2s;}
+  .fv-share-btn:hover{filter:brightness(1.08);}
+  .fv-share-btn svg{width:16px; height:16px;}
   .fv-note-label{font-size:0.7rem; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin-bottom:4px; opacity:0.85;}
   @media (max-width:480px){ .fullview-panel{padding-bottom:40px;} }
   html[dir="rtl"] .fv-note{margin:0 60px 16px 20px;}
@@ -175,6 +186,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .pro-badge{position:absolute; top:8px; inset-inline-end:8px; background:#D4A017; color:#fff; font-size:0.62rem; font-weight:700; letter-spacing:0.06em; padding:3px 8px; border-radius:100px;}
   .pro-note{grid-column:1/-1; font-size:0.78rem; color:var(--marine-2); text-align:center; margin-top:8px;}
   html[dir="rtl"] .pro-cta svg{transform:scaleX(-1);}
+
+  /* ---------- Impression : ne garder que la fiche recette ---------- */
+  @media print{
+    header, .hero, .marquee, .searchbar, .section-tabs, .niveau-tabs,
+    .grid, footer, .lang-toggle, .fv-share-btn, .fv-shop, .fullview-top{ display:none !important; }
+    body{ background:#fff !important; color:#000; }
+    .fullview-overlay{ position:static !important; display:block !important; overflow:visible !important; background:#fff !important; }
+    .fullview-panel{ max-width:100% !important; padding:0 !important; }
+    .fv-title{ font-size:20pt; margin:0 0 6pt; }
+    .fv-meta span{ background:none !important; border:1px solid #999; color:#000 !important; }
+    .fv-section-label{ color:#000 !important; margin:14pt 0 6pt; }
+    .fv-ing-list li{ font-size:10.5pt; padding:4pt 0; }
+    .fv-step-num{ background:#000 !important; color:#fff !important; }
+    .fv-step-text{ font-size:10.5pt; }
+    .fv-note{ border:1px solid #999 !important; background:none !important; color:#000 !important; }
+    .fv-note.number b{ color:#000 !important; }
+    .fv-step{ page-break-inside:avoid; }
+    /* rappel de la source sur le papier */
+    .fullview-panel::after{ content:"4cake.ma — Académie 4Cake"; display:block; margin-top:18pt; padding-top:8pt; border-top:1px solid #999; font-size:9pt; color:#555; }
+  }
+
+  .searchbar{position:relative; margin:0 0 14px;}
+  .searchbar input{width:100%; padding:13px 42px 13px 42px; border-radius:100px; border:1.5px solid rgba(62,42,30,0.14); background:#fff; font-family:inherit; font-size:0.92rem; color:var(--marine); outline:none; transition:border-color .2s, box-shadow .2s;}
+  .searchbar input:focus{border-color:var(--rouge); box-shadow:0 0 0 3px rgba(193,87,58,0.12);}
+  .searchbar input::-webkit-search-cancel-button{display:none;}
+  .search-icon{position:absolute; inset-inline-start:15px; top:50%; transform:translateY(-50%); width:17px; height:17px; color:var(--marine-2); pointer-events:none;}
+  .search-clear{position:absolute; inset-inline-end:12px; top:50%; transform:translateY(-50%); width:24px; height:24px; border-radius:50%; background:var(--marine-soft); color:var(--marine-2); display:none; align-items:center; justify-content:center;}
+  .search-clear svg{width:12px; height:12px;}
+  .searchbar.filled .search-clear{display:flex;}
+  .search-count{grid-column:1/-1; font-size:0.82rem; color:var(--marine-2); margin:0 2px 4px;}
+  .search-empty{grid-column:1/-1; text-align:center; padding:34px 20px; color:var(--marine-2);}
+  .search-empty strong{display:block; font-size:1rem; color:var(--marine); margin-bottom:6px;}
+  .search-cat{grid-column:1/-1; font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:var(--rouge-dark); margin:10px 2px 2px;}
+
   .bases-group-label{grid-column:1/-1; font-size:0.76rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; color:var(--rouge-dark); margin:6px 2px 2px;}
   .bases-group-label.bases-group-maroc{margin-top:18px;}
   @media (max-width:480px){ .section-tabs{margin:0 -18px 14px; padding:0 18px;} }
@@ -187,6 +232,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   html[dir="rtl"] .kicker, html[dir="rtl"] .cap-label{font-family:'Cairo', sans-serif;}
   html[dir="rtl"] .nav-actions a svg{transform:scaleX(-1);}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "4Cake Académie",
+  "url": "https://www.4cake.ma/Academie/",
+  "logo": "https://www.4cake.ma/LOGO_MARQUE.png",
+  "description": "L'académie de pâtisserie 4Cake : formation professionnelle et recettes expliquées pas à pas, en français et en arabe.",
+  "inLanguage": ["fr","ar"],
+  "parentOrganization": { "@type": "Store", "name": "4Cake", "@id": "https://www.4cake.ma/#store" },
+  "sameAs": ["https://www.instagram.com/4cake_by_slcm/","https://www.tiktok.com/@4.cake"]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -234,13 +293,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <div class="container">
-  <div class="section-tabs" id="sectionTabs">
+  <div class="searchbar">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input type="search" id="searchInput" autocomplete="off" aria-label="Rechercher une recette ou un ingrédient" oninput="onSearch(this.value)">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Effacer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="section-tabs" id="sectionTabs" role="tablist" aria-label="Sections">
     <button class="section-tab active" onclick="switchSection('recettes')" data-section="recettes"></button>
     <button class="section-tab" onclick="switchSection('marocain')" data-section="marocain"></button>
     <button class="section-tab" onclick="switchSection('bases')" data-section="bases"></button>
     <button class="section-tab" onclick="switchSection('materiel')" data-section="materiel"></button>
   </div>
-  <div class="niveau-tabs" id="niveauTabs">
+  <div class="niveau-tabs" id="niveauTabs" role="tablist" aria-label="Niveaux">
     <button class="niveau-tab active" onclick="switchNiveau(1)" data-niveau="1"></button>
     <button class="niveau-tab" onclick="switchNiveau(2)" data-niveau="2"></button>
     <button class="niveau-tab niveau-tab-pro" onclick="switchNiveau(3)" data-niveau="3"></button>
@@ -252,7 +318,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="fullview-overlay" id="fullviewOverlay">
   <div class="fullview-panel">
     <div class="fullview-top">
-      <button class="fullview-back" onclick="closeFullView()">
+      <button class="fullview-back" onclick="closeFullView()" aria-label="Retour à la liste">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         <span id="fullviewBackLabel"></span>
       </button>
@@ -307,11 +373,19 @@ const UI = {
     tab_marocain: "Pâtisserie marocaine",
     niveau1: "Niveau 1 · Premiers pas", niveau2: "Niveau 2 · Pour aller plus loin", niveau3: "Niveau 3 · Espace Pro",
     pro_titre: "Vous maîtrisez les bases ?",
-    pro_texte: "L'Académie Pro rassemble 319 fiches de formation professionnelle : techniques, matériel, ingrédients, vocabulaire du métier, et 187 recettes détaillées.",
+    pro_texte: "L'Académie Pro rassemble 419 fiches de formation professionnelle : techniques, matériel, ingrédients, vocabulaire du métier, chocolat, cake design et 215 recettes détaillées.",
     pro_cta: "Découvrir l'Académie Pro",
     pro_badge: "PRO",
     pro_note: "Ces recettes sont consultables dans l'Espace Pro.",
     methode: "Méthode", retour: "Retour", voir_recette: "Voir la recette",
+    partager: "Partager cette recette", lien_copie: "Lien copié ✓",
+    shop_titre: "Il vous manque un ingrédient ?",
+    shop_texte: "4Cake fournit les professionnels de la pâtisserie au Maroc : chocolat, fruits secs, décors et matériel.",
+    shop_cta: "Voir le catalogue",
+    search_placeholder: "Rechercher une recette, un ingrédient…",
+    search_resultat: "résultat", search_resultats: "résultats",
+    search_vide: "Aucun résultat",
+    search_vide_aide: "Essayez un autre mot : le nom d'une recette ou d'un ingrédient.",
     bases_general: "Techniques générales", bases_marocain: "Pâtisserie marocaine"
   },
   ar: {
@@ -331,11 +405,19 @@ const UI = {
     tab_marocain: "الحلويات المغربية",
     niveau1: "المستوى 1 · الخطوات الأولى", niveau2: "المستوى 2 · للمضي أبعد", niveau3: "المستوى 3 · الفضاء المهني",
     pro_titre: "هل أتقنتم الأساسيات؟",
-    pro_texte: "تضم الأكاديمية المهنية 319 بطاقة تكوين احترافي: تقنيات، عتاد، مكونات، مصطلحات المهنة، و187 وصفة مفصّلة.",
+    pro_texte: "تضم الأكاديمية المهنية 419 بطاقة تكوين احترافي: تقنيات، عتاد، مكونات، مصطلحات المهنة، شوكولاتة، تصميم الكعك، و215 وصفة مفصّلة.",
     pro_cta: "اكتشفوا الأكاديمية المهنية",
     pro_badge: "مهني",
     pro_note: "هذه الوصفات متاحة في الفضاء المهني.",
     methode: "الطريقة", retour: "رجوع", voir_recette: "عرض الوصفة",
+    partager: "شاركوا هذه الوصفة", lien_copie: "تم نسخ الرابط ✓",
+    shop_titre: "هل ينقصكم مكوّن؟",
+    shop_texte: "4Cake تزوّد محترفي الحلويات في المغرب: شوكولاتة، فواكه جافة، زينة وعتاد.",
+    shop_cta: "اطّلعوا على الكتالوج",
+    search_placeholder: "ابحثوا عن وصفة أو مكوّن…",
+    search_resultat: "نتيجة", search_resultats: "نتائج",
+    search_vide: "لا توجد نتائج",
+    search_vide_aide: "جرّبوا كلمة أخرى: اسم وصفة أو مكوّن.",
     bases_general: "تقنيات عامة", bases_marocain: "الحلويات المغربية"
   }
 };
@@ -907,7 +989,7 @@ const RECIPES = [
       {type:'ing'},
       {type:'step', n:1, text:'Fouettez le lait, les œufs et le sucre dans un plat creux.'},
       {type:'step', n:2, text:'Trempez chaque tranche de pain quelques secondes de chaque côté — assez pour l\'imbiber, pas pour qu\'elle se déchire.'},
-      {type:'step', n:3, text:'Faites dorer à la poêle beurrée, à feu moyen, des deux côtés.'},
+      {type:'step', n:3, text:'Faites dorer à la poêle beurrée, à feu moyen, 2 à 3 minutes de chaque côté.'},
       {type:'tip', text:'Saupoudrez de sucre et de cannelle à la sortie de la poêle, encore chaud — ça colle bien mieux.'}
     ]},
   ar:{title:'الخبز المحمّص بالحليب', time:'20 دقيقة', level:'سهل',
@@ -917,7 +999,7 @@ const RECIPES = [
       {type:'ing'},
       {type:'step', n:1, text:'اخفقوا الحليب والبيض والسكر في طبق عميق.'},
       {type:'step', n:2, text:'انقعوا كل شريحة خبز بضع ثوانٍ من كل جهة — يكفي لترطيبها، دون أن تتمزق.'},
-      {type:'step', n:3, text:'ذهّبوها في مقلاة مزبّدة، على نار متوسطة، من الجهتين.'},
+      {type:'step', n:3, text:'ذهّبوها في مقلاة مزبّدة، على نار متوسطة، من 2 إلى 3 دقائق لكل جهة.'},
       {type:'tip', text:'رشّوا بالسكر والقرفة عند الخروج من المقلاة، وهي لا تزال ساخنة — يلتصق بشكل أفضل.'}
     ]}},
 {id:'pommesfour', icon:'four', niveau:1, cat:'classique',
@@ -1324,7 +1406,7 @@ const RECIPES = [
       {type:'step', n:3, text:'Abaissez à 2-3 mm, découpez des rectangles à la roulette crantée.'},
       {type:'step', n:4, text:'Incisez 4-5 fentes parallèles en gardant 1 cm de bordure intacte de chaque côté.'},
       {type:'step', n:5, text:'Soulevez et croisez les bandes entre elles pour former la rose caractéristique.'},
-      {type:'number', value:'Friture chaude', label:'Dorée des deux côtés'},
+      {type:'number', value:'Friture 170-180°C', label:'Dorée des deux côtés, 3 à 4 minutes'},
       {type:'step', n:6, text:'Égouttez, plongez aussitôt dans le miel tiède (jamais bouillant) 2-3 minutes.'},
       {type:'tip', text:'Trempez-les encore chaudes dans un miel juste tiède : trop chaud, elles se détrempent ; trop froid, le miel n\'imprègne pas.'}
     ]},
@@ -1339,7 +1421,7 @@ const RECIPES = [
       {type:'step', n:3, text:'افردوا بسماكة 2-3 مم، قطّعوا مستطيلات بعجلة مسننة.'},
       {type:'step', n:4, text:'اشقّوا 4-5 شقوق متوازية مع ترك 1 سم من الحافة سليمة من كل جهة.'},
       {type:'step', n:5, text:'ارفعوا وتقاطعوا الشرائط فيما بينها لتشكيل الوردة المميزة.'},
-      {type:'number', value:'قلي في زيت ساخن', label:'ذهبية من الجهتين'},
+      {type:'number', value:'قلي 170-180°م', label:'ذهبية من الجهتين، 3 إلى 4 دقائق'},
       {type:'step', n:6, text:'صفّوها، اغمسوها فورًا في عسل فاتر (أبدًا ساخن جدًا) 2-3 دقائق.'},
       {type:'tip', text:'اغمسوها وهي لا تزال ساخنة في عسل فاتر فقط: إذا كان ساخنًا جدًا تتشرب أكثر من اللازم، وإذا كان باردًا لا يتغلغل جيدًا.'}
     ]}},
@@ -1488,7 +1570,7 @@ const RECIPES = [
       {type:'step', n:3, text:'Façonnez la farce en petits bâtonnets.'},
       {type:'step', n:4, text:'Coupez les feuilles de brick en bandes, badigeonnez de beurre fondu, déposez la farce à une extrémité.'},
       {type:'step', n:5, text:'Pliez en triangle successif jusqu\'au bout de la bande, glissez le reste de feuille dans le dernier pli pour fermer.'},
-      {type:'number', value:'Friture chaude', label:'Dorée des deux côtés'},
+      {type:'number', value:'Friture 170-180°C', label:'Dorée des deux côtés, 3 à 4 minutes'},
       {type:'step', n:6, text:'Trempez immédiatement dans le miel chaud, égouttez, saupoudrez de sésame doré avant que le miel ne fige.'},
       {type:'tip', text:'Un pli mal fermé s\'ouvre à la friture — repliez bien le dernier coin sous le triangle avant de le glisser dans l\'huile.'}
     ]},
@@ -1501,7 +1583,7 @@ const RECIPES = [
       {type:'step', n:3, text:'شكّلوا الحشوة على شكل أصابع صغيرة.'},
       {type:'step', n:4, text:'قطّعوا ورق البريك إلى شرائط، ادهنوها بالزبدة المذابة، ضعوا الحشوة في أحد الأطراف.'},
       {type:'step', n:5, text:'اطووا مثلثات متتالية حتى نهاية الشريط، ادخلوا بقية الورقة في الطية الأخيرة للإغلاق.'},
-      {type:'number', value:'قلي في زيت ساخن', label:'ذهبية من الجهتين'},
+      {type:'number', value:'قلي 170-180°م', label:'ذهبية من الجهتين، 3 إلى 4 دقائق'},
       {type:'step', n:6, text:'اغمسوها فورًا في العسل الساخن، صفّوها، رشّوها بالسمسم الذهبي قبل أن يتماسك العسل.'},
       {type:'tip', text:'الطية غير المغلقة جيدًا تنفتح أثناء القلي — اطووا الزاوية الأخيرة جيدًا تحت المثلث قبل وضعه في الزيت.'}
     ]}},
@@ -3296,7 +3378,7 @@ const RECIPES = [
       {type:'step', n:2, text:'Pétrissez farine, sel, levure et eau : la pâte doit rester très molle et collante, presque liquide.'},
       {type:'number', value:'Levée 1h30', label:'La pâte doit doubler et faire des bulles en surface'},
       {type:'step', n:3, text:'Mouillez-vous les mains, prélevez une portion, percez un trou au centre et étirez en anneau.'},
-      {type:'number', value:'Huile bien chaude', label:'Dorés des deux côtés, en les retournant une fois'},
+      {type:'number', value:'Huile 170-180°C', label:'Dorés des deux côtés, 2 à 3 minutes'},
       {type:'tip', text:'Mains mouillées en permanence, jamais farinées : la farine durcit la pâte et casse la texture aérée du sfenj.'}
     ]},
   ar:{title:'سفنج', time:'ساعتان', level:'متوسط',
@@ -3308,7 +3390,7 @@ const RECIPES = [
       {type:'step', n:2, text:'اعجنوا الدقيق والملح والخميرة والماء: يجب أن تبقى العجينة طرية ولاصقة جدًا، شبه سائلة.'},
       {type:'number', value:'تخمير ساعة ونصف', label:'يجب أن تتضاعف وتظهر فقاعات على السطح'},
       {type:'step', n:3, text:'بلّلوا يديكم، خذوا قطعة، اثقبوها في المركز ومدّوها على شكل حلقة.'},
-      {type:'number', value:'زيت ساخن جيدًا', label:'ذهبية من الجهتين، مع قلبها مرة'},
+      {type:'number', value:'زيت 170-180°م', label:'ذهبية من الجهتين، 2 إلى 3 دقائق'},
       {type:'tip', text:'يدان مبللتان دائمًا، ولا دقيق أبدًا: الدقيق يقسّي العجينة ويكسر قوام السفنج الهوائي.'}
     ]}},
 {id:'griwech', icon:'crumble', niveau:2, cat:'marocain',
@@ -3321,7 +3403,7 @@ const RECIPES = [
       {type:'number', value:'Repos 30 min', label:'Indispensable pour pouvoir l\'étaler très finement'},
       {type:'step', n:2, text:'Étalez très finement, découpez des rectangles, incisez 4-5 fentes parallèles.'},
       {type:'step', n:3, text:'Passez une extrémité à travers la fente centrale et tirez pour former la tresse.'},
-      {type:'number', value:'Friture moyenne', label:'Dorée, en retournant une fois'},
+      {type:'number', value:'Friture 160-170°C', label:'Dorée, en retournant une fois, 2 à 3 minutes'},
       {type:'step', n:4, text:'Plongez immédiatement dans le miel tiède, égouttez, parsemez de sésame.'},
       {type:'tip', text:'Le vinaigre dans la pâte n\'est pas un détail : il empêche la pâte d\'absorber trop d\'huile à la friture.'}
     ]},
@@ -3334,7 +3416,7 @@ const RECIPES = [
       {type:'number', value:'راحة 30 دقيقة', label:'ضرورية لتتمكنوا من فردها رقيقة جدًا'},
       {type:'step', n:2, text:'افردوا رقيقًا جدًا، قطّعوا مستطيلات، اشقّوا 4-5 شقوق متوازية.'},
       {type:'step', n:3, text:'مرّروا أحد الأطراف عبر الشق الأوسط واسحبوا لتشكيل الضفيرة.'},
-      {type:'number', value:'قلي على حرارة متوسطة', label:'ذهبية، مع قلبها مرة'},
+      {type:'number', value:'قلي 160-170°م', label:'ذهبية، مع قلبها مرة، 2 إلى 3 دقائق'},
       {type:'step', n:4, text:'اغمسوها فورًا في العسل الفاتر، صفّوها، رشّوا السمسم.'},
       {type:'tip', text:'الخل في العجين ليس تفصيلًا: يمنع العجينة من امتصاص زيت كثير أثناء القلي.'}
     ]}},
@@ -3348,7 +3430,7 @@ const RECIPES = [
       {type:'number', value:'Repos 1h30 à 2h', label:'La pâte doit fermenter et devenir mousseuse'},
       {type:'step', n:2, text:'Préparez le sirop : sucre, eau et citron cuits 10 minutes, puis laissé refroidir.'},
       {type:'step', n:3, text:'Versez la pâte dans une poche percée d\'un petit trou, dessinez des spirales dans l\'huile chaude.'},
-      {type:'number', value:'Friture · 2-3 min', label:'Croustillantes et dorées'},
+      {type:'number', value:'Friture 170-180°C · 2-3 min', label:'Croustillantes et dorées'},
       {type:'step', n:4, text:'Égouttez et plongez aussitôt dans le sirop froid, 1 minute maximum.'},
       {type:'tip', text:'Zlabia chaude dans un sirop froid : ce contraste est la règle absolue, sinon elle ramollit au lieu de croustiller.'}
     ]},
@@ -3361,7 +3443,7 @@ const RECIPES = [
       {type:'number', value:'راحة ساعة ونصف إلى ساعتين', label:'يجب أن تتخمر العجينة وتصبح رغوية'},
       {type:'step', n:2, text:'حضّروا الشراب: سكر وماء وليمون يُطهون 10 دقائق، ثم يُترك ليبرد.'},
       {type:'step', n:3, text:'اسكبوا العجينة في كيس مثقوب بفتحة صغيرة، ارسموا حلزونات في الزيت الساخن.'},
-      {type:'number', value:'قلي · 2-3 دقائق', label:'مقرمشة وذهبية'},
+      {type:'number', value:'قلي 170-180°م · 2-3 دقائق', label:'مقرمشة وذهبية'},
       {type:'step', n:4, text:'صفّوها واغمسوها فورًا في الشراب البارد، دقيقة واحدة كحد أقصى.'},
       {type:'tip', text:'زلابية ساخنة في شراب بارد: هذا التباين قاعدة مطلقة، وإلا لانت بدل أن تقرمش.'}
     ]}},
@@ -3495,7 +3577,7 @@ const BASICS = [
       {type:'step', n:1, text:'طرية: لينة كالكريمة، لكنها لا تزال باردة عند اللمس. نحصل عليها بإخراجها 30-40 دقيقة مسبقًا.'},
       {type:'step', n:2, text:'مذابة: سائلة، تُسخّن برفق. تمنح كعكات أكثر كثافة ورطوبة (الفوندان، الفينونسييه).'},
       {type:'step', n:3, text:'الزبدة الطرية تُستخدم بالأخص لخفقها مع السكر (الكوكيز، الكيك): تحبس الهواء، لنتيجة أخف.'},
-      {type:'step', n:4, text:'في عجلة من أمركم؟ قطّعوا الزبدة مكعبات صغيرة — تلين أسرع بكثير من قطعة واحدة.'}
+      {type:'tip', text:'في عجلة من أمركم؟ قطّعوا الزبدة مكعبات صغيرة — تلين أسرع بكثير من قطعة واحدة.'}
     ]}},
 {id:'base-bainmarie', icon:'bainmarie', groupe:'general',
   fr:{title:'Le bain-marie sans matériel spécial', time:'1 min', level:'Astuce',
@@ -3893,15 +3975,22 @@ const PRO_TEASER = [
   {icon:'parisbrest',  fr:'Saint-Honoré à la chantilly', ar:'سان أونوريه بالشانتيي'},
   {icon:'parisbrest',  fr:'Paris-Brest',              ar:'باري-بريست'},
   {icon:'tartefine',   fr:'Fraisier',                 ar:'فريزيه'},
-  {icon:'cookie',      fr:'Macarons au chocolat',     ar:'ماكارون بالشوكولاتة'},
+  {icon:'chocolat',    fr:'Tempérage du chocolat',    ar:'تبلور الشوكولاتة'},
   {icon:'crumble',     fr:'Croissant',                ar:'كرواسان'},
-  {icon:'mousse',      fr:'Bavarois rubanné',         ar:'بافاروا مخطط'},
+  {icon:'mousse',      fr:'Bonbons de chocolat moulés',ar:'بونبون الشوكولاتة المقولب'},
   {icon:'parisbrest',  fr:'Religieuses café-chocolat',ar:'روليجيوز بالقهوة والشوكولاتة'},
-  {icon:'layer',       fr:'Charlotte aux fraises',    ar:'شارلوت بالفراولة'},
+  {icon:'layer',       fr:'Wedding cake à étages',    ar:'كعكة زفاف بطوابق'},
   {icon:'ghriba',      fr:'Kaab El Ghzal',            ar:'كعب الغزال'},
   {icon:'crumble',     fr:'Chebakia',                 ar:'الشباكية'},
   {icon:'parisbrest',  fr:"M'hancha",                 ar:'المحنشة'}
 ];
+
+/* ============ Suivi GTM / GA4 (dataLayer) ============ */
+window.dataLayer = window.dataLayer || [];
+function dlPush(event, params){
+  try{ window.dataLayer.push(Object.assign({event: event, espace: 'public'}, params || {})); }
+  catch(e){ /* le suivi ne doit jamais casser le site */ }
+}
 
 let currentLang = localStorage.getItem('4cake_lang') || 'fr';
 let activeSection = 'recettes';
@@ -3932,20 +4021,107 @@ function cardHTML(rec){
   `;
 }
 
+/* ============ Recherche ============ */
+let searchQuery = '';
+
+// insensible à la casse, aux accents et aux tirets — fonctionne aussi en arabe
+function normalize(s){
+  return (s || '').toString()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u0640]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\u0600-\u06ff]+/g, ' ')
+    .trim();
+}
+
+let searchTimer = null;
+function onSearch(v){
+  searchQuery = v;
+  clearTimeout(searchTimer);
+  if(v.trim().length >= 3){
+    searchTimer = setTimeout(() => {
+      const q = normalize(v);
+      const n = RECIPES.filter(x => matchesSearch(x, q)).length + BASICS.filter(x => matchesSearch(x, q)).length;
+      dlPush('recherche', { terme: v.trim().toLowerCase(), resultats: n, langue: currentLang });
+    }, 1200); // on attend la fin de la frappe
+  }
+  document.querySelector('.searchbar').classList.toggle('filled', v.trim().length > 0);
+  renderGrid();
+}
+function clearSearch(){
+  searchQuery = '';
+  const input = document.getElementById('searchInput');
+  if(input) input.value = '';
+  document.querySelector('.searchbar').classList.remove('filled');
+  renderGrid();
+  if(input) input.focus();
+}
+
+// Cherche dans le titre et les ingrédients, dans les DEUX langues :
+// un utilisateur en mode arabe peut ainsi retrouver une recette dont il connaît le nom français, et inversement.
+function matchesSearch(item, q){
+  for(const lang of ['fr','ar']){
+    const d = item[lang];
+    if(!d) continue;
+    if(normalize(d.title).indexOf(q) > -1) return true;
+    if(d.ingredients && d.ingredients.some(([nom]) => normalize(nom).indexOf(q) > -1)) return true;
+  }
+  return false;
+}
+
+function renderSearchResults(){
+  const grid = document.getElementById('grid');
+  const t = UI[currentLang];
+  const q = normalize(searchQuery);
+
+  const recettes = RECIPES.filter(x => matchesSearch(x, q));
+  const bases    = BASICS.filter(x => matchesSearch(x, q));
+  const total    = recettes.length + bases.length;
+
+  if(total === 0){
+    grid.innerHTML = `<div class="search-empty"><strong>${t.search_vide}</strong>${t.search_vide_aide}</div>`;
+    return;
+  }
+
+  let html = `<div class="search-count">${total} ${total > 1 ? t.search_resultats : t.search_resultat}</div>`;
+  const clas = recettes.filter(x => x.cat === 'classique');
+  const maro = recettes.filter(x => x.cat === 'marocain');
+  if(clas.length) html += `<div class="search-cat">${t.tab_recettes}</div>` + clas.map(cardHTML).join('');
+  if(maro.length) html += `<div class="search-cat">${t.tab_marocain}</div>` + maro.map(cardHTML).join('');
+  if(bases.length) html += `<div class="search-cat">${t.tab_bases}</div>` + bases.map(cardHTML).join('');
+  grid.innerHTML = html;
+}
+
 function renderGrid(){
   const grid = document.getElementById('grid');
   const materielBlock = document.getElementById('materielBlock');
   const niveauTabs = document.getElementById('niveauTabs');
 
   document.querySelectorAll('.section-tab').forEach(b => b.classList.toggle('active', b.dataset.section === activeSection));
-  document.getElementById('sectionTabs').querySelector('[data-section="recettes"]').textContent = UI[currentLang].tab_recettes;
-  document.getElementById('sectionTabs').querySelector('[data-section="marocain"]').textContent = UI[currentLang].tab_marocain;
-  document.getElementById('sectionTabs').querySelector('[data-section="bases"]').textContent = UI[currentLang].tab_bases;
-  document.getElementById('sectionTabs').querySelector('[data-section="materiel"]').textContent = UI[currentLang].tab_materiel;
-  niveauTabs.querySelector('[data-niveau="1"]').textContent = UI[currentLang].niveau1;
-  niveauTabs.querySelector('[data-niveau="2"]').textContent = UI[currentLang].niveau2;
-  niveauTabs.querySelector('[data-niveau="3"]').textContent = UI[currentLang].niveau3;
+  // le libellé étant injecté ici, on renseigne aussi l'étiquette d'accessibilité
+  const majTab = (sel, txt) => {
+    const el = document.getElementById('sectionTabs').querySelector(sel);
+    if(el){ el.textContent = txt; el.setAttribute('aria-label', txt); }
+  };
+  majTab('[data-section="recettes"]', UI[currentLang].tab_recettes);
+  majTab('[data-section="marocain"]', UI[currentLang].tab_marocain);
+  majTab('[data-section="bases"]', UI[currentLang].tab_bases);
+  majTab('[data-section="materiel"]', UI[currentLang].tab_materiel);
+  [1,2,3].forEach(n => {
+    const el = niveauTabs.querySelector('[data-niveau="' + n + '"]');
+    const txt = UI[currentLang]['niveau' + n];
+    if(el){ el.textContent = txt; el.setAttribute('aria-label', txt); }
+  });
   document.querySelectorAll('.niveau-tab').forEach(b => b.classList.toggle('active', Number(b.dataset.niveau) === activeNiveau));
+
+  // Une recherche active masque les onglets et affiche les résultats transversaux
+  if(searchQuery.trim().length > 0){
+    materielBlock.style.display = 'none';
+    niveauTabs.style.display = 'none';
+    grid.style.display = 'grid';
+    renderSearchResults();
+    return;
+  }
 
   if(activeSection === 'materiel'){
     grid.style.display = 'none';
@@ -4015,10 +4191,15 @@ function renderMateriel(){
 }
 
 function switchSection(section){
+  if(section !== activeSection) dlPush('section_vue', { section: section });
   activeSection = section;
   renderGrid();
 }
 function switchNiveau(n){
+  if(n !== activeNiveau){
+    dlPush('niveau_change', { niveau: n, section: activeSection });
+    if(n === 3) dlPush('vitrine_pro_vue', { section: activeSection });
+  }
   activeNiveau = n;
   renderGrid();
 }
@@ -4026,6 +4207,45 @@ function switchNiveau(n){
 let curRecipe = null;
 const CAP_DURATION = 4500;
 
+
+
+/* ============ Données structurées Recipe (SEO) ============
+   Injectées à l'ouverture d'une fiche, retirées à la fermeture :
+   Google lit ainsi la recette réellement consultée. */
+function setRecipeSchema(item){
+  const old = document.getElementById('recipeSchema');
+  if(old) old.remove();
+  if(!item || !RECIPES.some(x => x.id === item.id)) return; // uniquement les recettes
+
+  const d = item[currentLang] || item.fr;
+  const etapes = d.capsules
+    .filter(cp => cp.type === 'step')
+    .map((cp, i) => ({ "@type": "HowToStep", "position": i + 1, "text": cp.text }));
+
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": d.title,
+    "inLanguage": currentLang === 'ar' ? 'ar' : 'fr',
+    "recipeCategory": "Dessert",
+    "recipeCuisine": item.cat === 'marocain' ? (currentLang === 'ar' ? 'مغربية' : 'Marocaine') : (currentLang === 'ar' ? 'فرنسية' : 'Française'),
+    "author": { "@type": "Organization", "name": "4Cake Académie", "url": "https://www.4cake.ma/" },
+    "publisher": { "@type": "Organization", "name": "4Cake", "url": "https://www.4cake.ma/" }
+  };
+
+  const hook = (d.capsules.find(cp => cp.type === 'title') || {}).hook;
+  if(hook) data.description = hook;
+  if(d.time) data.totalTime = d.time;                 // texte lisible, non ISO 8601
+  if(d.ingredients) data.recipeIngredient = d.ingredients.map(([n, q]) => (q ? q + ' ' + n : n));
+  if(etapes.length) data.recipeInstructions = etapes;
+  if(RECIPE_IMG[item.id]) data.image = 'https://www.4cake.ma/Academie/public/' + IMG_BASE + RECIPE_IMG[item.id];
+
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.id = 'recipeSchema';
+  s.textContent = JSON.stringify(data);
+  document.head.appendChild(s);
+}
 
 function openFullView(){
   const d = r(curRecipe);
@@ -4060,18 +4280,111 @@ function openFullView(){
     ${ingHTML}
     <div class="fv-section-label">${t.methode}</div>
     ${flowHTML}
+    <button class="fv-share-btn" onclick="partagerRecette()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M12 3v13M8 7l4-4 4 4"/></svg>
+      ${t.partager}
+    </button>
+    ${encartCatalogue(curRecipe)}
   `;
+  setRecipeSchema(curRecipe);
   document.getElementById('fullviewOverlay').classList.add('open');
 }
-function closeFullView(){
+function closeFullView(silencieux){
+  setRecipeSchema(null);
   document.getElementById('fullviewOverlay').classList.remove('open');
+  if(!silencieux && location.hash) history.pushState({}, '', location.pathname + location.search);
 }
 
 // Entrée par défaut : la fiche figée
-function openRecipe(id){
+// silencieux = true lors d'une ouverture déclenchée par l'URL (pas de nouvelle entrée d'historique)
+function openRecipe(id, silencieux){
+  const isRecipe = RECIPES.some(rec => rec.id === id);
   curRecipe = RECIPES.find(rec => rec.id === id) || BASICS.find(rec => rec.id === id);
   if(!curRecipe) return;
+  if(!silencieux){
+    // une adresse propre, partageable et rechargeable
+    history.pushState({ fiche: id }, '', '#' + (isRecipe ? 'recette' : 'fiche') + '=' + id);
+  }
+  if(isRecipe){
+    dlPush('recette_ouverte', {
+      recette: curRecipe.fr.title,
+      niveau: curRecipe.niveau,
+      categorie: curRecipe.cat,
+      langue: currentLang
+    });
+  } else {
+    dlPush('fiche_base_ouverte', { fiche: curRecipe.fr.title, groupe: curRecipe.groupe, langue: currentLang });
+  }
   openFullView();
+}
+
+
+
+/* ============ Passerelle Académie → Catalogue ============
+   Analyse les ingrédients de la recette pour proposer la catégorie 4Cake pertinente. */
+const CATALOGUE_URL = '../../index.html';
+
+const MOTS_CATEGORIE = [
+  { cat:'chocolat',    mots:['chocolat','cacao','ganache','couverture','praliné','gianduja','شوكولاتة','كاكاو'] },
+  { cat:'feuilletine', mots:['feuilletine','crêpe dentelle','croustillant','فوييتين'] },
+  { cat:'topping',     mots:['amande','noisette','pistache','noix','sésame','coco','fruits secs','pécan','لوز','بندق','فستق','جوز','سمسم','جوز الهند'] },
+  { cat:'decors',      mots:['colorant','décor','vermicelle','perles','paillettes','nappage','ملون','زينة'] },
+  { cat:'pate',        mots:['pâte à sucre','fondant','glaçage','pastillage','عجينة السكر','فوندان'] }
+];
+
+function categoriePertinente(item){
+  const d = item.fr; // on analyse toujours le français, plus riche en mots-clés
+  if(!d || !d.ingredients) return null;
+  const texte = d.ingredients.map(([n]) => n.toLowerCase()).join(' ');
+  const scores = MOTS_CATEGORIE.map(g => ({
+    cat: g.cat,
+    score: g.mots.filter(m => texte.indexOf(m) > -1).length
+  })).filter(x => x.score > 0).sort((a,b) => b.score - a.score);
+  return scores.length ? scores[0].cat : null;
+}
+
+function encartCatalogue(item){
+  if(!RECIPES.some(x => x.id === item.id)) return ''; // pas sur les fiches techniques
+  const t = UI[currentLang];
+  const cat = categoriePertinente(item);
+  const url = CATALOGUE_URL + (cat ? '?cat=' + cat : '') + '#catalogue';
+  return `
+    <div class="fv-shop">
+      <div class="fv-shop-txt">
+        <strong>${t.shop_titre}</strong>
+        <span>${t.shop_texte}</span>
+      </div>
+      <a class="fv-shop-btn" href="${url}" data-cat="${cat || 'tous'}">
+        ${t.shop_cta}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>`;
+}
+
+/* Partage : API native du téléphone si disponible (WhatsApp, SMS…), sinon copie du lien */
+function partagerRecette(){
+  if(!curRecipe) return;
+  const d = r(curRecipe);
+  const isRecipe = RECIPES.some(x => x.id === curRecipe.id);
+  const url = location.origin + location.pathname + '#' + (isRecipe ? 'recette' : 'fiche') + '=' + curRecipe.id;
+  dlPush('partage_recette', { recette: d.title, langue: currentLang });
+
+  if(navigator.share){
+    navigator.share({ title: d.title, text: d.title + ' — 4Cake Académie', url: url }).catch(() => {});
+    return;
+  }
+  const fini = () => {
+    const b = document.querySelector('.fv-share-btn');
+    if(!b) return;
+    const avant = b.innerHTML;
+    b.innerHTML = UI[currentLang].lien_copie;
+    setTimeout(() => { b.innerHTML = avant; }, 2000);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(fini).catch(() => window.prompt(UI[currentLang].partager, url));
+  } else {
+    window.prompt(UI[currentLang].partager, url);
+  }
 }
 
 function applyStaticTranslations(lang){
@@ -4093,6 +4406,7 @@ function applyStaticTranslations(lang){
 }
 
 function setLang(lang){
+  if(window.__langReady && lang !== currentLang) dlPush('changement_langue', { langue: lang });
   currentLang = lang;
   localStorage.setItem('4cake_lang', lang);
   document.documentElement.lang = lang;
@@ -4100,6 +4414,8 @@ function setLang(lang){
   document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
   applyStaticTranslations(lang);
+  const si = document.getElementById('searchInput');
+  if(si) si.placeholder = UI[lang].search_placeholder;
   renderGrid();
 }
 
@@ -4122,7 +4438,50 @@ function buildMarquee(){
 }
 buildMarquee();
 
-setLang(currentLang);
+/* Clics sortants : Espace Pro et retour vitrine (délégation globale) */
+document.addEventListener('click', function(e){
+  const a = e.target.closest('a[href]');
+  if(!a) return;
+  const href = a.getAttribute('href') || '';
+  if(href.indexOf('../pro/') === 0 || href.indexOf('/pro/') > -1){
+    dlPush('clic_espace_pro', {
+      depuis: a.classList.contains('pro-cta') ? 'bouton_cta'
+            : a.classList.contains('rcard-pro') ? 'carte_teaser' : 'lien',
+      section: activeSection,
+      langue: currentLang
+    });
+  } else if(href === '../../' || href === '../../index.html' || href.indexOf('4cake.ma') > -1){
+    dlPush('retour_vitrine', { langue: currentLang });
+  }
+}, true);
+
+setLang(currentLang); // applique aussi le placeholder de recherche
+
+/* ============ Routage par ancre ============
+   Permet de partager une recette précise : .../public/#recette=chebakia
+   et gère le bouton Retour du navigateur. */
+function idDepuisHash(){
+  const h = decodeURIComponent(location.hash || '').replace(/^#/, '');
+  const m = h.match(/^(?:recette|fiche)=(.+)$/);
+  return m ? m[1] : null;
+}
+
+function appliquerHash(){
+  const id = idDepuisHash();
+  if(id){
+    const existe = RECIPES.some(x => x.id === id) || BASICS.some(x => x.id === id);
+    if(existe){ openRecipe(id, true); return; }
+    // ancre inconnue (recette renommée, lien erroné) : on nettoie sans bloquer l'utilisateur
+    history.replaceState({}, '', location.pathname + location.search);
+  }
+  closeFullView(true);
+}
+
+window.addEventListener('popstate', appliquerHash);
+appliquerHash(); // au chargement : ouvre directement la fiche si l'URL en désigne une
+
+
+window.__langReady = true;
 </script>
 
 </body>
