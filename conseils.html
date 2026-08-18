@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var l=localStorage.getItem('4cake_lang')||'fr';document.documentElement.lang=l;document.documentElement.dir=(l==='ar'?'rtl':'ltr');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conseils &amp; astuces produits — 4Cake</title>
@@ -174,6 +175,13 @@
   footer{text-align:center; padding:40px 20px 60px; color:var(--gris); font-size:.83rem;}
   footer a{color:var(--or); font-weight:600; text-decoration:none;}
   @media(max-width:520px){.hero h1{font-size:1.5rem;}}
+  .lang-toggle{display:flex; align-items:center; background:var(--creme); border-radius:100px; padding:3px; gap:2px; border:1px solid rgba(58,46,26,.12);}
+  .lang-btn{padding:6px 12px; border-radius:100px; font-weight:700; font-size:.72rem; color:var(--gris); background:none; border:none; cursor:pointer; font-family:'Poppins',sans-serif;}
+  .lang-btn.active{background:var(--brun); color:#fff;}
+  header .wrap{gap:10px;}
+  html[dir="rtl"] body{font-family:'Cairo','Poppins',sans-serif;}
+  html[dir="rtl"] .rec-link{margin-right:0; margin-left:8px;}
+  html[dir="rtl"] .cat-link{margin-right:0;}
 </style>
 </head>
 <body>
@@ -181,144 +189,172 @@
 
 <header><div class="wrap">
   <a href="index.html"><img src="LOGO_MARQUE.png" alt="4Cake"></a>
-  <a class="back" href="index.html#catalogue">← Retour au catalogue</a>
+  <a class="back" href="index.html#catalogue" data-fr="← Retour au catalogue" data-ar="→ العودة إلى الكتالوج">← Retour au catalogue</a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="lang-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="lang-ar" onclick="setLang('ar')">AR</button>
+  </div>
 </div></header>
 
 <div class="wrap">
   <div class="hero">
-    <h1>Conseils &amp; astuces produits</h1>
-    <p>Le savoir-faire de nos pâtissiers, produit par produit : températures, dosages, gestes qui font la différence — et les recettes qui les mettent en œuvre.</p>
+    <h1 data-fr="Conseils &amp; astuces produits" data-ar="نصائح وحيل حول المنتجات">Conseils &amp; astuces produits</h1>
+    <p data-fr="Le savoir-faire de nos pâtissiers, produit par produit : températures, dosages, gestes qui font la différence — et les recettes qui les mettent en œuvre." data-ar="خبرة حلوانيّينا، منتجًا بمنتج: درجات الحرارة، الجرعات، والحركات التي تصنع الفرق — والوصفات التي تطبّقها.">Le savoir-faire de nos pâtissiers, produit par produit : températures, dosages, gestes qui font la différence — et les recettes qui les mettent en œuvre.</p>
   </div>
 
 <section class="cat-block">
-  <h2>Pâte à sucre</h2>
+  <h2 data-fr="Pâte à sucre" data-ar="عجينة السكر">Pâte à sucre</h2>
   <article class="conseil" id="produit-1">
-    <h3>Pâte à sucre blanche</h3>
-    <p class="prod-desc">Conditionnement 5kg — texture souple, idéale recouvrement.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> sortez-la 20 min avant, puis assouplissez-la avec un peu de Maïzena et une pointe de graisse végétale : elle s'étale sans coller ni craqueler. Étalez à 3 mm et lissez au polisseur du centre vers les bords.<br><br><strong>Idée recette :</strong> un number cake anniversaire recouvert net, ou des dentelles et volants texturés au rouleau à empreintes pour un mariage.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=layercake">Voir la recette : <b>Layer cake vanille-framboise</b></a>
-    <a class="cat-link" href="index.html?cat=pate#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Pâte à sucre blanche" data-ar="عجينة السكر البيضاء">Pâte à sucre blanche</h3>
+    <p class="prod-desc" data-fr="Conditionnement 5kg — texture souple, idéale recouvrement." data-ar="تعبئة 5 كغ — قوام طري، مثالية للتغطية.">Conditionnement 5kg — texture souple, idéale recouvrement.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> sortez-la 20 min avant, puis assouplissez-la avec un peu de Maïzena et une pointe de graisse végétale : elle s'étale sans coller ni craqueler. Étalez à 3 mm et lissez au polisseur du centre vers les bords.<br><br><strong>Idée recette :</strong> un number cake anniversaire recouvert net, ou des dentelles et volants texturés au rouleau à empreintes pour un mariage." data-ar="<strong>نصيحة:</strong> أخرجوها 20 دقيقة قبل الاستعمال، ثم ليّنوها بقليل من نشا الذرة ولمسة من الدهن النباتي: تُفرد دون التصاق أو تشقق. افردوها بسماكة 3 مم ونعّموها بالملقّن من المركز نحو الحواف.<br><br><strong>فكرة وصفة:</strong> نامبر كيك عيد ميلاد بتغطية نظيفة، أو دانتيل وثنيات منقوشة بأسطوانة النقش لحفل زفاف."><strong>Astuce :</strong> sortez-la 20 min avant, puis assouplissez-la avec un peu de Maïzena et une pointe de graisse végétale : elle s'étale sans coller ni craqueler. Étalez à 3 mm et lissez au polisseur du centre vers les bords.<br><br><strong>Idée recette :</strong> un number cake anniversaire recouvert net, ou des dentelles et volants texturés au rouleau à empreintes pour un mariage.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=layercake" data-fr="Voir la recette : <b>Layer cake vanille-framboise</b>" data-ar="عرض الوصفة: <b>ليير كيك بالفانيليا والتوت</b>">Voir la recette : <b>Layer cake vanille-framboise</b></a>
+    <a class="cat-link" href="index.html?cat=pate#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-2">
-    <h3>Pâte à sucre couleurs assorties</h3>
-    <p class="prod-desc">Kit 8 couleurs, 1kg chacune — prêtes à l&#x27;emploi.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> mélangez deux teintes du kit pour créer vos couleurs maison sans surcoût, et gardez toujours une petite boule blanche pour éclaircir. Emballez chaque reste au film alimentaire, à l'abri de la lumière : plusieurs mois de conservation.<br><br><strong>Idée recette :</strong> un dégradé pastel sur un layer cake, ou des figurines et fleurs séchées 24 h avant le montage.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=gateauetages">Voir la recette : <b>Gâteau à étages au chocolat</b></a>
-    <a class="cat-link" href="index.html?cat=pate#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Pâte à sucre couleurs assorties" data-ar="عجينة السكر بألوان متنوعة">Pâte à sucre couleurs assorties</h3>
+    <p class="prod-desc" data-fr="Kit 8 couleurs, 1kg chacune — prêtes à l&#x27;emploi." data-ar="طقم 8 ألوان، 1 كغ لكل منها — جاهزة للاستعمال.">Kit 8 couleurs, 1kg chacune — prêtes à l&#x27;emploi.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> mélangez deux teintes du kit pour créer vos couleurs maison sans surcoût, et gardez toujours une petite boule blanche pour éclaircir. Emballez chaque reste au film alimentaire, à l'abri de la lumière : plusieurs mois de conservation.<br><br><strong>Idée recette :</strong> un dégradé pastel sur un layer cake, ou des figurines et fleurs séchées 24 h avant le montage." data-ar="<strong>نصيحة:</strong> اخلطوا لونين من الطقم لإنشاء ألوان خاصة بكم دون تكلفة إضافية، واحتفظوا دائمًا بكرة بيضاء صغيرة للتفتيح. غلّفوا كل بقية بغشاء غذائي بعيدًا عن الضوء: تدوم عدة أشهر.<br><br><strong>فكرة وصفة:</strong> تدرّج لوني هادئ على ليير كيك، أو مجسمات وزهور مجفّفة 24 ساعة قبل التركيب."><strong>Astuce :</strong> mélangez deux teintes du kit pour créer vos couleurs maison sans surcoût, et gardez toujours une petite boule blanche pour éclaircir. Emballez chaque reste au film alimentaire, à l'abri de la lumière : plusieurs mois de conservation.<br><br><strong>Idée recette :</strong> un dégradé pastel sur un layer cake, ou des figurines et fleurs séchées 24 h avant le montage.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=gateauetages" data-fr="Voir la recette : <b>Gâteau à étages au chocolat</b>" data-ar="عرض الوصفة: <b>كعكة بطوابق بالشوكولاتة</b>">Voir la recette : <b>Gâteau à étages au chocolat</b></a>
+    <a class="cat-link" href="index.html?cat=pate#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-3">
-    <h3>Pâte à sucre premium sans gluten</h3>
-    <p class="prod-desc">Formule pro, conditionnement 5kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> travaillez-la à température ambiante, jamais froide : sans gluten, elle est plus fragile et se fend si on la force. Un plan de travail légèrement gras plutôt que fariné donne le meilleur résultat.<br><br><strong>Idée recette :</strong> la solution pour honorer une commande cœliaque sans changer votre rendu visuel — recouvrement lisse et décors sur le même gâteau.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=cheesecake">Voir la recette : <b>Cheesecake basque</b></a>
-    <a class="cat-link" href="index.html?cat=pate#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Pâte à sucre premium sans gluten" data-ar="عجينة السكر الفاخرة الخالية من الغلوتين">Pâte à sucre premium sans gluten</h3>
+    <p class="prod-desc" data-fr="Formule pro, conditionnement 5kg." data-ar="تركيبة احترافية، تعبئة 5 كغ.">Formule pro, conditionnement 5kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> travaillez-la à température ambiante, jamais froide : sans gluten, elle est plus fragile et se fend si on la force. Un plan de travail légèrement gras plutôt que fariné donne le meilleur résultat.<br><br><strong>Idée recette :</strong> la solution pour honorer une commande cœliaque sans changer votre rendu visuel — recouvrement lisse et décors sur le même gâteau." data-ar="<strong>نصيحة:</strong> اعملوا بها بحرارة الغرفة، لا باردة أبدًا: بدون غلوتين، تكون أكثر هشاشة وتتشقق إذا أُجبرت. سطح عمل مدهون قليلاً بدل المرشوش بالدقيق يعطي أفضل نتيجة.<br><br><strong>فكرة وصفة:</strong> الحل المثالي لتلبية طلب خالٍ من الغلوتين دون تغيير مظهر عملكم — تغطية ناعمة وزينة على نفس الكعكة."><strong>Astuce :</strong> travaillez-la à température ambiante, jamais froide : sans gluten, elle est plus fragile et se fend si on la force. Un plan de travail légèrement gras plutôt que fariné donne le meilleur résultat.<br><br><strong>Idée recette :</strong> la solution pour honorer une commande cœliaque sans changer votre rendu visuel — recouvrement lisse et décors sur le même gâteau.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=cheesecake" data-fr="Voir la recette : <b>Cheesecake basque</b>" data-ar="عرض الوصفة: <b>تشيز كيك باسكي</b>">Voir la recette : <b>Cheesecake basque</b></a>
+    <a class="cat-link" href="index.html?cat=pate#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
 </section>
 
 <section class="cat-block">
-  <h2>Feuilletine</h2>
+  <h2 data-fr="Feuilletine" data-ar="فوييتين">Feuilletine</h2>
   <article class="conseil" id="produit-4">
-    <h3>Feuilletine nature</h3>
-    <p class="prod-desc">Éclats croustillants, sac professionnel 1kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> conservez-la en boîte hermétique et incorporez-la toujours en dernier, hors du feu : au-delà de 30 °C dans une masse humide, elle perd son croustillant en quelques heures.<br><br><strong>Idée recette :</strong> le croustillant classique — 100 g de feuilletine, 200 g de praliné, 60 g de chocolat au lait fondu. Étalez à 4 mm, bloquez au froid 20 min, détaillez : base parfaite pour vos entremets.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=moussecroustillante">Voir la recette : <b>Mousse croustillante chocolat-noisette</b></a>
-    <a class="cat-link" href="index.html?cat=feuilletine#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Feuilletine nature" data-ar="فوييتين سادة">Feuilletine nature</h3>
+    <p class="prod-desc" data-fr="Éclats croustillants, sac professionnel 1kg." data-ar="رقائق مقرمشة، كيس احترافي 1 كغ.">Éclats croustillants, sac professionnel 1kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> conservez-la en boîte hermétique et incorporez-la toujours en dernier, hors du feu : au-delà de 30 °C dans une masse humide, elle perd son croustillant en quelques heures.<br><br><strong>Idée recette :</strong> le croustillant classique — 100 g de feuilletine, 200 g de praliné, 60 g de chocolat au lait fondu. Étalez à 4 mm, bloquez au froid 20 min, détaillez : base parfaite pour vos entremets." data-ar="<strong>نصيحة:</strong> احفظوها في علبة محكمة الإغلاق وأضيفوها دائمًا في الأخير، بعيدًا عن النار: فوق 30 درجة في خليط رطب، تفقد قرمشتها خلال ساعات قليلة.<br><br><strong>فكرة وصفة:</strong> المقرمش الكلاسيكي — 100 غ فوييتين، 200 غ برالين، 60 غ شوكولاتة حليب مذابة. افردوا بسماكة 4 مم، جمّدوا 20 دقيقة، قطّعوا: قاعدة مثالية لحلوياتكم المركّبة."><strong>Astuce :</strong> conservez-la en boîte hermétique et incorporez-la toujours en dernier, hors du feu : au-delà de 30 °C dans une masse humide, elle perd son croustillant en quelques heures.<br><br><strong>Idée recette :</strong> le croustillant classique — 100 g de feuilletine, 200 g de praliné, 60 g de chocolat au lait fondu. Étalez à 4 mm, bloquez au froid 20 min, détaillez : base parfaite pour vos entremets.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=moussecroustillante" data-fr="Voir la recette : <b>Mousse croustillante chocolat-noisette</b>" data-ar="عرض الوصفة: <b>موس مقرمش بالشوكولاتة والبندق</b>">Voir la recette : <b>Mousse croustillante chocolat-noisette</b></a>
+    <a class="cat-link" href="index.html?cat=feuilletine#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-5">
-    <h3>Feuilletine praliné</h3>
-    <p class="prod-desc">Pré-mélangée praliné, sac 1kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> déjà pralinée, elle vous fait gagner une étape : un simple beurre de cacao ou du chocolat fondu suffit à la lier. Comptez 15 % de matière grasse maximum pour rester croquant.<br><br><strong>Idée recette :</strong> un insert croustillant dans une mousse chocolat-noisette, ou une barre praliné-feuilletine enrobée de couverture pour la vitrine.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=pralinemaison">Voir la recette : <b>Praliné maison</b></a>
-    <a class="cat-link" href="index.html?cat=feuilletine#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Feuilletine praliné" data-ar="فوييتين بالبرالين">Feuilletine praliné</h3>
+    <p class="prod-desc" data-fr="Pré-mélangée praliné, sac 1kg." data-ar="ممزوجة مسبقًا بالبرالين، كيس 1 كغ.">Pré-mélangée praliné, sac 1kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> déjà pralinée, elle vous fait gagner une étape : un simple beurre de cacao ou du chocolat fondu suffit à la lier. Comptez 15 % de matière grasse maximum pour rester croquant.<br><br><strong>Idée recette :</strong> un insert croustillant dans une mousse chocolat-noisette, ou une barre praliné-feuilletine enrobée de couverture pour la vitrine." data-ar="<strong>نصيحة:</strong> ممزوجة بالبرالين مسبقًا، توفّر عليكم خطوة: مجرد زبدة كاكاو أو شوكولاتة مذابة تكفي لربطها. لا تتجاوزوا 15% من المادة الدهنية للحفاظ على القرمشة.<br><br><strong>فكرة وصفة:</strong> حشوة مقرمشة داخل موس بالشوكولاتة والبندق، أو قالب برالين-فوييتين مغلّف بالتغطية للعرض."><strong>Astuce :</strong> déjà pralinée, elle vous fait gagner une étape : un simple beurre de cacao ou du chocolat fondu suffit à la lier. Comptez 15 % de matière grasse maximum pour rester croquant.<br><br><strong>Idée recette :</strong> un insert croustillant dans une mousse chocolat-noisette, ou une barre praliné-feuilletine enrobée de couverture pour la vitrine.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=pralinemaison" data-fr="Voir la recette : <b>Praliné maison</b>" data-ar="عرض الوصفة: <b>برالين منزلي</b>">Voir la recette : <b>Praliné maison</b></a>
+    <a class="cat-link" href="index.html?cat=feuilletine#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-6">
-    <h3>Feuilletine chocolat</h3>
-    <p class="prod-desc">Enrobage cacao, conditionnement 5kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> plus foncée, elle marque visuellement sur les desserts clairs — utilisez-la aussi en finition, pas seulement en base cachée. À saupoudrer au dernier moment sur une surface encore souple pour qu'elle accroche.<br><br><strong>Idée recette :</strong> une bûche : fine couche croustillante sous la mousse, puis bordure de feuilletine chocolat sur le pourtour au moment du dressage.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=buchechocolat">Voir la recette : <b>Bûche roulée au chocolat</b></a>
-    <a class="cat-link" href="index.html?cat=feuilletine#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Feuilletine chocolat" data-ar="فوييتين بالشوكولاتة">Feuilletine chocolat</h3>
+    <p class="prod-desc" data-fr="Enrobage cacao, conditionnement 5kg." data-ar="مغلّفة بالكاكاو، تعبئة 5 كغ.">Enrobage cacao, conditionnement 5kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> plus foncée, elle marque visuellement sur les desserts clairs — utilisez-la aussi en finition, pas seulement en base cachée. À saupoudrer au dernier moment sur une surface encore souple pour qu'elle accroche.<br><br><strong>Idée recette :</strong> une bûche : fine couche croustillante sous la mousse, puis bordure de feuilletine chocolat sur le pourtour au moment du dressage." data-ar="<strong>نصيحة:</strong> أغمق لونًا، تُبرز نفسها بصريًا على الحلويات الفاتحة — استعملوها أيضًا في اللمسة النهائية، لا فقط كقاعدة مخفية. رشّوها في اللحظة الأخيرة على سطح لا يزال طريًا لتلتصق جيدًا.<br><br><strong>فكرة وصفة:</strong> بوش نويل: طبقة رقيقة مقرمشة تحت الموس، ثم حافة من فوييتين الشوكولاتة حول المحيط عند التقديم."><strong>Astuce :</strong> plus foncée, elle marque visuellement sur les desserts clairs — utilisez-la aussi en finition, pas seulement en base cachée. À saupoudrer au dernier moment sur une surface encore souple pour qu'elle accroche.<br><br><strong>Idée recette :</strong> une bûche : fine couche croustillante sous la mousse, puis bordure de feuilletine chocolat sur le pourtour au moment du dressage.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=buchechocolat" data-fr="Voir la recette : <b>Bûche roulée au chocolat</b>" data-ar="عرض الوصفة: <b>بوش نويل ملفوفة بالشوكولاتة</b>">Voir la recette : <b>Bûche roulée au chocolat</b></a>
+    <a class="cat-link" href="index.html?cat=feuilletine#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
 </section>
 
 <section class="cat-block">
-  <h2>Toppings</h2>
+  <h2 data-fr="Toppings" data-ar="توبينغ">Toppings</h2>
   <article class="conseil" id="produit-7">
-    <h3>Topping Fraise</h3>
-    <p class="prod-desc">Brillant miroir, bidon 1L.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> secouez énergiquement avant chaque service pour homogénéiser la texture, et dressez à froid : sur une base tiède, le filet se dilue et perd son brillant.<br><br><strong>Idée recette :</strong> un cheesecake nappé en spirale, un milk-shake fraise avec un cordon en paroi de verre, ou un topping de crêpes en libre-service.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=etonmess">Voir la recette : <b>Eton mess aux fraises</b></a>
-    <a class="cat-link" href="index.html?cat=topping#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Topping Fraise" data-ar="توبينغ الفراولة">Topping Fraise</h3>
+    <p class="prod-desc" data-fr="Brillant miroir, bidon 1L." data-ar="بلمعان المرآة، عبوة 1 لتر.">Brillant miroir, bidon 1L.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> secouez énergiquement avant chaque service pour homogénéiser la texture, et dressez à froid : sur une base tiède, le filet se dilue et perd son brillant.<br><br><strong>Idée recette :</strong> un cheesecake nappé en spirale, un milk-shake fraise avec un cordon en paroi de verre, ou un topping de crêpes en libre-service." data-ar="<strong>نصيحة:</strong> رجّوها بقوة قبل كل استعمال لتوحيد القوام، وضعوها باردة: على قاعدة فاترة، يذوب الخيط ويفقد لمعانه.<br><br><strong>فكرة وصفة:</strong> تشيز كيك مغطى بشكل حلزوني، ميلك شيك بالفراولة مع خط على جدار الكأس، أو توبينغ للفطائر يقدَّم بحرية."><strong>Astuce :</strong> secouez énergiquement avant chaque service pour homogénéiser la texture, et dressez à froid : sur une base tiède, le filet se dilue et perd son brillant.<br><br><strong>Idée recette :</strong> un cheesecake nappé en spirale, un milk-shake fraise avec un cordon en paroi de verre, ou un topping de crêpes en libre-service.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=etonmess" data-fr="Voir la recette : <b>Eton mess aux fraises</b>" data-ar="عرض الوصفة: <b>إيتون ميس بالفراولة</b>">Voir la recette : <b>Eton mess aux fraises</b></a>
+    <a class="cat-link" href="index.html?cat=topping#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-8">
-    <h3>Topping Caramel Beurre Salé</h3>
-    <p class="prod-desc">Texture coulante, bidon 5L.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> tiédissez le bidon au bain-marie quelques minutes avant le service : l'écoulement devient net et régulier, sans gouttes qui bavent. Jamais au micro-ondes à pleine puissance, le sucre brûlerait au fond.<br><br><strong>Idée recette :</strong> incorporé à une ganache montée pour une chantilly caramel, ou en cœur coulant dans un moelleux servi tiède.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=fondantcaramel">Voir la recette : <b>Fondant chocolat-caramel beurre salé</b></a>
-    <a class="cat-link" href="index.html?cat=topping#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Topping Caramel Beurre Salé" data-ar="توبينغ الكراميل بالزبدة المملحة">Topping Caramel Beurre Salé</h3>
+    <p class="prod-desc" data-fr="Texture coulante, bidon 5L." data-ar="قوام سائل، عبوة 5 لتر.">Texture coulante, bidon 5L.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> tiédissez le bidon au bain-marie quelques minutes avant le service : l'écoulement devient net et régulier, sans gouttes qui bavent. Jamais au micro-ondes à pleine puissance, le sucre brûlerait au fond.<br><br><strong>Idée recette :</strong> incorporé à une ganache montée pour une chantilly caramel, ou en cœur coulant dans un moelleux servi tiède." data-ar="<strong>نصيحة:</strong> فتّروا العبوة في حمام مائي بضع دقائق قبل التقديم: يصبح السكب نظيفًا ومنتظمًا دون تقطير. لا تستعملوا الميكروويف بأقصى قوة أبدًا، فالسكر يحترق في القاع.<br><br><strong>فكرة وصفة:</strong> يُدمج في غاناش مخفوق لشانتيي بالكراميل، أو كقلب سائل داخل كعكة طرية تُقدَّم فاترة."><strong>Astuce :</strong> tiédissez le bidon au bain-marie quelques minutes avant le service : l'écoulement devient net et régulier, sans gouttes qui bavent. Jamais au micro-ondes à pleine puissance, le sucre brûlerait au fond.<br><br><strong>Idée recette :</strong> incorporé à une ganache montée pour une chantilly caramel, ou en cœur coulant dans un moelleux servi tiède.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=fondantcaramel" data-fr="Voir la recette : <b>Fondant chocolat-caramel beurre salé</b>" data-ar="عرض الوصفة: <b>فوندان بالشوكولاتة والكراميل المملح</b>">Voir la recette : <b>Fondant chocolat-caramel beurre salé</b></a>
+    <a class="cat-link" href="index.html?cat=topping#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-9">
-    <h3>Topping Chocolat</h3>
-    <p class="prod-desc">Brillance intense, bidon 1L.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> quelques secondes au bain-marie suffisent pour retrouver un écoulement fluide et un rendu brillant. Refermez bien : au contact de l'air, une pellicule se forme en surface.<br><br><strong>Idée recette :</strong> un glaçage express sur choux et éclairs, ou un marbrage sur cheesecake — déposez des points puis tirez un pic à travers.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=crepeschoco">Voir la recette : <b>Crêpes au chocolat</b></a>
-    <a class="cat-link" href="index.html?cat=topping#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Topping Chocolat" data-ar="توبينغ الشوكولاتة">Topping Chocolat</h3>
+    <p class="prod-desc" data-fr="Brillance intense, bidon 1L." data-ar="لمعان قوي، عبوة 1 لتر.">Brillance intense, bidon 1L.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> quelques secondes au bain-marie suffisent pour retrouver un écoulement fluide et un rendu brillant. Refermez bien : au contact de l'air, une pellicule se forme en surface.<br><br><strong>Idée recette :</strong> un glaçage express sur choux et éclairs, ou un marbrage sur cheesecake — déposez des points puis tirez un pic à travers." data-ar="<strong>نصيحة:</strong> بضع ثوانٍ في حمام مائي تكفي لاستعادة سيولته ولمعانه. أغلقوها جيدًا: عند ملامسة الهواء، تتشكل طبقة رقيقة على السطح.<br><br><strong>فكرة وصفة:</strong> تغطية سريعة على الشو والإكلير، أو رسم مرمري على تشيز كيك — ضعوا نقاطًا ثم مرّروا عودًا خلالها."><strong>Astuce :</strong> quelques secondes au bain-marie suffisent pour retrouver un écoulement fluide et un rendu brillant. Refermez bien : au contact de l'air, une pellicule se forme en surface.<br><br><strong>Idée recette :</strong> un glaçage express sur choux et éclairs, ou un marbrage sur cheesecake — déposez des points puis tirez un pic à travers.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=crepeschoco" data-fr="Voir la recette : <b>Crêpes au chocolat</b>" data-ar="عرض الوصفة: <b>فطائر بالشوكولاتة</b>">Voir la recette : <b>Crêpes au chocolat</b></a>
+    <a class="cat-link" href="index.html?cat=topping#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
 </section>
 
 <section class="cat-block">
-  <h2>Chocolat</h2>
+  <h2 data-fr="Chocolat" data-ar="شوكولاطة">Chocolat</h2>
   <article class="conseil" id="produit-10">
-    <h3>Chocolat de couverture noir 64%</h3>
-    <p class="prod-desc">Pistoles professionnelles, sac 1kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> respectez la courbe de tempérage 45 °C → 27 °C → 31 °C : c'est ce qui donne le claquant à la casse, le brillant et un démoulage sans traces blanches. Testez sur la pointe d'un couteau, la prise doit être nette en 3 min.<br><br><strong>Idée recette :</strong> des tablettes garnies pour la vitrine, des coques de bonbons moulés, ou de fins décors coulés sur feuille guitare.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=tartechoc">Voir la recette : <b>Tarte au chocolat</b></a>
-    <a class="cat-link" href="index.html?cat=chocolat#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Chocolat de couverture noir 64%" data-ar="شوكولاتة تغطية داكنة 64%">Chocolat de couverture noir 64%</h3>
+    <p class="prod-desc" data-fr="Pistoles professionnelles, sac 1kg." data-ar="أقراص احترافية، كيس 1 كغ.">Pistoles professionnelles, sac 1kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> respectez la courbe de tempérage 45 °C → 27 °C → 31 °C : c'est ce qui donne le claquant à la casse, le brillant et un démoulage sans traces blanches. Testez sur la pointe d'un couteau, la prise doit être nette en 3 min.<br><br><strong>Idée recette :</strong> des tablettes garnies pour la vitrine, des coques de bonbons moulés, ou de fins décors coulés sur feuille guitare." data-ar="<strong>نصيحة:</strong> احترموا منحنى التبلور 45°م ← 27°م ← 31°م: هذا ما يمنح القرمشة عند الكسر واللمعان وإخراجًا دون آثار بيضاء. اختبروا على طرف سكين، يجب أن يتماسك خلال 3 دقائق.<br><br><strong>فكرة وصفة:</strong> ألواح محشوة للعرض، قشور بونبون مقولبة، أو زينة رفيعة مسكوبة على ورق الغيتار."><strong>Astuce :</strong> respectez la courbe de tempérage 45 °C → 27 °C → 31 °C : c'est ce qui donne le claquant à la casse, le brillant et un démoulage sans traces blanches. Testez sur la pointe d'un couteau, la prise doit être nette en 3 min.<br><br><strong>Idée recette :</strong> des tablettes garnies pour la vitrine, des coques de bonbons moulés, ou de fins décors coulés sur feuille guitare.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=tartechoc" data-fr="Voir la recette : <b>Tarte au chocolat</b>" data-ar="عرض الوصفة: <b>تارت بالشوكولاتة</b>">Voir la recette : <b>Tarte au chocolat</b></a>
+    <a class="cat-link" href="index.html?cat=chocolat#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-11">
-    <h3>Chocolat de couverture lait</h3>
-    <p class="prod-desc">Fondant et onctueux, sac 2.5kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> plus riche en lait et en sucre, elle brûle vite : ne dépassez jamais 45 °C à la fonte. Comptez aussi moins de crème que pour du noir, sinon la ganache reste molle.<br><br><strong>Idée recette :</strong> une ganache montée lait-vanille (ratio 1:2 chocolat/crème, 12 h au froid avant de monter) pour garnir des tartes ou pocher un décor tenue parfaite.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=paletchocolatcafe">Voir la recette : <b>Palet chocolat, crème au café</b></a>
-    <a class="cat-link" href="index.html?cat=chocolat#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Chocolat de couverture lait" data-ar="شوكولاتة تغطية بالحليب">Chocolat de couverture lait</h3>
+    <p class="prod-desc" data-fr="Fondant et onctueux, sac 2.5kg." data-ar="طرية وناعمة، كيس 2.5 كغ.">Fondant et onctueux, sac 2.5kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> plus riche en lait et en sucre, elle brûle vite : ne dépassez jamais 45 °C à la fonte. Comptez aussi moins de crème que pour du noir, sinon la ganache reste molle.<br><br><strong>Idée recette :</strong> une ganache montée lait-vanille (ratio 1:2 chocolat/crème, 12 h au froid avant de monter) pour garnir des tartes ou pocher un décor tenue parfaite." data-ar="<strong>نصيحة:</strong> أغنى بالحليب والسكر، تحترق بسرعة: لا تتجاوزوا 45°م عند الإذابة أبدًا. استعملوا كريمة أقل مما تستعملونه مع الداكنة، وإلا بقي الغاناش طريًا جدًا.<br><br><strong>فكرة وصفة:</strong> غاناش مخفوق بالحليب والفانيليا (نسبة 1:2 شوكولاتة/كريمة، 12 ساعة في البرودة قبل الخفق) لحشو التارت أو التشكيل بثبات ممتاز."><strong>Astuce :</strong> plus riche en lait et en sucre, elle brûle vite : ne dépassez jamais 45 °C à la fonte. Comptez aussi moins de crème que pour du noir, sinon la ganache reste molle.<br><br><strong>Idée recette :</strong> une ganache montée lait-vanille (ratio 1:2 chocolat/crème, 12 h au froid avant de monter) pour garnir des tartes ou pocher un décor tenue parfaite.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=paletchocolatcafe" data-fr="Voir la recette : <b>Palet chocolat, crème au café</b>" data-ar="عرض الوصفة: <b>قطعة شوكولاتة بكريمة القهوة</b>">Voir la recette : <b>Palet chocolat, crème au café</b></a>
+    <a class="cat-link" href="index.html?cat=chocolat#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-12">
-    <h3>Chocolat blanc pistoles</h3>
-    <p class="prod-desc">Idéal moulage et décor, sac 1kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> la plus sensible des trois — bain-marie doux et jamais au-delà de 40 °C, sans une goutte d'eau dans la cuve. Pour la colorer, uniquement des colorants liposolubles : un gel à base d'eau la ferait immédiatement trancher.<br><br><strong>Idée recette :</strong> des pistoles teintées en pastel pour des coques colorées, ou un glaçage blanc sur entremets fruits rouges.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=moussechocblanc">Voir la recette : <b>Mousse au chocolat blanc</b></a>
-    <a class="cat-link" href="index.html?cat=chocolat#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Chocolat blanc pistoles" data-ar="شوكولاتة بيضاء أقراص">Chocolat blanc pistoles</h3>
+    <p class="prod-desc" data-fr="Idéal moulage et décor, sac 1kg." data-ar="مثالية للقولبة والزينة، كيس 1 كغ.">Idéal moulage et décor, sac 1kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> la plus sensible des trois — bain-marie doux et jamais au-delà de 40 °C, sans une goutte d'eau dans la cuve. Pour la colorer, uniquement des colorants liposolubles : un gel à base d'eau la ferait immédiatement trancher.<br><br><strong>Idée recette :</strong> des pistoles teintées en pastel pour des coques colorées, ou un glaçage blanc sur entremets fruits rouges." data-ar="<strong>نصيحة:</strong> الأكثر حساسية بين الثلاث — حمام مائي هادئ ولا تتجاوزوا 40°م أبدًا، دون قطرة ماء واحدة في الإناء. لتلوينها، فقط ملوّنات ذائبة في الدهن: أي جل مائي سيجعلها تتكتل فورًا.<br><br><strong>فكرة وصفة:</strong> أقراص ملوّنة بألوان هادئة لقشور ملونة، أو غلاصة بيضاء على حلوى مركّبة بالفواكه الحمراء."><strong>Astuce :</strong> la plus sensible des trois — bain-marie doux et jamais au-delà de 40 °C, sans une goutte d'eau dans la cuve. Pour la colorer, uniquement des colorants liposolubles : un gel à base d'eau la ferait immédiatement trancher.<br><br><strong>Idée recette :</strong> des pistoles teintées en pastel pour des coques colorées, ou un glaçage blanc sur entremets fruits rouges.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=moussechocblanc" data-fr="Voir la recette : <b>Mousse au chocolat blanc</b>" data-ar="عرض الوصفة: <b>موس الشوكولاتة البيضاء</b>">Voir la recette : <b>Mousse au chocolat blanc</b></a>
+    <a class="cat-link" href="index.html?cat=chocolat#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
 </section>
 
 <section class="cat-block">
-  <h2>Décors & Colorants</h2>
+  <h2 data-fr="Décors & Colorants" data-ar="زينة وألوان">Décors & Colorants</h2>
   <article class="conseil" id="produit-13">
-    <h3>Colorants gel — assortiment</h3>
-    <p class="prod-desc">Set de 12 teintes professionnelles.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> une pointe de cure-dent suffit — les gels sont très concentrés. Ajoutez toujours progressivement : la teinte fonce en reposant 15 min, un rose parfait au dosage devient souvent fuchsia le lendemain.<br><br><strong>Idée recette :</strong> préparez vos teintes la veille pour valider la couleur réelle, et gardez un nuancier de petites boules datées comme référence d'atelier.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=macarons">Voir la recette : <b>Macarons amande</b></a>
-    <a class="cat-link" href="index.html?cat=decors#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Colorants gel — assortiment" data-ar="ملوّنات جل — تشكيلة">Colorants gel — assortiment</h3>
+    <p class="prod-desc" data-fr="Set de 12 teintes professionnelles." data-ar="طقم 12 لونًا احترافيًا.">Set de 12 teintes professionnelles.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> une pointe de cure-dent suffit — les gels sont très concentrés. Ajoutez toujours progressivement : la teinte fonce en reposant 15 min, un rose parfait au dosage devient souvent fuchsia le lendemain.<br><br><strong>Idée recette :</strong> préparez vos teintes la veille pour valider la couleur réelle, et gardez un nuancier de petites boules datées comme référence d'atelier." data-ar="<strong>نصيحة:</strong> طرف عود أسنان يكفي — الجل مركّز جدًا. أضيفوا دائمًا تدريجيًا: يغمق اللون بعد 15 دقيقة راحة، ووردي مثالي عند الجرعة قد يصبح فوشيا في اليوم التالي.<br><br><strong>فكرة وصفة:</strong> حضّروا ألوانكم في اليوم السابق للتأكد من اللون الحقيقي، واحتفظوا بكرات صغيرة مؤرّخة كمرجع للورشة."><strong>Astuce :</strong> une pointe de cure-dent suffit — les gels sont très concentrés. Ajoutez toujours progressivement : la teinte fonce en reposant 15 min, un rose parfait au dosage devient souvent fuchsia le lendemain.<br><br><strong>Idée recette :</strong> préparez vos teintes la veille pour valider la couleur réelle, et gardez un nuancier de petites boules datées comme référence d'atelier.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=macarons" data-fr="Voir la recette : <b>Macarons amande</b>" data-ar="عرض الوصفة: <b>ماكارون باللوز</b>">Voir la recette : <b>Macarons amande</b></a>
+    <a class="cat-link" href="index.html?cat=decors#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-14">
-    <h3>Perles sucrées assorties</h3>
-    <p class="prod-desc">Sachet professionnel 500g.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> à disposer juste avant le service : au contact d'une surface humide ou d'une crème, elles ramollissent et déteignent en une heure. Sur un gâteau à livrer, présentez-les à part en sachet.<br><br><strong>Idée recette :</strong> une bordure de perles à la base d'un layer cake, ou un effet cascade sur le haut d'un gâteau de baptême.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=merveilleux">Voir la recette : <b>Merveilleux</b></a>
-    <a class="cat-link" href="index.html?cat=decors#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Perles sucrées assorties" data-ar="لآلئ سكرية متنوعة">Perles sucrées assorties</h3>
+    <p class="prod-desc" data-fr="Sachet professionnel 500g." data-ar="كيس احترافي 500 غ.">Sachet professionnel 500g.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> à disposer juste avant le service : au contact d'une surface humide ou d'une crème, elles ramollissent et déteignent en une heure. Sur un gâteau à livrer, présentez-les à part en sachet.<br><br><strong>Idée recette :</strong> une bordure de perles à la base d'un layer cake, ou un effet cascade sur le haut d'un gâteau de baptême." data-ar="<strong>نصيحة:</strong> ضعوها قبل التقديم مباشرة: عند ملامسة سطح رطب أو كريمة، تلين وتفقد لونها خلال ساعة. لكعكة يجب توصيلها، قدّموها في كيس منفصل.<br><br><strong>فكرة وصفة:</strong> حافة من اللآلئ عند قاعدة ليير كيك، أو تأثير شلال أعلى كعكة عماد."><strong>Astuce :</strong> à disposer juste avant le service : au contact d'une surface humide ou d'une crème, elles ramollissent et déteignent en une heure. Sur un gâteau à livrer, présentez-les à part en sachet.<br><br><strong>Idée recette :</strong> une bordure de perles à la base d'un layer cake, ou un effet cascade sur le haut d'un gâteau de baptême.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=merveilleux" data-fr="Voir la recette : <b>Merveilleux</b>" data-ar="عرض الوصفة: <b>ميرفاي</b>">Voir la recette : <b>Merveilleux</b></a>
+    <a class="cat-link" href="index.html?cat=decors#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
   <article class="conseil" id="produit-15">
-    <h3>Vermicelles chocolat</h3>
-    <p class="prod-desc">Décor croustillant, sac 1kg.</p>
-    <div class="conseil-txt"><strong>Astuce :</strong> pour un enrobage régulier, roulez la pièce encore légèrement collante dans une assiette creuse plutôt que de saupoudrer par-dessus. Conservation plusieurs mois au sec, à l'abri des odeurs fortes.<br><br><strong>Idée recette :</strong> des truffes maison enrobées, un contour de forêt-noire, ou une finition sur les bords d'un gâteau glacé à la ganache.</div>
-    <a class="rec-link" href="Academie/public/index.html#recette=foretnoire">Voir la recette : <b>Forêt-noire</b></a>
-    <a class="cat-link" href="index.html?cat=decors#catalogue">Voir ce produit au catalogue →</a>
+    <h3 data-fr="Vermicelles chocolat" data-ar="فيرميسيل الشوكولاتة">Vermicelles chocolat</h3>
+    <p class="prod-desc" data-fr="Décor croustillant, sac 1kg." data-ar="زينة مقرمشة، كيس 1 كغ.">Décor croustillant, sac 1kg.</p>
+    <div class="conseil-txt" data-fr="<strong>Astuce :</strong> pour un enrobage régulier, roulez la pièce encore légèrement collante dans une assiette creuse plutôt que de saupoudrer par-dessus. Conservation plusieurs mois au sec, à l'abri des odeurs fortes.<br><br><strong>Idée recette :</strong> des truffes maison enrobées, un contour de forêt-noire, ou une finition sur les bords d'un gâteau glacé à la ganache." data-ar="<strong>نصيحة:</strong> للحصول على تغليف منتظم، دحرجوا القطعة وهي لا تزال لزجة قليلاً في طبق عميق بدل الرش من فوق. تُحفظ عدة أشهر في مكان جاف، بعيدًا عن الروائح القوية.<br><br><strong>فكرة وصفة:</strong> ترافل منزلية مغلّفة، حافة فوريه نوار، أو لمسة نهائية على حواف كعكة مغطاة بالغاناش."><strong>Astuce :</strong> pour un enrobage régulier, roulez la pièce encore légèrement collante dans une assiette creuse plutôt que de saupoudrer par-dessus. Conservation plusieurs mois au sec, à l'abri des odeurs fortes.<br><br><strong>Idée recette :</strong> des truffes maison enrobées, un contour de forêt-noire, ou une finition sur les bords d'un gâteau glacé à la ganache.</div>
+    <a class="rec-link" href="Academie/public/index.html#recette=foretnoire" data-fr="Voir la recette : <b>Forêt-noire</b>" data-ar="عرض الوصفة: <b>فوريه نوار</b>">Voir la recette : <b>Forêt-noire</b></a>
+    <a class="cat-link" href="index.html?cat=decors#catalogue" data-fr="Voir ce produit au catalogue →" data-ar="← عرض هذا المنتج في الكتالوج">Voir ce produit au catalogue →</a>
   </article>
 </section>
 </div>
 
 <footer>
-  <p>4Cake — Zone Industrielle, Mohammedia · <a href="tel:+212661759934">+212 661 759 934</a></p>
-  <p style="margin-top:8px;"><a href="Academie/public/index.html">Découvrir l'Académie et ses recettes →</a></p>
+  <p><span data-fr="4Cake — Zone Industrielle, Mohammedia" data-ar="4Cake — المنطقة الصناعية، المحمدية">4Cake — Zone Industrielle, Mohammedia</span> · <a href="tel:+212661759934">+212 661 759 934</a></p>
+  <p style="margin-top:8px;"><a href="Academie/public/index.html" data-fr="Découvrir l'Académie et ses recettes →" data-ar="← اكتشفوا الأكاديمية ووصفاتها">Découvrir l'Académie et ses recettes →</a></p>
 </footer>
+
+<script>
+(function(){
+  var currentLang = localStorage.getItem('4cake_lang') || 'fr';
+
+  function applyLang(lang){
+    currentLang = lang;
+    localStorage.setItem('4cake_lang', lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+    document.querySelectorAll('[data-fr]').forEach(function(el){
+      var ar = el.getAttribute('data-ar');
+      if(lang === 'ar' && ar){ el.innerHTML = ar; }
+      else { el.innerHTML = el.getAttribute('data-fr'); }
+    });
+    if(window.dataLayer) window.dataLayer.push({event:'changement_langue', langue: lang});
+  }
+
+  window.setLang = applyLang;
+  document.addEventListener('DOMContentLoaded', function(){ applyLang(currentLang); });
+})();
+</script>
 </body>
 </html>
