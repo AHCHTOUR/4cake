@@ -275,7 +275,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <b data-i18n="brand_title">Académie</b><span class="tag" data-i18n="brand_tag">RECETTES</span>
     </div>
     <div class="nav-actions">
-      <a href="../../index.html"><span data-i18n="nav_vitrine">Site vitrine</span></a>
+      <a href="../../index.html"><span data-i18n="nav_vitrine">Magasin</span></a>
       <a class="pro-link" href="../pro/index.html">
         <svg viewBox="0 0 64 64" width="16" height="16">
           <g fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
@@ -284,7 +284,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <path d="M14.5 41.5h35v6.4c0 1.2-1 2.1-2.2 2.1H16.7c-1.2 0-2.2-.9-2.2-2.1v-6.4Z"/>
           </g>
         </svg>
-        <span data-i18n="nav_pro">Espace Pro</span>
+        <span data-i18n="nav_pro">Pro</span>
       </a>
       <div class="lang-toggle">
         <button class="lang-btn active" id="lang-fr" onclick="setLang('fr')">FR</button>
@@ -389,7 +389,7 @@ const ICONS = {
 const UI = {
   fr: {
     brand_title: "Académie", brand_tag: "RECETTES",
-    nav_portal: "← Portail", nav_pro: "Espace Pro", nav_vitrine: "Site vitrine",
+    nav_portal: "← Portail", nav_pro: "Pro", nav_vitrine: "Magasin",
     hero_kicker: "Recettes expliquées pas à pas",
     hero_h1: "Des classiques de chef", hero_h1_script: "une étape à la fois",
     hero_p: "Des recettes claires, expliquées pas à pas, avec les repères et les astuces qui comptent.",
@@ -402,16 +402,16 @@ const UI = {
     btn_termine: "Terminé ✓",
     tab_recettes: "Recettes", tab_bases: "Les bases", tab_materiel: "Matériel du débutant",
     tab_marocain: "Pâtisserie marocaine",
-    niveau1: "Niveau 1 · Premiers pas", niveau2: "Niveau 2 · Pour aller plus loin", niveau3: "Niveau 3 · Espace Pro",
+    niveau1: "Niveau 1 · Premiers pas", niveau2: "Niveau 2 · Pour aller plus loin", niveau3: "Niveau 3 · Pro",
     pro_titre: "Vous maîtrisez les bases ?",
     pro_texte: "L'Académie Pro rassemble 419 fiches de formation professionnelle : techniques, matériel, ingrédients, vocabulaire du métier, chocolat, cake design et 215 recettes détaillées.",
-    pro_cta: "Découvrir l'Académie Pro",
+    pro_cta: "Découvrir",
     pro_badge: "PRO",
-    pro_note: "Ces recettes sont consultables dans l'Espace Pro.",
-    pt_titre: "Vous passez dans l'Espace Pro",
+    pro_note: "Ces recettes sont consultables dans l'Académie Pro.",
+    pt_titre: "Vous passez dans l'Académie Pro",
     pt_texte: "C'est un espace plus technique, pensé pour les professionnels de la pâtisserie. Vous pouvez continuer, ou rester ici.",
     pt_annuler: "Rester ici",
-    pt_continuer: "Continuer vers l'Espace Pro",
+    pt_continuer: "Continuer",
     methode: "Méthode", retour: "Retour", voir_recette: "Voir la recette",
     partager: "Partager cette recette", lien_copie: "Lien copié ✓",
     shop_titre: "Il vous manque un ingrédient ?",
@@ -425,7 +425,7 @@ const UI = {
   },
   ar: {
     brand_title: "الأكاديمية", brand_tag: "الوصفات",
-    nav_portal: "← البوابة", nav_pro: "الفضاء المهني", nav_vitrine: "الموقع الرئيسي",
+    nav_portal: "← البوابة", nav_pro: "احترافي", nav_vitrine: "المتجر",
     hero_kicker: "وصفات مشروحة خطوة بخطوة",
     hero_h1: "كلاسيكيات الشيف", hero_h1_script: "خطوة واحدة في كل مرة",
     hero_p: "وصفات واضحة، مشروحة خطوة بخطوة، مع المعايير والنصائح التي تهم.",
@@ -438,16 +438,16 @@ const UI = {
     btn_termine: "انتهى ✓",
     tab_recettes: "الوصفات", tab_bases: "الأساسيات", tab_materiel: "عتاد المبتدئ",
     tab_marocain: "الحلويات المغربية",
-    niveau1: "المستوى 1 · الخطوات الأولى", niveau2: "المستوى 2 · للمضي أبعد", niveau3: "المستوى 3 · الفضاء المهني",
+    niveau1: "المستوى 1 · الخطوات الأولى", niveau2: "المستوى 2 · للمضي أبعد", niveau3: "المستوى 3 · احترافي",
     pro_titre: "هل أتقنتم الأساسيات؟",
     pro_texte: "تضم الأكاديمية المهنية 419 بطاقة تكوين احترافي: تقنيات، عتاد، مكونات، مصطلحات المهنة، شوكولاتة، تصميم الكعك، و215 وصفة مفصّلة.",
-    pro_cta: "اكتشفوا الأكاديمية المهنية",
+    pro_cta: "اكتشفوا",
     pro_badge: "مهني",
-    pro_note: "هذه الوصفات متاحة في الفضاء المهني.",
-    pt_titre: "أنتم تنتقلون إلى الفضاء المهني",
+    pro_note: "هذه الوصفات متاحة في الأكاديمية الاحترافية.",
+    pt_titre: "أنتم تنتقلون إلى الأكاديمية الاحترافية",
     pt_texte: "هذا فضاء أكثر تقنية، مخصص لمحترفي الحلويات. يمكنكم المتابعة، أو البقاء هنا.",
     pt_annuler: "البقاء هنا",
-    pt_continuer: "المتابعة إلى الفضاء المهني",
+    pt_continuer: "متابعة",
     methode: "الطريقة", retour: "رجوع", voir_recette: "عرض الوصفة",
     partager: "شاركوا هذه الوصفة", lien_copie: "تم نسخ الرابط ✓",
     shop_titre: "هل ينقصكم مكوّن؟",
@@ -3863,7 +3863,7 @@ const MATERIEL = {
     essentiel:[['Un fouet et une spatule','Pour mélanger, fouetter, racler — la base de tout.'],['Un ou deux saladiers','Un grand, un moyen : ça suffit pour commencer.'],['Une balance de cuisine','Bien plus précis qu\'un verre doseur pour la pâtisserie — investissement n°1.'],['Un batteur électrique simple','Pour monter blancs et crèmes sans y passer 20 minutes à la main.'],['Un moule à tarte et un moule à cake','Les deux formes qui reviennent dans la majorité des recettes.'],['Une plaque à pâtisserie','Pour les cookies, financiers, et tout ce qui se pose à plat.'],['Un tamis ou une passoire fine','Pour éviter les grumeaux dans la farine ou le sucre glace.']],
     optionnel_label:'Pour plus tard, quand l\'envie de progresser arrive',
     optionnel:[['Une poche à douille','Utile mais pas indispensable au début — une cuillère ou un sac congélation percé dépannent bien.'],['Un thermomètre de cuisson','Pour les caramels et sucres cuits — à ajouter quand vous progressez.'],['Des cercles à pâtisserie','Pour des présentations plus nettes — pas nécessaire pour débuter.'],['Un robot pâtissier','Confortable, mais un batteur électrique simple fait très bien le travail au départ.']],
-    outro:'Envie d\'aller plus loin dans la technique et le vocabulaire du métier ? L\'Espace Pro vous attend.'
+    outro:'Envie d\'aller plus loin dans la technique et le vocabulaire du métier ? L\'Académie Pro vous attend.'
   },
   ar:{
     title:'عتاد المبتدئ',
@@ -3872,7 +3872,7 @@ const MATERIEL = {
     essentiel:[['مضرب وسباتولا','للخلط والخفق والكشط — أساس كل شيء.'],['وعاء أو وعاءان','واحد كبير وآخر متوسط: يكفيان للبداية.'],['ميزان مطبخ','أدق بكثير من كوب القياس في الحلويات — أول استثمار.'],['خفاقة كهربائية بسيطة','لخفق البياض والكريمات دون قضاء 20 دقيقة باليد.'],['قالب تارت وقالب كيك','الشكلان الأكثر تكرارًا في معظم الوصفات.'],['صينية حلويات','للكوكيز والفينونسييه وكل ما يوضع بشكل مسطح.'],['منخل أو مصفاة رقيقة','لتجنب التكتلات في الدقيق أو السكر الناعم.']],
     optionnel_label:'لوقت لاحق، عندما تأتي الرغبة في التقدم',
     optionnel:[['كيس تزيين','مفيد لكن غير ضروري في البداية — ملعقة أو كيس تجميد مثقوب يفي بالغرض.'],['ميزان حرارة للطهي','للكراميل والسكر المطهو — يُضاف مع التقدم.'],['حلقات حلويات','لتقديم أكثر أناقة — غير ضروري للبدء.'],['عجّانة كهربائية','مريحة، لكن خفاقة كهربائية بسيطة تؤدي المهمة جيدًا في البداية.']],
-    outro:'ترغبون بالتعمق أكثر في التقنية ومصطلحات المهنة؟ الفضاء المهني بانتظاركم.'
+    outro:'ترغبون بالتعمق أكثر في التقنية ومصطلحات المهنة؟ الأكاديمية الاحترافية بانتظاركم.'
   }
 };
 
@@ -3890,11 +3890,11 @@ const RECIPE_IMG = {
   'brochettesbananes':'recettes_fruits-deguises-au-sucre-cuit.jpg',
   'brookie':'recettes_triangle-aux-deux-chocolats.jpg',
   'brownie':'recettes_biscuit-sacher.jpg',
-  'buchechocolat':'recettes_buche-moulee.jpg',
+  'buchechocolat':'recettes_buche-traditionnelle.jpg',
   'cakefruitsconfits':'recettes_cake-aux-fruits-confits.jpg',
   'cakemarbre':'recettes_biscuit-quatre-quarts.jpg',
   'charlotte':'recettes_charlotte-aux-fraises.jpg',
-  'chebakia':'maroc_griwech.jpg',
+  'chebakia':'maroc_chebakia-2.jpg',
   'cheesecake':'recettes_tarte-au-fromage-blanc.jpg',
   'chiacoco':'recettes_riz-imperatrice.jpg',
   'churros':'recettes_beignets-nature.jpg',
@@ -3932,7 +3932,7 @@ const RECIPE_IMG = {
   'gateaurenverse':'recettes_tarte-tatin.jpg',
   'gateausavoie':'recettes_biscuit-de-savoie-aux-amandes.jpg',
   'gateauxchocolat':'recettes_biscuit-sacher.jpg',
-  'ghriba':'maroc_gateau-amandes-maroc.jpg',
+  'ghriba':'maroc_ghriba-aux-amandes-2.jpg',
   'ghriba-bahla':'maroc_ghriba-bahla.jpg',
   'granola':'recettes_petits-fours-tuiles-diverses.jpg',
   'griwech':'maroc_griwech.jpg',
@@ -3941,10 +3941,10 @@ const RECIPE_IMG = {
   'layercake':'recettes_fraisier.jpg',
   'macarons':'recettes_macarons-au-chocolat.jpg',
   'madeleines':'recettes_madeleines.jpg',
-  'makrout':'maroc_makrout-aux-amandes.jpg',
+  'makrout':'maroc_makrout-2.jpg',
   'mchouek-coco':'maroc_mchouek-coco.jpg',
   'merveilleux':'recettes_meringue-chantilly.jpg',
-  'mhancha':'maroc_m-hancha-aux-amandes.jpg',
+  'mhancha':'maroc_m-hancha-2.jpg',
   'milkshake':'recettes_sorbet-aux-fraises.jpg',
   'millefeuille':'recettes_mille-feuille-aux-fruits-rouges.jpg',
   'millefeuillepoire':'recettes_tarte-aux-poires-bourdaloue.jpg',
@@ -3980,9 +3980,9 @@ const RECIPE_IMG = {
   'rochersdessables':'recettes_meringues-et-rochers-coco.jpg',
   'rosesdessables':'recettes_meringues-et-rochers-coco.jpg',
   'sables':'recettes_sables-vanille.jpg',
-  'sainthonore':'recettes_croquembouche.jpg',
+  'sainthonore':'recettes_saint-honore-a-la-chantilly.jpg',
   'saladefraises':'recettes_gratin-de-fraises-au-champagne.jpg',
-  'sellou':'maroc_gateau-amandes-maroc.jpg',
+  'sellou':'maroc_sellou-2.jpg',
   'sfenj':'recettes_beignets-nature.jpg',
   'sfouf':'maroc_gateau-amandes-maroc.jpg',
   'soufflechocolat':'recettes_souffle-au-chocolat.jpg',
@@ -3998,7 +3998,7 @@ const RECIPE_IMG = {
   'tartemirabelles':'recettes_bande-de-tarte-feuilletee-aux-fruits.jpg',
   'tartepeches':'recettes_tarte-aux-poires-bourdaloue.jpg',
   'tatin':'recettes_tarte-tatin.jpg',
-  'tcharek':'maroc_kaab-el-ghzal-m-fenned.jpg',
+  'tcharek':'maroc_tcharek.jpg',
   'tiramisu':'recettes_dacquoise-au-cafe.jpg',
   'tiramisucitron':'recettes_tartelettes-au-citron-meringuees.jpg',
   'vacherin':'recettes_vacherin-glace-a-la-vanille.jpg',
