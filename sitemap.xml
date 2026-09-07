@@ -1,106 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Pages principales — priorité haute, exploration fiable -->
   <url>
     <loc>https://www.4cake.ma/</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
+  <url>
+    <loc>https://www.4cake.ma/Academie/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/public/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://www.4cake.ma/conseils.html</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
+  <!-- Fiches individuelles déjà relayées sur Pinterest — inclusion à titre
+       expérimental. Ces URLs utilisent une ancre (#), non garanties indexées
+       séparément par Google, mais bénéficient d'un lien externe Pinterest
+       qui augmente leurs chances d'être repérées. -->
   <url>
-    <loc>https://www.4cake.ma/Academie/</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=chebakia</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/pro/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=chebakia</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=cornesgazelle</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=mhancha</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=baghrir</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=ghriba</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=cremebrulee</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=sellou</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=tartecitron</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=makrout</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=parisbrest</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=mhancha</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=macarons</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=griwech</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=foretnoire</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=tcharek</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=tiramisu</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=fekkas</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
-
   <url>
-    <loc>https://www.4cake.ma/Academie/public/#recette=cookies</loc>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=harcha</loc>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=msemensucre</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=feqqasamandes</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=mkhabez</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/public/index.html#recette=mlouza</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Tarte%20chocolat%2C%20ganache%20et%20pralin%C3%A9</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Entremets%20trois%20chocolats</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Bonbon%20pralin%C3%A9%20feuillet%C3%A9%20moul%C3%A9</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Gla%C3%A7age%20miroir%20chocolat</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Tablette%20garnie%20fruits%20secs</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#chocolat=Croustillant%20pralin%C3%A9%20feuilletine</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=Fleurs%20complexes%20%3A%20rose%20et%20pivoine</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=Drap%C3%A9%20complexe%20et%20pliss%C3%A9s</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=%C3%89cailles%20et%20effet%20tuiles</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=Fleurs%20en%20p%C3%A2te%20%C3%A0%20sucre</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=Cake%20pops</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/Academie/pro/index.html#cakedesign=G%C3%A2teau%20porteur%20au%20chocolat</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>
