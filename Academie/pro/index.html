@@ -119,10 +119,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .subnav{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 30px; border-bottom:1px solid var(--line); padding-bottom:16px;}
   .subnav button{background:var(--panel); border:1px solid var(--line); color:var(--grey); padding:9px 16px; border-radius:100px; font-size:0.8rem; cursor:pointer; font-family:'Poppins',sans-serif;}
   .subnav button.active{background:var(--accent); color:var(--bg); font-weight:700; border-color:var(--accent);}
-  .subnav button[data-tab="recettes"]{animation:pulseRecettes 2.2s ease-in-out infinite;}
-  @keyframes pulseRecettes{
-    0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0.55);}
-    50%{box-shadow:0 0 0 8px rgba(212,160,23,0);}
+  .subnav button[data-tab="recettes"],.subnav button[data-tab="maroc"]{animation:pulseStar 1.6s ease-in-out infinite; position:relative;}
+  @keyframes pulseStar{
+    0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0.65); background-color:var(--panel); border-color:var(--accent); color:var(--ink);}
+    50%{box-shadow:0 0 0 12px rgba(212,160,23,0); background-color:#E8862E; border-color:#E8862E; color:#fff;}
+  }
+  .subnav button[data-tab="recettes"].active,.subnav button[data-tab="maroc"].active{animation:pulseStarActive 1.6s ease-in-out infinite;}
+  @keyframes pulseStarActive{
+    0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0.65); background-color:var(--accent);}
+    50%{box-shadow:0 0 0 12px rgba(212,160,23,0); background-color:#E8862E;}
   }
   .subpanel{display:none;}
   .subpanel.open{display:block;}
