@@ -119,6 +119,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .subnav{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 30px; border-bottom:1px solid var(--line); padding-bottom:16px;}
   .subnav button{background:var(--panel); border:1px solid var(--line); color:var(--grey); padding:9px 16px; border-radius:100px; font-size:0.8rem; cursor:pointer; font-family:'Poppins',sans-serif;}
   .subnav button.active{background:var(--accent); color:var(--bg); font-weight:700; border-color:var(--accent);}
+  .subnav button[data-tab="recettes"]{animation:pulseRecettes 2.2s ease-in-out infinite;}
+  @keyframes pulseRecettes{
+    0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,0.55);}
+    50%{box-shadow:0 0 0 8px rgba(212,160,23,0);}
+  }
   .subpanel{display:none;}
   .subpanel.open{display:block;}
 
