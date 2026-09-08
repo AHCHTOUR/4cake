@@ -299,8 +299,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="pillar" data-pillar="materiel"><img class="pillar-thumb" src="images/ui/pillar-materiel.jpg" alt=""><span class="badge" data-fr="disponible" data-ar="متاح">disponible</span><h3 data-fr="Matériel" data-ar="المعدات">Matériel</h3><p data-fr="Labo, équipement, ergonomie" data-ar="المخبر، التجهيزات، بيئة العمل">Labo, équipement, ergonomie</p></div>
     <div class="pillar" data-pillar="ingredients"><img class="pillar-thumb" src="images/ui/pillar-ingredients.jpg" alt=""><span class="badge" data-fr="disponible" data-ar="متاح">disponible</span><h3 data-fr="Ingrédients" data-ar="المكوّنات">Ingrédients</h3><p data-fr="22 familles, propriétés" data-ar="22 عائلة، خصائصها">22 familles, propriétés</p></div>
     <div class="pillar active" data-pillar="techniques"><img class="pillar-thumb" src="images/ui/pillar-techniques.jpg" alt=""><span class="badge" data-fr="actif" data-ar="نشط">actif</span><h3 data-fr="Techniques & recettes" data-ar="التقنيات والوصفات">Techniques & recettes</h3><p data-fr="311 fiches, dont pâtisserie marocaine" data-ar="311 بطاقة، منها الحلويات المغربية">311 fiches, dont pâtisserie marocaine</p></div>
-    <div class="pillar" data-pillar="chocolat"><img class="pillar-thumb" src="images/ui/pillar-techniques.jpg" alt=""><span class="badge" data-fr="nouveau" data-ar="جديد">nouveau</span><h3 data-fr="Chocolat" data-ar="الشوكولاتة">Chocolat</h3><p data-fr="Tempérage, ganaches, bonbons, décors" data-ar="التبلور، الغاناش، البونبون، الزينة">Tempérage, ganaches, bonbons, décors</p></div>
-    <div class="pillar" data-pillar="cakedesign"><img class="pillar-thumb" src="images/ui/pillar-materiel.jpg" alt=""><span class="badge" data-fr="nouveau" data-ar="جديد">nouveau</span><h3 data-fr="Cake design" data-ar="تصميم الكعك">Cake design</h3><p data-fr="Pâte à sucre, montage, décor" data-ar="عجينة السكر، التركيب، الزينة">Pâte à sucre, montage, décor</p></div>
+    <div class="pillar" data-pillar="chocolat"><img class="pillar-thumb" src="images/chocolat/temperage-par-tablage.jpg" alt=""><span class="badge" data-fr="nouveau" data-ar="جديد">nouveau</span><h3 data-fr="Chocolat" data-ar="الشوكولاتة">Chocolat</h3><p data-fr="Tempérage, ganaches, bonbons, décors" data-ar="التبلور، الغاناش، البونبون، الزينة">Tempérage, ganaches, bonbons, décors</p></div>
+    <div class="pillar" data-pillar="cakedesign"><img class="pillar-thumb" src="images/cakedesign/montage-dun-gateau-a-etages.jpg" alt=""><span class="badge" data-fr="nouveau" data-ar="جديد">nouveau</span><h3 data-fr="Cake design" data-ar="تصميم الكعك">Cake design</h3><p data-fr="Pâte à sucre, montage, décor" data-ar="عجينة السكر، التركيب، الزينة">Pâte à sucre, montage, décor</p></div>
     <div class="pillar" data-pillar="vocabulaire"><img class="pillar-thumb" src="images/ui/pillar-vocabulaire.jpg" alt=""><span class="badge" data-fr="disponible" data-ar="متاح">disponible</span><h3 data-fr="Vocabulaire" data-ar="المفردات">Vocabulaire</h3><p data-fr="Glossaire A à Z" data-ar="معجم من الألف إلى الياء">Glossaire A à Z</p></div>
   </div>
 
@@ -1923,10 +1923,20 @@ function ouvrirPilierRecettes(tab){
   const sub = document.getElementById('tab-' + tab);
   if(sub) sub.classList.add('open');
 }
+function ouvrirPilier(nomPilier){
+  document.querySelectorAll('.pillar').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.pillar-panel').forEach(x => x.classList.remove('open'));
+  const pillar = document.querySelector('.pillar[data-pillar="' + nomPilier + '"]');
+  if(pillar) pillar.classList.add('active');
+  const panel = document.getElementById('panel-' + nomPilier);
+  if(panel) panel.classList.add('open');
+}
 function appliquerHashPro(){
   const h = decodeURIComponent(location.hash || '').replace(/^#/, '');
   const mRec = h.match(/^recette=(.+)$/);
   const mMar = h.match(/^marocain=(.+)$/);
+  const mCho = h.match(/^chocolat=(.+)$/);
+  const mCD  = h.match(/^cakedesign=(.+)$/);
   if(mRec && ALL_RECIPES.some(r => r.id === mRec[1])){
     ouvrirPilierRecettes('recettes');
     openRecipeFiche(mRec[1], true);
@@ -1937,7 +1947,21 @@ function appliquerHashPro(){
     openMarocFiche(mMar[1], true);
     return;
   }
-  if(mRec || mMar) history.replaceState({}, '', location.pathname + location.search); // ancre inconnue : on nettoie
+  if(mCho){
+    const nom = mCho[1];
+    let idx = CHOCO_TECH.findIndex(t => t.title === nom);
+    if(idx !== -1){ ouvrirPilier('chocolat'); openTechFiche('choco', idx); return; }
+    idx = CHOCO_RECIPES.findIndex(r => r.name === nom);
+    if(idx !== -1){ ouvrirPilier('chocolat'); openRecFiche2('choco', idx); return; }
+  }
+  if(mCD){
+    const nom = mCD[1];
+    let idx = CD_TECH.findIndex(t => t.title === nom);
+    if(idx !== -1){ ouvrirPilier('cakedesign'); openTechFiche('cd', idx); return; }
+    idx = CD_RECIPES.findIndex(r => r.name === nom);
+    if(idx !== -1){ ouvrirPilier('cakedesign'); openRecFiche2('cd', idx); return; }
+  }
+  if(mRec || mMar || mCho || mCD) history.replaceState({}, '', location.pathname + location.search); // ancre inconnue : on nettoie
   closeFiche(true);
 }
 window.addEventListener('popstate', appliquerHashPro);
