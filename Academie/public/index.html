@@ -4393,7 +4393,7 @@ function encartCatalogue(item){
         <strong>${t.shop_titre}</strong>
         <span>${t.shop_texte}</span>
       </div>
-      <a class="fv-shop-btn" href="${url}" data-cat="${cat || 'tous'}">
+      <a class="fv-shop-btn" href="${url}" data-cat="${cat || 'tous'}" onclick="dlPush('clic_catalogue_depuis_fiche_public',{fiche:${JSON.stringify((item.fr && item.fr.title) || item.id)},categorie:${JSON.stringify(cat||'tous')}})">
         ${t.shop_cta}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
