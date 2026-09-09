@@ -142,6 +142,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .pill{display:inline-block; margin-top:10px; padding:4px 11px; border-radius:100px; background:var(--bg); border:1px solid var(--line); color:var(--accent); font-size:0.72rem; font-weight:600;}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; cursor:pointer; transition:border-color 0.15s ease, transform 0.15s ease;}
   .card{overflow:hidden; padding:0;}
+  a.card{display:block; text-decoration:none; color:inherit;}
   .card-img{width:100%; height:110px; overflow:hidden;}
   .card-img img{width:100%; height:100%; object-fit:cover; display:block;}
   .card h4, .card p, .card .pill{margin-left:16px; margin-right:16px;}
@@ -1343,6 +1344,13 @@ Object.assign(MAROC_TR, {"Mélanger les amandes moulues, le sucre, le beurre fon
 /* ================= RUBRIQUE CHOCOLAT ================= */
 const CHOCO_IMAGES = {'De la cabosse à la fève':'images/chocolat/de-la-cabosse-a-la-feve.jpg','Torréfaction et concassage':'images/chocolat/torrefaction-et-concassage.jpg','Lire un pourcentage de cacao':'images/chocolat/lire-un-pourcentage-de-cacao.jpg','Choisir sa fluidité':'images/chocolat/choisir-sa-fluidite.jpg','Couverture, pâtissier, de ménage':'images/chocolat/couverture-patissier-de-menage.jpg','Les six formes cristallines':'images/chocolat/les-six-formes-cristallines.jpg','Lire une courbe de tempérage':'images/chocolat/lire-une-courbe-de-temperage.jpg','Courbes lait et blanc':'images/chocolat/courbes-lait-et-blanc.jpg','Tempérage par ensemencement':'images/chocolat/temperage-par-ensemencement.jpg','Tempérage au bain-marie froid':'images/chocolat/temperage-au-bain-marie-froid.jpg','Tester la mise au point':'images/chocolat/tester-la-mise-au-point.jpg','Fondre sans brûler':'images/chocolat/fondre-sans-bruler.jpg','Rattraper un chocolat grainé':'images/chocolat/rattraper-un-chocolat-graine.jpg','Tempérage au Mycryo':'images/chocolat/temperage-au-mycryo.jpg','Maintenir la courbe de travail':'images/chocolat/maintenir-la-courbe-de-travail.jpg','Diagnostiquer un tempérage raté':'images/chocolat/diagnostiquer-un-temperage-rate.jpg','Chablonner':'images/chocolat/chablonner.jpg','Cadrer une ganache':'images/chocolat/cadrer-une-ganache.jpg','Découper des intérieurs':'images/chocolat/decouper-des-interieurs.jpg','Enrober à la fourchette':'images/chocolat/enrober-a-la-fourchette.jpg','Mouler des bonbons':'images/chocolat/mouler-des-bonbons.jpg','Ganache d\'enrobage':'images/chocolat/ganache-denrobage.jpg','Ganache montée':'images/chocolat/ganache-montee.jpg','Praliné maison':'images/chocolat/praline-maison-tech.jpg','Gianduja':'images/chocolat/gianduja.jpg','Glaçage miroir cacao':'images/chocolat/glacage-miroir-cacao.jpg','Décors : copeaux et cigarettes':'images/chocolat/decors-copeaux-et-cigarettes.jpg','Décors : plaquettes et opalines':'images/chocolat/decors-plaquettes-et-opalines.jpg','Blanchiment gras et sucré':'images/chocolat/blanchiment-gras-et-sucre.jpg','Conserver le chocolat':'images/chocolat/conserver-le-chocolat.jpg','Coques de bonbons moulés':'images/chocolat/coques-de-bonbons-moules.jpg','Obturer et démouler':'images/chocolat/obturer-et-demouler.jpg','Enrobage à la trempeuse':'images/chocolat/enrobage-a-la-trempeuse.jpg','Texturer un enrobage':'images/chocolat/texturer-un-enrobage.jpg','Moulage d\'une pièce creuse':'images/chocolat/moulage-dune-piece-creuse.jpg','Décor : transfert et feuille guitare':'images/chocolat/decor-transfert-et-feuille-guitare.jpg','Décor : éventails et rubans':'images/chocolat/decor-eventails-et-rubans.jpg','Décor : sprays et velours':'images/chocolat/decor-sprays-et-velours.jpg','Sécurité et hygiène du chocolat':'images/chocolat/securite-et-hygiene-du-chocolat.jpg','Calculer un beurre de cacao ajouté':'images/chocolat/calculer-un-beurre-de-cacao-ajoute.jpg','Ganache à cadrer nature':'images/chocolat/ganache-a-cadrer-nature.jpg','Ganache montée vanille':'images/chocolat/ganache-montee-vanille.jpg','Praliné noisette 50 %':'images/chocolat/praline-noisette-50.jpg','Glaçage miroir chocolat':'images/chocolat/glacage-miroir-chocolat.jpg','Tablette garnie fruits secs':'images/chocolat/tablette-garnie-fruits-secs.jpg','Ganache framboise à cadrer':'images/chocolat/ganache-framboise-a-cadrer.jpg','Ganache lait caramel':'images/chocolat/ganache-lait-caramel.jpg','Praliné amande-noisette 60 %':'images/chocolat/praline-amande-noisette-60.jpg','Croustillant praliné feuilletine':'images/chocolat/croustillant-praline-feuilletine.jpg','Namelaka chocolat':'images/chocolat/namelaka-chocolat.jpg','Mousse chocolat pâte à bombe':'images/chocolat/mousse-chocolat-pate-a-bombe.jpg','Glaçage rocher':'images/chocolat/glacage-rocher.jpg','Tarte chocolat, ganache et praliné':'images/chocolat/tarte-chocolat-ganache-et-praline.jpg','Bonbon praliné feuilleté moulé':'images/chocolat/bonbon-praline-feuillete-moule.jpg','Entremets trois chocolats':'images/chocolat/entremets-trois-chocolats.jpg','Tempérage par tablage':'images/chocolat/temperage-par-tablage.jpg','Conchage et raffinage':'images/chocolat/conchage-et-raffinage.jpg','Bonbons moulés ganache':'images/chocolat/bonbons-moules-ganache.jpg'};
 const CD_IMAGES = {'Choisir un gâteau porteur':'images/cakedesign/choisir-un-gateau-porteur.jpg','Colorer une pâte':'images/cakedesign/colorer-une-pate.jpg','Ganacher ou masquer':'images/cakedesign/ganacher-ou-masquer.jpg','Lisser une crème au beurre':'images/cakedesign/lisser-une-creme-au-beurre.jpg','Abaisser et poser la pâte à sucre':'images/cakedesign/abaisser-et-poser-la-pate-a-sucre.jpg','Structurer un gâteau à étages':'images/cakedesign/structurer-un-gateau-a-etages.jpg','Pâte à sucre maison':'images/cakedesign/pate-a-sucre-maison.jpg','Crème au beurre meringue suisse':'images/cakedesign/creme-au-beurre-meringue-suisse.jpg','Glaçage royal':'images/cakedesign/glacage-royal.jpg','Glaçage au fromage frais':'images/cakedesign/glacage-au-fromage-frais.jpg','Modelage à la pâte d\'amandes':'images/cakedesign/modelage-a-la-pate-damandes.jpg','Drapés et volants':'images/cakedesign/drapes-et-volants.jpg','Fleurs en pâte à sucre':'images/cakedesign/fleurs-en-pate-a-sucre.jpg','Cake pops':'images/cakedesign/cake-pops.jpg','Poche à douille : les gestes':'images/cakedesign/poche-a-douille-les-gestes.jpg','Transporter un gâteau à étages':'images/cakedesign/transporter-un-gateau-a-etages.jpg','Masquage quadrillé':'images/cakedesign/masquage-quadrille.jpg','Masquage en superposition':'images/cakedesign/masquage-en-superposition.jpg','Masquage en forme (sculpté)':'images/cakedesign/masquage-en-forme-sculpte.jpg','Drapé complexe et plissés':'images/cakedesign/drape-complexe-et-plisses.jpg','Tressage et cordages':'images/cakedesign/tressage-et-cordages.jpg','Écailles et effet tuiles':'images/cakedesign/ecailles-et-effet-tuiles.jpg','Silhouettage et découpe fine':'images/cakedesign/silhouettage-et-decoupe-fine.jpg','Fleurs complexes : rose et pivoine':'images/cakedesign/fleurs-complexes-rose-et-pivoine.jpg','Branches, feuillages et fils':'images/cakedesign/branches-feuillages-et-fils.jpg','Peinture et poudres sur pâte à sucre':'images/cakedesign/peinture-et-poudres-sur-pate-a-sucre.jpg','Structure interne et dowels':'images/cakedesign/structure-interne-et-dowels.jpg','Calculer parts et dimensions':'images/cakedesign/calculer-parts-et-dimensions.jpg','Conservation d\'un gâteau décoré':'images/cakedesign/conservation-dun-gateau-decore.jpg','Rattraper les défauts de masquage':'images/cakedesign/rattraper-les-defauts-de-masquage.jpg','Pâte à sucre maison':'images/cakedesign/pate-a-sucre-maison-recette.jpg','Crème au beurre meringue suisse':'images/cakedesign/creme-au-beurre-meringue-suisse-recette.jpg','Gâteau porteur au chocolat':'images/cakedesign/gateau-porteur-au-chocolat.jpg','Glaçage royal':'images/cakedesign/glacage-royal-recette.jpg','Montage d\'un gâteau à étages':'images/cakedesign/montage-dun-gateau-a-etages.jpg','Cake pops':'images/cakedesign/cake-pops-recette.jpg','Madeira cake (gâteau porteur)':'images/cakedesign/madeira-cake-gateau-porteur.jpg','Ganache de masquage':'images/cakedesign/ganache-de-masquage.jpg','Carrot cake structurant':'images/cakedesign/carrot-cake-structurant.jpg','Glaçage cream cheese ferme':'images/cakedesign/glacage-cream-cheese-ferme.jpg','Sirop de punchage':'images/cakedesign/sirop-de-punchage.jpg','Pâte à fleurs (gum paste)':'images/cakedesign/pate-a-fleurs-gum-paste.jpg'};
+// Même logique de slug que le générateur de pages statiques (Academie/pro/recette/*.html) —
+// à garder synchronisée si l'un des deux change.
+function slugifyFiche(s){
+  return s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 const CHOCO_TECH = [
 {title:'Lire une courbe de tempérage',title_ar:'قراءة منحنى التبلور',hook:'Trois températures successives : fonte, pré-cristallisation, travail. Chaque type de chocolat a sa courbe propre.',hook_ar:'ثلاث درجات حرارة متتالية: الإذابة، التبلور المسبق، ثم العمل. لكل نوع شوكولاتة منحناه الخاص.',repere:'Noir 50-55 → 28-29 → 31-32°C',repere_ar:'داكنة 50-55 ← 28-29 ← 31-32°م',warn:'Un degré d\'écart suffit à ruiner brillance et cassant',warn_ar:'فارق درجة واحدة يكفي لإفساد اللمعان والقرمشة'},
 {title:'Courbes lait et blanc',title_ar:'منحنيات الحليب والأبيض',hook:'Plus riches en matière grasse laitière et en sucre, ils fondent et se travaillent plus bas que le noir.',hook_ar:'لكونها أغنى بالدهون الحليبية والسكر، تذوب ويُشتغل عليها في حرارة أدنى من الداكنة.',repere:'Lait 45-50 → 27-28 → 29-30°C · Blanc 45 → 26-27 → 28-29°C',repere_ar:'بالحليب 45-50 ← 27-28 ← 29-30°م · أبيض 45 ← 26-27 ← 28-29°م',warn:'Le chocolat blanc brûle très vite : ne jamais dépasser 45°C',warn_ar:'الشوكولاتة البيضاء تحترق بسرعة: لا تتجاوزوا 45°م أبدًا'},
@@ -1553,12 +1561,13 @@ function techCardHTML(t, groupe, i){
     '</div>';
 }
 function recCardHTML(r, groupe, i){
-  return '<div class="card" onclick="openRecFiche2(\'' + groupe + '\',' + i + ')">' +
+  var slug = slugifyFiche(r.name) + '-' + groupe;
+  return '<a class="card" href="recette/' + slug + '.html" onclick="openRecFiche2(\'' + groupe + '\',' + i + ');return false;">' +
     cardImgHTML(groupe, r.name) +
     '<h4>' + T(r.name) + '</h4>' +
     '<p>' + T(r.desc) + '</p>' +
     '<span class="pill">' + T(r.meta.pour) + '</span>' +
-    '</div>';
+    '</a>';
 }
 function vocabHTML(list){
   return '<table><tr><th>' + L('Terme','المصطلح') + '</th><th>' + L('Définition','التعريف') + '</th></tr>' +
@@ -1650,10 +1659,13 @@ MAROC.slice().sort((a,b) => {
 }).forEach(m => {
   const ready = MAROC_RECIPES.some(r => r.name === m.name);
   const img = MAROC_IMAGES[m.name];
-  recettesHtml += `<div class="card ${ready?'':'disabled'}" ${ready?`onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}')"`:''}>
+  const tag = ready ? 'a' : 'div';
+  const hrefAttr = ready ? `href="recette/${slugifyFiche(m.name)}-maroc.html"` : '';
+  const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
+  recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
     ${img ? `<img src="${img}" alt="" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;">` : ''}
     <h4>${L(m.name, m.name_ar)}</h4><span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span>
-  </div>`;
+  </${tag}>`;
 });
 recettesHtml += `</div></div>`;
 for(const fam in FICHES_FAM){
@@ -1661,10 +1673,13 @@ for(const fam in FICHES_FAM){
   FICHES_FAM[fam].forEach(name => {
     const rec = ALL_RECIPES.find(r => r.name === name);
     const ready = !!rec;
-    recettesHtml += `<div class="card ${ready?'':'disabled'}" ${ready?`onclick="openRecipeFiche('${rec.id}')"`:''}>
+    const tag = ready ? 'a' : 'div';
+    const hrefAttr = ready ? `href="recette/${rec.id}.html"` : '';
+    const clickAttr = ready ? `onclick="openRecipeFiche('${rec.id}');return false;"` : '';
+    recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
       ${(ready && rec.img) || RECIPE_IMAGES[name] ? `<img src="${(ready && rec.img) || RECIPE_IMAGES[name]}" alt="" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;">` : ''}
       <h4>${T(name)}</h4><span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span>
-    </div>`;
+    </${tag}>`;
   });
   recettesHtml += `</div></div>`;
 }
@@ -1683,12 +1698,15 @@ function renderMaroc(filterTag){
     const ready = MAROC_RECIPES.some(r => r.name === m.name);
     const img = MAROC_IMAGES[m.name];
     const thumb = img ? `<img src="${img}" alt="" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;">` : '';
-    return `<div class="card maroc-card ${hidden?'hidden':''} ${ready?'':'disabled'}" ${ready?`onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}')"`:''}>
+    const tag = ready ? 'a' : 'div';
+    const hrefAttr = ready ? `href="recette/${slugifyFiche(m.name)}-maroc.html"` : '';
+    const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
+    return `<${tag} class="card maroc-card ${hidden?'hidden':''} ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
       ${thumb}
       <h4>${L(m.name, m.name_ar)}</h4>
       ${m.tags.map(t=>`<span class="maroc-chip">${L(t, MAROC_TAGS_AR[t])}</span>`).join('')}
       <div style="margin-top:8px;"><span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span></div>
-    </div>`;
+    </${tag}>`;
   }).join('');
 }
 function openMarocFiche(name, silencieux){
@@ -1875,14 +1893,15 @@ function categoriePertinentePro(r){
 function encartCataloguePro(r){
   const cat = categoriePertinentePro(r);
   const url = CATALOGUE_URL_PRO + (cat ? '?cat=' + cat : '') + '#catalogue';
+  const titre = r && r.name ? T(r.name) : '';
   return `
     <div class="fiche-shop">
       <div class="fiche-shop-txt">
-        <strong>${L("Il vous manque un ingrédient ?","هل ينقصكم مكوّن؟")}</strong>
-        <span>${L("4Cake fournit les professionnels de la pâtisserie au Maroc : chocolat, fruits secs, décors et matériel.","4Cake تزوّد محترفي الحلويات في المغرب: شوكولاتة، فواكه جافة، زينة وعتاد.")}</span>
+        <strong>${L("Vous produisez en volume ?","تنتجون بكميات كبيرة؟")}</strong>
+        <span>${L("4Cake fournit les professionnels de la pâtisserie au Maroc en gros : chocolat, fruits secs, décors et matériel, avec tarifs et conditionnements grossiste.","4Cake تزوّد محترفي الحلويات في المغرب بالجملة: شوكولاتة، فواكه جافة، زينة وعتاد، بأسعار وتغليف بالجملة.")}</span>
       </div>
-      <a class="fiche-shop-btn" href="${url}">
-        ${L("Voir le catalogue","اطّلعوا على الكتالوج")}
+      <a class="fiche-shop-btn" href="${url}" onclick="dlPush('clic_catalogue_depuis_fiche_pro',{fiche:${JSON.stringify(titre)},categorie:${JSON.stringify(cat||'tous')}})">
+        ${L("Voir les tarifs grossiste","اطّلعوا على أسعار الجملة")}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>`;
