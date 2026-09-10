@@ -102,7 +102,7 @@ ol.steps li{margin-bottom:14px;}
 .callout{background:#fff;border-left:4px solid var(--doré);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.95rem;}
 .callout.tip{border-left-color:#3A8C5A;}
 .callout.swap{border-left-color:#8C5A3A;}
-.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;}
+.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;border:none;cursor:pointer;font-size:0.95rem;font-family:inherit;}
 .fiche-shop{margin:28px 0 0;padding:18px 20px;border-radius:14px;background:#fff;border:1.5px solid var(--doré);}
 .fiche-shop strong{display:block;margin-bottom:5px;}
 .fiche-shop span{display:block;color:#6B5E4E;font-size:0.9rem;margin-bottom:12px;}
@@ -147,7 +147,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li>Pochez la crème fouettée entre les choux, en mouvements de zigzag.</li>
   <li class="callout tip"><b>Astuce :</b> Le caramel brûle la peau bien plus qu&#x27;une eau bouillante : travaillez lentement, jamais avec les doigts nus.</li>
 </ol>
-<a class="cta-app" href="/fr/academie/public/index.html#recette=sainthonore">Ouvrir en mode pas-à-pas interactif (FR/AR)</a>
+<button class="cta-app" onclick="if(navigator.share){navigator.share({title:&quot;Saint-honoré&quot;,url:'https://www.4cake.ma/fr/academie/public/recette/sainthonore.html'});}else{navigator.clipboard.writeText('https://www.4cake.ma/fr/academie/public/recette/sainthonore.html');this.textContent='Lien copié !';}">Partager cette recette</button>
 <div class="fiche-shop">
 <strong>Il vous manque un ingrédient ?</strong>
 <span>4Cake fournit les professionnels de la pâtisserie au Maroc : chocolat, fruits secs, décors et matériel.</span>
