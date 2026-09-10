@@ -108,7 +108,7 @@ ul.ingredients li{display:flex;justify-content:space-between;padding:9px 0;borde
 ol.steps{padding-left:22px;}
 ol.steps li{margin-bottom:14px;}
 .pro-badge{display:inline-block;background:var(--brun);color:var(--doré);font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:10px;}
-.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;}
+.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;border:none;cursor:pointer;font-size:0.95rem;font-family:inherit;}
 .fiche-shop{margin:28px 0 0;padding:18px 20px;border-radius:14px;background:#fff;border:1.5px solid var(--doré);}
 .fiche-shop strong{display:block;margin-bottom:5px;}
 .fiche-shop span{display:block;color:#6B5E4E;font-size:0.9rem;margin-bottom:12px;}
@@ -139,7 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li>Démouler tiède, imbiber généreusement de sirop.</li>
   <li>Laisser refroidir avant de servir, éventuellement décoré de zestes confits.</li>
 </ol>
-<a class="cta-app" href="/fr/academie/pro/index.html#marocain=G%C3%A2teaux%20aux%20oranges">Ouvrir en mode fiche interactif (FR/AR)</a>
+<button class="cta-app" onclick="if(navigator.share){navigator.share({title:&quot;Gâteaux aux oranges&quot;,url:'https://www.4cake.ma/fr/academie/pro/recette/gateaux-aux-oranges-maroc.html'});}else{navigator.clipboard.writeText('https://www.4cake.ma/fr/academie/pro/recette/gateaux-aux-oranges-maroc.html');this.textContent='Lien copié !';}">Partager cette fiche</button>
 <div class="fiche-shop">
 <strong>Vous produisez en volume ?</strong>
 <span>4Cake fournit les professionnels de la pâtisserie au Maroc : chocolat, fruits secs, décors et matériel, avec tarifs et conditionnements grossiste.</span>
