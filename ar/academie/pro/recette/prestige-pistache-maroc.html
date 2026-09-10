@@ -107,7 +107,7 @@ ul.ingredients{list-style:none;padding:0;margin:8px 0 14px;}
 ul.ingredients li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #E9DCC0;}
 ol.steps{padding-right:22px;padding-left:0;}
 ol.steps li{margin-bottom:14px;}
-.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;}
+.cta-app{display:inline-block;margin:26px 0 8px;background:var(--brun);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:100px;border:none;cursor:pointer;font-size:0.95rem;font-family:inherit;}
 .fiche-shop{margin:28px 0 0;padding:18px 20px;border-radius:14px;background:#fff;border:1.5px solid var(--dore);}
 .fiche-shop strong{display:block;margin-bottom:5px;}
 .fiche-shop span{display:block;color:#6B5E4E;font-size:0.9rem;margin-bottom:12px;}
@@ -138,7 +138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li>غطّوا بالغلاصة الخضراء، رشّوا بالفستق المجروش.</li>
   <li>احفظوا في البرودة قبل التقديم.</li>
 </ol>
-<a class="cta-app" href="/ar/academie/pro/index.html#marocain=Prestige%20pistache">افتحوا الوضع التفاعلي (فرنسية/عربية)</a>
+<button class="cta-app" onclick="if(navigator.share){navigator.share({title:&quot;بريستيج بالفستق&quot;,url:'https://www.4cake.ma/ar/academie/pro/recette/prestige-pistache-maroc.html'});}else{navigator.clipboard.writeText('https://www.4cake.ma/ar/academie/pro/recette/prestige-pistache-maroc.html');this.textContent='تم نسخ الرابط!';}">شاركوا هذه البطاقة</button>
 <div class="fiche-shop">
 <strong>هل تنتجون بكميات كبيرة؟</strong>
 <span>4Cake تزوّد محترفي الحلويات بالمغرب: شوكولاطة، فواكه جافة، زينة وعتاد، بأسعار وتغليف بالجملة.</span>
