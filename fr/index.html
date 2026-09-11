@@ -1696,6 +1696,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return `- ${pName} x${qty} (${lineTotal} ${isAr ? 'درهم' : 'MAD'})`;
     }).join('%0A');
 
+    // --- Devis persistant : génère un identifiant consultable, sans toucher au journal existant ---
+    let devisId = '';
+    try {
+      const devisPayload = JSON.stringify({ company, name, phone, city, freq, message: msg, total, produits: pdfLines });
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://script.google.com/macros/s/AKfycbxJr8v042sakD1F2H7GSrd9_lJPboLitSAQjb9zA-I13V8Ys-N7cyliWXHZYHYKAmw/exec', false); // false = synchrone, volontaire (voir note ci-dessus)
+      xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
+      xhr.send(devisPayload);
+      if (xhr.status === 200) {
+        const resp = JSON.parse(xhr.responseText);
+        if (resp && resp.id) devisId = resp.id;
+      }
+    } catch (err) {
+      console.error('Erreur génération devis persistant', err);
+    }
+
     const now = new Date();
     const ref = now.getFullYear().toString() + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + String(now.getHours()).padStart(2,'0') + String(now.getMinutes()).padStart(2,'0');
     const dateStr = now.toLocaleDateString('fr-FR', { year:'numeric', month:'long', day:'numeric' }) + ' à ' + now.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
@@ -1707,6 +1723,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       console.error('Erreur génération PDF', err);
     }
 
+    const devisLinkLine = devisId
+      ? (isAr
+          ? `%0A%0Aرابط طلبكم: https://www.4cake.ma/ar/devis.html%3Fid%3D${devisId}`
+          : `%0A%0ALien de votre demande : https://www.4cake.ma/fr/devis.html%3Fid%3D${devisId}`)
+      : '';
+
     const text = isAr
       ? (`طلب عرض سعر جديد — 4Cake%0A%0A` +
          `الشركة: ${company}%0A` +
@@ -1716,7 +1738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `وتيرة الطلب: ${freq}%0A%0A` +
          `الاختيار:%0A${lines}%0A%0A` +
          `التقدير: ${total} درهم%0A` +
-         (msg ? `الرسالة: ${msg}` : ''))
+         (msg ? `الرسالة: ${msg}` : '') + devisLinkLine)
       : (`Nouvelle demande de devis — 4Cake%0A%0A` +
          `Société: ${company}%0A` +
          `Contact: ${name}%0A` +
@@ -1725,7 +1747,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `Fréquence: ${freq}%0A%0A` +
          `Sélection:%0A${lines}%0A%0A` +
          `Estimation: ${total} MAD%0A` +
-         (msg ? `Message: ${msg}` : ''));
+         (msg ? `Message: ${msg}` : '') + devisLinkLine);
 
     // 2) Ouvrir WhatsApp avec le récapitulatif texte
     dlPush('generate_lead', {
