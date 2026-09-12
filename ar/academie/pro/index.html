@@ -558,7 +558,7 @@ function dlPush(event, params){
   catch(e){ /* le suivi ne doit jamais casser le site */ }
 }
 
-let currentLang = localStorage.getItem('4cake_lang') || 'fr';
+let currentLang = 'ar'; // forcé selon la page réelle, indépendant du localStorage
 function L(fr, ar){ return (currentLang === 'ar' && ar) ? ar : fr; }
 function toggleLang(){
   dlPush('changement_langue', { langue: currentLang === 'ar' ? 'fr' : 'ar' });
