@@ -252,6 +252,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   html[dir="rtl"] .nav-actions{flex-direction:row-reverse;}
   html[dir="rtl"] .section-head[style*="text-align:left"]{text-align:right !important;}
   html[dir="rtl"] .pillar-panel[style*="text-align:left"]{text-align:right !important;}
+
+  .lang-toggle{display:flex; align-items:center; background:var(--marine-soft); border-radius:100px; padding:3px; gap:2px;}
+  .lang-btn{padding:7px 12px; border-radius:100px; font-weight:700; font-size:0.76rem; color:var(--marine-2); transition:all 0.18s ease; text-decoration:none; cursor:pointer;}
+  .lang-btn.active{background:var(--marine); color:#fff;}
 </style>
 
 <script type="application/ld+json">
@@ -284,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/ar/index.html" data-fr="Magasin" data-ar="المتجر">Magasin</a>
       <a onclick="goToRecettes()" style="cursor:pointer; background:var(--accent); color:var(--bg); border:none; font-weight:700;" data-fr="Recettes" data-ar="الوصفات">Recettes</a>
       <a href="/ar/academie/public/index.html" id="navEspacePublic" onclick="return ouvrirTransitionPublic(event)" data-fr="Publique" data-ar="العامة">Publique</a>
-      <a href="/fr/academie/pro/index.html" style="cursor:pointer; font-weight:700;" id="navLangBtn">AR / عربي</a>
+      <div class="lang-toggle"><a class="lang-btn" id="lang-fr" href="/fr/academie/pro/index.html">FR</a><a class="lang-btn active" id="lang-ar" href="/ar/academie/pro/index.html">AR</a></div>
     </div>
   </div>
 </header>
