@@ -1677,7 +1677,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       currency:'MAD', value: cartValue(),
       items: ids.map(id => { const p = PRODUCTS.find(x=>x.id==id); return p ? dlItem(p, cart[id]) : null; }).filter(Boolean)
     });
-    const waWindow = window.open('', '_blank'); // ouverte tout de suite pour préserver l'autorisation du navigateur, redirigée plus bas
     const company = document.getElementById('f-company').value;
     const name = document.getElementById('f-name').value;
     const phone = document.getElementById('f-phone').value;
@@ -1709,57 +1708,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     const whatsappNumber = '212661759934';
-    const devisParams = new URLSearchParams({
-      create: '1', company, name, phone, city, freq, message: msg, total,
-      produits: JSON.stringify(pdfLines)
+
+    // --- Devis persistant : identifiant généré ici (pas d'attente de réponse serveur, aucune lecture cross-origin nécessaire) ---
+    const now2 = new Date();
+    const devisId = '4C-' + now2.getFullYear().toString().slice(2) + String(now2.getMonth()+1).padStart(2,'0') + String(now2.getDate()).padStart(2,'0') + '-' + String(Math.floor(1000 + Math.random()*9000));
+    const devisLinkLine = isAr
+      ? `%0A%0Aرابط طلبكم: https://www.4cake.ma/ar/devis.html%3Fid%3D${devisId}`
+      : `%0A%0ALien de votre demande : https://www.4cake.ma/fr/devis.html%3Fid%3D${devisId}`;
+
+    const text = isAr
+      ? (`طلب عرض سعر جديد — 4Cake%0A%0A` +
+         `الشركة: ${company}%0A` +
+         `المسؤول: ${name}%0A` +
+         `الهاتف: ${phone}%0A` +
+         `المدينة: ${city || 'غير محددة'}%0A` +
+         `وتيرة الطلب: ${freq}%0A%0A` +
+         `الاختيار:%0A${lines}%0A%0A` +
+         `التقدير: ${total} درهم%0A` +
+         (msg ? `الرسالة: ${msg}` : '') + devisLinkLine)
+      : (`Nouvelle demande de devis — 4Cake%0A%0A` +
+         `Société: ${company}%0A` +
+         `Contact: ${name}%0A` +
+         `Téléphone: ${phone}%0A` +
+         `Ville: ${city || 'non précisée'}%0A` +
+         `Fréquence: ${freq}%0A%0A` +
+         `Sélection:%0A${lines}%0A%0A` +
+         `Estimation: ${total} MAD%0A` +
+         (msg ? `Message: ${msg}` : '') + devisLinkLine);
+
+    dlPush('generate_lead', {
+      currency:'MAD', value: total, ref: ref,
+      nb_produits: ids.length,
+      ville: city || 'non precisee',
+      frequence: freq,
+      langue: currentLang,
+      items: pdfLines.map(l => ({ item_name: l.name, quantity: l.qty, price: l.unitPrice }))
     });
 
-    fetch('https://script.google.com/macros/s/AKfycbwcHMcy8xbPfIeD7qR1hPRdrGYsxa62j5Avzis6oGAsaQmf3u2opjKB3uP3AOqjCDw/exec?' + devisParams.toString())
-      .then(r => r.json())
-      .then(resp => (resp && resp.id) ? resp.id : '')
-      .catch(err => { console.error('Erreur génération devis persistant', err); return ''; })
-      .then(devisId => {
-        const devisLinkLine = devisId
-          ? (isAr
-              ? `%0A%0Aرابط طلبكم: https://www.4cake.ma/ar/devis.html%3Fid%3D${devisId}`
-              : `%0A%0ALien de votre demande : https://www.4cake.ma/fr/devis.html%3Fid%3D${devisId}`)
-          : '';
+    // Ouverture immédiate de WhatsApp, sans attendre Google (comportement identique à avant nos ajouts)
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 
-        const text = isAr
-          ? (`طلب عرض سعر جديد — 4Cake%0A%0A` +
-             `الشركة: ${company}%0A` +
-             `المسؤول: ${name}%0A` +
-             `الهاتف: ${phone}%0A` +
-             `المدينة: ${city || 'غير محددة'}%0A` +
-             `وتيرة الطلب: ${freq}%0A%0A` +
-             `الاختيار:%0A${lines}%0A%0A` +
-             `التقدير: ${total} درهم%0A` +
-             (msg ? `الرسالة: ${msg}` : '') + devisLinkLine)
-          : (`Nouvelle demande de devis — 4Cake%0A%0A` +
-             `Société: ${company}%0A` +
-             `Contact: ${name}%0A` +
-             `Téléphone: ${phone}%0A` +
-             `Ville: ${city || 'non précisée'}%0A` +
-             `Fréquence: ${freq}%0A%0A` +
-             `Sélection:%0A${lines}%0A%0A` +
-             `Estimation: ${total} MAD%0A` +
-             (msg ? `Message: ${msg}` : '') + devisLinkLine);
-
-        dlPush('generate_lead', {
-          currency:'MAD', value: total, ref: ref,
-          nb_produits: ids.length,
-          ville: city || 'non precisee',
-          frequence: freq,
-          langue: currentLang,
-          items: pdfLines.map(l => ({ item_name: l.name, quantity: l.qty, price: l.unitPrice }))
-        });
-
-        if (waWindow) {
-          waWindow.location.href = `https://wa.me/${whatsappNumber}?text=${text}`;
-        } else {
-          window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-        }
+    // Envoi des données vers le Sheet "à l'aveugle" — on n'a plus besoin de lire la réponse
+    try {
+      const devisParams = new URLSearchParams({
+        create: '1', id: devisId, company, name, phone, city, freq, message: msg, total,
+        produits: JSON.stringify(pdfLines)
       });
+      fetch('https://script.google.com/macros/s/AKfycbxOEFcD8Z8sBhWv1fUL-MVXmtOAk0cse300jx-ASyppJKGE8MC37Maa21rNZR66u_A/exec?' + devisParams.toString(), { mode: 'no-cors' });
+    } catch (err) {
+      console.error('Erreur envoi devis vers Google Sheet', err);
+    }
 
     // 3) Envoyer la demande vers le Google Sheet partagé (journal cumulatif, aucune ligne écrasée)
     // Remplacez GOOGLE_SHEET_WEBHOOK par l'URL de votre déploiement Apps Script (voir google-sheets-webhook.gs fourni séparément)
