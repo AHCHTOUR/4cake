@@ -1707,8 +1707,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       console.error('Erreur génération PDF', err);
     }
 
+    const now2 = new Date();
+    const devisId = '4C-' + now2.getFullYear().toString().slice(2) + String(now2.getMonth()+1).padStart(2,'0') + String(now2.getDate()).padStart(2,'0') + '-' + String(Math.floor(1000 + Math.random()*9000));
+    const devisUrl = isAr
+      ? `https://www.4cake.ma/ar/devis.html?id=${devisId}`
+      : `https://www.4cake.ma/fr/devis.html?id=${devisId}`;
+
     const text = isAr
-      ? (`طلب عرض سعر جديد — 4Cake%0A%0A` +
+      ? (`طلب عرض سعر جديد — 4Cake%0A` +
+         `رابط طلبكم: ${encodeURIComponent(devisUrl)}%0A%0A` +
          `الشركة: ${company}%0A` +
          `المسؤول: ${name}%0A` +
          `الهاتف: ${phone}%0A` +
@@ -1717,7 +1724,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `الاختيار:%0A${lines}%0A%0A` +
          `التقدير: ${total} درهم%0A` +
          (msg ? `الرسالة: ${msg}` : ''))
-      : (`Nouvelle demande de devis — 4Cake%0A%0A` +
+      : (`Nouvelle demande de devis — 4Cake%0A` +
+         `Lien de votre demande : ${encodeURIComponent(devisUrl)}%0A%0A` +
          `Société: ${company}%0A` +
          `Contact: ${name}%0A` +
          `Téléphone: ${phone}%0A` +
@@ -1727,7 +1735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `Estimation: ${total} MAD%0A` +
          (msg ? `Message: ${msg}` : ''));
 
-    // 2) Ouvrir WhatsApp avec le récapitulatif texte
+    // 2) Ouvrir WhatsApp avec le récapitulatif texte (immédiat, ne dépend jamais de Google)
     dlPush('generate_lead', {
       currency:'MAD', value: total, ref: ref,
       nb_produits: ids.length,
@@ -1739,13 +1747,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const whatsappNumber = '212661759934';
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 
-    // 3) Alimenter le Google Sheet "Devis" en tâche de fond (même technique que l'ancien journal, qui a toujours fonctionné)
+    // 3) Alimenter le Google Sheet "Devis" en tâche de fond — même méthode exacte (POST + no-cors) que le journal "Demandes" déjà fiable
     try {
-      const devisParams = new URLSearchParams({
-        create: '1', company, name, phone, city, freq, message: msg, total,
-        produits: JSON.stringify(pdfLines)
+      fetch('https://script.google.com/macros/s/AKfycbwnm0nw8VXIB5CtZMS_b0g5G09G4Cd7CTDV9wxxfmahZ9vnMb05hfdJMr-aTit2Bwk/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          id: devisId, company: company, name: name, phone: phone, city: city, freq: freq,
+          total: total, message: msg, produits: pdfLines
+        })
       });
-      fetch('https://script.google.com/macros/s/AKfycbxOEFcD8Z8sBhWv1fUL-MVXmtOAk0cse300jx-ASyppJKGE8MC37Maa21rNZR66u_A/exec?' + devisParams.toString(), { mode: 'no-cors' });
     } catch (err) {
       console.error('Erreur envoi devis vers Google Sheet', err);
     }
