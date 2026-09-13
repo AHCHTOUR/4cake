@@ -162,7 +162,7 @@ if (!id) {
   content.className = 'error';
   content.innerHTML = 'لم يتم تقديم معرف عرض السعر.';
 } else {
-  fetch('https://script.google.com/macros/s/AKfycbxJr8v042sakD1F2H7GSrd9_lJPboLitSAQjb9zA-I13V8Ys-N7cyliWXHZYHYKAmw/exec?id=' + encodeURIComponent(id))
+  fetch('https://script.google.com/macros/s/AKfycbwcHMcy8xbPfIeD7qR1hPRdrGYsxa62j5Avzis6oGAsaQmf3u2opjKB3uP3AOqjCDw/exec?id=' + encodeURIComponent(id))
     .then(r => r.json())
     .then(data => {
       if (data.error) {
