@@ -1707,15 +1707,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       console.error('Erreur génération PDF', err);
     }
 
-    const whatsappNumber = '212661759934';
-
-    // --- Devis persistant : identifiant généré ici (pas d'attente de réponse serveur, aucune lecture cross-origin nécessaire) ---
-    const now2 = new Date();
-    const devisId = '4C-' + now2.getFullYear().toString().slice(2) + String(now2.getMonth()+1).padStart(2,'0') + String(now2.getDate()).padStart(2,'0') + '-' + String(Math.floor(1000 + Math.random()*9000));
-    const devisLinkLine = isAr
-      ? `%0A%0Aرابط طلبكم: https://www.4cake.ma/ar/devis.html%3Fid%3D${devisId}`
-      : `%0A%0ALien de votre demande : https://www.4cake.ma/fr/devis.html%3Fid%3D${devisId}`;
-
     const text = isAr
       ? (`طلب عرض سعر جديد — 4Cake%0A%0A` +
          `الشركة: ${company}%0A` +
@@ -1725,7 +1716,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `وتيرة الطلب: ${freq}%0A%0A` +
          `الاختيار:%0A${lines}%0A%0A` +
          `التقدير: ${total} درهم%0A` +
-         (msg ? `الرسالة: ${msg}` : '') + devisLinkLine)
+         (msg ? `الرسالة: ${msg}` : ''))
       : (`Nouvelle demande de devis — 4Cake%0A%0A` +
          `Société: ${company}%0A` +
          `Contact: ${name}%0A` +
@@ -1734,8 +1725,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          `Fréquence: ${freq}%0A%0A` +
          `Sélection:%0A${lines}%0A%0A` +
          `Estimation: ${total} MAD%0A` +
-         (msg ? `Message: ${msg}` : '') + devisLinkLine);
+         (msg ? `Message: ${msg}` : ''));
 
+    // 2) Ouvrir WhatsApp avec le récapitulatif texte
     dlPush('generate_lead', {
       currency:'MAD', value: total, ref: ref,
       nb_produits: ids.length,
@@ -1744,14 +1736,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       langue: currentLang,
       items: pdfLines.map(l => ({ item_name: l.name, quantity: l.qty, price: l.unitPrice }))
     });
-
-    // Ouverture immédiate de WhatsApp, sans attendre Google (comportement identique à avant nos ajouts)
+    const whatsappNumber = '212661759934';
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 
-    // Envoi des données vers le Sheet "à l'aveugle" — on n'a plus besoin de lire la réponse
+    // 3) Alimenter le Google Sheet "Devis" en tâche de fond (même technique que l'ancien journal, qui a toujours fonctionné)
     try {
       const devisParams = new URLSearchParams({
-        create: '1', id: devisId, company, name, phone, city, freq, message: msg, total,
+        create: '1', company, name, phone, city, freq, message: msg, total,
         produits: JSON.stringify(pdfLines)
       });
       fetch('https://script.google.com/macros/s/AKfycbxOEFcD8Z8sBhWv1fUL-MVXmtOAk0cse300jx-ASyppJKGE8MC37Maa21rNZR66u_A/exec?' + devisParams.toString(), { mode: 'no-cors' });
