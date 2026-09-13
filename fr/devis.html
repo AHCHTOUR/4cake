@@ -162,7 +162,7 @@ if (!id) {
   content.className = 'error';
   content.innerHTML = 'Aucun identifiant de devis fourni.';
 } else {
-  fetch('https://script.google.com/macros/s/AKfycbxOEFcD8Z8sBhWv1fUL-MVXmtOAk0cse300jx-ASyppJKGE8MC37Maa21rNZR66u_A/exec?id=' + encodeURIComponent(id))
+  fetch('https://script.google.com/macros/s/AKfycbwnm0nw8VXIB5CtZMS_b0g5G09G4Cd7CTDV9wxxfmahZ9vnMb05hfdJMr-aTit2Bwk/exec?id=' + encodeURIComponent(id))
     .then(r => r.json())
     .then(data => {
       if (data.error) {
