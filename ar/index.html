@@ -1106,6 +1106,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     try{ window.dataLayer.push(Object.assign({event: event}, params || {})); }
     catch(e){ /* le suivi ne doit jamais casser le site */ }
   }
+  function getGA4ClientId(){
+    const match = document.cookie.match(/_ga=GA1\.\d\.(\d+\.\d+)/);
+    return match ? match[1] : '';
+  }
   function dlItem(p, qty){
     return {
       item_id: String(p.id),
@@ -1115,6 +1119,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       quantity: qty || 1
     };
   }
+
+  /* Clics de contact direct : WhatsApp, téléphone, e-mail (délégation globale)
+     Correction : attaché immédiatement ici, indépendamment du chargement du catalogue,
+     pour ne pas rater les clics effectués avant la fin du fetch Google Sheets. */
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if(!a) return;
+    const href = a.getAttribute('href') || '';
+    if(href.indexOf('wa.me') > -1)        dlPush('contact_whatsapp', { emplacement: a.closest('footer') ? 'footer' : 'page' });
+    else if(href.indexOf('tel:') === 0)   dlPush('contact_telephone', { numero: href.replace('tel:','') });
+    else if(href.indexOf('mailto:') === 0) dlPush('contact_email');
+  }, true);
   function cartValue(){
     return Object.keys(cart).reduce((sum, id) => {
       const p = PRODUCTS.find(x => x.id == id);
@@ -1713,6 +1729,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ? `https://www.4cake.ma/ar/devis.html?id=${devisId}`
       : `https://www.4cake.ma/fr/devis.html?id=${devisId}`;
 
+    // Récupération du client_id GA4 (cookie _ga), pour rattacher plus tard les événements
+    // qualify_lead / close_convert_lead envoyés depuis le Sheet via Measurement Protocol
+    const ga4ClientId = getGA4ClientId();
+
     const text = isAr
       ? (`طلب عرض سعر جديد — 4Cake%0A` +
          `رابط طلبكم: ${encodeURIComponent(devisUrl)}%0A%0A` +
@@ -1755,7 +1775,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
           id: devisId, company: company, name: name, phone: phone, city: city, freq: freq,
-          total: total, message: msg, produits: pdfLines
+          total: total, message: msg, produits: pdfLines,
+          client_id: ga4ClientId
         })
       });
     } catch (err) {
@@ -2086,16 +2107,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function renderCatalogue(){
     setLang(currentLang); // applique la langue sauvegardée et affiche le catalogue
-
-  /* Clics de contact direct : WhatsApp, téléphone, e-mail (délégation globale) */
-  document.addEventListener('click', function(e){
-    const a = e.target.closest('a[href]');
-    if(!a) return;
-    const href = a.getAttribute('href') || '';
-    if(href.indexOf('wa.me') > -1)        dlPush('contact_whatsapp', { emplacement: a.closest('footer') ? 'footer' : 'page' });
-    else if(href.indexOf('tel:') === 0)   dlPush('contact_telephone', { numero: href.replace('tel:','') });
-    else if(href.indexOf('mailto:') === 0) dlPush('contact_email');
-  }, true);
 
     // Pré-filtrage du catalogue depuis un lien externe : index.html?cat=chocolat#catalogue
     (function(){
