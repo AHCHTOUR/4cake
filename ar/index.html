@@ -404,7 +404,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding:5px 10px; border-radius:100px; letter-spacing:0.02em;
   }
   .card-body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex-grow:1;}
-  .card-title{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.02rem; text-transform:none; color:var(--marine);}
+  .card-title{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.02rem; text-transform:none; color:var(--marine);} .card-title-link{color:inherit; text-decoration:none;} .card-title-link:hover{text-decoration:underline;}
   .card-desc{color:var(--grey); font-size:0.86rem; flex-grow:1;}
 
   /* ---------- Tip bubble (astuce & idée recette) ---------- */
@@ -1352,7 +1352,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           ${isAvailable ? '' : `<span class="stock-badge">${stockBadgeLabel}</span>`}
         </div>
         <div class="card-body">
-          <h3 class="card-title">${pName}</h3>
+          <h3 class="card-title">${PRODUIT_SLUG[p.id] ? `<a class="card-title-link" href="/${currentLang}/produits/${PRODUIT_SLUG[p.id]}.html">${pName}</a>` : pName}</h3>
           <p class="card-desc">${pDesc}</p>
           ${(p.tip || p.tip_ar) ? `
           <button class="tip-toggle" onclick="toggleTip(${p.id})">💡 <span>${isAr ? 'نصيحة وفكرة وصفة' : "Astuce & idée recette"}</span></button>
@@ -1391,6 +1391,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     13: {id:'macarons',            fr:'Macarons amande',                    ar:'ماكارون باللوز'},
     14: {id:'merveilleux',         fr:'Merveilleux',                        ar:'مرفييو'},
     15: {id:'foretnoire',          fr:'Forêt-noire',                        ar:'فوريه نوار'}
+  };
+
+  const PRODUIT_SLUG = {
+    1: 'pate-a-sucre-blanche',
+    2: 'pate-a-sucre-couleurs-assorties',
+    3: 'pate-a-sucre-premium-sans-gluten',
+    4: 'feuilletine-nature',
+    5: 'feuilletine-praline',
+    6: 'feuilletine-chocolat',
+    7: 'topping-fraise',
+    8: 'topping-caramel-beurre-sale',
+    9: 'topping-chocolat',
+    10: 'chocolat-de-couverture-noir-64pct',
+    11: 'chocolat-de-couverture-lait',
+    12: 'chocolat-blanc-pistoles',
+    13: 'colorants-gel-assortiment',
+    14: 'perles-sucrees-assorties',
+    15: 'vermicelles-chocolat'
   };
 
   function lienRecette(p){
