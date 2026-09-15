@@ -735,7 +735,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#accueil" data-i18n="nav_accueil">الرئيسية</a>
       <a href="#catalogue" data-i18n="nav_catalogue">الكتالوج</a>
       <a href="#pourquoi" data-i18n="nav_grossistes">الجملة</a>
-      <a href="/conseils.html" data-i18n="nav_conseils">نصائح</a>
+      <a href="/ar/conseils.html" data-i18n="nav_conseils">نصائح</a>
       <a href="#contact" data-i18n="nav_contact">اتصل بنا</a>
       <a href="#devis" class="nav-cta"><span data-i18n="nav_devis">عرض السعر</span> <span id="nav-cart-count">(0)</span></a>
       <div class="lang-toggle">
@@ -1064,7 +1064,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#accueil" data-i18n="nav_accueil">الرئيسية</a>
         <a href="#catalogue" data-i18n="nav_catalogue">الكتالوج</a>
         <a href="#pourquoi" data-i18n="nav_grossistes">الجملة</a>
-        <a href="/conseils.html" data-i18n="nav_conseils">نصائح</a>
+        <a href="/ar/conseils.html" data-i18n="nav_conseils">نصائح</a>
       <a href="/ar/livraison-maroc.html" data-i18n="nav_livraison">التوصيل</a>
       <a href="#contact" data-i18n="nav_contact">اتصل بنا</a>
       </div>
@@ -2136,6 +2136,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       btn.classList.add('active');
       renderMenu(cat);
       dlPush('arrivee_depuis_academie', { categorie: cat });
+    })();
+
+    // Pré-remplissage du devis depuis une fiche produit : index.html?produit=12#devis
+    (function(){
+      const pid = new URLSearchParams(location.search).get('produit');
+      if(!pid) return;
+      const product = PRODUCTS.find(x => String(x.id) === String(pid));
+      if(!product) return;
+      // Produit indisponible : on n'ajoute rien au devis, mais on amène quand même
+      // le visiteur au formulaire pour qu'il puisse formuler sa demande.
+      if(product.available !== false) addToCart(product.id);
+      dlPush('arrivee_depuis_fiche_produit', {
+        produit: product.name,
+        produit_id: product.id,
+        disponible: product.available !== false
+      });
+      setTimeout(function(){
+        const devis = document.getElementById('devis');
+        if(devis) devis.scrollIntoView({ behavior:'smooth' });
+      }, 300);
     })();
 
     window.__langReady = true; // à partir d'ici, seules les bascules volontaires sont mesurées
