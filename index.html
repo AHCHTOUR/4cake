@@ -19,9 +19,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
   (function(){
     var lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
-    var target = lang.indexOf('ar') === 0
+    var base = lang.indexOf('ar') === 0
       ? 'https://www.4cake.ma/ar/index.html'
       : 'https://www.4cake.ma/fr/index.html';
+    var target = base + window.location.search + window.location.hash;
     window.location.replace(target);
   })();
 </script>
