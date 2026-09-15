@@ -1,0 +1,50 @@
+4CAKE — LOT DÉFINITIF « AUDIT SEO »
+====================================
+724 fichiers, construits à partir de l'état réel du dépôt en ligne (15/09/2026).
+
+UPLOAD
+------
+Glisser-déposer les dossiers "fr" et "ar" entiers dans GitHub, puis "Commit changes".
+GitHub ne remplace que les fichiers de même chemin.
+(Le CSV et ce fichier ne sont pas à uploader : ils sont pour vous.)
+
+CONTENU
+-------
+678  pages recette (fr|ar/academie/pro|public/recette/)
+       - hreflang ajouté sur les 339 pages FR (elles n'en avaient aucune)
+       - 492 valeurs prepTime/cookTime/totalTime converties en ISO 8601
+       - 103 valeurs cookTime non chiffrées ("four chaud") retirées du schema
+       - bloc "Il vous manque un ingrédient ?" reciblé par catégorie (FR + AR)
+ 30  fiches produit  : SKU 4C-xxx cohérent, CTA vers devis pré-rempli
+ 10  pages catégories : contenu enrichi, FAQ, schema ItemList/FAQPage
+  2  index (fr|ar)   : prise en charge de ?produit= (devis pré-rempli)
+  2  devis (fr|ar)   : robots passé en "noindex, follow"
+  2  livraison-maroc : liens catégories, FAQ, schema
+
+RECIBLAGE DES RECETTES — à relire
+---------------------------------
+Voir association-recettes-categories.csv (339 lignes).
+  chocolat     56   topping      21
+  feuilletine   4   pâte à sucre  4
+  générique   254  -> lien vers le catalogue complet, sans catégorie
+
+Les 254 "générique" sont volontaires : aucune de vos 5 catégories ne
+correspondait réellement à ces recettes. Un lien générique honnête vaut
+mieux qu'une catégorie arbitraire (c'était le cas avant : 104 recettes
+renvoyaient vers "topping", dont chebakia et jawhara).
+
+Les liens ciblés pointent désormais vers les pages catégories enrichies
+(/fr|ar/catalogue/xxx.html) et non plus vers l'accueil filtré.
+
+RESTE À FAIRE MANUELLEMENT
+--------------------------
+- Supprimer ar/produits/index (fichier de 1 octet, toujours en ligne)
+
+À VALIDER PAR VOS SOINS
+-----------------------
+- Durées "hors repos" : 137 recettes affichaient "1h30 + repos" ; le schema
+  déclare la partie chiffrée (PT1H30M), le repos n'y figure pas.
+- Pages catégories : relire les tableaux "quel produit choisir" et les
+  conseils techniques (usages logiques, non vérifiés sur vos références).
+- Aucune composition ni allergène n'est publié : les fiches techniques
+  reçues couvrent la gamme extension (23 produits), pas les 15 en ligne.

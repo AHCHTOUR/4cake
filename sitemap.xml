@@ -14,6 +14,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.4cake.ma/fr/academie/index.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/ar/academie/index.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.4cake.ma/fr/academie/pro/index.html</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -2312,7 +2324,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.4cake.ma/conseils.html</loc>
+    <loc>https://www.4cake.ma/fr/conseils.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.4cake.ma/ar/conseils.html</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
