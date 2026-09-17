@@ -67,9 +67,14 @@ table.choix tr:last-child td{border-bottom:none;}
 .note{font-size:0.85rem;color:#6B5E4E;margin-top:22px;}
 .acad{background:#FFFBF0;border:1px solid #E9DCC0;border-radius:12px;padding:16px;margin-top:12px;}
 .acad a{color:var(--dore);font-weight:700;}
+.card-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:block;}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -82,9 +87,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2>منتجاتنا من التوبينغ</h2>
 <div class="card-list">
-<a class="card" href="../produits/topping-fraise.html"><h3>توبينغ الفراولة</h3><div class="p">55 MAD</div></a>
-<a class="card" href="../produits/topping-caramel-beurre-sale.html"><h3>توبينغ الكراميل بالزبدة المملحة</h3><div class="p">230 MAD</div></a>
-<a class="card" href="../produits/topping-chocolat.html"><h3>توبينغ الشوكولاطة</h3><div class="p">60 MAD</div></a>
+<a class="card" href="../produits/topping-fraise.html"><img class="card-img" src="https://www.4cake.ma/topping_fraise.png" alt="توبينغ الفراولة" loading="lazy"><h3>توبينغ الفراولة</h3><div class="p">55 MAD</div></a>
+<a class="card" href="../produits/topping-caramel-beurre-sale.html"><img class="card-img" src="https://www.4cake.ma/topping_caramel.png" alt="توبينغ الكراميل بالزبدة المملحة" loading="lazy"><h3>توبينغ الكراميل بالزبدة المملحة</h3><div class="p">230 MAD</div></a>
+<a class="card" href="../produits/topping-chocolat.html"><img class="card-img" src="https://www.4cake.ma/topping_chocolat.png" alt="توبينغ الشوكولاطة" loading="lazy"><h3>توبينغ الشوكولاطة</h3><div class="p">60 MAD</div></a>
 </div>
 
 <h2>ما المقصود بالتوبينغ؟</h2>
@@ -129,6 +134,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p class="note">معلومات تقنية تُقدَّم على سبيل الإرشاد للاستعمال المهني. للحصول على التركيبة المفصّلة ومسبّبات الحساسية لمرجع معيّن، اطلبوا منّا بطاقته التقنية.</p>
 </main>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function dlPush(event, params){
+    try{ window.dataLayer.push(Object.assign({event: event}, params || {})); }
+    catch(e){ /* le suivi ne doit jamais casser la page */ }
+  }
+  dlPush('categorie_vue', { categorie: 'topping', page: 'catalogue' });
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if(!a) return;
+    const href = a.getAttribute('href') || '';
+    if(href.indexOf('wa.me') > -1) dlPush('contact_whatsapp', { emplacement: 'page_categorie', categorie: 'topping' });
+  }, true);
+</script>
 <footer>4Cake — <a href="../index.html">4cake.ma</a></footer>
 </body>
 </html>

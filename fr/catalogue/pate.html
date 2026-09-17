@@ -67,9 +67,14 @@ table.choix tr:last-child td{border-bottom:none;}
 .note{font-size:0.85rem;color:#6B5E4E;margin-top:22px;}
 .acad{background:#FFFBF0;border:1px solid #E9DCC0;border-radius:12px;padding:16px;margin-top:12px;}
 .acad a{color:var(--dore);font-weight:700;}
+.card-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:block;}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -82,9 +87,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <h2>Nos pâtes à sucre</h2>
 <div class="card-list">
-<a class="card" href="../produits/pate-a-sucre-blanche.html"><h3>Pâte à sucre blanche</h3><div class="p">180 MAD</div></a>
-<a class="card" href="../produits/pate-a-sucre-couleurs-assorties.html"><h3>Pâte à sucre couleurs assorties</h3><div class="p">220 MAD</div></a>
-<a class="card" href="../produits/pate-a-sucre-premium-sans-gluten.html"><h3>Pâte à sucre premium sans gluten</h3><div class="p">250 MAD</div></a>
+<a class="card" href="../produits/pate-a-sucre-blanche.html"><img class="card-img" src="https://www.4cake.ma/pate_sucre.png" alt="Pâte à sucre blanche" loading="lazy"><h3>Pâte à sucre blanche</h3><div class="p">180 MAD</div></a>
+<a class="card" href="../produits/pate-a-sucre-couleurs-assorties.html"><img class="card-img" src="https://www.4cake.ma/LOGO_MARQUE.png" alt="Pâte à sucre couleurs assorties" loading="lazy"><h3>Pâte à sucre couleurs assorties</h3><div class="p">220 MAD</div></a>
+<a class="card" href="../produits/pate-a-sucre-premium-sans-gluten.html"><img class="card-img" src="https://www.4cake.ma/LOGO_MARQUE.png" alt="Pâte à sucre premium sans gluten" loading="lazy"><h3>Pâte à sucre premium sans gluten</h3><div class="p">250 MAD</div></a>
 </div>
 
 <h2>À quoi sert la pâte à sucre ?</h2>
@@ -129,6 +134,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <p class="note">Informations techniques fournies à titre indicatif pour un usage professionnel. Pour la composition détaillée et les allergènes d'une référence précise, demandez-nous sa fiche technique.</p>
 </main>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function dlPush(event, params){
+    try{ window.dataLayer.push(Object.assign({event: event}, params || {})); }
+    catch(e){ /* le suivi ne doit jamais casser la page */ }
+  }
+  dlPush('categorie_vue', { categorie: 'pate', page: 'catalogue' });
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href]');
+    if(!a) return;
+    const href = a.getAttribute('href') || '';
+    if(href.indexOf('wa.me') > -1) dlPush('contact_whatsapp', { emplacement: 'page_categorie', categorie: 'pate' });
+  }, true);
+</script>
 <footer>4Cake — <a href="../index.html">4cake.ma</a></footer>
 </body>
 </html>
