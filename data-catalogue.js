@@ -13,7 +13,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 2 unités",
     "moq_ar": "الحد الأدنى: وحدتان",
     "icon": "pate",
-    "img": "pate_sucre.png",
+    "img": "pate_sucre.webp",
     "tip": "<strong>Astuce :</strong> sortez-la 20 min avant, puis assouplissez-la avec un peu de Maïzena et une pointe de graisse végétale : elle s'étale sans coller ni craqueler. Étalez à 3 mm et lissez au polisseur du centre vers les bords.<br><br><strong>Idée recette :</strong> un number cake anniversaire recouvert net, ou des dentelles et volants texturés au rouleau à empreintes pour un mariage.",
     "tip_ar": "<strong>نصيحة:</strong> أخرجوها 20 دقيقة قبل الاستعمال، ثم ليّنوها بقليل من نشا الذرة ولمسة من الدهن النباتي: تُفرد دون التصاق ولا تشقق. افردوها بسمك 3 مم وملّسوها من الوسط نحو الأطراف.<br><br><strong>فكرة وصفة:</strong> كيكة أرقام لعيد ميلاد بتغطية نظيفة، أو دانتيل وكشكشات منقوشة بالرّحى المزخرفة لحفلات الزفاف.",
     "available": true
@@ -65,7 +65,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 10 unités",
     "moq_ar": "الحد الأدنى: 10",
     "icon": "feuilletine",
-    "img": "feuilletine_box.png",
+    "img": "feuilletine_box.webp",
     "tip": "<strong>Astuce :</strong> conservez-la en boîte hermétique et incorporez-la toujours en dernier, hors du feu : au-delà de 30 °C dans une masse humide, elle perd son croustillant en quelques heures.<br><br><strong>Idée recette :</strong> le croustillant classique — 100 g de feuilletine, 200 g de praliné, 60 g de chocolat au lait fondu. Étalez à 4 mm, bloquez au froid 20 min, détaillez : base parfaite pour vos entremets.",
     "tip_ar": "<strong>نصيحة:</strong> احفظوها في علبة محكمة الإغلاق وأضيفوها دائمًا في الأخير بعيدًا عن النار: فوق 30° داخل خليط رطب تفقد قرمشتها في بضع ساعات.<br><br><strong>فكرة وصفة:</strong> الطبقة المقرمشة الكلاسيكية — 100 غ فوييتين، 200 غ برالين، 60 غ شوكولاطة بالحليب مذابة. افردوها بسمك 4 مم، جمّدوها 20 دقيقة ثم قطّعوها: قاعدة مثالية لحلوياتكم المركبة.",
     "available": true
@@ -83,7 +83,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 10 unités",
     "moq_ar": "الحد الأدنى: 5 كغ",
     "icon": "feuilletine",
-    "img": "feuilletine_box.png",
+    "img": "feuilletine_box.webp",
     "tip": "<strong>Astuce :</strong> déjà pralinée, elle vous fait gagner une étape : un simple beurre de cacao ou du chocolat fondu suffit à la lier. Comptez 15 % de matière grasse maximum pour rester croquant.<br><br><strong>Idée recette :</strong> un insert croustillant dans une mousse chocolat-noisette, ou une barre praliné-feuilletine enrobée de couverture pour la vitrine.",
     "tip_ar": "<strong>نصيحة:</strong> كونها ممزوجة بالبرالين مسبقًا توفّر عليكم خطوة: يكفي زبدة الكاكاو أو شوكولاطة مذابة لربطها. لا تتجاوزوا 15% من المواد الدهنية للحفاظ على القرمشة.<br><br><strong>فكرة وصفة:</strong> حشوة مقرمشة داخل موس الشوكولاطة والبندق، أو ألواح برالين-فوييتين مغلفة بالكوفرتير لواجهة العرض.",
     "available": true
@@ -101,7 +101,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 10 unités",
     "moq_ar": "الحد الأدنى: وحدة واحدة",
     "icon": "feuilletine",
-    "img": "feuilletine_box.png",
+    "img": "feuilletine_box.webp",
     "tip": "<strong>Astuce :</strong> plus foncée, elle marque visuellement sur les desserts clairs — utilisez-la aussi en finition, pas seulement en base cachée. À saupoudrer au dernier moment sur une surface encore souple pour qu'elle accroche.<br><br><strong>Idée recette :</strong> une bûche : fine couche croustillante sous la mousse, puis bordure de feuilletine chocolat sur le pourtour au moment du dressage.",
     "tip_ar": "<strong>نصيحة:</strong> لونها الداكن يبرز جيدًا على الحلويات الفاتحة — استعملوها أيضًا في اللمسة النهائية وليس فقط كقاعدة مخفية. رشّوها في اللحظة الأخيرة على سطح لا يزال طريًا لتلتصق جيدًا.<br><br><strong>فكرة وصفة:</strong> بوش دو نويل: طبقة رقيقة مقرمشة تحت الموس، ثم إطار من فوييتين الشوكولاطة حول الأطراف عند التقديم.",
     "available": true
@@ -119,7 +119,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 6L",
     "moq_ar": "الحد الأدنى: 6 لتر",
     "icon": "topping",
-    "img": "topping_fraise.png",
+    "img": "topping_fraise.webp",
     "tip": "<strong>Astuce :</strong> secouez énergiquement avant chaque service pour homogénéiser la texture, et dressez à froid : sur une base tiède, le filet se dilue et perd son brillant.<br><br><strong>Idée recette :</strong> un cheesecake nappé en spirale, un milk-shake fraise avec un cordon en paroi de verre, ou un topping de crêpes en libre-service.",
     "tip_ar": "<strong>نصيحة:</strong> رجّوا العبوة بقوة قبل كل استعمال لتجانس القوام، وقدّموه باردًا: فوق قاعدة دافئة يذوب الخيط ويفقد لمعانه.<br><br><strong>فكرة وصفة:</strong> تشيز كيك بتزيين حلزوني، ميلك شيك بالفراولة مع خيط داخل جدار الكأس، أو صلصة للكريب في الخدمة الذاتية.",
     "available": true
@@ -137,7 +137,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 1 unité",
     "moq_ar": "الحد الأدنى: وحدة واحدة",
     "icon": "topping",
-    "img": "topping_caramel.png",
+    "img": "topping_caramel.webp",
     "tip": "<strong>Astuce :</strong> tiédissez le bidon au bain-marie quelques minutes avant le service : l'écoulement devient net et régulier, sans gouttes qui bavent. Jamais au micro-ondes à pleine puissance, le sucre brûlerait au fond.<br><br><strong>Idée recette :</strong> incorporé à une ganache montée pour une chantilly caramel, ou en cœur coulant dans un moelleux servi tiède.",
     "tip_ar": "<strong>نصيحة:</strong> دفّئوا العبوة في حمام مائي بضع دقائق قبل التقديم: يصبح السيلان منتظمًا ونظيفًا دون تنقيط. لا تستعملوا الميكروويف بأقصى قوة، فالسكر يحترق في القاع.<br><br><strong>فكرة وصفة:</strong> أدمجوه في غاناش مخفوق للحصول على شانتيي بالكراميل، أو كقلب سائل داخل كيك طري يُقدَّم دافئًا.",
     "available": true
@@ -155,7 +155,7 @@ const FALLBACK_PRODUCTS = [
     "moq": "Cmd. min 6L",
     "moq_ar": "الحد الأدنى: 6 لتر",
     "icon": "topping",
-    "img": "topping_chocolat.png",
+    "img": "topping_chocolat.webp",
     "tip": "<strong>Astuce :</strong> quelques secondes au bain-marie suffisent pour retrouver un écoulement fluide et un rendu brillant. Refermez bien : au contact de l'air, une pellicule se forme en surface.<br><br><strong>Idée recette :</strong> un glaçage express sur choux et éclairs, ou un marbrage sur cheesecake — déposez des points puis tirez un pic à travers.",
     "tip_ar": "<strong>نصيحة:</strong> بضع ثوانٍ في حمام مائي تكفي لاستعادة سيلان سلس ولمعان جميل. أغلقوا العبوة جيدًا: عند ملامسة الهواء تتكوّن طبقة على السطح.<br><br><strong>فكرة وصفة:</strong> تلميع سريع للشو والإكلير، أو رخامة على التشيز كيك — ضعوا نقاطًا ثم مرّروا عودًا رفيعًا عبرها.",
     "available": true
