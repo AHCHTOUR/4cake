@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Cairo:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --bg:#FBF6E9; --panel:#FFFFFF; --panel-2:#F6EBCF; --line:#E4D6B8;
@@ -280,6 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </header>
+<main>
 
 <section class="hero">
   <div class="container">
@@ -536,6 +537,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="fiche-card" id="ficheCard"></div>
 </div>
 
+</main>
 <footer><div class="container">4Cake Académie Pro — Contenu en construction progressive</div></footer>
 
 <script src="/Academie/pro/data.js"></script>
@@ -701,7 +703,7 @@ TECH_IMAGES['Coucher une génoise en bande']='/Academie/pro/images/techniques/co
 
 gridTech.innerHTML = TECHNIQUES.map((t,i) => `
   <div class="card" onclick="openTechStory(${i})">
-    ${TECH_IMAGES[t.title] ? `<img src="${TECH_IMAGES[t.title]}" alt="${t.title}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : ''}
+    ${TECH_IMAGES[t.title] ? `<img src="${TECH_IMAGES[t.title]}" alt="${t.title}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
     <h4>${L(t.title, t.title_ar)}</h4>
     <span class="tag ready">${L('prêt','جاهز')}</span>
   </div>
@@ -805,7 +807,7 @@ gridPrepa.innerHTML = PREPARATIONS.slice().sort((a,b) => {
   const ready = !!READY_PREPS[name];
   const p = READY_PREPS[name];
   return `<div class="card ${ready?'':'disabled'}" ${ready?`onclick="openPrepFiche('${name.replace(/'/g,"\\'")}')"`:''}>
-    ${(ready && p.img) || PREP_IMAGES[name] ? `<img src="${(ready && p.img) || PREP_IMAGES[name]}" alt="${name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : ''}
+    ${(ready && p.img) || PREP_IMAGES[name] ? `<img src="${(ready && p.img) || PREP_IMAGES[name]}" alt="${name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
     <h4>${T(name)}</h4>
     <span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span>
   </div>`;
@@ -856,7 +858,7 @@ const gridAssiette = document.getElementById('gridAssiette');
 
 gridAssiette.innerHTML = ASSIETTE.map((a,i) => `
   <div class="card" onclick="openAssietteFiche(${i})">
-    ${ASSIETTE_IMAGES[a.name] ? `<img src="${ASSIETTE_IMAGES[a.name]}" alt="${a.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : ''}
+    ${ASSIETTE_IMAGES[a.name] ? `<img src="${ASSIETTE_IMAGES[a.name]}" alt="${a.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
     <h4>${a.name}</h4>
     <span class="tag ready">prêt</span>
   </div>
@@ -877,7 +879,7 @@ function openAssietteFiche(i){
 }
 
 function thumbHtml(img, title){
-  return img ? `<img src="${img}" alt="${title || ''}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : '';
+  return img ? `<img src="${img}" alt="${title || ''}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : '';
 }
 
 const gridMetier = document.getElementById('gridMetier');
@@ -1181,7 +1183,7 @@ MAROC.slice().sort((a,b) => {
   const hrefAttr = ready ? `href="/fr/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
   const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
   recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
-    ${img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : ''}
+    ${img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
     <h4>${L(m.name, m.name_ar)}</h4><span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span>
   </${tag}>`;
 });
@@ -1195,7 +1197,7 @@ for(const fam in FICHES_FAM){
     const hrefAttr = ready ? `href="/fr/academie/pro/recette/${rec.id}.html"` : '';
     const clickAttr = ready ? `onclick="openRecipeFiche('${rec.id}');return false;"` : '';
     recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
-      ${(ready && rec.img) || RECIPE_IMAGES[name] ? `<img src="${(ready && rec.img) || RECIPE_IMAGES[name]}" alt="${name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : ''}
+      ${(ready && rec.img) || RECIPE_IMAGES[name] ? `<img src="${(ready && rec.img) || RECIPE_IMAGES[name]}" alt="${name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
       <h4>${T(name)}</h4><span class="tag ${ready?'ready':''}">${ready?L('prêt','جاهز'):L('à venir','قريبًا')}</span>
     </${tag}>`;
   });
@@ -1215,7 +1217,7 @@ function renderMaroc(filterTag){
     const hidden = filterTag !== 'tous' && !m.tags.includes(filterTag);
     const ready = MAROC_RECIPES.some(r => r.name === m.name);
     const img = MAROC_IMAGES[m.name];
-    const thumb = img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async">` : '';
+    const thumb = img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : '';
     const tag = ready ? 'a' : 'div';
     const hrefAttr = ready ? `href="/fr/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
     const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
