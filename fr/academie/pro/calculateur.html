@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr-MA" dir="ltr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9M8LJXZ');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur nutritionnel pour pâtisserie — 4Cake Académie Pro</title>
+<meta name="description" content="Calculez les valeurs nutritionnelles (calories, macros) de vos propres recettes de pâtisserie, ingrédient par ingrédient, à partir de la base officielle Ciqual/ANSES.">
+<link rel="canonical" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
+<link rel="alternate" hreflang="fr-MA" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
+<link rel="alternate" hreflang="ar-MA" href="https://www.4cake.ma/ar/academie/pro/calculateur.html">
+<link rel="alternate" hreflang="x-default" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<style>
+:root{--doré:#D4A017;--brun:#3A2E1A;--creme:#FBF6E9;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--creme);color:var(--brun);line-height:1.6;}
+header{background:var(--brun);padding:14px 20px;}
+header a{color:var(--doré);text-decoration:none;font-weight:700;font-size:0.95rem;}
+main{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
+h1{font-size:1.7rem;margin:0 0 6px;color:var(--brun);}
+.hook{font-size:1.02rem;color:#6B5E4E;margin:0 0 20px;}
+.pro-badge{display:inline-block;background:var(--brun);color:var(--doré);font-size:0.75rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:10px;}
+.search-box{position:relative;margin-bottom:6px;}
+.search-box input{width:100%;padding:13px 16px;border:1.5px solid #E9DCC0;border-radius:12px;font-size:0.95rem;font-family:inherit;background:#fff;color:var(--brun);}
+.search-box input:focus{outline:none;border-color:var(--doré);}
+.suggestions{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #E9DCC0;border-radius:10px;margin-top:4px;max-height:260px;overflow-y:auto;z-index:10;display:none;box-shadow:0 8px 20px rgba(58,46,26,0.12);}
+.suggestions div{padding:10px 14px;cursor:pointer;font-size:0.9rem;border-bottom:1px solid #F3E9CE;}
+.suggestions div:last-child{border-bottom:none;}
+.suggestions div:hover, .suggestions div.active{background:#FBF6E9;}
+.qty-row{display:flex;gap:10px;margin:10px 0 22px;}
+.qty-row input{width:110px;padding:11px 14px;border:1.5px solid #E9DCC0;border-radius:12px;font-size:0.95rem;font-family:inherit;}
+.qty-row button{background:var(--doré);color:#fff;border:none;border-radius:12px;padding:11px 20px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;}
+.qty-row button:disabled{opacity:0.4;cursor:not-allowed;}
+.ing-list{list-style:none;padding:0;margin:0 0 24px;}
+.ing-list li{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E9DCC0;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:0.9rem;}
+.ing-list .remove{background:none;border:none;color:#B85C5C;font-size:1.1rem;cursor:pointer;padding:0 4px;font-family:inherit;}
+.empty-msg{color:#A69B85;font-size:0.88rem;font-style:italic;margin-bottom:24px;}
+.pieces-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:0.9rem;}
+.pieces-row input{width:80px;padding:9px 12px;border:1.5px solid #E9DCC0;border-radius:10px;font-family:inherit;font-size:0.9rem;}
+.result-block{background:#fff;border:1.5px solid var(--doré);border-radius:14px;padding:20px;margin-bottom:16px;}
+.result-title{margin:0 0 12px;font-size:0.8rem;color:#8A7A5E;font-weight:600;text-transform:uppercase;letter-spacing:0.02em;}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:0.92rem;}
+.result-grid div{display:flex;justify-content:space-between;}
+.result-grid strong{color:var(--brun);}
+.total-weight{font-size:0.85rem;color:#6B5E4E;margin-bottom:14px;}
+.disclaimer{font-size:0.75rem;color:#A69B85;line-height:1.5;margin-top:20px;}
+footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
+footer a{color:var(--brun);}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header><a href="/fr/academie/pro/index.html">← Académie Pro — 4Cake</a></header>
+<main>
+<span class="pro-badge">OUTIL PROFESSIONNEL</span>
+<h1>Calculateur nutritionnel</h1>
+<p class="hook">Ajoutez les ingrédients de votre propre recette avec leur poids en grammes, et obtenez le calcul nutritionnel complet — pour 100 g et par pièce si vous précisez le rendement.</p>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Rechercher un ingrédient (ex : beurre, farine, chocolat noir...)" autocomplete="off">
+  <div class="suggestions" id="suggestions"></div>
+</div>
+<div class="qty-row">
+  <input type="number" id="qtyInput" placeholder="Poids (g)" min="0" step="1">
+  <button id="addBtn" disabled>Ajouter</button>
+</div>
+
+<ul class="ing-list" id="ingList"></ul>
+<p class="empty-msg" id="emptyMsg">Aucun ingrédient ajouté pour l'instant.</p>
+
+<div class="pieces-row">
+  <label for="piecesInput">Nombre de pièces obtenues (optionnel) :</label>
+  <input type="number" id="piecesInput" min="1" step="1">
+</div>
+
+<div id="resultsArea"></div>
+
+<p class="disclaimer">Valeurs calculées à partir de la base officielle Ciqual/ANSES (table française de composition nutritionnelle des aliments), ingrédient par ingrédient, selon les poids que vous indiquez. Non vérifié par analyse laboratoire — à titre indicatif pour votre propre référence.</p>
+</main>
+<footer>4Cake Académie Pro — <a href="/fr/academie/pro/index.html">retour</a></footer>
+
+<script src="/Academie/pro/data-calculateur.js"></script>
+<script>
+(function(){
+  var added = [];
+  var searchInput = document.getElementById('searchInput');
+  var suggestions = document.getElementById('suggestions');
+  var qtyInput = document.getElementById('qtyInput');
+  var addBtn = document.getElementById('addBtn');
+  var ingList = document.getElementById('ingList');
+  var emptyMsg = document.getElementById('emptyMsg');
+  var piecesInput = document.getElementById('piecesInput');
+  var resultsArea = document.getElementById('resultsArea');
+  var selected = null;
+  var activeIdx = -1;
+
+  function normalize(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['’]/g, ' ').replace(/\s+/g,' ').trim();
+  }
+
+  var SYNONYMS = {
+    'creme liquide': 'creme de lait', 'creme fraiche': 'creme de lait',
+    'creme fleurette': 'creme de lait', 'creme entiere': 'creme de lait',
+    'sel fin': 'sel', 'oeuf entier': 'oeuf', 'oeufs': 'oeuf',
+    'beurre doux': 'beurre a 82', 'sucre en poudre': 'sucre blanc',
+    'sucre semoule': 'sucre blanc', 'sucre cristal': 'sucre blanc',
+    'sucre glace': 'sucre blanc', 'sucre glace tamise': 'sucre blanc',
+    'levure boulangere': 'levure', 'levure de boulanger': 'levure',
+    'poudre a lever': 'levure chimique',
+    'maizena': 'fecule de mais', 'amandes effilees': 'amande',
+    'amande effilee': 'amande', 'poudre d amandes': 'amande',
+    'poudre damandes': 'amande', 'amandes en poudre': 'amande',
+    'noisettes en poudre': 'noisette', 'poudre de noisettes': 'noisette'
+  };
+  function expandQuery(q){
+    return SYNONYMS[q] || q;
+  }
+
+  searchInput.addEventListener('input', function(){
+    selected = null; addBtn.disabled = true; activeIdx = -1;
+    var q = expandQuery(normalize(searchInput.value.trim()));
+    if(q.length < 2){ suggestions.style.display = 'none'; return; }
+    var qWords = q.split(' ').filter(function(w){ return w.length > 0 && ['en','de','du','la','le','les','d','a','au','aux','et'].indexOf(w) === -1; });
+    if(qWords.length === 0) qWords = q.split(' ').filter(function(w){ return w.length > 0; });
+    var matches = CIQUAL_PATISSERIE.filter(function(it){
+      var n = normalize(it.name);
+      return qWords.every(function(w){ return n.indexOf(w) !== -1; });
+    }).sort(function(a, b){
+      var na = normalize(a.name), nb = normalize(b.name);
+      var pa = na.indexOf(q) === 0 ? 0 : 1;
+      var pb = nb.indexOf(q) === 0 ? 0 : 1;
+      if(pa !== pb) return pa - pb;
+      return a.name.length - b.name.length;
+    }).slice(0, 12);
+    if(matches.length === 0){ suggestions.style.display = 'none'; return; }
+    suggestions.innerHTML = '';
+    matches.forEach(function(it){
+      var div = document.createElement('div');
+      div.textContent = it.name;
+      div.addEventListener('click', function(){
+        selected = it;
+        searchInput.value = it.name;
+        suggestions.style.display = 'none';
+        addBtn.disabled = false;
+        qtyInput.focus();
+      });
+      suggestions.appendChild(div);
+    });
+    suggestions.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e){
+    if(!suggestions.contains(e.target) && e.target !== searchInput){
+      suggestions.style.display = 'none';
+    }
+  });
+
+  addBtn.addEventListener('click', function(){
+    var qty = parseFloat(qtyInput.value);
+    if(!selected || !qty || qty <= 0) return;
+    added.push({item: selected, qty: qty});
+    searchInput.value = ''; qtyInput.value = ''; selected = null; addBtn.disabled = true;
+    render();
+  });
+
+  function removeAt(idx){
+    added.splice(idx, 1);
+    render();
+  }
+
+  function render(){
+    ingList.innerHTML = '';
+    emptyMsg.style.display = added.length ? 'none' : 'block';
+    added.forEach(function(entry, idx){
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      span.textContent = entry.item.name + ' — ' + entry.qty + ' g';
+      var btn = document.createElement('button');
+      btn.className = 'remove'; btn.textContent = '✕';
+      btn.addEventListener('click', function(){ removeAt(idx); });
+      li.appendChild(span); li.appendChild(btn);
+      ingList.appendChild(li);
+    });
+    computeResults();
+  }
+
+  function computeResults(){
+    if(added.length === 0){ resultsArea.innerHTML = ''; return; }
+    var totalW = 0;
+    var tot = {cal:0,fat:0,sat:0,carb:0,sugar:0,fiber:0,prot:0,salt:0};
+    added.forEach(function(entry){
+      var w = entry.qty;
+      totalW += w;
+      var it = entry.item;
+      tot.cal += it.cal * w/100; tot.fat += it.fat * w/100; tot.sat += it.sat * w/100;
+      tot.carb += it.carb * w/100; tot.sugar += it.sugar * w/100; tot.fiber += it.fiber * w/100;
+      tot.prot += it.prot * w/100; tot.salt += it.salt * w/100;
+    });
+    var per100 = {};
+    Object.keys(tot).forEach(function(k){ per100[k] = tot[k] / totalW * 100; });
+
+    var html = '<div class="total-weight">Poids total : ' + Math.round(totalW) + ' g</div>';
+    html += '<div class="result-block"><p class="result-title">Pour 100 g</p><div class="result-grid">' + buildGrid(per100) + '</div></div>';
+
+    var pieces = parseInt(piecesInput.value);
+    if(pieces && pieces > 0){
+      var perPiece = {};
+      Object.keys(tot).forEach(function(k){ perPiece[k] = tot[k] / pieces; });
+      var pieceW = Math.round(totalW / pieces);
+      html += '<div class="result-block"><p class="result-title">Par pièce (env. ' + pieceW + ' g, ' + pieces + ' pièces)</p><div class="result-grid">' + buildGrid(perPiece) + '</div></div>';
+    }
+    resultsArea.innerHTML = html;
+  }
+
+  function buildGrid(v){
+    return '<div><span>Calories</span><strong>' + Math.round(v.cal) + ' kcal</strong></div>' +
+      '<div><span>Lipides</span><strong>' + v.fat.toFixed(1) + ' g</strong></div>' +
+      '<div><span>dont AG saturés</span><strong>' + v.sat.toFixed(1) + ' g</strong></div>' +
+      '<div><span>Glucides</span><strong>' + v.carb.toFixed(1) + ' g</strong></div>' +
+      '<div><span>dont sucres</span><strong>' + v.sugar.toFixed(1) + ' g</strong></div>' +
+      '<div><span>Fibres</span><strong>' + v.fiber.toFixed(2) + ' g</strong></div>' +
+      '<div><span>Protéines</span><strong>' + v.prot.toFixed(1) + ' g</strong></div>' +
+      '<div><span>Sel</span><strong>' + v.salt.toFixed(3) + ' g</strong></div>';
+  }
+
+  piecesInput.addEventListener('input', computeResults);
+})();
+</script>
+</body>
+</html>
