@@ -248,6 +248,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   html[dir="rtl"] h1, html[dir="rtl"] .cap-title{font-family:'Cairo', 'Anton', sans-serif; text-transform:none;}
   html[dir="rtl"] .kicker, html[dir="rtl"] .cap-label{font-family:'Cairo', sans-serif;}
   html[dir="rtl"] .nav-actions a svg{transform:scaleX(-1);}
+
+  .nut-toggle{background:#fff;border:1px solid #D4A017;border-radius:100px;padding:5px 14px;font-size:0.85rem;color:#8A6A0A;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:inherit;margin-top:6px;}
+  .nut-panel{display:none;background:#fff;border:1px solid #E9DCC0;border-radius:12px;padding:16px 18px;margin:10px 0 6px;}
+  .nut-title{margin:0 0 10px;font-size:0.8rem;color:#8A7A5E;font-weight:600;text-transform:uppercase;letter-spacing:0.02em;}
+  .nut-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:0.88rem;color:#3A2E1A;}
+  .nut-grid div{display:flex;justify-content:space-between;}
+  .nut-note{margin:12px 0 0;font-size:0.72rem;color:#A69B85;line-height:1.4;}
 </style>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "name": "4Cake Académie", "url": "https://www.4cake.ma/ar/academie/public/index.html", "logo": "https://www.4cake.ma/LOGO_MARQUE.png", "description": "L'académie de pâtisserie 4Cake : formation professionnelle et recettes expliquées pas à pas, en français et en arabe.", "inLanguage": ["fr", "ar"], "parentOrganization": {"@type": "Store", "name": "4Cake", "@id": "https://www.4cake.ma/#store"}, "sameAs": ["https://www.instagram.com/4cake_by_slcm/", "https://www.tiktok.com/@4.cake"]}</script>
@@ -676,6 +683,34 @@ function setRecipeSchema(item){
   document.head.appendChild(s);
 }
 
+function nutritionHTML(recipe){
+  if(!recipe || !recipe.nutrition) return '';
+  const n = recipe.nutrition;
+  const isAr = currentLang === 'ar';
+  const rows = [
+    [isAr ? 'السعرات الحرارية' : 'Calories', n.calories],
+    [isAr ? 'الدهون' : 'Lipides', n.fatContent],
+    [isAr ? 'الكربوهيدرات' : 'Glucides', n.carbohydrateContent],
+    [isAr ? 'منها سكريات' : 'dont sucres', n.sugarContent],
+    [isAr ? 'البروتينات' : 'Protéines', n.proteinContent],
+    [isAr ? 'الألياف' : 'Fibres', n.fiberContent],
+  ].filter(row => row[1]);
+  const pieceWord = isAr ? 'قطعة' : 'pièce';
+  const label = n.servingSize ? n.calories + '/' + pieceWord : n.calories + '/100g';
+  const title = n.servingSize
+    ? (isAr ? 'القيم الغذائية — ' : 'Valeurs nutritionnelles — ') + n.servingSize
+    : (isAr ? 'القيم الغذائية — لكل 100 غ' : 'Valeurs nutritionnelles — pour 100 g');
+  return `
+    <button class="nut-toggle" onclick="var p=this.nextElementSibling;var open=p.style.display!=='none';p.style.display=open?'none':'block';this.querySelector('.nut-chevron').textContent=open?'▾':'▴';">
+      🍽 ${label} <span class="nut-chevron">▾</span>
+    </button>
+    <div class="nut-panel">
+      <p class="nut-title">${title}</p>
+      <div class="nut-grid">${rows.map(row => `<div><span>${row[0]}</span><strong>${row[1]}</strong></div>`).join('')}</div>
+      <p class="nut-note">${n.description || ''}</p>
+    </div>`;
+}
+
 function openFullView(){
   const d = r(curRecipe);
   const t = UI[currentLang];
@@ -706,6 +741,7 @@ function openFullView(){
   document.getElementById('fullviewBody').innerHTML = `
     <div class="fv-title">${d.title}</div>
     ${d.time || d.level ? `<div class="fv-meta">${d.time ? `<span>⏱ ${d.time}</span>`:''}${d.level ? `<span>${d.level}</span>`:''}</div>` : ''}
+    ${nutritionHTML(curRecipe)}
     ${ingHTML}
     <div class="fv-section-label">${t.methode}</div>
     ${flowHTML}

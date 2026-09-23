@@ -255,6 +255,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .lang-toggle{display:flex; align-items:center; background:rgba(58,46,26,0.08); border-radius:100px; padding:3px; gap:2px;}
   .lang-btn{padding:7px 12px; border-radius:100px; font-weight:700; font-size:0.76rem; color:var(--ink); transition:all 0.18s ease; text-decoration:none; cursor:pointer;}
   .lang-btn.active{background:var(--ink); color:#fff;}
+
+  .nut-toggle{background:#fff;border:1px solid #D4A017;border-radius:100px;padding:5px 14px;font-size:0.85rem;color:#8A6A0A;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-family:inherit;margin-top:6px;}
+  .nut-panel{display:none;background:#fff;border:1px solid #E9DCC0;border-radius:12px;padding:16px 18px;margin:10px 0 6px;}
+  .nut-title{margin:0 0 10px;font-size:0.8rem;color:#8A7A5E;font-weight:600;text-transform:uppercase;letter-spacing:0.02em;}
+  .nut-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:0.88rem;color:#3A2E1A;}
+  .nut-grid div{display:flex;justify-content:space-between;}
+  .nut-note{margin:12px 0 0;font-size:0.72rem;color:#A69B85;line-height:1.4;}
 </style>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "EducationalOrganization", "name": "4Cake Académie", "url": "https://www.4cake.ma/ar/academie/pro/index.html", "logo": "https://www.4cake.ma/LOGO_MARQUE.png", "description": "L'académie de pâtisserie 4Cake : formation professionnelle et recettes expliquées pas à pas, en français et en arabe.", "inLanguage": ["fr", "ar"], "parentOrganization": {"@type": "Store", "name": "4Cake", "@id": "https://www.4cake.ma/#store"}, "sameAs": ["https://www.instagram.com/4cake_by_slcm/", "https://www.tiktok.com/@4.cake"]}</script>
@@ -291,9 +298,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <img src="/Academie/pro/images/ui/hero.webp" alt="مكوّنات الحلويات على سطح العمل: الدقيق، البيض، الزبدة، الشوكولاطة" style="width:100%; max-height:280px; object-fit:cover; border-radius:16px; display:block;" width="1536" height="1024">
   </div>
   <div class="container" style="margin-top:14px;">
-    <a href="/ar/academie/pro/calculateur.html" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1.5px solid #D4A017;border-radius:14px;padding:14px 18px;text-decoration:none;color:#3A2E1A;">
-      <span><strong>🧮 حاسبة القيم الغذائية</strong> — احسبوا قيم وصفاتكم الخاصة، مكوّنًا بمكوّن</span>
-      <span style="color:#D4A017;font-weight:700;white-space:nowrap;">← فتح</span>
+    <a href="/ar/academie/pro/calculateur.html" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#FFF8E7,#fff);border:2px solid #D4A017;border-radius:16px;padding:16px 20px;text-decoration:none;color:#3A2E1A;box-shadow:0 2px 8px rgba(212,160,23,0.15);">
+      <span style="flex-shrink:0;width:52px;height:52px;background:#D4A017;border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🔥</span>
+      <span style="flex:1;">
+        <strong style="display:block;font-size:1.05rem;margin-bottom:2px;">حاسبة القيم الغذائية</strong>
+        <span style="font-size:0.85rem;color:#6B5E4E;">احسبوا قيم وصفاتكم الخاصة، مكوّنًا بمكوّن</span>
+      </span>
+      <span style="flex-shrink:0;color:#D4A017;font-weight:700;white-space:nowrap;font-size:1.3rem;">←</span>
     </a>
   </div>
 </section>
@@ -945,7 +956,7 @@ function openRecipeFiche(id, silencieux){
     </div>
     <div class="fiche-grid">
       <div>${tablesHtml}
-        <div class="fiche-meta"><span><b>${L('Prépa','التحضير')} :</b> ${T(r.meta.prepa)}</span><span><b>${L('Cuisson','الطهي')} :</b> ${T(r.meta.cuisson)}</span><span><b>${L('Pour','لـ')} :</b> ${T(r.meta.pour)}</span></div>
+        <div class="fiche-meta"><span><b>${L('Prépa','التحضير')} :</b> ${T(r.meta.prepa)}</span><span><b>${L('Cuisson','الطهي')} :</b> ${T(r.meta.cuisson)}</span><span><b>${L('Pour','لـ')} :</b> ${T(r.meta.pour)}</span>${nutritionHTML(r)}</div>
       </div>
       <div><ol>${stepsHtml}</ol></div>
     </div>
@@ -1137,7 +1148,7 @@ function openRecFiche2(groupe, i){
     '<div class="fiche-grid"><div>' + tablesHtml +
       '<div class="fiche-meta"><span><b>' + L('Prépa','التحضير') + ' :</b> ' + T(r.meta.prepa) + '</span>' +
       '<span><b>' + L('Cuisson','الطهي') + ' :</b> ' + T(r.meta.cuisson) + '</span>' +
-      '<span><b>' + L('Pour','لـ') + ' :</b> ' + T(r.meta.pour) + '</span></div>' +
+      '<span><b>' + L('Pour','لـ') + ' :</b> ' + T(r.meta.pour) + '</span></div>' + nutritionHTML(r) +
     '</div><div><ol>' + stepsHtml + '</ol></div></div>';
   document.getElementById('ficheOverlay').classList.add('open');
 }
@@ -1235,6 +1246,29 @@ function renderMaroc(filterTag){
     </${tag}>`;
   }).join('');
 }
+function nutritionHTML(r){
+  if(!r || !r.nutrition) return '';
+  const n = r.nutrition;
+  const rows = [
+    [L('Calories','السعرات الحرارية'), n.calories],
+    [L('Lipides','الدهون'), n.fatContent],
+    [L('Glucides','الكربوهيدرات'), n.carbohydrateContent],
+    [L('dont sucres','منها سكريات'), n.sugarContent],
+    [L('Protéines','البروتينات'), n.proteinContent],
+    [L('Fibres','الألياف'), n.fiberContent],
+  ].filter(row => row[1]);
+  const label = n.servingSize ? n.calories + '/' + L('pièce','قطعة') : n.calories + '/100g';
+  return `
+    <button class="nut-toggle" onclick="var p=this.nextElementSibling;var open=p.style.display!=='none';p.style.display=open?'none':'block';this.querySelector('.nut-chevron').textContent=open?'▾':'▴';">
+      🍽 ${label} <span class="nut-chevron">▾</span>
+    </button>
+    <div class="nut-panel">
+      <p class="nut-title">${n.servingSize ? L('Valeurs nutritionnelles — ','القيم الغذائية — ') + n.servingSize : L('Valeurs nutritionnelles — pour 100 g','القيم الغذائية — لكل 100 غ')}</p>
+      <div class="nut-grid">${rows.map(row => `<div><span>${row[0]}</span><strong>${row[1]}</strong></div>`).join('')}</div>
+      <p class="nut-note">${n.description || ''}</p>
+    </div>`;
+}
+
 function openMarocFiche(name, silencieux){
   const r = MAROC_RECIPES.find(x => x.name === name);
   if(!r) return;
@@ -1253,7 +1287,7 @@ function openMarocFiche(name, silencieux){
     </div>
     <div class="fiche-grid">
       <div>${tablesHtml}
-        <div class="fiche-meta"><span><b>${L('Prépa','التحضير')} :</b> ${T(r.meta.prepa)}</span><span><b>${L('Cuisson','الطهي')} :</b> ${T(r.meta.cuisson)}</span><span><b>${L('Pour','لـ')} :</b> ${T(r.meta.pour)}</span></div>
+        <div class="fiche-meta"><span><b>${L('Prépa','التحضير')} :</b> ${T(r.meta.prepa)}</span><span><b>${L('Cuisson','الطهي')} :</b> ${T(r.meta.cuisson)}</span><span><b>${L('Pour','لـ')} :</b> ${T(r.meta.pour)}</span>${nutritionHTML(r)}</div>
       </div>
       <div><ol>${stepsHtml}</ol></div>
     </div>
