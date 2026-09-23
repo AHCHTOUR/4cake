@@ -34,9 +34,9 @@ h1{font-size:1.7rem;margin:0 0 6px;color:var(--brun);}
 .suggestions div{padding:10px 14px;cursor:pointer;font-size:0.9rem;border-bottom:1px solid #F3E9CE;}
 .suggestions div:last-child{border-bottom:none;}
 .suggestions div:hover, .suggestions div.active{background:#FBF6E9;}
-.qty-row{display:flex;gap:10px;margin:10px 0 22px;}
-.qty-row input{width:110px;padding:11px 14px;border:1.5px solid #E9DCC0;border-radius:12px;font-size:0.95rem;font-family:inherit;}
-.qty-row button{background:var(--doré);color:#fff;border:none;border-radius:12px;padding:11px 20px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;}
+.qty-row{display:flex;gap:8px;margin:10px 0 22px;flex-wrap:wrap;}
+.qty-row input{flex:1;min-width:100px;padding:11px 12px;border:1.5px solid #E9DCC0;border-radius:12px;font-size:0.9rem;font-family:inherit;}
+.qty-row button{background:var(--doré);color:#fff;border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;flex-shrink:0;}
 .qty-row button:disabled{opacity:0.4;cursor:not-allowed;}
 .ing-list{list-style:none;padding:0;margin:0 0 24px;}
 .ing-list li{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E9DCC0;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:0.9rem;}
@@ -54,6 +54,13 @@ h1{font-size:1.7rem;margin:0 0 6px;color:var(--brun);}
 footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
 footer a{color:var(--brun);}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة القيم الغذائية 4Cake","applicationCategory":"أداة احترافية للحلويات","operatingSystem":"Web","url":"https://www.4cake.ma/ar/academie/pro/calculateur.html","inLanguage":"ar","description":"حاسبة القيم الغذائية لوصفات الحلويات، مكوّنًا بمكوّن، اعتمادًا على قاعدة بيانات Ciqual/ANSES.","offers":{"@type":"Offer","price":"0","priceCurrency":"MAD"},"provider":{"@type":"Organization","name":"4Cake","url":"https://www.4cake.ma/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"كيف أحسب سعرات وصفة حلويات؟","acceptedAnswer":{"@type":"Answer","text":"أضيفوا كل مكوّن من وصفتكم مع وزنه بالغرام. تجمع الحاسبة تلقائيًا القيم الغذائية لكل مكوّن (مصدر Ciqual/ANSES)."}},
+{"@type":"Question","name":"ما الفرق بين القيمة النظرية والتحليل المخبري؟","acceptedAnswer":{"@type":"Answer","text":"القيمة النظرية تقدير اعتمادًا على التركيبة المتوسطة للمكوّنات. التحليل المخبري يقيس التركيبة الفعلية للمنتج النهائي بعد الطهي."}},
+{"@type":"Question","name":"كيف أحسب القيم الغذائية لكل قطعة؟","acceptedAnswer":{"@type":"Answer","text":"أدخلوا عدد القطع الناتجة في الخانة المخصصة، تقسّم الحاسبة المجموع تلقائيًا لإعطاء القيمة لكل قطعة."}},
+{"@type":"Question","name":"هل يمكن استخدام النتائج على ملصق غذائي رسمي؟","acceptedAnswer":{"@type":"Answer","text":"لا مباشرة. للملصق الرسمي، استخدموا التركيبة الدقيقة من موردكم، مع تحقق مخبري إذا لزم الأمر."}}
+]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -72,6 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class="qty-row">
   <input type="number" id="qtyInput" placeholder="الوزن (غ)" min="0" step="1">
+  <input type="number" id="priceInput" placeholder="السعر/كغ درهم (اختياري)" min="0" step="0.01">
   <button id="addBtn" disabled>إضافة</button>
 </div>
 
@@ -85,10 +93,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div id="resultsArea"></div>
 
+<div id="proModeToggleWrap" style="display:none;margin-top:8px;">
+  <button id="proModeBtn" type="button" style="background:none;border:1.5px solid #D4A017;border-radius:100px;padding:8px 16px;font-size:0.85rem;color:#8A6A0A;font-weight:600;cursor:pointer;font-family:inherit;">⚙️ الوضع الاحترافي</button>
+</div>
+<div id="proModeArea" style="display:none;margin-top:14px;"></div>
+
+<div id="compareToggleWrap" style="display:none;margin-top:8px;">
+  <button id="compareBtn" type="button" style="background:none;border:1.5px solid #D4A017;border-radius:100px;padding:8px 16px;font-size:0.85rem;color:#8A6A0A;font-weight:600;cursor:pointer;font-family:inherit;">🆚 مقارنة مع تركيبة أخرى</button>
+</div>
+<div id="compareArea" style="display:none;margin-top:18px;padding-top:18px;border-top:2px dashed #E9DCC0;">
+  <h2 style="font-size:1.1rem;margin-bottom:6px;">التركيبة ب</h2>
+  <p style="font-size:0.85rem;color:#6B5E4E;margin:0 0 14px;">أنشئوا وصفة ثانية لمقارنتها بالأولى أعلاه.</p>
+  <div class="search-box">
+    <input type="text" id="searchInputB" placeholder="ابحثوا عن مكوّن..." autocomplete="off">
+    <div class="suggestions" id="suggestionsB"></div>
+  </div>
+  <div class="qty-row">
+    <input type="number" id="qtyInputB" placeholder="الوزن (غ)" min="0" step="1">
+    <button id="addBtnB" disabled>إضافة</button>
+  </div>
+  <ul class="ing-list" id="ingListB"></ul>
+  <p class="empty-msg" id="emptyMsgB">لم تتم إضافة أي مكوّن بعد.</p>
+  <div class="pieces-row">
+    <label for="piecesInputB">عدد القطع الناتجة (اختياري):</label>
+    <input type="number" id="piecesInputB" min="1" step="1">
+  </div>
+  <div id="compareResultsArea"></div>
+</div>
+
 <p class="disclaimer">قيم محسوبة من قاعدة بيانات Ciqual/ANSES الرسمية (الجدول الفرنسي لتركيبة الأغذية)، مكوّنًا بمكوّن، حسب الأوزان التي تدخلونها. أسماء المكوّنات تبقى بالفرنسية لأن القاعدة رسمية بهذه اللغة. لم يتم التحقق منها بتحليل مخبري — للاستئناس الخاص بكم فقط.</p>
+<p class="disclaimer">تستخدم الحاسبة فقط الكميات المُدخلة بالغرام. حوّلوا الحجوم (مل، ملعقة...) إلى وزن قبل الإدخال. المكوّنات "حسب الرغبة" أو غير المحددة الكمية لا تُدرج في الحساب. النتيجة لا تأخذ بعين الاعتبار خسائر الطهي (التبخر، امتصاص الزيت) ولا الفروقات حسب العلامة التجارية أو المورّد الفعلي لكل مكوّن.</p>
+
+<div style="margin-top:36px;">
+  <h2 style="font-size:1.25rem;margin-bottom:14px;">أسئلة شائعة</h2>
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:0.98rem;margin-bottom:4px;">كيف أحسب سعرات وصفة حلويات؟</h3>
+    <p style="font-size:0.88rem;color:#6B5E4E;margin:0;">أضيفوا كل مكوّن من وصفتكم مع وزنه بالغرام في خانة البحث أعلاه. تجمع الحاسبة تلقائيًا القيم الغذائية لكل مكوّن (مصدر Ciqual/ANSES) للحصول على مجموع وصفتكم.</p>
+  </div>
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:0.98rem;margin-bottom:4px;">ما الفرق بين القيمة النظرية والتحليل المخبري؟</h3>
+    <p style="font-size:0.88rem;color:#6B5E4E;margin:0;">تعطي هذه الحاسبة تقديرًا نظريًا اعتمادًا على التركيبة المتوسطة للمكوّنات حسب Ciqual/ANSES. أما التحليل المخبري فيقيس التركيبة الفعلية للمنتج النهائي بعد الطهي — قد تختلف القيمتان.</p>
+  </div>
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:0.98rem;margin-bottom:4px;">كيف أحسب القيم الغذائية لكل قطعة؟</h3>
+    <p style="font-size:0.88rem;color:#6B5E4E;margin:0;">بعد إضافة مكوّناتكم، أدخلوا عدد القطع الناتجة في الخانة المخصصة. تقسّم الحاسبة تلقائيًا المجموع على هذا العدد لإعطاء القيمة لكل قطعة، بالإضافة إلى المجموع لكل 100 غ.</p>
+  </div>
+  <div style="margin-bottom:16px;">
+    <h3 style="font-size:0.98rem;margin-bottom:4px;">هل يمكن استخدام النتائج على ملصق غذائي رسمي؟</h3>
+    <p style="font-size:0.88rem;color:#6B5E4E;margin:0;">لا، ليس مباشرة. للملصق الغذائي الرسمي، استخدموا التركيبة الدقيقة التي يوفرها موردكم لكل مكوّن، مع تحقق مخبري إذا لزم الأمر. هذه الحاسبة مخصصة للتقدير وتطوير الوصفات.</p>
+  </div>
+</div>
 </main>
 <footer>4Cake الأكاديمية المحترفة — <a href="/ar/academie/pro/index.html">رجوع</a></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="/Academie/pro/data-calculateur.js"></script>
 <script>
 (function(){
@@ -96,6 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var searchInput = document.getElementById('searchInput');
   var suggestions = document.getElementById('suggestions');
   var qtyInput = document.getElementById('qtyInput');
+  var priceInput = document.getElementById('priceInput');
   var addBtn = document.getElementById('addBtn');
   var ingList = document.getElementById('ingList');
   var emptyMsg = document.getElementById('emptyMsg');
@@ -108,6 +167,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['’]/g, ' ').replace(/\s+/g,' ').trim();
   }
 
+
+  var AR_TO_FR = {
+    'دقيق':'farine', 'طحين':'farine',
+    'سكر':'sucre', 'سكر ناعم':'sucre glace', 'سكر بودرة':'sucre glace',
+    'زبدة':'beurre', 'بيض':'oeuf', 'بيضة':'oeuf',
+    'حليب':'lait', 'قشدة':'creme de lait', 'كريمة':'creme de lait', 'كريمة سائلة':'creme de lait',
+    'شوكولاطة':'chocolat', 'شوكولا':'chocolat', 'شوكولاطة داكنة':'chocolat noir', 'شوكولاطة بيضاء':'chocolat blanc',
+    'عسل':'miel', 'لوز':'amande', 'بندق':'noisette', 'فستق':'pistache',
+    'جوز الهند':'noix de coco', 'فانيليا':'vanille', 'ملح':'sel',
+    'خميرة':'levure', 'خميرة كيميائية':'levure chimique',
+    'ليمون':'citron', 'برتقال':'orange', 'فراولة':'fraise',
+    'زيت':'huile', 'زيت الزيتون':'huile d olive',
+    'جيلاتين':'gelatine', 'نشا الذرة':'fecule de mais', 'مايزينا':'fecule de mais',
+    'سميد':'semoule', 'كاكاو':'cacao', 'عسل النحل':'miel',
+    'تمر':'dattes', 'زبيب':'raisin sec', 'مشمش':'abricot', 'مربى':'confiture',
+    'جبن':'fromage', 'جبنة كريمية':'mascarpone',
+  };
   var SYNONYMS = {
     'creme liquide': 'creme de lait', 'creme fraiche': 'creme de lait',
     'creme fleurette': 'creme de lait', 'creme entiere': 'creme de lait',
@@ -123,12 +199,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     'noisettes en poudre': 'noisette', 'poudre de noisettes': 'noisette'
   };
   function expandQuery(q){
+    if (AR_TO_FR[q]) return AR_TO_FR[q];
+    for (var arKey in AR_TO_FR) {
+      if (q.indexOf(arKey) !== -1) return AR_TO_FR[arKey];
+    }
     return SYNONYMS[q] || q;
   }
 
   searchInput.addEventListener('input', function(){
     selected = null; addBtn.disabled = true; activeIdx = -1;
-    var q = expandQuery(normalize(searchInput.value.trim()));
+    var rawQ = normalize(searchInput.value.trim());
+    var q = expandQuery(rawQ);
+    var isApprox = (q !== rawQ);
     if(q.length < 2){ suggestions.style.display = 'none'; return; }
     var qWords = q.split(' ').filter(function(w){ return w.length > 0 && ['en','de','du','la','le','les','d','a','au','aux','et'].indexOf(w) === -1; });
     if(qWords.length === 0) qWords = q.split(' ').filter(function(w){ return w.length > 0; });
@@ -144,11 +226,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }).slice(0, 12);
     if(matches.length === 0){ suggestions.style.display = 'none'; return; }
     suggestions.innerHTML = '';
+    if(isApprox){
+      var note = document.createElement('div');
+      note.style.cssText = 'padding:8px 14px;font-size:0.78rem;color:#8A6A0A;background:#FBF6E9;border-bottom:1px solid #E9DCC0;';
+      note.textContent = '≈ مطابقة تقريبية لـ "' + searchInput.value.trim() + '"';
+      suggestions.appendChild(note);
+    }
     matches.forEach(function(it){
       var div = document.createElement('div');
       div.textContent = it.name;
       div.addEventListener('click', function(){
         selected = it;
+        selected._approxFrom = isApprox ? searchInput.value.trim() : null;
         searchInput.value = it.name;
         suggestions.style.display = 'none';
         addBtn.disabled = false;
@@ -168,8 +257,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   addBtn.addEventListener('click', function(){
     var qty = parseFloat(qtyInput.value);
     if(!selected || !qty || qty <= 0) return;
-    added.push({item: selected, qty: qty});
-    searchInput.value = ''; qtyInput.value = ''; selected = null; addBtn.disabled = true;
+    var priceKg = parseFloat(priceInput.value);
+    added.push({item: selected, qty: qty, approxFrom: selected._approxFrom || null, priceKg: (priceKg && priceKg > 0) ? priceKg : null});
+    searchInput.value = ''; qtyInput.value = ''; priceInput.value = ''; selected = null; addBtn.disabled = true;
     render();
   });
 
@@ -181,10 +271,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function render(){
     ingList.innerHTML = '';
     emptyMsg.style.display = added.length ? 'none' : 'block';
+    document.getElementById('proModeToggleWrap').style.display = added.length ? 'block' : 'none';
+    document.getElementById('compareToggleWrap').style.display = added.length ? 'block' : 'none';
+    if(!added.length){ document.getElementById('proModeArea').style.display = 'none'; }
     added.forEach(function(entry, idx){
       var li = document.createElement('li');
       var span = document.createElement('span');
-      span.textContent = entry.item.name + ' — ' + entry.qty + ' g';
+      span.textContent = entry.item.name + ' — ' + entry.qty + ' g' + (entry.priceKg ? ' (' + (entry.qty/1000*entry.priceKg).toFixed(2) + ' DH)' : '');
+      if(entry.approxFrom){
+        var approxNote = document.createElement('div');
+        approxNote.style.cssText = 'font-size:0.72rem;color:#8A6A0A;margin-top:2px;';
+        approxNote.textContent = '≈ مطابقة تقريبية لـ "' + entry.approxFrom + '"';
+        span.appendChild(document.createElement('br'));
+        span.appendChild(approxNote);
+      }
       var btn = document.createElement('button');
       btn.className = 'remove'; btn.textContent = '✕';
       btn.addEventListener('click', function(){ removeAt(idx); });
@@ -192,48 +292,379 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ingList.appendChild(li);
     });
     computeResults();
+    if(document.getElementById('proModeArea').style.display !== 'none') renderProMode();
+    if(document.getElementById('compareArea').style.display !== 'none') computeResultsB();
+  }
+
+  document.getElementById('proModeBtn').addEventListener('click', function(){
+    var area = document.getElementById('proModeArea');
+    var open = area.style.display !== 'none';
+    area.style.display = open ? 'none' : 'block';
+    if(!open) renderProMode();
+  });
+
+  function renderProMode(){
+    var area = document.getElementById('proModeArea');
+    if(added.length === 0){ area.innerHTML = ''; return; }
+
+    var totalW = added.reduce(function(s,e){ return s + e.qty; }, 0);
+    var flourEntries = added.filter(function(e){ return normalize(e.item.name).indexOf('farine') !== -1; });
+    var flourW = flourEntries.reduce(function(s,e){ return s + e.qty; }, 0);
+
+    var pricedEntries = added.filter(function(e){ return e.priceKg; });
+    var unpricedCount = added.length - pricedEntries.length;
+    var totalCost = pricedEntries.reduce(function(s,e){ return s + (e.qty/1000*e.priceKg); }, 0);
+    var costHtml = '<div class="result-block"><p class="result-title">كلفة المواد</p>';
+    if(pricedEntries.length === 0){
+      costHtml += '<p style="font-size:0.85rem;color:#A69B85;margin:0;">أدخلوا سعر/كغ عند إضافة مكوّناتكم لرؤية كلفة المواد هنا.</p>';
+    } else {
+      costHtml += '<div class="result-grid" style="grid-template-columns:1fr;">';
+      pricedEntries.forEach(function(e){
+        costHtml += '<div><span>' + e.item.name + '</span><strong>' + (e.qty/1000*e.priceKg).toFixed(2) + ' DH</strong></div>';
+      });
+      costHtml += '</div>';
+      costHtml += '<div style="border-top:1px solid #E9DCC0;margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-weight:700;">';
+      costHtml += '<span>' + 'المجموع' + (unpricedCount ? ' (' + unpricedCount + ' مكوّن بدون سعر، مستثنى)' : '') + '</span><span>' + totalCost.toFixed(2) + ' DH</span></div>';
+      if(totalW > 0) costHtml += '<div style="font-size:0.8rem;color:#8A7A5E;margin-top:6px;">' + (totalCost/totalW*100).toFixed(2) + ' DH / 100 غ من العجينة النيئة</div>';
+      var pieces0 = parseInt(piecesInput.value);
+      if(pieces0 && pieces0 > 0) costHtml += '<div style="font-size:0.8rem;color:#8A7A5E;">' + (totalCost/pieces0).toFixed(2) + ' DH / قطعة</div>';
+    }
+    costHtml += '</div>';
+
+    var html = costHtml + '<div class="result-block"><p class="result-title">النسبة المئوية للخباز';
+    html += flourW > 0 ? ' (الدقيق = 100%)</p>' : ' — يتطلب دقيقًا واحدًا على الأقل في القائمة</p>';
+    if(flourW > 0){
+      html += '<div class="result-grid" style="grid-template-columns:1fr;">';
+      added.forEach(function(e){
+        var pct = (e.qty / flourW * 100).toFixed(1);
+        html += '<div><span>' + e.item.name + '</span><strong>' + pct + ' %</strong></div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    html += '<div class="result-block">';
+    html += '<p class="result-title">الوزن الفعلي بعد الطهي (اختياري)</p>';
+    html += '<input type="number" id="proFinalWeight" placeholder="الوزن المُلاحظ، مثال: ' + Math.round(totalW*0.9) + '" style="width:100%;padding:10px 12px;border:1.5px solid #E9DCC0;border-radius:10px;font-family:inherit;font-size:0.9rem;">';
+    html += '<div id="proFinalWeightResult" style="margin-top:10px;"></div>';
+    html += '</div>';
+
+    html += '<div style="display:flex;gap:8px;flex-wrap:wrap;">';
+    html += '<button id="proExportPdf" type="button" style="background:#D4A017;color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;font-size:0.85rem;cursor:pointer;flex:1;font-family:inherit;">📄 PDF</button>';
+    html += '<button id="proExportCsv" type="button" style="background:#fff;color:#8A6A0A;border:1.5px solid #D4A017;border-radius:12px;padding:12px 16px;font-weight:700;font-size:0.85rem;cursor:pointer;flex:1;font-family:inherit;">📊 Excel (CSV)</button>';
+    html += '<button id="proSaveLocal" type="button" style="background:#fff;color:#8A6A0A;border:1.5px solid #D4A017;border-radius:12px;padding:12px 16px;font-weight:700;font-size:0.85rem;cursor:pointer;flex:1;font-family:inherit;">💾 حفظ</button>';
+    html += '</div>';
+
+    var saved = getSavedRecipes();
+    if(saved.length){
+      html += '<div style="margin-top:12px;"><p style="font-size:0.8rem;color:#8A7A5E;margin-bottom:6px;">الوصفات المحفوظة:</p>';
+      saved.forEach(function(s, idx){
+        html += '<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E9DCC0;border-radius:8px;padding:8px 12px;margin-bottom:6px;font-size:0.85rem;">' +
+          '<span>' + s.name + '</span>' +
+          '<span><button class="loadSavedBtn" data-idx="' + idx + '" type="button" style="background:none;border:none;color:#8A6A0A;font-weight:700;cursor:pointer;margin-left:8px;font-family:inherit;">تحميل</button>' +
+          '<button class="delSavedBtn" data-idx="' + idx + '" type="button" style="background:none;border:none;color:#B85C5C;cursor:pointer;font-family:inherit;">✕</button></span></div>';
+      });
+      html += '</div>';
+    }
+
+    area.innerHTML = html;
+
+    document.getElementById('proFinalWeight').addEventListener('input', function(){
+      var fw = parseFloat(this.value);
+      var out = document.getElementById('proFinalWeightResult');
+      if(!fw || fw <= 0){ out.innerHTML = ''; return; }
+      var lossPct = ((totalW - fw) / totalW * 100);
+      var note = lossPct >= 0
+        ? 'خسارة الطهي: ' + lossPct.toFixed(1) + ' % (بخر، أساسًا). القيم لكل 100 غ أعلاه تتركز بشكل متناسب على الوزن النهائي — أعيدوا الحساب بهذا الوزن الفعلي بدلاً من وزن المكوّنات النيئة للحصول على بطاقة تقنية دقيقة.'
+        : 'الوزن النهائي يفوق وزن المكوّنات النيئة (' + Math.abs(lossPct).toFixed(1) + ' % أكثر) — تحققوا من الإدخال، أو قد يشير هذا إلى امتصاص (قلي، شراب).';
+      out.innerHTML = '<p class="disclaimer" style="margin:0;">' + note + '</p>';
+    });
+
+    document.getElementById('proExportPdf').addEventListener('click', function(){
+      exportTechnicalSheetPDF(totalW, flourW);
+    });
+    document.getElementById('proExportCsv').addEventListener('click', exportCsv);
+    document.getElementById('proSaveLocal').addEventListener('click', saveCurrentRecipe);
+    Array.prototype.forEach.call(document.querySelectorAll('.loadSavedBtn'), function(btn){
+      btn.addEventListener('click', function(){ loadSavedRecipe(parseInt(btn.getAttribute('data-idx'))); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.delSavedBtn'), function(btn){
+      btn.addEventListener('click', function(){ deleteSavedRecipe(parseInt(btn.getAttribute('data-idx'))); });
+    });
+  }
+
+  function exportCsv(){
+    var rows = [['المكوّن','الوزن (غ)','السعر/كغ (DH)','الكلفة (DH)']];
+    added.forEach(function(e){
+      rows.push([e.item.name, e.qty, e.priceKg || '', e.priceKg ? (e.qty/1000*e.priceKg).toFixed(2) : '']);
+    });
+    var csv = rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(';'); }).join('\r\n');
+    var blob = new Blob(['\ufeff' + csv], {type: 'text/csv;charset=utf-8;'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'recette-4cake.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function getSavedRecipes(){
+    try { return JSON.parse(localStorage.getItem('4cake_calc_recipes') || '[]'); }
+    catch(e) { return []; }
+  }
+  function setSavedRecipes(list){
+    try { localStorage.setItem('4cake_calc_recipes', JSON.stringify(list)); } catch(e){}
+  }
+  function saveCurrentRecipe(){
+    var name = prompt('اسم هذه الوصفة:');
+    if(!name) return;
+    var list = getSavedRecipes();
+    list.push({ name: name, added: added.map(function(e){ return {name:e.item.name, qty:e.qty, priceKg:e.priceKg||null, approxFrom:e.approxFrom||null}; }), pieces: piecesInput.value || '' });
+    setSavedRecipes(list);
+    renderProMode();
+  }
+  function loadSavedRecipe(idx){
+    var list = getSavedRecipes();
+    var r = list[idx];
+    if(!r) return;
+    added.length = 0;
+    r.added.forEach(function(saved){
+      var match = CIQUAL_PATISSERIE.find(function(it){ return it.name === saved.name; });
+      if(match) added.push({item: match, qty: saved.qty, approxFrom: saved.approxFrom, priceKg: saved.priceKg});
+    });
+    piecesInput.value = r.pieces || '';
+    render();
+  }
+  function deleteSavedRecipe(idx){
+    var list = getSavedRecipes();
+    list.splice(idx, 1);
+    setSavedRecipes(list);
+    renderProMode();
+  }
+
+  function exportTechnicalSheetPDF(totalW, flourW){
+    if(!window.jspdf){ alert('لم يتم تحميل وحدة PDF بعد، حاولوا مجددًا بعد لحظة.'); return; }
+    var doc = new window.jspdf.jsPDF();
+    var y = 20;
+    doc.setFontSize(16); doc.text('Fiche technique - 4Cake Academie Pro', 14, y); y += 10;
+    doc.setFontSize(10); doc.text('Generee le ' + new Date().toLocaleDateString('fr-FR'), 14, y); y += 10;
+    doc.setFontSize(12); doc.text('Ingredients', 14, y); y += 7;
+    doc.setFontSize(9);
+    added.forEach(function(e){
+      var line = '- ' + e.item.name + ' : ' + e.qty + ' g';
+      if(e.priceKg) line += ' (' + (e.qty/1000*e.priceKg).toFixed(2) + ' DH)';
+      doc.text(line, 14, y); y += 5;
+      if(y > 270){ doc.addPage(); y = 20; }
+    });
+    y += 5;
+    doc.setFontSize(12); doc.text('Poids total : ' + Math.round(totalW) + ' g', 14, y); y += 7;
+    var pricedTotal = added.filter(function(e){return e.priceKg;}).reduce(function(s,e){return s+(e.qty/1000*e.priceKg);},0);
+    if(pricedTotal > 0){ doc.text('Coût matière total : ' + pricedTotal.toFixed(2) + ' DH', 14, y); y += 10; } else { y += 3; }
+    if(resultsArea.innerHTML){
+      doc.setFontSize(9);
+      doc.text('Valeurs nutritionnelles calculees via 4cake.ma/ar/academie/pro/calculateur.html', 14, y); y += 5;
+      doc.text('(base Ciqual/ANSES, estimation theorique - non verifiee par analyse laboratoire)', 14, y);
+    }
+    doc.save('fiche-technique-4cake.pdf');
   }
 
   function computeResults(){
     if(added.length === 0){ resultsArea.innerHTML = ''; return; }
     var totalW = 0;
     var tot = {cal:0,fat:0,sat:0,carb:0,sugar:0,fiber:0,prot:0,salt:0};
+    var hasNull = {fat:false,sat:false,carb:false,sugar:false,fiber:false,prot:false,salt:false};
+    var hasEstimatedCal = false;
     added.forEach(function(entry){
       var w = entry.qty;
       totalW += w;
       var it = entry.item;
-      tot.cal += it.cal * w/100; tot.fat += it.fat * w/100; tot.sat += it.sat * w/100;
-      tot.carb += it.carb * w/100; tot.sugar += it.sugar * w/100; tot.fiber += it.fiber * w/100;
-      tot.prot += it.prot * w/100; tot.salt += it.salt * w/100;
+      if(it.cal_est) hasEstimatedCal = true;
+      ['fat','sat','carb','sugar','fiber','prot','salt'].forEach(function(k){
+        if(it[k] === null || it[k] === undefined) hasNull[k] = true;
+      });
+      tot.cal += (it.cal||0) * w/100; tot.fat += (it.fat||0) * w/100; tot.sat += (it.sat||0) * w/100;
+      tot.carb += (it.carb||0) * w/100; tot.sugar += (it.sugar||0) * w/100; tot.fiber += (it.fiber||0) * w/100;
+      tot.prot += (it.prot||0) * w/100; tot.salt += (it.salt||0) * w/100;
     });
     var per100 = {};
     Object.keys(tot).forEach(function(k){ per100[k] = tot[k] / totalW * 100; });
 
     var html = '<div class="total-weight">الوزن الإجمالي: ' + Math.round(totalW) + ' غ</div>';
-    html += '<div class="result-block"><p class="result-title">لكل 100 غ</p><div class="result-grid">' + buildGrid(per100) + '</div></div>';
+    html += '<div class="result-block"><p class="result-title">لكل 100 غ</p><div class="result-grid">' + buildGrid(per100, hasNull) + '</div></div>';
 
     var pieces = parseInt(piecesInput.value);
     if(pieces && pieces > 0){
       var perPiece = {};
       Object.keys(tot).forEach(function(k){ perPiece[k] = tot[k] / pieces; });
       var pieceW = Math.round(totalW / pieces);
-      html += '<div class="result-block"><p class="result-title">لكل قطعة (حوالي ' + pieceW + ' غ، ' + pieces + ' قطعة)</p><div class="result-grid">' + buildGrid(perPiece) + '</div></div>';
+      html += '<div class="result-block"><p class="result-title">لكل قطعة (حوالي ' + pieceW + ' غ، ' + pieces + ' قطعة)</p><div class="result-grid">' + buildGrid(perPiece, hasNull) + '</div></div>';
+    }
+    var anyNull = Object.values(hasNull).some(Boolean);
+    if(hasEstimatedCal || anyNull){
+      html += '<p class="disclaimer" style="margin-top:0;">';
+      if(hasEstimatedCal) html += 'السعرات الحرارية لبعض المكوّنات غير مقاسة مباشرة من Ciqual وتم تقديرها بحساب معياري (كربوهيدرات×4 + بروتينات×4 + دهون×9). ';
+      if(anyNull) html += 'العلامة (*) تشير إلى عنصر غذائي غير مقاس من طرف Ciqual لمكوّن واحد على الأقل في وصفتكم — تمت معالجته كـ 0 في المجموع، ما قد يقلّل من القيمة الحقيقية.';
+      html += '</p>';
     }
     resultsArea.innerHTML = html;
   }
 
-  function buildGrid(v){
+  function buildGrid(v, hasNull){
+    hasNull = hasNull || {};
+    var mark = function(k){ return hasNull[k] ? ' *' : ''; };
     return '<div><span>السعرات الحرارية</span><strong>' + Math.round(v.cal) + ' kcal</strong></div>' +
-      '<div><span>الدهون</span><strong>' + v.fat.toFixed(1) + ' g</strong></div>' +
-      '<div><span>منها الدهون المشبعة</span><strong>' + v.sat.toFixed(1) + ' g</strong></div>' +
-      '<div><span>الكربوهيدرات</span><strong>' + v.carb.toFixed(1) + ' g</strong></div>' +
-      '<div><span>منها السكريات</span><strong>' + v.sugar.toFixed(1) + ' g</strong></div>' +
-      '<div><span>الألياف</span><strong>' + v.fiber.toFixed(2) + ' g</strong></div>' +
+      '<div><span>الدهون' + mark('fat') + '</span><strong>' + v.fat.toFixed(1) + ' g</strong></div>' +
+      '<div><span>منها الدهون المشبعة' + mark('sat') + '</span><strong>' + v.sat.toFixed(1) + ' g</strong></div>' +
+      '<div><span>الكربوهيدرات' + mark('carb') + '</span><strong>' + v.carb.toFixed(1) + ' g</strong></div>' +
+      '<div><span>منها السكريات' + mark('sugar') + '</span><strong>' + v.sugar.toFixed(1) + ' g</strong></div>' +
+      '<div><span>الألياف' + mark('fiber') + '</span><strong>' + v.fiber.toFixed(2) + ' g</strong></div>' +
       '<div><span>البروتينات</span><strong>' + v.prot.toFixed(1) + ' g</strong></div>' +
       '<div><span>الملح</span><strong>' + v.salt.toFixed(3) + ' g</strong></div>';
   }
 
   piecesInput.addEventListener('input', computeResults);
+
+  // ===== التركيبة ب (المقارنة) =====
+  var selectedB = null;
+  var addedB = [];
+  var searchInputB = document.getElementById('searchInputB');
+  var suggestionsB = document.getElementById('suggestionsB');
+  var qtyInputB = document.getElementById('qtyInputB');
+  var addBtnB = document.getElementById('addBtnB');
+  var ingListB = document.getElementById('ingListB');
+  var emptyMsgB = document.getElementById('emptyMsgB');
+  var piecesInputB = document.getElementById('piecesInputB');
+  var compareResultsArea = document.getElementById('compareResultsArea');
+
+  document.getElementById('compareBtn').addEventListener('click', function(){
+    var area = document.getElementById('compareArea');
+    var open = area.style.display !== 'none';
+    area.style.display = open ? 'none' : 'block';
+    if(!open) computeResultsB();
+  });
+
+  searchInputB.addEventListener('input', function(){
+    selectedB = null; addBtnB.disabled = true;
+    var rawQ = normalize(searchInputB.value.trim());
+    var q = expandQuery(rawQ);
+    var isApprox = (q !== rawQ);
+    if(q.length < 2){ suggestionsB.style.display = 'none'; return; }
+    var qWords = q.split(' ').filter(function(w){ return w.length > 0 && ['en','de','du','la','le','les','d','a','au','aux','et'].indexOf(w) === -1; });
+    if(qWords.length === 0) qWords = q.split(' ').filter(function(w){ return w.length > 0; });
+    var matches = CIQUAL_PATISSERIE.filter(function(it){
+      var n = normalize(it.name);
+      return qWords.every(function(w){ return n.indexOf(w) !== -1; });
+    }).sort(function(a, b){
+      var na = normalize(a.name), nb = normalize(b.name);
+      var pa = na.indexOf(q) === 0 ? 0 : 1;
+      var pb = nb.indexOf(q) === 0 ? 0 : 1;
+      if(pa !== pb) return pa - pb;
+      return a.name.length - b.name.length;
+    }).slice(0, 12);
+    if(matches.length === 0){ suggestionsB.style.display = 'none'; return; }
+    suggestionsB.innerHTML = '';
+    if(isApprox){
+      var note = document.createElement('div');
+      note.style.cssText = 'padding:8px 14px;font-size:0.78rem;color:#8A6A0A;background:#FBF6E9;border-bottom:1px solid #E9DCC0;';
+      note.textContent = '≈ مطابقة تقريبية لـ "' + searchInputB.value.trim() + '"';
+      suggestionsB.appendChild(note);
+    }
+    matches.forEach(function(it){
+      var div = document.createElement('div');
+      div.textContent = it.name;
+      div.addEventListener('click', function(){
+        selectedB = it;
+        searchInputB.value = it.name;
+        suggestionsB.style.display = 'none';
+        addBtnB.disabled = false;
+        qtyInputB.focus();
+      });
+      suggestionsB.appendChild(div);
+    });
+    suggestionsB.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e){
+    if(!suggestionsB.contains(e.target) && e.target !== searchInputB){
+      suggestionsB.style.display = 'none';
+    }
+  });
+
+  addBtnB.addEventListener('click', function(){
+    var qty = parseFloat(qtyInputB.value);
+    if(!selectedB || !qty || qty <= 0) return;
+    addedB.push({item: selectedB, qty: qty});
+    searchInputB.value = ''; qtyInputB.value = ''; selectedB = null; addBtnB.disabled = true;
+    renderB();
+  });
+
+  function removeAtB(idx){ addedB.splice(idx, 1); renderB(); }
+
+  function renderB(){
+    ingListB.innerHTML = '';
+    emptyMsgB.style.display = addedB.length ? 'none' : 'block';
+    addedB.forEach(function(entry, idx){
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      span.textContent = entry.item.name + ' — ' + entry.qty + ' g';
+      var btn = document.createElement('button');
+      btn.className = 'remove'; btn.textContent = '✕';
+      btn.addEventListener('click', function(){ removeAtB(idx); });
+      li.appendChild(span); li.appendChild(btn);
+      ingListB.appendChild(li);
+    });
+    computeResultsB();
+  }
+
+  function sumNutrition(list){
+    var totalW = 0;
+    var tot = {cal:0,fat:0,sat:0,carb:0,sugar:0,fiber:0,prot:0,salt:0};
+    var hasEstimatedCal = false;
+    list.forEach(function(entry){
+      var w = entry.qty; totalW += w; var it = entry.item;
+      if(it.cal_est) hasEstimatedCal = true;
+      tot.cal += (it.cal||0) * w/100; tot.fat += (it.fat||0) * w/100; tot.sat += (it.sat||0) * w/100;
+      tot.carb += (it.carb||0) * w/100; tot.sugar += (it.sugar||0) * w/100; tot.fiber += (it.fiber||0) * w/100;
+      tot.prot += (it.prot||0) * w/100; tot.salt += (it.salt||0) * w/100;
+    });
+    var per100 = {};
+    Object.keys(tot).forEach(function(k){ per100[k] = totalW > 0 ? tot[k] / totalW * 100 : 0; });
+    return {totalW: totalW, per100: per100, hasEstimatedCal: hasEstimatedCal};
+  }
+
+  function computeResultsB(){
+    if(addedB.length === 0){ compareResultsArea.innerHTML = ''; return; }
+    var b = sumNutrition(addedB);
+    compareResultsArea.innerHTML = '<div class="total-weight">الوزن الإجمالي: ' + Math.round(b.totalW) + ' غ</div>';
+    renderComparisonTable();
+  }
+
+  function renderComparisonTable(){
+    if(added.length === 0 || addedB.length === 0){ return; }
+    var a = sumNutrition(added);
+    var b = sumNutrition(addedB);
+    var rows = [
+      ['السعرات الحرارية (kcal/100g)', a.per100.cal, b.per100.cal, 0],
+      ['الدهون (g/100g)', a.per100.fat, b.per100.fat, 1],
+      ['الكربوهيدرات (g/100g)', a.per100.carb, b.per100.carb, 1],
+      ['منها السكريات (g/100g)', a.per100.sugar, b.per100.sugar, 1],
+      ['البروتينات (g/100g)', a.per100.prot, b.per100.prot, 1],
+      ['الألياف (g/100g)', a.per100.fiber, b.per100.fiber, 2],
+    ];
+    var html = '<div class="result-block" style="border-color:#8A6A0A;"><p class="result-title">مقارنة أ مقابل ب (لكل 100 غ)</p>';
+    html += '<div style="display:grid;grid-template-columns:1.3fr 0.85fr 0.85fr;gap:6px 10px;font-size:0.85rem;align-items:center;">';
+    html += '<div></div><div style="font-weight:700;color:#3A2E1A;">أ</div><div style="font-weight:700;color:#3A2E1A;">ب</div>';
+    rows.forEach(function(r){
+      var av = r[1].toFixed(r[3]), bv = r[2].toFixed(r[3]);
+      var higher = r[1] > r[2] ? 'a' : (r[2] > r[1] ? 'b' : null);
+      html += '<div>' + r[0] + '</div>';
+      html += '<div style="' + (higher==='a' ? 'font-weight:700;color:#B85C5C;' : '') + '">' + av + '</div>';
+      html += '<div style="' + (higher==='b' ? 'font-weight:700;color:#B85C5C;' : '') + '">' + bv + '</div>';
+    });
+    html += '</div><p class="nut-note">باللون الأحمر: القيمة الأعلى بين أ وب لهذا العنصر الغذائي.</p></div>';
+    compareResultsArea.innerHTML += html;
+  }
+
+  piecesInputB.addEventListener('input', computeResultsB);
 })();
 </script>
 </body>

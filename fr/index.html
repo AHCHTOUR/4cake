@@ -928,6 +928,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <label for="f-msg" data-i18n="f_msg_label">Message / précisions</label>
               <textarea id="f-msg" placeholder="Quantités souhaitées, délais, autres besoins..." data-i18n-placeholder="f_msg_ph"></textarea>
             </div>
+            <div class="field" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
+              <input type="checkbox" id="f-consent" required style="margin-top:4px;flex-shrink:0;width:18px;height:18px;">
+              <label for="f-consent" style="font-size:0.85rem;font-weight:400;line-height:1.4;" data-i18n="f_consent_label">J'ai pris connaissance de la <a href="/fr/confidentialite.html" target="_blank" style="color:var(--gold);">politique de confidentialité</a> et j'accepte le traitement de mes données afin de recevoir une réponse à ma demande.</label>
+            </div>
             <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;" data-i18n="btn_submit">Envoyer ma demande via WhatsApp 💬</button>
             <p class="submit-note" data-i18n="submit_note">Un PDF récapitulatif sera téléchargé, et WhatsApp s'ouvrira avec le résumé pré-rempli.</p>
             <div class="order-confirm" id="order-confirm" data-i18n="order_confirm">✅ Un PDF récapitulatif de votre demande a été téléchargé, et WhatsApp s'est ouvert avec le résumé. Pensez à joindre le PDF téléchargé à votre message avant de l'envoyer (WhatsApp ne permet pas de joindre un fichier automatiquement depuis un lien).</div>
@@ -1705,6 +1709,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     e.preventDefault();
     const ids = Object.keys(cart);
     const isAr = currentLang === 'ar';
+    if(!document.getElementById('f-consent').checked){
+      alert(isAr ? 'يرجى الموافقة على سياسة الخصوصية قبل الإرسال.' : 'Merci de cocher la case de consentement avant d\'envoyer votre demande.');
+      return;
+    }
     if(ids.length === 0){
       dlPush('devis_panier_vide');
       alert(TRANSLATIONS[currentLang].alert_empty_cart);

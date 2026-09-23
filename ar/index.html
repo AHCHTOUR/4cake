@@ -928,6 +928,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <label for="f-msg" data-i18n="f_msg_label">رسالة / توضيحات</label>
               <textarea id="f-msg" placeholder="الكميات المطلوبة، الآجال، احتياجات أخرى..." data-i18n-placeholder="f_msg_ph"></textarea>
             </div>
+            <div class="field" style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
+              <input type="checkbox" id="f-consent" required style="margin-top:4px;flex-shrink:0;width:18px;height:18px;">
+              <label for="f-consent" style="font-size:0.85rem;font-weight:400;line-height:1.4;" data-i18n="f_consent_label">اطّلعت على <a href="/ar/confidentialite.html" target="_blank" style="color:var(--gold);">سياسة الخصوصية</a> وأوافق على معالجة بياناتي من أجل تلقي رد على طلبي.</label>
+            </div>
             <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;" data-i18n="btn_submit">إرسال طلبي عبر واتساب 💬</button>
             <p class="submit-note" data-i18n="submit_note">سيتم تحميل ملف PDF تلخيصي، وسيُفتح واتساب مع الملخص جاهزًا.</p>
             <div class="order-confirm" id="order-confirm" data-i18n="order_confirm">✅ تم تحميل ملف PDF ملخص لطلبكم، وتم فتح واتساب مع الملخص. لا تنسوا إرفاق ملف PDF الذي تم تحميله برسالتكم قبل الإرسال (لا يسمح واتساب بإرفاق ملف تلقائيًا من رابط).</div>
@@ -1705,6 +1709,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     e.preventDefault();
     const ids = Object.keys(cart);
     const isAr = currentLang === 'ar';
+    if(!document.getElementById('f-consent').checked){
+      alert(isAr ? 'يرجى الموافقة على سياسة الخصوصية قبل الإرسال.' : 'Merci de cocher la case de consentement avant d\'envoyer votre demande.');
+      return;
+    }
     if(ids.length === 0){
       dlPush('devis_panier_vide');
       alert(TRANSLATIONS[currentLang].alert_empty_cart);
