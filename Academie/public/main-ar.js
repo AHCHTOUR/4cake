@@ -63,11 +63,19 @@ let activeNiveau = 1;
 
 function r(recipe){ return recipe[currentLang]; }
 
-function cardHTML(rec){
+function cardHTML(rec, idx){
   const d = r(rec);
   const img = RECIPE_IMG[rec.id];
+  // Les 4 premières cartes sont visibles dès le chargement initial (au-dessus de la ligne
+  // de flottaison, mobile et desktop confondus) : pas de loading="lazy" pour elles, sinon
+  // le LCP (souvent la toute première image) est retardé inutilement. La toute première
+  // reçoit en plus fetchpriority="high" pour être vraiment priorisée par le navigateur.
+  const estAuDessusDeLaLigne = typeof idx === 'number' && idx < 4;
+  const attrsChargement = estAuDessusDeLaLigne
+    ? (idx === 0 ? 'fetchpriority="high" decoding="async"' : 'decoding="async"')
+    : 'loading="lazy" decoding="async"';
   const visual = img
-    ? `<img src="${IMG_BASE}${img}" alt="${d.title}" loading="lazy" decoding="async"
+    ? `<img src="${IMG_BASE}${img}" alt="${d.title}" ${attrsChargement}
          onerror="this.parentNode.classList.add('no-img');this.remove();">
        <span class="rcard-fallback">${ICONS[rec.icon]}</span>`
     : ICONS[rec.icon];

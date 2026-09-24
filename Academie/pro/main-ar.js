@@ -126,36 +126,36 @@ function openApprocheStory(i){
 
 const gridTech = document.getElementById('gridTechniques');
 
-TECH_IMAGES['Fendre une gousse de vanille']='/Academie/pro/images/techniques/fendre-une-gousse-de-vanille.jpg';
-TECH_IMAGES['Glacer un éclair']='/Academie/pro/images/techniques/glacer-un-eclair.jpg';
-TECH_IMAGES['Coucher des choux et des éclairs']='/Academie/pro/images/techniques/coucher-des-choux-et-des-eclairs.jpg';
-TECH_IMAGES['Écrire avec un cornet']='/Academie/pro/images/techniques/ecrire-avec-un-cornet.jpg';
-TECH_IMAGES['Dessiner un motif avec un cornet']='/Academie/pro/images/techniques/dessiner-un-motif-avec-un-cornet.jpg';
-TECH_IMAGES['Confectionner un décor en pastillage']='/Academie/pro/images/techniques/confectionner-un-decor-en-pastillage.jpg';
-TECH_IMAGES['Glacer une religieuse']='/Academie/pro/images/techniques/glacer-une-religieuse.jpg';
+TECH_IMAGES['Fendre une gousse de vanille']='/Academie/pro/images/techniques/fendre-une-gousse-de-vanille.webp';
+TECH_IMAGES['Glacer un éclair']='/Academie/pro/images/techniques/glacer-un-eclair.webp';
+TECH_IMAGES['Coucher des choux et des éclairs']='/Academie/pro/images/techniques/coucher-des-choux-et-des-eclairs.webp';
+TECH_IMAGES['Écrire avec un cornet']='/Academie/pro/images/techniques/ecrire-avec-un-cornet.webp';
+TECH_IMAGES['Dessiner un motif avec un cornet']='/Academie/pro/images/techniques/dessiner-un-motif-avec-un-cornet.webp';
+TECH_IMAGES['Confectionner un décor en pastillage']='/Academie/pro/images/techniques/confectionner-un-decor-en-pastillage.webp';
+TECH_IMAGES['Glacer une religieuse']='/Academie/pro/images/techniques/glacer-une-religieuse.webp';
 TECH_IMAGES['Blanchir des jaunes d\'œufs']='/Academie/pro/images/techniques/blanchir-des-jaunes-d-ufs.jpg';
-TECH_IMAGES['Cuire un fond de tarte à blanc']='/Academie/pro/images/techniques/cuire-un-fond-de-tarte-a-blanc.jpg';
-TECH_IMAGES['Mettre au point un nappage blond']='/Academie/pro/images/techniques/mettre-au-point-un-nappage-blond.jpg';
-TECH_IMAGES['Ramollir de la gélatine']='/Academie/pro/images/techniques/ramollir-de-la-gelatine.jpg';
-TECH_IMAGES['Confectionner un sirop à puncher']='/Academie/pro/images/techniques/confectionner-un-sirop-a-puncher.jpg';
-TECH_IMAGES['Puncher un biscuit ou une génoise']='/Academie/pro/images/techniques/puncher-un-biscuit-ou-une-genoise.jpg';
-TECH_IMAGES['Confectionner un sirop à tremper']='/Academie/pro/images/techniques/confectionner-un-sirop-a-tremper.jpg';
-TECH_IMAGES['Tremper un baba ou un savarin']='/Academie/pro/images/techniques/tremper-un-baba-ou-un-savarin.jpg';
-TECH_IMAGES['Tamiser']='/Academie/pro/images/techniques/tamiser.jpg';
-TECH_IMAGES['Découper un biscuit en étages']='/Academie/pro/images/techniques/decouper-un-biscuit-en-etages.jpg';
-TECH_IMAGES['Monter un entremets']='/Academie/pro/images/techniques/monter-un-entremets.jpg';
+TECH_IMAGES['Cuire un fond de tarte à blanc']='/Academie/pro/images/techniques/cuire-un-fond-de-tarte-a-blanc.webp';
+TECH_IMAGES['Mettre au point un nappage blond']='/Academie/pro/images/techniques/mettre-au-point-un-nappage-blond.webp';
+TECH_IMAGES['Ramollir de la gélatine']='/Academie/pro/images/techniques/ramollir-de-la-gelatine.webp';
+TECH_IMAGES['Confectionner un sirop à puncher']='/Academie/pro/images/techniques/confectionner-un-sirop-a-puncher.webp';
+TECH_IMAGES['Puncher un biscuit ou une génoise']='/Academie/pro/images/techniques/puncher-un-biscuit-ou-une-genoise.webp';
+TECH_IMAGES['Confectionner un sirop à tremper']='/Academie/pro/images/techniques/confectionner-un-sirop-a-tremper.webp';
+TECH_IMAGES['Tremper un baba ou un savarin']='/Academie/pro/images/techniques/tremper-un-baba-ou-un-savarin.webp';
+TECH_IMAGES['Tamiser']='/Academie/pro/images/techniques/tamiser.webp';
+TECH_IMAGES['Découper un biscuit en étages']='/Academie/pro/images/techniques/decouper-un-biscuit-en-etages.webp';
+TECH_IMAGES['Monter un entremets']='/Academie/pro/images/techniques/monter-un-entremets.webp';
 TECH_IMAGES['Tailler une julienne d\'orange']='/Academie/pro/images/techniques/tailler-une-julienne-d-orange.jpg';
-TECH_IMAGES['Peler à vif un agrume']='/Academie/pro/images/techniques/peler-a-vif-un-agrume.jpg';
+TECH_IMAGES['Peler à vif un agrume']='/Academie/pro/images/techniques/peler-a-vif-un-agrume.webp';
 TECH_IMAGES['Détailler des segments d\'agrumes']='/Academie/pro/images/techniques/detailler-des-segments-d-agrumes.jpg';
-TECH_IMAGES['Coucher une meringue ronde']='/Academie/pro/images/techniques/coucher-une-meringue-ronde.jpg';
-TECH_IMAGES['Tabler du chocolat (méthode classique)']='/Academie/pro/images/techniques/tabler-du-chocolat.jpg';
-TECH_IMAGES['Réaliser un décor en chocolat']='/Academie/pro/images/techniques/realiser-un-decor-en-chocolat.jpg';
+TECH_IMAGES['Coucher une meringue ronde']='/Academie/pro/images/techniques/coucher-une-meringue-ronde.webp';
+TECH_IMAGES['Tabler du chocolat (méthode classique)']='/Academie/pro/images/techniques/tabler-du-chocolat.webp';
+TECH_IMAGES['Réaliser un décor en chocolat']='/Academie/pro/images/techniques/realiser-un-decor-en-chocolat.webp';
 TECH_IMAGES['Découper un papier cuisson pour cuire à blanc']='/Academie/pro/images/techniques/decouper-un-papier-cuisson.jpg';
-TECH_IMAGES['Garnir une poche à douille']='/Academie/pro/images/techniques/garnir-une-poche-a-douille.jpg';
-TECH_IMAGES['Mettre au point du fondant']='/Academie/pro/images/techniques/mettre-au-point-du-fondant.jpg';
-TECH_IMAGES['Confectionner un rond de papier sulfurisé']='/Academie/pro/images/techniques/confectionner-un-rond-de-papier-sulfurise.jpg';
-TECH_IMAGES['Confectionner une cassolette']='/Academie/pro/images/techniques/confectionner-une-cassolette.jpg';
-TECH_IMAGES['Coucher une génoise en bande']='/Academie/pro/images/techniques/coucher-une-genoise-en-bande.jpg';
+TECH_IMAGES['Garnir une poche à douille']='/Academie/pro/images/techniques/garnir-une-poche-a-douille.webp';
+TECH_IMAGES['Mettre au point du fondant']='/Academie/pro/images/techniques/mettre-au-point-du-fondant.webp';
+TECH_IMAGES['Confectionner un rond de papier sulfurisé']='/Academie/pro/images/techniques/confectionner-un-rond-de-papier-sulfurise.webp';
+TECH_IMAGES['Confectionner une cassolette']='/Academie/pro/images/techniques/confectionner-une-cassolette.webp';
+TECH_IMAGES['Coucher une génoise en bande']='/Academie/pro/images/techniques/coucher-une-genoise-en-bande.webp';
 
 
 gridTech.innerHTML = TECHNIQUES.map((t,i) => `
