@@ -40,7 +40,7 @@ h1{font-size:1.7rem;margin:0 0 6px;color:var(--brun);}
 .qty-row button:disabled{opacity:0.4;cursor:not-allowed;}
 .ing-list{list-style:none;padding:0;margin:0 0 24px;}
 .ing-list li{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E9DCC0;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:0.9rem;}
-.ing-list .remove{background:none;border:none;color:#B85C5C;font-size:1.1rem;cursor:pointer;padding:0 4px;font-family:inherit;}
+.ing-list .remove{background:none;border:none;color:#B85C5C;font-size:1.1rem;cursor:pointer;padding:8px;min-width:36px;min-height:36px;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;}
 .empty-msg{color:#A69B85;font-size:0.88rem;font-style:italic;margin-bottom:24px;}
 .pieces-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-size:0.9rem;}
 .pieces-row input{width:80px;padding:9px 12px;border:1.5px solid #E9DCC0;border-radius:10px;font-family:inherit;font-size:0.9rem;}
@@ -205,7 +205,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if(pa !== pb) return pa - pb;
       return a.name.length - b.name.length;
     }).slice(0, 12);
-    if(matches.length === 0){ suggestions.style.display = 'none'; return; }
+    if(matches.length === 0){
+      suggestions.innerHTML = '<div style="padding:10px 14px;font-size:0.82rem;color:#8A7A5E;">Aucun ingrédient trouvé pour « ' + searchInput.value.trim() + ' ». Essayez un terme plus général (ex. « farine » plutôt qu\'une marque précise).</div>';
+      suggestions.style.display = 'block';
+      return;
+    }
     suggestions.innerHTML = '';
     if(isApprox){
       var note = document.createElement('div');
@@ -385,12 +389,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var html = costHtml + '<div class="result-block"><p class="result-title">Pourcentage boulanger';
     html += flourW > 0 ? ' (base farine = 100 %)</p>' : ' — nécessite au moins une farine dans la liste</p>';
     if(flourW > 0){
+      var liquideW = added.filter(function(e){ var n=normalize(e.item.name); return n.indexOf('eau')!==-1||n.indexOf('lait')!==-1||n.indexOf('creme')!==-1; }).reduce(function(s,e){ return s+e.qty; },0);
+      var hydratation = (liquideW / flourW * 100).toFixed(1);
+      html += '<div style="background:#FBF6E9;border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:0.9rem;"><b style="color:#B5790A;">Hydratation : ' + hydratation + ' %</b> <span style="color:#8A7A5E;font-size:0.8rem;">(liquide / farine)</span></div>';
       html += '<div class="result-grid" style="grid-template-columns:1fr;">';
       added.forEach(function(e){
         var pct = (e.qty / flourW * 100).toFixed(1);
         html += '<div><span>' + e.item.name + '</span><strong>' + pct + ' %</strong></div>';
       });
       html += '</div>';
+      html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #E9DCC0;">';
+      html += '<p style="font-size:0.85rem;color:#6B5E4E;margin:0 0 8px;">Recalculer pour un poids de farine cible (ex : passer de 1 pain à 100 kg de pâte)</p>';
+      html += '<div style="display:flex;gap:8px;"><input type="number" id="proTargetFlour" placeholder="Poids de farine cible en g, ex : 100000" style="flex:1;padding:10px 12px;border:1.5px solid #E9DCC0;border-radius:10px;font-family:inherit;font-size:0.9rem;">';
+      html += '<button type="button" id="proScaleBtn" style="background:#D4A017;color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-family:inherit;cursor:pointer;">Recalculer</button></div>';
+      html += '<div id="proScaleResult" style="margin-top:10px;"></div></div>';
     }
     html += '</div>';
 
@@ -436,6 +448,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     document.getElementById('proExportCsv').addEventListener('click', exportCsv);
     document.getElementById('proSaveLocal').addEventListener('click', saveCurrentRecipe);
+    if(document.getElementById('proScaleBtn')){
+      document.getElementById('proScaleBtn').addEventListener('click', function(){
+        var cible = parseFloat(document.getElementById('proTargetFlour').value);
+        var zone = document.getElementById('proScaleResult');
+        if(!cible || cible <= 0){ zone.innerHTML = '<p style="color:#B85C5C;font-size:0.85rem;">Entrez un poids de farine valide.</p>'; return; }
+        var ratio = cible / flourW;
+        var out = '<div class="result-grid" style="grid-template-columns:1fr;">';
+        added.forEach(function(e){
+          out += '<div><span>' + e.item.name + '</span><strong>' + Math.round(e.qty * ratio) + ' g</strong></div>';
+        });
+        out += '</div><p style="font-size:0.8rem;color:#8A7A5E;margin-top:8px;">Poids total recalculé : ' + Math.round(totalW * ratio) + ' g</p>';
+        zone.innerHTML = out;
+      });
+    }
     Array.prototype.forEach.call(document.querySelectorAll('.loadSavedBtn'), function(btn){
       btn.addEventListener('click', function(){ loadSavedRecipe(parseInt(btn.getAttribute('data-idx'))); });
     });
@@ -626,7 +652,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if(pa !== pb) return pa - pb;
       return a.name.length - b.name.length;
     }).slice(0, 12);
-    if(matches.length === 0){ suggestionsB.style.display = 'none'; return; }
+    if(matches.length === 0){
+      suggestionsB.innerHTML = '<div style="padding:10px 14px;font-size:0.82rem;color:#8A7A5E;">Aucun ingrédient trouvé pour « ' + searchInputB.value.trim() + ' ». Essayez un terme plus général.</div>';
+      suggestionsB.style.display = 'block';
+      return;
+    }
     suggestionsB.innerHTML = '';
     if(isApprox){
       var note = document.createElement('div');

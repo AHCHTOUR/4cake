@@ -113,7 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </dl>
         <div class="cta-row">
           <a class="btn btn-primary" href="/ar/index.html?produit=6#devis">اطلبوا عرض سعر</a>
-          <a class="btn btn-whatsapp" href="https://wa.me/212661759934?text=مرحبًا،%20أرغب%20في%20طلب%20عرض%20سعر%20من%20أجل%3A%20فوييتين%20بالشوكولاطة%20(/%205%20كغ)" target="_blank" rel="noopener">الطلب عبر واتساب</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/212661759934?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%204Cake%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%84%D9%80%3A%0A%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%3A%20%D9%81%D9%88%D9%8A%D9%8A%D8%AA%D9%8A%D9%86%20%D8%A8%D8%A7%D9%84%D8%B4%D9%88%D9%83%D9%88%D9%84%D8%A7%D8%B7%D8%A9%0A%D8%A7%D9%84%D9%85%D8%B1%D8%AC%D8%B9%3A%204C-006%0A%D8%A7%D9%84%D8%AA%D8%B9%D8%A8%D8%A6%D8%A9%3A%20%D8%A7%D9%84%D8%AD%D8%AF%20%D8%A7%D9%84%D8%A3%D8%AF%D9%86%D9%89%3A%20%D9%88%D8%AD%D8%AF%D8%A9%20%D9%88%D8%A7%D8%AD%D8%AF%D8%A9%0A%D8%A7%D9%84%D9%83%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%D8%A9%3A%20___%0A%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D8%AA%D8%B3%D9%84%D9%8A%D9%85%3A%20___%0A%D8%B4%D9%83%D8%B1%D9%8B%D8%A7." target="_blank" rel="noopener">الطلب عبر واتساب</a>
         </div>
         <p class="disclaimer">سعر استرشادي غير شامل لتخفيض الجملة — يتم تأكيد المبلغ النهائي حسب الكميات. البيع مخصص للمحترفين فقط.</p>
       </div>
@@ -155,6 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(!a) return;
     const href = a.getAttribute('href') || '';
     if(href.indexOf('wa.me') > -1) dlPush('contact_whatsapp', { emplacement: 'fiche_produit', produit: "فوييتين بالشوكولاطة" });
+      if(href.indexOf('#devis') > -1) dlPush('click_quote', { emplacement: 'fiche_produit', produit: "فوييتين بالشوكولاطة" });
   }, true);
 </script>
 <footer class="site">

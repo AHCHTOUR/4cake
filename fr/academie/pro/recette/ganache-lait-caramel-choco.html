@@ -53,6 +53,9 @@ ol.steps li{margin-bottom:14px;}
 .fiche-science-chiffre{background:#FBF6E9;border-radius:10px;padding:10px 14px;margin:10px 0;font-size:0.88rem;color:#3A2E1A;}
 .fiche-science-chiffre b{color:#B5790A;font-size:1.05rem;}
 .fiche-science-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.fiche-produit-lien{margin:14px 0 18px;padding:12px 16px;border-radius:12px;background:#FFF8E7;border:1.5px solid #D4A017;font-size:0.85rem;color:#3A2E1A;}
+.fiche-produit-lien a{color:#8A6A0A;font-weight:700;text-decoration:none;margin-inline-end:14px;}
+.fiche-produit-lien a:hover{text-decoration:underline;}
 .fiche-science{margin:14px 0 18px;padding:14px 16px;border-radius:14px;background:#fff;border:1.5px solid #E9DCC0;}
 .fiche-science strong{display:block;margin-bottom:8px;font-size:0.9rem;}
 .fiche-science-chiffre{background:#FBF6E9;border-radius:10px;padding:10px 14px;margin:8px 0;font-size:0.85rem;color:#3A2E1A;}
@@ -82,12 +85,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span class="pro-badge">Fiche professionnelle</span>
 <h1>Ganache lait caramel</h1>
 <p class="hook">Le caramel décuit à la crème apporte de l&#x27;amertume et équilibre la douceur du chocolat au lait.</p>
-<div class="meta"><span>⏱ Prépa : 45 min + 12 h de cristallisation</span><span>🔥 caramel à sec</span><span>Pour 1 cadre 24 × 24 cm</span></div><button class="nut-toggle" onclick="var p=this.nextElementSibling;var open=p.style.display!=='none';p.style.display=open?'none':'block';this.querySelector('.nut-chevron').textContent=open?'▾':'▴';">🍽 235 kcal/pièce <span class="nut-chevron">▾</span></button><div class="nut-panel"><p class="nut-title">Valeurs nutritionnelles — 1 pièce (env.  g)</p><div class="nut-grid"><div><span>Calories</span><strong>235 kcal</strong></div><div><span>Lipides</span><strong>16,8 g</strong></div><div><span>Glucides</span><strong>18,5 g</strong></div><div><span>dont sucres</span><strong>18,5 g</strong></div><div><span>Protéines</span><strong>2,3 g</strong></div><div><span>Fibres</span><strong>0,0 g</strong></div></div><p class="nut-note">Calculé à partir des ingrédients réels de cette recette (sources Ciqual/ANSES). Non vérifié par analyse laboratoire.</p></div>
+<div class="meta"><span>⏱ Prépa : 45 min + 12 h de cristallisation</span><span>🔥 caramel à sec</span><span>Pour 1 cadre 24 × 24 cm</span></div><button class="nut-toggle" aria-expanded="false" onclick="var p=this.nextElementSibling;var open=getComputedStyle(p).display!=='none';p.style.display=open?'none':'block';this.querySelector('.nut-chevron').textContent=open?'▾':'▴';this.setAttribute('aria-expanded',(!open).toString());">🍽 235 kcal/pièce <span class="nut-chevron">▾</span></button><div class="nut-panel"><p class="nut-title">Valeurs nutritionnelles — 1 pièce (env.  g)</p><div class="nut-grid"><div><span>Calories</span><strong>235 kcal</strong></div><div><span>Lipides</span><strong>16,8 g</strong></div><div><span>Glucides</span><strong>18,5 g</strong></div><div><span>dont sucres</span><strong>18,5 g</strong></div><div><span>Protéines</span><strong>2,3 g</strong></div><div><span>Fibres</span><strong>0,0 g</strong></div></div><p class="nut-note">Calculé à partir des ingrédients réels de cette recette (sources Ciqual/ANSES). Non vérifié par analyse laboratoire.</p></div>
 <div class="fiche-science">
 <strong>La science derrière cette recette</strong>
 <div class="fiche-science-tags"><a href="/fr/academie/pro/science/emulsion.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="16" height="16"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>Émulsion</a></div>
 </div>
 <img class="recette-photo" src="/Academie/pro/images/chocolat/ganache-lait-caramel.webp" alt="Ganache lait caramel" fetchpriority="high" width="1024" height="1024">
+<div class="fiche-produit-lien">🛒 Vous préparez cette recette professionnellement ? <a href="/fr/produits/chocolat-de-couverture-noir-64pct.html" onclick="dlPush('academy_to_product_click',{recette:'Ganache lait caramel',produit:'chocolat'})">Voir nos chocolats de couverture →</a></div>
 <h3>Caramel</h3><ul class="ingredients"><li><span>Sucre</span><span>120 g</span></li><li><span>Crème liquide 35 %</span><span>220 g</span></li></ul><h3>Ganache</h3><ul class="ingredients"><li><span>Chocolat au lait 40 %</span><span>400 g</span></li><li><span>Beurre demi-sel</span><span>50 g</span></li></ul>
 <h2>Étapes</h2>
 <ol class="steps">

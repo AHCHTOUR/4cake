@@ -113,7 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </dl>
         <div class="cta-row">
           <a class="btn btn-primary" href="/fr/index.html?produit=3#devis">Demander un devis</a>
-          <a class="btn btn-whatsapp" href="https://wa.me/212661759934?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20%3A%20Pâte%20à%20sucre%20premium%20sans%20gluten%20(/%205kg)" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/212661759934?text=Bonjour%204Cake%2C%20je%20souhaite%20recevoir%20un%20devis%20pour%20%3A%0AProduit%20%3A%20P%C3%A2te%20%C3%A0%20sucre%20premium%20sans%20gluten%0AR%C3%A9f%C3%A9rence%20%3A%204C-003%0AConditionnement%20%3A%20Cmd.%20min%202%20unit%C3%A9s%0AQuantit%C3%A9%20souhait%C3%A9e%20%3A%20___%0AVille%20de%20livraison%20%3A%20___%0AMerci." target="_blank" rel="noopener">Commander sur WhatsApp</a>
         </div>
         <p class="disclaimer">Prix indicatif hors remise grossiste — montant final confirmé par notre équipe selon les quantités. Vente réservée aux professionnels.</p>
       </div>
@@ -155,6 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(!a) return;
     const href = a.getAttribute('href') || '';
     if(href.indexOf('wa.me') > -1) dlPush('contact_whatsapp', { emplacement: 'fiche_produit', produit: "Pâte à sucre premium sans gluten" });
+      if(href.indexOf('#devis') > -1) dlPush('click_quote', { emplacement: 'fiche_produit', produit: "Pâte à sucre premium sans gluten" });
   }, true);
 </script>
 <footer class="site">
