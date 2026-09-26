@@ -2,7 +2,7 @@
   "name": "4Cake — بيع بالجملة مكونات الحلويات",
   "short_name": "4Cake",
   "description": "كتالوج احترافي وطلب عروض أسعار لتجار الجملة في مكونات الحلويات.",
-  "start_url": "/ar/index.html",
+  "start_url": "/ar/",
   "scope": "/ar/",
   "display": "standalone",
   "orientation": "portrait-primary",

@@ -2,7 +2,7 @@
   "name": "4Cake — Ingrédients Pâtisserie Grossiste",
   "short_name": "4Cake",
   "description": "Catalogue professionnel et demande de devis pour grossistes en ingrédients de pâtisserie.",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",

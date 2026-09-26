@@ -34,7 +34,7 @@ const IMG_BASE = '/Academie/public/thumbs/';
 
 
 // Vitrine Espace Pro (Niveau 3) — aucun contenu dupliqué, uniquement des liens
-const PRO_URL = '/ar/academie/pro/index.html';
+const PRO_URL = '/ar/academie/pro/';
 const PRO_TEASER = [
   {icon:'layer',       fr:'Opéra',                    ar:'أوبيرا'},
   {icon:'parisbrest',  fr:'Saint-Honoré à la chantilly', ar:'سان أونوريه بالشانتيي'},
@@ -84,7 +84,7 @@ function cardHTML(rec, idx){
   // de lien interne cassé.
   const hasStaticPage = RECIPES.some(x => x.id === rec.id);
   const tag = hasStaticPage ? 'a' : 'div';
-  const hrefAttr = hasStaticPage ? `href="/fr/academie/public/recette/${rec.id}.html"` : '';
+  const hrefAttr = hasStaticPage ? `href="/ar/academie/public/recette/${rec.id}"` : '';
   const clickAttr = `onclick="openRecipe('${rec.id}');return false;"`;
   return `
     <${tag} class="rcard reveal" ${hrefAttr} ${clickAttr}>
@@ -352,7 +352,7 @@ function nutritionHTML(recipe){
       <p class="nut-title">${title}</p>
       <div class="nut-grid">${rows.map(row => `<div><span>${row[0]}</span><strong>${row[1]}</strong></div>`).join('')}</div>
       <p class="nut-note">${n.description || ''}</p>
-    ${isAr ? '<p class="nut-note"><a href="/ar/academie/pro/calculateur.html" style="color:#8A6A0A;">🍽 احسبوا وصفتكم الخاصة ←</a></p>' : '<p class="nut-note"><a href="/fr/academie/pro/calculateur.html" style="color:#8A6A0A;">🍽 Calculer votre propre recette →</a></p>'}
+    ${isAr ? '<p class="nut-note"><a href="/ar/academie/pro/calculateur" style="color:#8A6A0A;">🍽 احسبوا وصفتكم الخاصة ←</a></p>' : '<p class="nut-note"><a href="/fr/academie/pro/calculateur" style="color:#8A6A0A;">🍽 Calculer votre propre recette →</a></p>'}
     </div>`;
 }
 
@@ -432,7 +432,7 @@ function openRecipe(id, silencieux){
 
 /* ============ Passerelle Académie → Catalogue ============
    Analyse les ingrédients de la recette pour proposer la catégorie 4Cake pertinente. */
-const CATALOGUE_URL = '/ar/index.html';
+const CATALOGUE_URL = '/ar/';
 
 const MOTS_CATEGORIE = [
   { cat:'chocolat',    mots:['chocolat','cacao','ganache','couverture','praliné','gianduja','شوكولاتة','كاكاو'] },
@@ -581,7 +581,7 @@ document.addEventListener('click', function(e){
     if(a.id === 'ptContinue') return; // clic de confirmation dans le modal : on laisse naviguer
     e.preventDefault();
     openProTransition(href, a.classList.contains('pro-cta') ? 'bouton_cta' : a.classList.contains('rcard-pro') ? 'carte_teaser' : 'lien');
-  } else if(href === '../../' || href === '../../index.html' || href.indexOf('4cake.ma') > -1){
+  } else if(href === '../../' || href.indexOf('4cake.ma') > -1){
     dlPush('retour_vitrine', { langue: currentLang });
   }
 }, true);

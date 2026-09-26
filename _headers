@@ -1,0 +1,30 @@
+# Règles d'en-têtes HTTP pour Cloudflare Pages (fichier lu au déploiement, jamais servi).
+# Les pages HTML gardent le comportement par défaut de Pages (revalidation à chaque visite)
+# pour que chaque mise à jour du site soit visible immédiatement.
+# Attention : si deux règles définissent Cache-Control pour un même fichier, Pages les
+# concatène — ne jamais faire se chevaucher deux règles Cache-Control.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Images : 30 jours. Pour remplacer une image, lui donner un nouveau nom de fichier
+# (sinon les visiteurs déjà passés peuvent voir l'ancienne jusqu'à 30 jours).
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+
+# Polices : ne changent jamais.
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+# Scripts (données recettes, catalogue, calculateur) : 1 jour, puis rafraîchissement
+# en arrière-plan. Une mise à jour des .js atteint donc tous les visiteurs sous 24 h
+# (le navigateur ignore ce cache pour sw.js, qui reste vérifié à chaque visite).
+/*.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

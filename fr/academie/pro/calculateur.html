@@ -12,10 +12,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculette du pâtissier — Calculateur nutritionnel, ingrédients et coût matière | 4Cake Académie Pro</title>
 <meta name="description" content="Calculez gratuitement les valeurs nutritionnelles (calories, glucides, lipides, protéines) de vos recettes de pâtisserie pour l'étiquetage — ingrédient par ingrédient, à partir de la base officielle Ciqual/ANSES.">
-<meta name="keywords" content="calcul calories pâtisserie, valeurs nutritionnelles recette, étiquetage nutritionnel pâtisserie, calculateur calories gâteau, déclaration nutritionnelle pâtisserie professionnelle"><link rel="canonical" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
-<link rel="alternate" hreflang="fr-MA" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
-<link rel="alternate" hreflang="ar-MA" href="https://www.4cake.ma/ar/academie/pro/calculateur.html">
-<link rel="alternate" hreflang="x-default" href="https://www.4cake.ma/fr/academie/pro/calculateur.html">
+<meta name="keywords" content="calcul calories pâtisserie, valeurs nutritionnelles recette, étiquetage nutritionnel pâtisserie, calculateur calories gâteau, déclaration nutritionnelle pâtisserie professionnelle"><link rel="canonical" href="https://www.4cake.ma/fr/academie/pro/calculateur">
+<link rel="alternate" hreflang="fr-MA" href="https://www.4cake.ma/fr/academie/pro/calculateur">
+<link rel="alternate" hreflang="ar-MA" href="https://www.4cake.ma/ar/academie/pro/calculateur">
+<link rel="alternate" hreflang="x-default" href="https://www.4cake.ma/fr/academie/pro/calculateur">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <style>
 :root{--doré:#D4A017;--brun:#3A2E1A;--creme:#FBF6E9;}
@@ -54,7 +54,7 @@ h1{font-size:1.7rem;margin:0 0 6px;color:var(--brun);}
 footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
 footer a{color:var(--brun);}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculette du pâtissier — 4Cake","applicationCategory":"Outil professionnel de pâtisserie","operatingSystem":"Web","url":"https://www.4cake.ma/fr/academie/pro/calculateur.html","inLanguage":"fr","description":"Calculette professionnelle de pâtisserie : valeurs nutritionnelles, coût matière et poids après cuisson, ingrédient par ingrédient, à partir de la base Ciqual/ANSES.","offers":{"@type":"Offer","price":"0","priceCurrency":"MAD"},"provider":{"@type":"Organization","name":"4Cake","url":"https://www.4cake.ma/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculette du pâtissier — 4Cake","applicationCategory":"Outil professionnel de pâtisserie","operatingSystem":"Web","url":"https://www.4cake.ma/fr/academie/pro/calculateur","inLanguage":"fr","description":"Calculette professionnelle de pâtisserie : valeurs nutritionnelles, coût matière et poids après cuisson, ingrédient par ingrédient, à partir de la base Ciqual/ANSES.","offers":{"@type":"Offer","price":"0","priceCurrency":"MAD"},"provider":{"@type":"Organization","name":"4Cake","url":"https://www.4cake.ma/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Comment calculer les calories d'une recette de pâtisserie ?","acceptedAnswer":{"@type":"Answer","text":"Ajoutez chaque ingrédient de votre recette avec son poids en grammes. Le calculateur additionne automatiquement les valeurs nutritionnelles de chaque ingrédient (source Ciqual/ANSES)."}},
 {"@type":"Question","name":"Quelle différence entre une valeur théorique et une analyse laboratoire ?","acceptedAnswer":{"@type":"Answer","text":"La valeur théorique est une estimation basée sur la composition moyenne des ingrédients. Une analyse laboratoire mesure la composition réelle du produit fini après cuisson."}},
@@ -67,7 +67,7 @@ footer a{color:var(--brun);}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9M8LJXZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header><a href="/fr/academie/pro/index.html">← Académie Pro — 4Cake</a></header>
+<header><a href="/fr/academie/pro/">← Académie Pro — 4Cake</a></header>
 <main>
 <span class="pro-badge">OUTIL PROFESSIONNEL</span>
 <h1>Calculette du pâtissier</h1>
@@ -146,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 </main>
-<footer>4Cake Académie Pro — <a href="/fr/academie/pro/index.html">retour</a></footer>
+<footer>4Cake Académie Pro — <a href="/fr/academie/pro/">retour</a></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="/Academie/pro/data-calculateur.js"></script>
@@ -322,7 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var phenomenes = detecterPhenomenes();
     if(!phenomenes.length){ zone.innerHTML = ''; return; }
     var tags = phenomenes.map(function(p){
-      return '<a href="/fr/academie/pro/science/' + p + '.html" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#FBF6E9;border:1px solid #E9DCC0;border-radius:100px;padding:6px 14px;font-size:0.82rem;color:#3A2E1A;text-decoration:none;font-weight:600;">' + SCIENCE_ICONS[p] + SCIENCE_LABELS[p] + '</a>';
+      return '<a href="/fr/academie/pro/science/' + p + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#FBF6E9;border:1px solid #E9DCC0;border-radius:100px;padding:6px 14px;font-size:0.82rem;color:#3A2E1A;text-decoration:none;font-weight:600;">' + SCIENCE_ICONS[p] + SCIENCE_LABELS[p] + '</a>';
     }).join('');
     zone.innerHTML = '<div style="padding:14px 16px;border-radius:14px;background:#fff;border:1.5px solid #E9DCC0;">'
       + '<strong style="display:block;margin-bottom:8px;font-size:0.9rem;">La science derrière votre recette</strong>'
@@ -553,7 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(pricedTotal > 0){ doc.text('Coût matière total : ' + pricedTotal.toFixed(2) + ' DH', 14, y); y += 10; } else { y += 3; }
     if(resultsArea.innerHTML){
       doc.setFontSize(9);
-      doc.text('Valeurs nutritionnelles calculées via 4cake.ma/fr/academie/pro/calculateur.html', 14, y); y += 5;
+      doc.text('Valeurs nutritionnelles calculées via 4cake.ma/fr/academie/pro/calculateur', 14, y); y += 5;
       doc.text('(base Ciqual/ANSES, estimation théorique — non vérifiée par analyse laboratoire)', 14, y);
     }
     doc.save('fiche-technique-4cake.pdf');
