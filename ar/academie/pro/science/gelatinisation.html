@@ -31,8 +31,6 @@ header a{color:var(--doré);text-decoration:none;font-weight:700;font-size:0.95r
 main{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
 h1{font-size:1.8rem;margin:0 0 6px;color:var(--brun);}
 .hook{font-size:1.05rem;color:#6B5E4E;margin:0 0 16px;}
-.meta{display:flex;gap:14px;font-size:0.9rem;color:#6B5E4E;margin-bottom:20px;flex-wrap:wrap;}
-.meta span{background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:5px 14px;}
 h2{font-size:1.2rem;color:var(--brun);border-bottom:2px solid var(--doré);padding-bottom:6px;margin-top:32px;}
 p{margin:10px 0;}
 ul.facteurs{padding-right:22px;padding-left:0;margin:10px 0;}
@@ -40,14 +38,43 @@ ul.facteurs li{margin-bottom:8px;}
 .callout{background:#fff;border-right:4px solid var(--doré);border-left:none;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.95rem;}
 .callout.erreur{border-right-color:#8C3A3A;}
 .callout.mesure{border-right-color:#3A8C5A;}
-.preuve{display:inline-block;background:#fff;border:1px solid #D4A017;border-radius:100px;padding:5px 14px;font-size:0.85rem;color:#8A6A0A;font-weight:600;margin:6px 0 18px;}
-.sources{font-size:0.85rem;color:#6B5E4E;padding-right:22px;padding-left:0;}
+.callout.retenir{border-right-color:#3A6E8C;background:#F3F8FB;}
+.callout.pratique{border-right-color:#B5790A;background:#FFF8E7;}
+.callout h3{margin:0 0 6px;font-size:0.95rem;}
+.sources{font-size:0.85rem;color:#6B5E4E;}
 .sources li{margin-bottom:6px;}
 .a-verifier{background:#FFF6E5;border:1px dashed #D4A017;border-radius:10px;padding:12px 16px;margin:16px 0;font-size:0.85rem;color:#8A6A0A;}
 .recettes-liees{margin:14px 0;padding:0;list-style:none;}
 .recettes-liees li{display:inline-block;background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:6px 14px;margin:0 0 6px 6px;font-size:0.85rem;}
 footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
 footer a{color:var(--brun);}
+.fiche-header{background:#fff;border:1px solid #E9DCC0;border-radius:16px;padding:18px 20px;margin:0 0 18px;}
+.fiche-header h1{margin:0 0 4px;font-size:1.6rem;}
+.fiche-header .hook{margin:0 0 10px;}
+.fiche-header .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:100px;padding:4px 12px;font-size:0.78rem;font-weight:600;}
+.badge.type{background:#F3E9CE;color:#6B5E4E;}
+.badge.niveau-etabli{background:#E3F3E6;color:#2A6B3A;}
+.badge.niveau-documente{background:#E3EEF7;color:#2A5C8C;}
+.badge.niveau-repere{background:#FBEBD8;color:#B5720A;}
+.badge.niveau-verifier{background:#EDEDED;color:#5A5A5A;}
+.appli-inline{font-size:0.85rem;color:#6B5E4E;margin-top:8px;}
+.cite{color:#8A6A0A;text-decoration:none;font-size:0.78em;font-weight:700;cursor:pointer;}
+.cite:hover{text-decoration:underline;}
+.notions-liees{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.notions-liees a{background:#F3E9CE;border-radius:100px;padding:6px 14px;font-size:0.85rem;color:#6B4E1A;text-decoration:none;font-weight:600;}
+.notions-liees a:hover{background:#E9DCC0;}
+details.sources-repli{background:#fff;border:1px solid #E9DCC0;border-radius:12px;padding:4px 18px;margin:16px 0;}
+details.sources-repli summary{cursor:pointer;font-weight:700;padding:12px 0;color:var(--brun);list-style:none;}
+details.sources-repli summary::-webkit-details-marker{display:none;}
+details.sources-repli summary:before{content:"◂ ";color:var(--doré);}
+details.sources-repli[open] summary:before{content:"▾ ";}
+.source-groupe{margin:10px 0 16px;}
+.source-groupe h4{font-size:0.82rem;color:#8A7A5E;margin:0 0 8px;}
+.source-item{display:flex;gap:10px;margin-bottom:10px;font-size:0.85rem;}
+.source-item .num{color:#8A6A0A;font-weight:700;flex-shrink:0;}
+.source-item .txt strong{display:block;color:var(--brun);}
+.source-item .txt span{color:#6B5E4E;}
 </style>
 </head>
 <body>
@@ -58,13 +85,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header><a href="/ar/academie/pro/science/index.html">→ العلوم الحلوانية — 4Cake الأكاديمية</a></header>
 <main>
+
+<div class="fiche-header">
 <h1>تحلل النشا الجيلاتيني</h1>
 <p class="hook">لماذا تتكثّف كريمة الحلويات دفعة واحدة، لا تدريجيًا.</p>
-<div class="meta"><span>🔬 تحوّل</span><span>مستوى احترافي</span></div>
-<span class="preuve">مستوى الإثبات: مبدأ ثابت — درجات الحرارة الدقيقة لكل نوع نشا بحاجة لمصدر</span>
+<div class="badges">
+<span class="badge type">🔬 تحوّل</span>
+<span class="badge niveau-etabli">🟢 ثابت (المبدأ)</span>
+</div>
+<p class="appli-inline"><strong>التطبيقات:</strong> كريمة الحلويات · الصلصات المكثّفة · الفلان · تارت الفواكه المكثّفة بالمايزينا</p>
+</div>
 
 <h2>التعريف</h2>
 <p>التحلل الجيلاتيني هو الظاهرة التي تنتفخ فيها حبيبات النشا، عند تسخينها بوجود ماء، ثم تنفجر، محوّلة خليطًا سائلًا إلى قوام كثيف ولزج.</p>
+
+<div class="callout retenir">
+<h3>🍰 ما يجب تذكّره</h3>
+<p>ليس تكثيفًا تدريجيًا بل تحوّلًا مفاجئًا. دون درجة حرارة معيّنة، لا يحدث شيء ظاهر؛ وفوقها، يتغيّر القوام في بضع ثوانٍ. ومن هنا الانطباع بأنها «تتماسك دفعة واحدة».</p>
+</div>
 
 <h2>ما يحدث فعليًا</h2>
 <p>تحت تأثير الحرارة، يخترق الماء حبيبات النشا؛ يتفكك بناؤها الداخلي، تنتفخ ثم تنفجر في النهاية محرّرة الأميلوز، مما يكثّف الخليط فجأة. تنطلق الظاهرة ضمن نطاق حرارة محدّد، خاص بكل مصدر نشا.</p>
@@ -80,11 +118,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2>التطبيق في الحلويات</h2>
 <p>كريمة الحلويات، الصلصات المكثّفة، الفلان، تارت الفواكه المكثّفة بالمايزينا.</p>
 
+<div class="callout pratique">
+<h3>👨‍🍳 عمليًا</h3>
+<p>كريمتكم لا تتكثّف رغم الطهي؟ تأكّدوا من بلوغ غليان خفيف (وليس مجرد ارتعاش السطح) — غالبًا هنا تقع عتبة الانطلاق لنشا القمح أو الذرة الكلاسيكي.</p>
+<p style="margin-bottom:0;"><strong>تنبيه:</strong> إضافة الحمض (الليمون) في نهاية الطهي تُضعف القدرة التكثيفية أقل من إضافته قبل الطهي.</p>
+</div>
+
 <h2>خطأ شائع</h2>
-<div class="callout erreur">«كريمتي تبقى سائلة رغم الطهي.» — غالبًا، لم تُبلغ درجة حرارة الانطلاق الخاصة بالنشا المستخدم، أو أُضيف السكر مبكرًا جدًا وبكمية كبيرة فأخّر التحلل الجيلاتيني، أو أُدمج حمض (عصير ليمون) قبل الطهي فأضعف القدرة التكثيفية للنشا.</div>
+<div class="callout erreur">«كريمتي تبقى سائلة رغم الطهي.» — غالبًا، لم تُبلغ درجة حرارة الانطلاق الخاصة بالنشا المستخدم، أو أُدمج حمض (عصير ليمون) مبكرًا جدًا، قبل الطهي وبكمية كبيرة، فأضعف القدرة التكثيفية للنشا.</div>
 
 <h2>كيفية قياسها</h2>
 <div class="callout mesure"><strong>ميزان حرارة.</strong> لكل نشا نطاق حرارة تحلل جيلاتيني خاص به — يتيح ميزان الحرارة التحقق من بلوغه، بالإضافة إلى الملاحظة البصرية للقوام.</div>
+
+<h2>مفاهيم مرتبطة</h2>
+<div class="notions-liees">
+<a href="coagulation-proteines.html">تخثر البروتينات ←</a>
+<a href="absorption-huile.html">امتصاص الزيت ←</a>
+</div>
 
 <h2>وصفات 4Cake المعنيّة</h2>
 <ul class="recettes-liees">
@@ -96,11 +146,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="a-verifier">⚠️ نموذج أولي: المصادر والعتبات أدناه لم يُتحقّق منها مباشرة في هذا النقاش — بحاجة لتأكيد من سمير قبل النشر.</div>
 
-<h2>المصادر</h2>
-<ul class="sources">
-<li>مرجع جامعي في تكنولوجيا الأغذية — النشويات والتحلل الجيلاتيني (المرجع الدقيق بحاجة للتحديد)</li>
-<li>وثائق تقنية لموردي النشا (أوراق المنتج، مستوى C)</li>
-</ul>
+<details class="sources-repli">
+<summary>📚 عرض المصادر (2)</summary>
+<div class="source-groupe">
+<h4>مصادر علمية</h4>
+<div class="source-item"><span class="num">[1]</span><div class="txt"><strong>مرجع جامعي في تكنولوجيا الأغذية</strong><span>النشويات والتحلل الجيلاتيني — المرجع الدقيق بحاجة للتحديد</span></div></div>
+</div>
+<div class="source-groupe">
+<h4>مصادر مهنية</h4>
+<div class="source-item"><span class="num">[2]</span><div class="txt"><strong>وثائق تقنية لموردي النشا</strong><span>أوراق المنتج — مستوى C</span></div></div>
+</div>
+</details>
 
 </main>
 <footer>4Cake الأكاديمية — <a href="/ar/index.html">www.4cake.ma</a></footer>

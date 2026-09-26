@@ -31,8 +31,6 @@ header a{color:var(--doré);text-decoration:none;font-weight:700;font-size:0.95r
 main{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
 h1{font-size:1.8rem;margin:0 0 6px;color:var(--brun);}
 .hook{font-size:1.05rem;color:#6B5E4E;margin:0 0 16px;}
-.meta{display:flex;gap:14px;font-size:0.9rem;color:#6B5E4E;margin-bottom:20px;flex-wrap:wrap;}
-.meta span{background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:5px 14px;}
 h2{font-size:1.2rem;color:var(--brun);border-bottom:2px solid var(--doré);padding-bottom:6px;margin-top:32px;}
 p{margin:10px 0;}
 ul.facteurs{padding-right:22px;padding-left:0;margin:10px 0;}
@@ -40,14 +38,43 @@ ul.facteurs li{margin-bottom:8px;}
 .callout{background:#fff;border-right:4px solid var(--doré);border-left:none;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.95rem;}
 .callout.erreur{border-right-color:#8C3A3A;}
 .callout.mesure{border-right-color:#3A8C5A;}
-.preuve{display:inline-block;background:#fff;border:1px solid #D4A017;border-radius:100px;padding:5px 14px;font-size:0.85rem;color:#8A6A0A;font-weight:600;margin:6px 0 18px;}
-.sources{font-size:0.85rem;color:#6B5E4E;padding-right:22px;padding-left:0;}
+.callout.retenir{border-right-color:#3A6E8C;background:#F3F8FB;}
+.callout.pratique{border-right-color:#B5790A;background:#FFF8E7;}
+.callout h3{margin:0 0 6px;font-size:0.95rem;}
+.sources{font-size:0.85rem;color:#6B5E4E;}
 .sources li{margin-bottom:6px;}
 .a-verifier{background:#FFF6E5;border:1px dashed #D4A017;border-radius:10px;padding:12px 16px;margin:16px 0;font-size:0.85rem;color:#8A6A0A;}
 .recettes-liees{margin:14px 0;padding:0;list-style:none;}
 .recettes-liees li{display:inline-block;background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:6px 14px;margin:0 0 6px 6px;font-size:0.85rem;}
 footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
 footer a{color:var(--brun);}
+.fiche-header{background:#fff;border:1px solid #E9DCC0;border-radius:16px;padding:18px 20px;margin:0 0 18px;}
+.fiche-header h1{margin:0 0 4px;font-size:1.6rem;}
+.fiche-header .hook{margin:0 0 10px;}
+.fiche-header .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:100px;padding:4px 12px;font-size:0.78rem;font-weight:600;}
+.badge.type{background:#F3E9CE;color:#6B5E4E;}
+.badge.niveau-etabli{background:#E3F3E6;color:#2A6B3A;}
+.badge.niveau-documente{background:#E3EEF7;color:#2A5C8C;}
+.badge.niveau-repere{background:#FBEBD8;color:#B5720A;}
+.badge.niveau-verifier{background:#EDEDED;color:#5A5A5A;}
+.appli-inline{font-size:0.85rem;color:#6B5E4E;margin-top:8px;}
+.cite{color:#8A6A0A;text-decoration:none;font-size:0.78em;font-weight:700;cursor:pointer;}
+.cite:hover{text-decoration:underline;}
+.notions-liees{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.notions-liees a{background:#F3E9CE;border-radius:100px;padding:6px 14px;font-size:0.85rem;color:#6B4E1A;text-decoration:none;font-weight:600;}
+.notions-liees a:hover{background:#E9DCC0;}
+details.sources-repli{background:#fff;border:1px solid #E9DCC0;border-radius:12px;padding:4px 18px;margin:16px 0;}
+details.sources-repli summary{cursor:pointer;font-weight:700;padding:12px 0;color:var(--brun);list-style:none;}
+details.sources-repli summary::-webkit-details-marker{display:none;}
+details.sources-repli summary:before{content:"◂ ";color:var(--doré);}
+details.sources-repli[open] summary:before{content:"▾ ";}
+.source-groupe{margin:10px 0 16px;}
+.source-groupe h4{font-size:0.82rem;color:#8A7A5E;margin:0 0 8px;}
+.source-item{display:flex;gap:10px;margin-bottom:10px;font-size:0.85rem;}
+.source-item .num{color:#8A6A0A;font-weight:700;flex-shrink:0;}
+.source-item .txt strong{display:block;color:var(--brun);}
+.source-item .txt span{color:#6B5E4E;}
 </style>
 </head>
 <body>
@@ -58,13 +85,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header><a href="/ar/academie/pro/science/index.html">→ العلوم الحلوانية — 4Cake الأكاديمية</a></header>
 <main>
+
+<div class="fiche-header">
 <h1>الاستحلاب</h1>
 <p class="hook">لماذا «تنفصل» الغاناش أحيانًا، وكيف يمكن تداركها.</p>
-<div class="meta"><span>🔬 تحوّل</span><span>مستوى احترافي</span></div>
-<span class="preuve">مستوى الإثبات: مبدأ ثابت</span>
+<div class="badges">
+<span class="badge type">🔬 تحوّل</span>
+<span class="badge niveau-etabli">🟢 ثابت (المبدأ)</span>
+</div>
+<p class="appli-inline"><strong>التطبيقات:</strong> الغاناش · المايونيز · كريمة الزبدة · تتبيلات السلطة</p>
+</div>
 
 <h2>التعريف</h2>
-<p>الاستحلاب هو خليط مستقر من سائلين غير قابلين للامتزاج عادة — عادة الماء والدهن — يُحافظ عليه بفضل عامل استحلاب يمنع القطيرات من التجمّع مجددًا.</p>
+<p>الاستحلاب هو خليط مستقر من سائلين غير قابلين للامتزاج عادة — غالبًا الماء والدهن — يُحافظ عليه بفضل عامل استحلاب يمنع القطيرات من التجمّع.</p>
+
+<div class="callout retenir">
+<h3>🍰 ما يجب تذكّره</h3>
+<p>الاستحلاب ليس مكتسبًا نهائيًا أبدًا: إنه حالة مستقرة، لا اندماج كيميائي. لهذا يمكن أن «ينكسر» تحت تأثير صدمة حرارية أو ميكانيكية، ولهذا يمكن غالبًا إعادة تشكيله.</p>
+</div>
 
 <h2>ما يحدث فعليًا</h2>
 <p>يمتلك عامل الاستحلاب (ليسيثين صفار البيض، بروتينات الحليب) جزءًا يحبّ الماء وجزءًا يحبّ الدهن. يتموضع عند السطح الفاصل بين الاثنين ويثبّت قطيرات دقيقة متناثرة. حسب الحالة، قد يكون الاستحلاب ماءً-في-دهن (الزبدة) أو دهنًا-في-ماء (قشدة، مايونيز).</p>
@@ -80,11 +118,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2>التطبيق في الحلويات</h2>
 <p>الغاناش، المايونيز، كريمة الزبدة، تتبيلات السلطة، بعض أنواع العجين.</p>
 
-<h2>خطأ شائع</h2>
-<div class="callout erreur">«غاناشي انفصلت، تبدو حبيبية.» — غالبًا ما تكون صدمة حرارية (شوكولاتة أو قشدة ساخنة أو باردة جدًا) أو إدماج سريع جدًا هو ما يكسر الاستحلاب. يمكن غالبًا تداركها بتسخين الخليط بلطف ومزجه مع قليل من سائل بارد لإعادة تشكيله.</div>
+<div class="callout pratique">
+<h3>👨‍🍳 عمليًا</h3>
+<p>انفصلت الغاناش؟ سخّنوا الخليط بلطف واخلطوه مع قليل من سائل بارد يُضاف تدريجيًا — غالبًا ما يسمح ذلك بإعادة تشكيلها دون البدء من جديد.</p>
+<p style="margin-bottom:0;"><strong>تنبيه:</strong> الصدمة الحرارية المفاجئة (شوكولاتة أو قشدة بدرجة حرارة مختلفة جدًا) هي السبب الأكثر شيوعًا للانفصال.</p>
+</div>
 
-<h2>كيفية قياسه</h2>
+<h2>خطأ شائع</h2>
+<div class="callout erreur">«غاناشي انفصلت، تبدو حبيبية.» — غالبًا ما تكون صدمة حرارية (شوكولاتة أو قشدة ساخنة أو باردة جدًا) أو إدماج سريع جدًا هو ما يكسر الاستحلاب.</div>
+
+<h2>كيفية ملاحظته</h2>
 <div class="callout mesure"><strong>مراقبة بصرية.</strong> لا توجد أداة مخصّصة شائعة في الحلويات الحرفية (يوجد مقياس لزوجة في السياق الصناعي) — تُقيَّم استقرارية الاستحلاب بالعين، من خلال اللمعان والقوام.</div>
+
+<h2>مفاهيم مرتبطة</h2>
+<div class="notions-liees">
+<a href="coagulation-proteines.html">تخثر البروتينات ←</a>
+</div>
 
 <h2>وصفات 4Cake المعنيّة</h2>
 <ul class="recettes-liees">
@@ -94,13 +143,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>تارت بالشوكولاتة</li>
 </ul>
 
-<div class="a-verifier">⚠️ نموذج أولي: المصادر والعتبات أدناه لم يُتحقّق منها مباشرة في هذا النقاش — بحاجة لتأكيد من سمير قبل النشر.</div>
+<div class="a-verifier">⚠️ نموذج أولي: المصادر أدناه لم يُتحقّق منها مباشرة في هذا النقاش — بحاجة لتأكيد من سمير قبل النشر.</div>
 
-<h2>المصادر</h2>
-<ul class="sources">
-<li>مرجع جامعي في تكنولوجيا الأغذية — الاستحلابات الغذائية (المرجع الدقيق بحاجة للتحديد)</li>
-<li>مرجع تبسيطي علمي في الحلويات — فصل الاستحلابات (المرجع الدقيق بحاجة للتحديد)</li>
-</ul>
+<details class="sources-repli">
+<summary>📚 عرض المصادر (2)</summary>
+<div class="source-groupe">
+<h4>مصادر علمية</h4>
+<div class="source-item"><span class="num">[1]</span><div class="txt"><strong>مرجع جامعي في تكنولوجيا الأغذية</strong><span>الاستحلابات الغذائية — المرجع الدقيق بحاجة للتحديد</span></div></div>
+<div class="source-item"><span class="num">[2]</span><div class="txt"><strong>مرجع تبسيطي علمي في الحلويات</strong><span>انفصال الاستحلابات — المرجع الدقيق بحاجة للتحديد</span></div></div>
+</div>
+</details>
 
 </main>
 <footer>4Cake الأكاديمية — <a href="/ar/index.html">www.4cake.ma</a></footer>
