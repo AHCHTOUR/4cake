@@ -84,7 +84,7 @@ function cardHTML(rec, idx){
   // de lien interne cassé.
   const hasStaticPage = RECIPES.some(x => x.id === rec.id);
   const tag = hasStaticPage ? 'a' : 'div';
-  const hrefAttr = hasStaticPage ? `href="/fr/academie/public/recette/${rec.id}.html"` : '';
+  const hrefAttr = hasStaticPage ? `href="/ar/academie/public/recette/${rec.id}.html"` : '';
   const clickAttr = `onclick="openRecipe('${rec.id}');return false;"`;
   return `
     <${tag} class="rcard reveal" ${hrefAttr} ${clickAttr}>

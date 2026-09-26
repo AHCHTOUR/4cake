@@ -541,7 +541,7 @@ function techCardHTML(t, groupe, i){
 }
 function recCardHTML(r, groupe, i){
   var slug = slugifyFiche(r.name) + '-' + groupe;
-  return '<a class="card" href="/fr/academie/pro/recette/' + slug + '.html" onclick="openRecFiche2(\'' + groupe + '\',' + i + ');return false;">' +
+  return '<a class="card" href="/ar/academie/pro/recette/' + slug + '.html" onclick="openRecFiche2(\'' + groupe + '\',' + i + ');return false;">' +
     cardImgHTML(groupe, r.name) +
     '<h4>' + T(r.name) + '</h4>' +
     '<p>' + T(r.desc) + '</p>' +
@@ -641,7 +641,7 @@ MAROC.slice().sort((a,b) => {
   const ready = MAROC_RECIPES.some(r => r.name === m.name);
   const img = MAROC_IMAGES[m.name];
   const tag = ready ? 'a' : 'div';
-  const hrefAttr = ready ? `href="/fr/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
+  const hrefAttr = ready ? `href="/ar/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
   const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
   recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
     ${img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
@@ -655,7 +655,7 @@ for(const fam in FICHES_FAM){
     const rec = ALL_RECIPES.find(r => r.name === name);
     const ready = !!rec;
     const tag = ready ? 'a' : 'div';
-    const hrefAttr = ready ? `href="/fr/academie/pro/recette/${rec.id}.html"` : '';
+    const hrefAttr = ready ? `href="/ar/academie/pro/recette/${rec.id}.html"` : '';
     const clickAttr = ready ? `onclick="openRecipeFiche('${rec.id}');return false;"` : '';
     recettesHtml += `<${tag} class="card ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
       ${(ready && rec.img) || RECIPE_IMAGES[name] ? `<img src="${(ready && rec.img) || RECIPE_IMAGES[name]}" alt="${name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : ''}
@@ -680,7 +680,7 @@ function renderMaroc(filterTag){
     const img = MAROC_IMAGES[m.name];
     const thumb = img ? `<img src="${img}" alt="${m.name}" style="width:100%; height:110px; object-fit:cover; border-radius:8px; margin-bottom:8px;" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">` : '';
     const tag = ready ? 'a' : 'div';
-    const hrefAttr = ready ? `href="/fr/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
+    const hrefAttr = ready ? `href="/ar/academie/pro/recette/${slugifyFiche(m.name)}-maroc.html"` : '';
     const clickAttr = ready ? `onclick="openMarocFiche('${m.name.replace(/'/g,"\\'")}');return false;"` : '';
     return `<${tag} class="card maroc-card ${hidden?'hidden':''} ${ready?'':'disabled'}" ${hrefAttr} ${clickAttr}>
       ${thumb}
@@ -1081,7 +1081,7 @@ function encartSciencePro(r){
     const t = SCIENCE_TITRES_PRO[id];
     if(!t) return '';
     const icone = SCIENCE_ICONS_PRO[id] || '';
-    return `<a href="/fr/academie/pro/science/${id}.html" onclick="dlPush('clic_science_depuis_fiche_pro',{fiche:${JSON.stringify(titre)},notion:'${id}'})">${icone}${L(t.fr, t.ar)}</a>`;
+    return `<a href="/ar/academie/pro/science/${id}.html" onclick="dlPush('clic_science_depuis_fiche_pro',{fiche:${JSON.stringify(titre)},notion:'${id}'})">${icone}${L(t.fr, t.ar)}</a>`;
   }).join('');
   if(!tags) return '';
   return `
