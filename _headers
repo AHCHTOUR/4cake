@@ -28,3 +28,7 @@
 # (le navigateur ignore ce cache pour sw.js, qui reste vérifié à chaque visite).
 /*.js
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Feuilles de style (polices.css) : même règle que les scripts.
+/*.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
