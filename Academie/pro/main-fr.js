@@ -1019,7 +1019,7 @@ const PRODUIT_LIE_PRO = {
   'dacquoise-ganache': ["chocolat"],
   'entremets-trois-chocolats': ["chocolat"],
   'finger-chocolat': ["chocolat"],
-  'fingers': ["vermicelle"],
+  'fingers': ["decors"],
   'ganache-encadrer': ["chocolat"],
   'ganache-framboise': ["chocolat"],
   'ganache-lait-caramel': ["chocolat"],
@@ -1034,14 +1034,14 @@ const PRODUIT_LIE_PRO = {
   'millefeuille': ["chocolat"],
   'mini-eclairs': ["chocolat"],
   'mini-entremets': ["chocolat"],
-  'montage-etages': ["pate a sucre"],
+  'montage-etages': ["pate"],
   'mousse-chocolat': ["chocolat"],
   'mousse-chocolat-bombe': ["chocolat"],
   'namelaka-chocolat': ["chocolat"],
   'opera-marocain': ["chocolat"],
   'orangettes': ["chocolat"],
   'pain-chocolat': ["chocolat"],
-  'pate-a-fleurs': ["pate a sucre"],
+  'pate-a-fleurs': ["pate"],
   'pot-de-creme': ["chocolat"],
   'prestige-cafe': ["chocolat"],
   'prestige-chocolat': ["chocolat"],
@@ -1049,10 +1049,10 @@ const PRODUIT_LIE_PRO = {
   'tarte-chocolat-pro': ["chocolat", "feuilletine"],
 };
 const PRODUITS_INFOS_PRO = {
-  'chocolat': { url: '/fr/produits/chocolat-de-couverture-noir-64pct.html', fr: 'Voir nos chocolats de couverture', ar: 'شاهدوا شوكولاتة التغطية لدينا' },
-  'pate a sucre': { url: '/fr/produits/pate-a-sucre-blanche.html', fr: 'Voir notre pâte à sucre', ar: 'شاهدوا عجينة السكر لدينا' },
-  'vermicelle': { url: '/fr/produits/vermicelles-chocolat.html', fr: 'Voir nos vermicelles chocolat', ar: 'شاهدوا فيرميسيل الشوكولاتة' },
-  'feuilletine': { url: '/fr/produits/feuilletine-chocolat.html', fr: 'Voir notre feuilletine', ar: 'شاهدوا الفوييتين' },
+  'chocolat': { url: '/fr/index.html?cat=chocolat#catalogue', fr: 'Voir nos chocolats de couverture', ar: 'شاهدوا شوكولاتة التغطية لدينا' },
+  'pate': { url: '/fr/index.html?cat=pate#catalogue', fr: 'Voir notre pâte à sucre', ar: 'شاهدوا عجينة السكر لدينا' },
+  'feuilletine': { url: '/fr/index.html?cat=feuilletine#catalogue', fr: 'Voir notre feuilletine', ar: 'شاهدوا الفوييتين' },
+  'decors': { url: '/fr/index.html?cat=decors#catalogue', fr: 'Voir nos décors & colorants', ar: 'شاهدوا الزينة والملوّنات لدينا' },
 };
 function encartProduitPro(r){
   const liste = r && r.id ? PRODUIT_LIE_PRO[r.id] : null;

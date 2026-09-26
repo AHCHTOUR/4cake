@@ -31,8 +31,6 @@ header a{color:var(--doré);text-decoration:none;font-weight:700;font-size:0.95r
 main{max-width:720px;margin:0 auto;padding:28px 20px 60px;}
 h1{font-size:1.8rem;margin:0 0 6px;color:var(--brun);}
 .hook{font-size:1.05rem;color:#6B5E4E;margin:0 0 16px;}
-.meta{display:flex;gap:14px;font-size:0.9rem;color:#6B5E4E;margin-bottom:20px;flex-wrap:wrap;}
-.meta span{background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:5px 14px;}
 h2{font-size:1.2rem;color:var(--brun);border-bottom:2px solid var(--doré);padding-bottom:6px;margin-top:32px;}
 p{margin:10px 0;}
 ul.facteurs{padding-left:22px;margin:10px 0;}
@@ -40,7 +38,9 @@ ul.facteurs li{margin-bottom:8px;}
 .callout{background:#fff;border-left:4px solid var(--doré);border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.95rem;}
 .callout.erreur{border-left-color:#8C3A3A;}
 .callout.mesure{border-left-color:#3A8C5A;}
-.preuve{display:inline-block;background:#fff;border:1px solid #D4A017;border-radius:100px;padding:5px 14px;font-size:0.85rem;color:#8A6A0A;font-weight:600;margin:6px 0 18px;}
+.callout.retenir{border-left-color:#3A6E8C;background:#F3F8FB;}
+.callout.pratique{border-left-color:#B5790A;background:#FFF8E7;}
+.callout h3{margin:0 0 6px;font-size:0.95rem;}
 .sources{font-size:0.85rem;color:#6B5E4E;}
 .sources li{margin-bottom:6px;}
 .a-verifier{background:#FFF6E5;border:1px dashed #D4A017;border-radius:10px;padding:12px 16px;margin:16px 0;font-size:0.85rem;color:#8A6A0A;}
@@ -48,6 +48,34 @@ ul.facteurs li{margin-bottom:8px;}
 .recettes-liees li{display:inline-block;background:#fff;border:1px solid #E9DCC0;border-radius:100px;padding:6px 14px;margin:0 6px 6px 0;font-size:0.85rem;}
 footer{text-align:center;padding:24px;font-size:0.85rem;color:#6B5E4E;}
 footer a{color:var(--brun);}
+
+.fiche-header{background:#fff;border:1px solid #E9DCC0;border-radius:16px;padding:18px 20px;margin:0 0 18px;}
+.fiche-header h1{margin:0 0 4px;font-size:1.6rem;}
+.fiche-header .hook{margin:0 0 10px;}
+.fiche-header .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:100px;padding:4px 12px;font-size:0.78rem;font-weight:600;}
+.badge.type{background:#F3E9CE;color:#6B5E4E;}
+.badge.niveau-etabli{background:#E3F3E6;color:#2A6B3A;}
+.badge.niveau-documente{background:#E3EEF7;color:#2A5C8C;}
+.badge.niveau-repere{background:#FBEBD8;color:#B5720A;}
+.badge.niveau-verifier{background:#EDEDED;color:#5A5A5A;}
+.appli-inline{font-size:0.85rem;color:#6B5E4E;margin-top:8px;}
+.cite{color:#8A6A0A;text-decoration:none;font-size:0.78em;font-weight:700;cursor:pointer;}
+.cite:hover{text-decoration:underline;}
+.notions-liees{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.notions-liees a{background:#F3E9CE;border-radius:100px;padding:6px 14px;font-size:0.85rem;color:#6B4E1A;text-decoration:none;font-weight:600;}
+.notions-liees a:hover{background:#E9DCC0;}
+details.sources-repli{background:#fff;border:1px solid #E9DCC0;border-radius:12px;padding:4px 18px;margin:16px 0;}
+details.sources-repli summary{cursor:pointer;font-weight:700;padding:12px 0;color:var(--brun);list-style:none;}
+details.sources-repli summary::-webkit-details-marker{display:none;}
+details.sources-repli summary:before{content:"▸ ";color:var(--doré);}
+details.sources-repli[open] summary:before{content:"▾ ";}
+.source-groupe{margin:10px 0 16px;}
+.source-groupe h4{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.04em;color:#8A7A5E;margin:0 0 8px;}
+.source-item{display:flex;gap:10px;margin-bottom:10px;font-size:0.85rem;}
+.source-item .num{color:#8A6A0A;font-weight:700;flex-shrink:0;}
+.source-item .txt strong{display:block;color:var(--brun);}
+.source-item .txt span{color:#6B5E4E;}
 </style>
 </head>
 <body>
@@ -58,16 +86,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header><a href="/fr/academie/pro/science/index.html">← Science pâtissière — 4Cake Académie</a></header>
 <main>
+
+<div class="fiche-header">
 <h1>Le °Brix</h1>
 <p class="hook">Un chiffre unique pour mesurer combien de sucre flotte réellement dans un sirop.</p>
-<div class="meta"><span>🔬 Mesure</span><span>Niveau professionnel</span></div>
-<span class="preuve">Niveau de preuve : établi (principe) — seuils à vérifier</span>
+<div class="badges">
+<span class="badge type">🔬 Mesure physico-chimique</span>
+<span class="badge niveau-etabli">🟢 Établi (principe)</span>
+</div>
+<p class="appli-inline"><strong>Applications :</strong> sirops · confitures · fruits confits · glaçages miroir</p>
+</div>
 
 <h2>Définition</h2>
-<p>Le degré Brix (°Bx) mesure la teneur en matière sèche soluble d'une solution, exprimée en grammes de saccharose pour 100 g de solution. En pâtisserie, c'est l'outil de référence pour piloter la concentration en sucre d'un sirop, d'une confiture ou d'un bain de fruits confits — là où l'œil et le goût seuls restent approximatifs.</p>
+<p>Le degré Brix (°Bx) mesure la teneur en matière sèche soluble d'une solution, exprimée en grammes de saccharose pour 100 g de solution <a class="cite" href="#src1">[1]</a><a class="cite" href="#src2">[2]</a>. En pâtisserie, c'est l'outil de référence pour piloter la concentration en sucre d'un sirop, d'une confiture ou d'un bain de fruits confits — là où l'œil et le goût seuls restent approximatifs.</p>
+
+<div class="callout retenir">
+<h3>🍰 À retenir</h3>
+<p>Le °Brix n'est pas simplement « le pourcentage de sucre ». Sur une solution de saccharose quasi pure, il correspond bien à sa concentration. Sur une préparation pâtissière contenant fruits, acides ou pectines, c'est plutôt une lecture globale de la matière sèche soluble — le sucre sert de référence, pas de mesure exclusive.</p>
+</div>
 
 <h2>Ce qui se passe réellement</h2>
-<p>La lumière change de direction différemment selon la quantité de matière dissoute dans une solution (indice de réfraction). Le réfractomètre exploite cette déviation pour donner directement une lecture en °Brix. Le Brix ne mesure pas exclusivement le saccharose : tout soluté dissous — autres sucres, acides, pectines — influence légèrement la lecture. C'est une mesure de la matière sèche soluble totale, avec le sucre pour référence.</p>
+<p>La lumière change de direction différemment selon la quantité de matière dissoute dans une solution (indice de réfraction). Le réfractomètre exploite cette déviation pour donner directement une lecture en °Brix <a class="cite" href="#src1">[1]</a><a class="cite" href="#src2">[2]</a>. Le Brix ne mesure pas exclusivement le saccharose : tout soluté dissous — autres sucres, acides, pectines — influence légèrement la lecture <a class="cite" href="#src2">[2]</a>.</p>
 
 <h2>Facteurs qui influencent la lecture</h2>
 <ul class="facteurs">
@@ -77,13 +116,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 
 <h2>Application pâtissière</h2>
-<p>Sirops (léger, moyen, lourd), confitures et gelées, fruits confits (montée progressive du bain de sirop sur plusieurs jours), glaçages miroir.</p>
+<p>Sirops (léger, moyen, lourd), confitures et gelées, fruits confits (montée progressive du bain de sirop sur plusieurs jours), glaçages miroir. <span class="badge niveau-repere" style="font-size:0.72rem;">🟠 Repère professionnel</span> Pour les confitures, un repère courant se situe autour de 60-65°Bx <a class="cite" href="#src3">[3]</a> — une valeur à ajuster selon la recette, jamais une règle universelle.</p>
+
+<div class="callout pratique">
+<h3>👨‍🍳 En pratique</h3>
+<p>Vous préparez une confiture ? Ne vous fiez pas uniquement au poids initial du sucre — l'évaporation varie d'une cuisson à l'autre. Mesurez le °Brix en fin de cuisson et interprétez la valeur selon la recette et le fruit utilisé.</p>
+<p style="margin-bottom:0;"><strong>Attention :</strong> le °Brix seul ne décrit pas entièrement la stabilité d'une préparation. L'activité de l'eau, le pH et la température interviennent aussi.</p>
+</div>
 
 <h2>Erreur fréquente</h2>
 <div class="callout erreur">« Ma confiture ne prend jamais, pourtant je respecte les proportions. » — Le poids de sucre au départ ne garantit rien si l'évaporation pendant la cuisson n'est pas suivie : deux cuissons parties des mêmes proportions peuvent finir à des Brix très différents selon le temps et l'intensité du feu.</div>
 
 <h2>Comment la mesurer</h2>
-<div class="callout mesure">Réfractomètre (manuel optique ou numérique). Nettoyez le prisme, déposez quelques gouttes d'échantillon, lisez directement le °Brix sur l'écran ou l'échelle.</div>
+<div class="callout mesure">Réfractomètre (manuel optique ou numérique). Nettoyez le prisme, déposez quelques gouttes d'échantillon, lisez directement le °Brix sur l'écran ou l'échelle. <a class="cite" href="#src3">[3]</a></div>
+
+<h2>Notions associées</h2>
+<div class="notions-liees">
+<a href="activite-eau.html">Activité de l'eau (aw) →</a>
+<a href="ph.html">pH →</a>
+</div>
 
 <h2>Recettes 4Cake concernées</h2>
 <ul class="recettes-liees">
@@ -92,12 +143,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="a-verifier">⚠️ Prototype : les seuils indiqués (ex. ~60-65°Brix pour une confiture) sont des repères professionnels usuels, pas une norme unique vérifiée dans cette conversation. Sources ci-dessous à confirmer par Samir avant publication — aucune n'a été consultée en direct ici.</div>
 
-<h2>Sources</h2>
-<ul class="sources">
-<li>Documentation ANSES / Ciqual — méthodologie générale de composition des aliments (à vérifier si pertinente spécifiquement pour le Brix, ou seulement pour la teneur en sucre)</li>
-<li>Ouvrage universitaire de technologie alimentaire — chimie des sucres et réfractométrie (référence à préciser)</li>
-<li>Fiche technique d'un fabricant de réfractomètres — usage pratique (source professionnelle, niveau C)</li>
-</ul>
+<details class="sources-repli" id="sources">
+<summary>📚 Voir les sources (3)</summary>
+
+<div class="source-groupe">
+<h4>Sources scientifiques</h4>
+<div class="source-item" id="src2"><span class="num">[2]</span><div class="txt"><strong>Ouvrage universitaire de technologie alimentaire</strong><span>Chimie des sucres et réfractométrie — référence exacte à préciser</span></div></div>
+</div>
+
+<div class="source-groupe">
+<h4>Sources institutionnelles / normatives</h4>
+<div class="source-item" id="src1"><span class="num">[1]</span><div class="txt"><strong>Documentation ANSES / Ciqual</strong><span>Méthodologie générale de composition des aliments — à vérifier si pertinente spécifiquement pour le Brix, ou seulement pour la teneur en sucre</span></div></div>
+</div>
+
+<div class="source-groupe">
+<h4>Sources professionnelles</h4>
+<div class="source-item" id="src3"><span class="num">[3]</span><div class="txt"><strong>Fiche technique d'un fabricant de réfractomètres</strong><span>Usage pratique — source professionnelle, niveau C</span></div></div>
+</div>
+
+</details>
 
 </main>
 <footer>4Cake Académie — <a href="/fr/index.html">www.4cake.ma</a></footer>
