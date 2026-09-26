@@ -47,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="4Cake">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" as="image" href="/LOGO_MARQUE.png">
+<link rel="preload" as="image" href="/LOGO_MARQUE.webp" fetchpriority="high">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2054,11 +2054,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     let started = false, failed = false;
 
+    // Position du cadre fournie par IntersectionObserver (calculée par le navigateur
+    // lors de son propre rendu) : évite un recalcul de mise en page forcé par le script.
+    function readFrameRect(cb){
+      if(!('IntersectionObserver' in window)){ cb(frame.getBoundingClientRect()); return; }
+      const io = new IntersectionObserver((entries) => {
+        io.disconnect();
+        cb(entries[0].boundingClientRect);
+      });
+      io.observe(frame);
+    }
+
     function runCurtain(){
       if(failed || started) return;
       started = true;
+      readFrameRect(startCurtain);
+    }
 
-      const rect = frame.getBoundingClientRect();
+    function startCurtain(rect){
       const logoTop = rect.top;
       const logoHeight = rect.height;
 
@@ -2085,16 +2098,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     shimmer.addEventListener('error', () => { failed = true; });
     shimmer.src = '/' + pick;
 
-    const rect0 = frame.getBoundingClientRect();
-    const startDelayMs = Math.max(0, (FLAKE_DELAY + timeToReach(rect0.top)) * 1000);
+    readFrameRect((rect0) => {
+      const startDelayMs = Math.max(0, (FLAKE_DELAY + timeToReach(rect0.top)) * 1000);
 
-    setTimeout(() => {
-      if(shimmer.complete){
-        runCurtain();
-      } else {
-        shimmer.addEventListener('load', runCurtain, { once: true });
-      }
-    }, startDelayMs);
+      setTimeout(() => {
+        if(shimmer.complete){
+          runCurtain();
+        } else {
+          shimmer.addEventListener('load', runCurtain, { once: true });
+        }
+      }, startDelayMs);
+    });
   })();
 
   // ---------- Mini-logo scintillant réutilisable (bloc « Pourquoi » + bandeau Académie) ----------
@@ -2119,7 +2133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       'logo-chocolat-fondant.jpg',
       'logo-or-luxe.jpg'
     ];
-    variant.src = VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
+    variant.src = '/' + VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
     variant.addEventListener('error', () => variant.remove());
 
     // Le bloc est sous la ligne de flottaison : on déclenche à l'entrée dans l'écran
