@@ -645,7 +645,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -1921,40 +1921,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // Aucune feuille Google Sheets configurée pour l'instant : utilise la copie de secours
     loadFromFallback('URL Google Sheets non configurée');
   } else {
-    Papa.parse(GOOGLE_SHEET_CSV_URL, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: function(results){
-        try{
-          const rows = results.data
-            .map(normalizeRow)
-            .filter(p => p.id && p.name && p.cat && !isNaN(p.price) && p.price > 0);
-          // Filet de sécurité renforcé : si la feuille n'est pas accessible publiquement,
-          // Google peut renvoyer une page de connexion HTML au lieu du CSV — dans ce cas
-          // les lignes obtenues sont incohérentes (peu nombreuses, prix invalides, etc.)
-          // On exige un minimum de lignes valides pour accepter les données.
-          if(rows.length < 3){
-            throw new Error(`Seulement ${rows.length} ligne(s) valide(s) reçue(s) — la feuille n'est probablement pas accessible publiquement (vérifiez le partage).`);
+    // PapaParse est chargé en defer : on attend qu'il soit disponible (au plus tard à DOMContentLoaded).
+    // S'il n'a pas pu être chargé (CDN injoignable), on bascule sur le catalogue de secours.
+    const loadFromSheet = function(){
+      if(typeof Papa === 'undefined'){ loadFromFallback('PapaParse indisponible'); return; }
+      Papa.parse(GOOGLE_SHEET_CSV_URL, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results){
+          try{
+            const rows = results.data
+              .map(normalizeRow)
+              .filter(p => p.id && p.name && p.cat && !isNaN(p.price) && p.price > 0);
+            // Filet de sécurité renforcé : si la feuille n'est pas accessible publiquement,
+            // Google peut renvoyer une page de connexion HTML au lieu du CSV — dans ce cas
+            // les lignes obtenues sont incohérentes (peu nombreuses, prix invalides, etc.)
+            // On exige un minimum de lignes valides pour accepter les données.
+            if(rows.length < 3){
+              throw new Error(`Seulement ${rows.length} ligne(s) valide(s) reçue(s) — la feuille n'est probablement pas accessible publiquement (vérifiez le partage).`);
+            }
+            // Filet sur les astuces : si la feuille renvoie une astuce vide ou visiblement
+            // tronquée (cellule mal saisie, contenu coupé), on garde celle du catalogue de secours.
+            rows.forEach(p => {
+              const ref = FALLBACK_PRODUCTS.find(f => String(f.id) === String(p.id));
+              if(!ref) return;
+              if(!p.tip || p.tip.trim().length < 25) p.tip = ref.tip || p.tip;
+              if(!p.tip_ar || p.tip_ar.trim().length < 15) p.tip_ar = ref.tip_ar || p.tip_ar;
+            });
+            PRODUCTS = rows;
+            renderCatalogue();
+          }catch(err){
+            loadFromFallback(err.message);
           }
-          // Filet sur les astuces : si la feuille renvoie une astuce vide ou visiblement
-          // tronquée (cellule mal saisie, contenu coupé), on garde celle du catalogue de secours.
-          rows.forEach(p => {
-            const ref = FALLBACK_PRODUCTS.find(f => String(f.id) === String(p.id));
-            if(!ref) return;
-            if(!p.tip || p.tip.trim().length < 25) p.tip = ref.tip || p.tip;
-            if(!p.tip_ar || p.tip_ar.trim().length < 15) p.tip_ar = ref.tip_ar || p.tip_ar;
-          });
-          PRODUCTS = rows;
-          renderCatalogue();
-        }catch(err){
+        },
+        error: function(err){
           loadFromFallback(err.message);
         }
-      },
-      error: function(err){
-        loadFromFallback(err.message);
-      }
-    });
+      });
+    };
+    if(typeof Papa !== 'undefined' || document.readyState !== 'loading') loadFromSheet();
+    else document.addEventListener('DOMContentLoaded', loadFromSheet);
   }
 
   // ---------- Feuilletine entrance animation ----------
