@@ -1,8 +1,8 @@
-const CACHE_NAME = '4cake-cache-v4';
+const CACHE_NAME = '4cake-cache-v5';
 const MAX_CACHE_ENTRIES = 80; // évite une croissance illimitée du cache
 
 const CORE_ASSETS = [
-  './index.html',
+  './',
   './manifest.json',
   './LOGO_MARQUE.png',
   './slcm_logo.jpg',
@@ -23,9 +23,9 @@ const CORE_ASSETS = [
 // mis en cache automatiquement au clic — ça évite une croissance illimitée du cache
 // au fil de la navigation, qui était le problème de la version précédente de ce fichier.
 const STRATEGIC_PAGES = [
-  '/fr/index.html', '/ar/index.html',
-  '/fr/devis.html', '/ar/devis.html',
-  '/fr/conseils.html', '/ar/conseils.html'
+  '/fr/', '/ar/',
+  '/fr/devis', '/ar/devis',
+  '/fr/conseils', '/ar/conseils'
 ];
 
 // Extensions d'assets statiques : sûres à mettre en cache automatiquement (CSS/JS/polices/images).
